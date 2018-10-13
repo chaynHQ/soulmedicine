@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: lessons
 #
 #  id            :bigint(8)        not null, primary key
+#  subject_id    :bigint(8)
 #  sequential_id :integer
-#  active        :boolean
+#  status        :integer
 #  approved      :boolean
-#  owner_id      :bigint(8)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  status        :integer
 #
 
 require "rails_helper"
 
-RSpec.describe Course, :type => :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Lesson, :type => :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

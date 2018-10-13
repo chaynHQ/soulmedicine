@@ -1,0 +1,23 @@
+language: ruby
+rvm:
+  - 2.5.1
+services:
+  - postgresql
+# blocklist
+branches:
+  except:
+  - legacy
+  - experimental
+before_install:
+  - sudo apt-get update -qq
+  - udo apt-get install -yqq nodejs
+before_script:
+  - cp .env.sample .env
+  - psql -c 'create database travis_ci_test;' -U postgres
+script:
+  - RAILS_ENV=test bundle install -j $(nproc) --path vendor
+  - RAILS_ENV=test bundle exec rails db:create db:schema:load
+  - RAILS_ENV=test bundle exec rails db:migrate
+  - RAILS_ENV=test bundle exec rails db:seed
+  - RAILS_ENV=test bundle exec rubocop
+  - RAILS_ENV=test bundle exec rspec spec
