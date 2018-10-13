@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Note: Language picker won't workt without a correct language attribute on HTML tag-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><%= @page_title %></title>
+		<link rel="stylesheet" type="text/css" href="../assets/stylesheets/style.css">
+		
+	</head>
+	<body>
+
+		<!-- Header -->
+		<div class="header">
+			<a href="index.html"><img src="../assets/images/soul_medicine_logo.png" alt="Soul Medicine Logo" class="logo" alt="*"></a>
+			<b class="logotype">Soul Medicine</b>
+			<ul class="clean link-list">
+				<li><a href="/">Series</a></li>
+				<li><a href="help.html">Help</a></li>
+				<li><a href="/">Subscribe</a></li>
+			</ul>
+		</div>
+
+
+		<!-- Note: The 2px bottom padding is to help the quirky band below -->
+		<div class="white-bg band pad-bottom-2pc">
+			
+			<!-- A 2 Column grid - Asymetric makes one column wider than the other -->
+			<div class="two-column flipped very asymetric grid slice pad-vertical-2pc">
+				<!-- First example of a utlity class (used to add padding, color etc to an element on an ad hoc basis -->
+				<!-- Responsive padding (r-pad) only pads on larger screens -->
+				<div class="column pad-bottom-2pc">
+					<h1>Building a (legal case without a lawyer)</h1>
+					<!-- Call to action -->
+					<a href="/" class="cta">Subscribe for free</a>
+					<p class="standfirst">This text should make women feel heard and like they're not alone (maybe a stat on how many people experience hard relationships?). It should explain Soul Medicine is disguised e-mail letters that help people in difficult relationships to feel better.</p>
+					<p>This text should make women feel heard and like they're not alone (maybe a stat on how many people experience hard relationships?). It should explain Soul Medicine is disguised e-mail letters that help people in difficult relationships to feel better.</p>
+					<p>This text should make women feel heard and like they're not alone (maybe a stat on how many people experience hard relationships?). It should explain Soul Medicine is disguised e-mail letters that help people in difficult relationships to feel better.</p>
+					<p>This text should make women feel heard and like they're not alone (maybe a stat on how many people experience hard relationships?). It should explain Soul Medicine is disguised e-mail letters that help people in difficult relationships to feel better.</p>
+				</div>
+				<div class="column">
+					<h4>COURSE BY</h4>
+					<div>
+						<img src="../assets/images/people/holly.jpg" alt="*" class="avatar" alt="*"><a href="" class="person">Holly Brockwell</a>
+					</div>
+					<h4>LANGUAGES</h4>
+					<ul class="comma-delimited">
+						<li>English</li>
+						<li>French</li>
+						<li>Spanish</li>
+						<li>Urdu</li>
+						<li>Cantonese</li>
+					</ul>
+					<h4>TIME COMMITMENT</h4>
+					<p>5 minutes a day for 11 days</p>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- A 3 Column grid -->
+		<!-- A quirky band (wonky edges) Note: padding and margin should be set on this to ensure it's not too tight using utility classes like pad-top-2pc, kick-top-2pc etc -->
+		<div class="quirky pink-bg band pad-top-2pc pad-bottom-5pc">
+			<div class="slice">
+				<h2>AVAILABLE SERIES</h2>
+			</div>
+			<div class="three-column grid slice">
+				<div class="column">
+					<a class="symetrical tall panel" href="/">
+						<img src="../assets/images/asylum_process.png" alt="*" class="panel-image" alt="*">
+						<h3>Self confidence</h3>
+						<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+					</a>
+				</div>
+				<div class="column">
+					<a class="symetrical tall panel" href="/">
+						<img src="../assets/images/SOULMEDICINE_GUIDE_COVER-06.png" alt="*" class="panel-image" alt="*">
+						<h3>Mastering stress</h3>
+						<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+					</a>
+				</div>
+				<div class="column">
+					<a class="symetrical tall panel" href="building_case_no_lawyer.html">
+						<img src="../assets/images/building_case_no_lawyer.png" alt="*" class="panel-image" alt="*">
+						<h3>Legal support</h3>
+						<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="inverted quirky blue-bg band pad-vertical-5pc kick-bottom-2pc">
+			<div class="constrained symetrical slice">
+				<h2>Sign up to brighten your day:</h2>
+				<a href="/" class="cta type-2">Subscribe</a>
+			</div>
+		</div>
+
+
+		<!-- Footer -->
+		<div class="footer pad-vertical-2pc">
+			<div class="slice">
+				<ul class="clean stacked link-list">
+					<li><a href="/">About us</a></li>
+					<li><a href="/">Partner with us</a></li>
+					<li><a href="/">Blog</a></li>
+				</ul>
+				<form method="post" action="/" class="language-selector-form">
+					<select id="language-selector">
+						<option value="en" selected>English</option>
+						<option value="ur">Urdu</option>
+					</select>
+				</form>
+			</div>
+			<div class="final band">
+				<div class="slice">
+					<img src="../assets/images/soul_medicine_logo.png" alt="Soul Medicine Logo" class="logo" alt="*">
+					<div class="copyright"><span class="desktop-only">Copyright</span> &copy; 2018 Chayn</div>
+					<ul class="clean link-list">
+						<li><a href="/">Terms &amp; Privacy</a></li>
+						<li><a href="/">Intelectual Property</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../assets/javascripts/functions.js"></script>
+	</body>
+</html>

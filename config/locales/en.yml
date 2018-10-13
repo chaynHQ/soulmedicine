@@ -1,0 +1,64 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  language_name: English
+  application:
+    name: Soul Medicine
+    description: A mental well-being programme that sends crowdsourced feel-good knowledge courses and quotes. Choose the languages (yes, you can sign up for more than one!) you want & the time that suits you to start receiving the messages!
+  header:
+    links:
+      courses: Courses
+      about: About
+      contact: Contact
+      sign_up: Subscribe
+      log_out: Sign Out
+  pages:
+    landing:
+      main:
+        tag_line: Brighten your day with bite size support
+        description: While looking for help or support online, the internet can often offer information that is complex, overwhelming and rigid. But what if there was a simpler and easier way to get helpful advice and tips online?<br><br>This is where Soul Medicine comes in! You only need a basic smartphone with a basic internet connection to be able to connect with us. We will help you take small steps towards meaningful decisions by delivering useful information tips directly to your email in small and easily digestible manner
+        call_to_action: Subscribe for free
+      how_it_works:
+        tag_line: How does Soul Medicine work?
+        first:
+          header: Set your time
+          description: Set your preferred time to receive these messages exactly when you want.
+        second:
+          header: Choose a disguise
+          description: To protect you, we’ve some disguises you can choose from. Pick the one you think will help you disguise them best.
+        third:
+          header: Choose your language
+          description: The courses are available in (insert number) languages. If your language is not on the list, choose the one you’re most comfortable with!
+        fourth: 
+          header: Bite sized support
+          description: Legal advice, tips to fight stress, support on staying online and many more - important information in small, easily understandable messages.
+      available_courses:
+        tag_line: Available Courses
+      testimony:
+        tag_line: Testimony
+      powered_by:
+        tag_line: Powered by Chayn
+        description: Chayn is a global volunteer network that builds guides and toolkits that provide women with information on their legal rights, escaping abusive relationships and staying safe online. 
+    about:
+      chayn_about:
+        tag_line: We are Chayn.
+        description_html: <p><a href="https://chayn.co/">Chayn</a> is a global volunteer network with over 400 volunteers from 15 countries, including many survivors of abuse.</p><p>We tackle gender-based abuse by creating intersectional resources on understanding and overcoming abusive relationships, legal rights, mental wellbeing and tips to stay safe online.</p><p>Together, we hope to reach victims and survivors all over the world by giving them critical information they need to take control of their lives.</p><p>Founded in 2013, we&rsquo;ve proven that by giving survivors the power to create solutions for others like them, we&rsquo;re not only creating better resources but also giving them respect and confidence.</p><p>We have also shown an easy way of designing accessible solutions for people who might not have the funds, bandwidth, privacy or time for bulky and expensive resources. </p><p>Over the last 5 years, we&rsquo;ve managed to reach more than 200,000 people and have dedicated sites for <a href="http://chaynitalia.org/">Italy</a> <a href="https://chaynpakistan.org/">Pakistan</a> and <a href="http://chaynindia.com">India</a>.</p><p>If you want to learn more about us, you can see our latest <a href="https://chayn.gitbooks.io/impact/">Impact Report</a> or check us out on &nbsp;<a href="https://www.facebook.com/chayn">Facebook</a>, <a href="https://twitter.com/chaynhq">Twitter</a> and <a href="https://instagram.com/chaynhq/">Instagram</a>. You can also read more about our work on our <a href="https://medium.com/hack-for-chayn/">Medium page</a>.</p>
+      soul_medicine_about:
+        tag_line: What is Soul Medicine?
+        description_html: <p>Soul Medicine is a multilingual digital service designed to deliver critical information in the form of easily digestible pieces through (Facebook Messenger and) email. These bits of information are designed by and for women experiencing abuse, especially migrant and refugee women.</p><p>Designed into courses divided into bite-sized lessons, you can access our resources from even a basic smartphone with internet connectivity. Currently, we cover topics ranging from legal information, financial advice to online safety, and even have tips to help you regain your confidence and how to deal with stress.</p>
+      project_history:
+        tag_line: Our History
+        description_html: <h3>Information is Power</h3><p>In 2015, we wanted to design a project named “Happy Thoughts”. This project was going to deliver positive messages to people once in the morning and once before bed to uplift their spirits and to help them feel better. We even received funding from o2 Think Big and did an email trial. Guess what? Over 70% people thought these messages felt good.</p><p>As time went on, we tweaked our design a bit. Our research told that that many frontline organisations were suffering due to budget cuts, putting a lot of survivors at risk. Shelters were closing down, legal aid services were suffering and access to mental wellbeing resources were getting complicated. We realised if social organisations suffered, the information gap that we’re so worried about was only going to widen day by day.</p><p>And so, “Happy Thoughts” was reborn as Soul Medicine at the 2016 EmpowerHack hackathon! We wanted to build something that would help women make conscious decisions about their lives. How do we do this? Our collaboration in the Tech vs Abuse project told us that women were looking for information. And in all our learnings, one thing was clear - the right information could change lives.</p><p>That’s exactly what Soul Medicine is for. We’re here to give you important information bit by bit, day by day, that will help you understand the difficulties you are facing and help you tackle them - one day at a time.</p><p>This project is powered by everyone at Chayn. And to further develop Soul Medicine, we received a very important grant by Comic Relief and Big Lottery Fund that has made Soul Medicine into what it looks like today.</p><p>You can read more about all that helped us start on our research synthesis here <insert link when blog is published>.</p>
+      design_principles:
+        tag_line: Our Design Principles
+        description_html: <h3>Safe. Accessible. Non-judgmental.</h3><p>Soul Medicine is designed to be safe, accessible, non-judgemental, intersectional and enabling.</p><h3>Safe</h3><p>The first step was to make sure our platform is ‘safe’ for our users. We’re designed for anonymity to be able to protect our users. Even our emails are disguised to shield you!</p><h3>Accessible</h3><p>Our users are likely to have limited internet access and little to no privacy. Soul Medicine does not need high-tech devices. You can access our work from a basic smartphone, on your email (or Facebook Messenger) - simple and accessible even at low bandwidth.</p><h3>Non-Judgemental</h3><p>People in situations of abuse are often ashamed and scared, and it is very important to offer help without judgement. And at Soul Medicine, we believe in the power of every woman.</p><h3>Intersectional</h3><p>We worked with survivors of abuse, migrant and refugee women from all backgrounds so that our solutions can be intersectional and applicable in as many countries as possible.</p><h3>Enabling</h3><p>Most importantly - we are designed to enable. We want to put you in the driver seat of your life, step by step. The end goal is to enable you to take small and meaningful actions that you can be proud of.</p><p>We know how difficult designing solutions like this can be. If you want to build something for survivors or want to learn more about our design principles, look no further. We wrote a <a href="https://medium.com/soul-medicine/how-to-reach-people-who-almost-no-one-is-reaching-fc91db019247">detailed blog</a> just for you!</p>
+      departing_message_html: <h4>Soul Medicine is delivering critical and relevant information to you via email. This is a digital service by Chayn -  a global volunteer network that uses accessible technology to help women.</h4>
+  courses:
+    index:
+      welcome: Welcome to Soul Medicine. You are here. You are relevant. You are powerful.
+      main_message_html: <p>At Soul Medicine, we believe information is power. And with the right information, you can do anything. We built this platform to help you access this information in any form you want. You decide the information you need, the time you need them and where you need them.</p><p>Currently, we have these %{count} courses for you to choose from. You can choose any number of courses you think you want. You can also choose one course after the other.</p><p>We will send you these courses in the form of small and easy to understand portions so that you can go through them in no time. We will be able to deliver these portions to you on email or via Facebook Messenger - it’s up to you to decide!</p><p>At this time, we support English, Arabic, Urdu, … If your language is not on the list, choose the one you are most comfortable with.</p><p>Do not forget to choose what time you want them to be sent because we will only deliver when you want them and how many you want.</p>

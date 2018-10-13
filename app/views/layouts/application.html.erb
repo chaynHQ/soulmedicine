@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>">
+  <head>
+    <title>
+      <%= strip_tags(yield(:title)) + " – " if content_for?(:title) %> <%= t('application.name') %>
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= display_meta_tags name: t('application.name'),
+                          description: t('application.description'),
+                          twitter: {
+                            site_name: :name,
+                          }
+    %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head) %>
+  </head>
+
+  <body class="<%= controller_name %> <%= action_name %> <%= locale %>">
+    <%= render("shared/header") %>
+    <%= render("shared/flash") %>
+    <%= yield %>
+    <%= render("shared/footer") %>
+    <%= yield :javascript %>
+  </body>
+</html>

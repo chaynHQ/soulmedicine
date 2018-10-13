@@ -1,0 +1,97 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.4
+  Exclude:
+    - "bin/*"
+    - "db/**/*"
+    - "tmp/**/*"
+    - "node_modules/**/*"
+    - "config/**/*"
+    - "public/**/*"
+    - "vendor/**/*"
+    - Capfile
+    - config/boot.rb
+    - config/environment.rb
+    - config/initializers/version.rb
+    - Gemfile
+    - Guardfile
+    - Rakefile
+
+Metrics/AbcSize:
+  Exclude:
+    - "test/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "config/**/*"
+    - "test/**/*"
+
+Metrics/ClassLength:
+  Exclude:
+    - "test/**/*"
+
+Metrics/LineLength:
+  Max: 150
+  Exclude:
+    - "config/**/*"
+    - "db/**/*"
+    - Gemfile
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - "db/migrate/*"
+    - "test/**/*"
+
+Performance/Casecmp:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/Validation:
+  Enabled: false
+
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - "app/controllers/application_controller.rb"
+    - "app/helpers/**/*_helper.rb"
+    - "app/mailers/**/*_mailer.rb"
+    - "app/models/application_record.rb"
+    - "config/**/*"
+    - "db/**/*"
+    - "test/**/*"
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+
+Style/NumericPredicate:
+  Enabled: false
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrivialAccessors:
+  AllowPredicates: true
+
+Naming/VariableNumber:
+  Enabled: false
