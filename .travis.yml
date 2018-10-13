@@ -11,8 +11,8 @@ branches:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -yqq nodejs
+  - mv .env.sample .env
 before_script:
-  - cp .env.sample .env
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
   - RAILS_ENV=test bundle install -j $(nproc) --path vendor
