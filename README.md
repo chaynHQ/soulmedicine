@@ -4,6 +4,8 @@
 
 ## Development
 
+[![Build Status](https://travis-ci.org/chaynHQ/soulmedicine.svg?branch=development)](https://travis-ci.org/chaynHQ/soulmedicine)
+
 * Ruby version - `2.5.1`
 * Rails version - `5.2`
 * System dependencies
