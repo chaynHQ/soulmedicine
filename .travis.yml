@@ -10,7 +10,7 @@ branches:
   - experimental
 before_install:
   - sudo apt-get update -qq
-  - udo apt-get install -yqq nodejs
+  - sudo apt-get install -yqq nodejs
 before_script:
   - cp .env.sample .env
   - psql -c 'create database travis_ci_test;' -U postgres
