@@ -1,0 +1,23 @@
+<%# Notice %>
+<% if flash[:notice].present? %>
+  <div>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%# Notice %>
+<% if flash[:info].present? %>
+  <div>
+    <%= flash[:info] %>
+  </div>
+<% end %>
+
+<%# Alert %>
+<% if flash[:alert].present? %>
+  <div>
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<!-- <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p> -->

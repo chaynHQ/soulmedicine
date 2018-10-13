@@ -1,0 +1,22 @@
+<div class="header">
+    <%= link_to image_tag('soul_medicine_logo.png', :class => 'logo', :alt => 'Soul Medicine Logo'), root_path %>
+    <b class="logotype">Soul Medicine</b>
+    <ul class="clean link-list">
+        <li><%= link_to t('header.links.courses'), courses_path %></li>
+        <li><%= link_to t('header.links.about'), about_path %></li>
+        <li><%= link_to t('header.links.contact'), contact_path %></li>
+        <% if user_signed_in? %>
+            <li><%= link_to t('header.links.log_out'), destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+            <li><%= link_to t('header.links.sign_up'), new_registration_path('user') %></li>
+         <% end %>
+        <li class="dropdown-list">
+            <a href="#"><%= t('language_name') %></a>
+            <ul>
+                <li><%= link_to('English', url_for( :locale => 'en' ), class: 'dropdown-item') %></li>
+                <li><%= link_to('Français', url_for( :locale => 'fr' ), class: 'dropdown-item') %></li>
+                <li><%= link_to('العرب', url_for( :locale => 'ar' ), class: 'dropdown-item') %></li>
+            </ul>
+        </li>
+    </ul>
+</div>

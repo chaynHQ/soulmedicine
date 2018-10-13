@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Note: Language picker won't workt without a correct language attribute on HTML tag-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><%= @page_title %></title>
+		<link rel="stylesheet" type="text/css" href="../assets/stylesheets/style.css">
+		
+	</head>
+	<body>
+
+		<!-- Header -->
+		<div class="header">
+			<a href="index.html"><img src="../assets/images/soul_medicine_logo.png" alt="Soul Medicine Logo" class="logo" alt="*"></a>
+			<b class="logotype">Soul Medicine</b>
+			<ul class="clean link-list">
+				<li><a href="/">Series</a></li>
+				<li><a href="help.html">Help</a></li>
+				<li><a href="/">Subscribe</a></li>
+			</ul>
+		</div>
+
+
+
+
+		<!-- Note: Bands go to the edge of the page (for carrying colour, etc) -->
+		<div class="band">
+			<!-- Note: a slice is a container that has a centred max width -->
+			
+			<!-- Note: Grids and columns should hopefully be obvious what they are -->
+			<!-- A 2 Column grid - Asymetric makes one column wider than the other -->
+			<div class="two-column switched very asymetric grid slice">
+				<!-- First example of a utlity class (used to add padding, color etc to an element on an ad hoc basis -->
+				<!-- Responsive padding (r-pad) only pads on larger screens -->
+				<div class="column r-pad-top-10pc">
+					<h1>Brighten your day with bite-sized support</h1>
+					<p class="constrained standfirst">This text should make women feel heard and like they're not alone (maybe a stat on how many people experience hard relationships?). It should explain Soul Medicine is disguised e-mail letters that help people in difficult relationships to feel better.</p>
+					<!-- Call to action -->
+				<a href="/" class="cta">Subscribe for free</a>
+				</div>
+				<div class="column pad-bottom-2pc">
+					<img src="../assets/images/homepage_illustration.png" alt="*" style="height: 400px;" alt="*">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="grey-bg band pad-bottom-2pc">
+			<div class="symetrical three-column grid slice">
+				<h2 class="pad-top-5pc">How does it work?</h2>
+				<div class="column">
+					<img src="../assets/images/asylum_process.png" alt="*" class="panel-image" alt="*">
+					<h3>Self confidence</h3>
+					<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+				</div>
+				<div class="column">
+					<img src="../assets/images/asylum_process.png" alt="*" class="panel-image" alt="*">
+					<h3>Self confidence</h3>
+					<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+				</div>
+				<div class="column">
+					<img src="../assets/images/asylum_process.png" alt="*" class="panel-image" alt="*">
+					<h3>Self confidence</h3>
+					<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- A 3 Column grid -->
+		<div class="band">
+			<div class="slice">
+				<h2 class="pad-top-2pc">AVAILABLE SERIES</h2>
+			</div>
+			<div class="three-column grid slice">
+				<div class="column">
+					<a class="symetrical tall panel" href="/">
+						<img src="../assets/images/asylum_process.png" alt="*" class="panel-image" alt="*">
+						<h3>Self confidence</h3>
+						<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+					</a>
+				</div>
+				<div class="column">
+					<a class="symetrical tall panel" href="/">
+						<img src="../assets/images/SOULMEDICINE_GUIDE_COVER-06.png" alt="*" class="panel-image" alt="*">
+						<h3>Mastering stress</h3>
+						<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+					</a>
+				</div>
+				<div class="column">
+					<a class="symetrical tall panel" href="building_case_no_lawyer.html">
+						<img src="../assets/images/building_case_no_lawyer.png" alt="*" class="panel-image" alt="*">
+						<h3>Legal support</h3>
+						<p>How to empower yourself by rebuilding your confidence and self worth.</p>
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="white-bg band kick-vertical-5pc">
+			<div class="two-column grid slice">
+				<div class="column">
+					<img src="../assets/images/homepage_illustration.png" alt="*">
+				</div>
+				<div class="column">
+					<!-- Note: Using utility classes to add extra padding etc so you can tweak as you need in the HTML -->
+					<div class="testimonial pad-left-15pc pad-vertical-5pc">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget consequat ex. Nunc quis tincidunt eros. Sed vitae consequat felis. Duis elementum porta metus eget porttitor. Mauris sit amet magna at mauris viverra fringilla. Vivamus sollicitudin in elit nec fringilla. Maecenas eu pharetra est. Sed at tincidunt eros.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Note: Contrained makes it not take up the full width of the div, symetrical is centered text basically -->
+		<div class="band">
+			<div class="constrained symetrical slice">
+				<h2>POWERED BY CHAYN</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget consequat ex. Nunc quis tincidunt eros. Sed vitae consequat felis. Duis elementum porta metus eget porttitor. Mauris sit amet magna at mauris viverra fringilla. Vivamus sollicitudin in elit nec fringilla. Maecenas eu pharetra est. Sed at tincidunt eros.</p>
+				<form action="/" method="post" class="pad-vertical-5pc">
+					<input type="text" class="search">
+				</form>
+			</div>
+		</div>
+
+
+
+		<div class="band">
+				<img src="../assets/images/staff_diagram.png" alt="*">
+		</div>
+
+
+		<div class="band white-bg pad-vertical-5pc">
+			<div class="constrained symetrical slice">
+				<h2>Sign up to brighten your day:</h2>
+				<a href="/" class="cta">Subscribe</a>
+			</div>
+		</div>
+
+
+		<!-- Footer -->
+		<div class="footer pad-vertical-2pc">
+			<div class="slice">
+				<ul class="clean stacked link-list">
+					<li><a href="/">About us</a></li>
+					<li><a href="/">Partner with us</a></li>
+					<li><a href="/">Blog</a></li>
+				</ul>
+				<form method="post" action="/" class="language-selector-form">
+					<select id="language-selector">
+						<option value="en" selected>English</option>
+						<option value="ur">Urdu</option>
+					</select>
+				</form>
+			</div>
+			<div class="final band">
+				<div class="slice">
+					<img src="../assets/images/soul_medicine_logo.png" alt="Soul Medicine Logo" class="logo" alt="*">
+					<div class="copyright"><span class="desktop-only">Copyright</span> &copy; 2018 Chayn</div>
+					<ul class="clean link-list">
+						<li><a href="/">Terms &amp; Privacy</a></li>
+						<li><a href="/">Intelectual Property</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../assets/javascripts/functions.js"></script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+stages:
+  - build
+  - test
+  - deploy
+
+image: "ruby:2.5.1"
+
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
+services:
+  - postgres:latest
+
+variables:
+  POSTGRES_DB: soul_medicine
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+  DATABASE_NAME: $POSTGRES_DB
+  DATABASE_USER: $POSTGRES_USER
+  DATABASE_PASSWORD: $POSTGRES_PASSWORD
+  DATABASE_HOST: postgres
+  DATABASE_PORT: 5432
+  # DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
+  SECRET_KEY_BASE: d6ec6cfde5ba9ac3f3d7427b2c01e6a4a95015094ca1b1f3266b2ef69acb63c5e3eea74e7cca6444905755b8c10d1bc37a86f4e593261488e014f2c632c1f9b4
+
+# Cache gems in between builds
+cache:
+  paths:
+    - vendor/ruby
+
+before_script:
+  - ruby -v                                   # Print out ruby version for debugging
+  # Uncomment next line if your rails app needs a JS runtime:
+  - apt-get update -q && apt-get install nodejs -yqq
+  - gem install bundler  --no-ri --no-rdoc    # Bundler is not installed with the image
+  - RAILS_ENV=test bundle install -j $(nproc) --path vendor  # Install dependencies into ./vendor/ruby
+  - RAILS_ENV=test bundle exec rails db:create db:schema:load
+  - RAILS_ENV=test bundle exec rails db:migrate
+  - RAILS_ENV=test bundle exec rails db:seed
+
+# create_db:
+#   stage: build
+#   script:
+#   - bundle exec rails -v
+
+# Optional - Delete if not using `rubocop`
+rubocop:
+  stage: test
+  script:
+  - RAILS_ENV=test bundle exec rubocop
+
+rspec:
+  stage: test
+  script:
+  - RAILS_ENV=test bundle exec rspec spec
+
+rails:
+  stage: test
+  script:
+  - RAILS_ENV=test bundle exec rails test
+
+# This deploy job uses a simple deploy flow to Heroku, other providers, e.g. AWS Elastic Beanstalk
+# are supported too: https://github.com/travis-ci/dpl
+# deploy:
+#   type: deploy
+#   environment: production
+#   script:
+#   - gem install dpl
+#   - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_PRODUCTION_KEY

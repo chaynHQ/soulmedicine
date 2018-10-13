@@ -1,0 +1,123 @@
+<!-- Note: Bands go to the edge of the page (for carrying colour, etc) -->
+<div class="band">
+    <!-- Note: a slice is a container that has a centred max width -->
+    
+    <!-- Note: Grids and columns should hopefully be obvious what they are -->
+    <!-- A 2 Column grid - Asymetric makes one column wider than the other -->
+    <div class="two-column switched very asymetric grid slice">
+        <!-- First example of a utlity class (used to add padding, color etc to an element on an ad hoc basis -->
+        <!-- Responsive padding (r-pad) only pads on larger screens -->
+        <div class="column r-pad-top-10pc">
+            <h1><%= t('.main.tag_line') %></h1>
+            <p class="constrained standfirst">
+                <%= raw t('.main.description') %>
+            </p>
+            <!-- Call to action -->
+            <a href="/" class="cta"><%= t('.main.call_to_action') %></a>
+        </div>
+        <div class="column pad-bottom-2pc">
+            <%= image_tag "homepage_illustration.png", :style => 'height: 400px;', :alt => 'Soul Medicine' %>
+        </div>
+    </div>
+</div>
+
+
+<div class="grey-bg band pad-bottom-2pc">
+    <div class="symetrical three-column grid slice">
+        <h2 class="pad-top-5pc"><%= t('.how_it_works.tag_line') %></h2>
+        <div class="column">
+            <%= image_tag "asylum_process.png", :class => 'panel-image', :alt => t('.how_it_works.first.header') %>
+            <h3><%= t('.how_it_works.first.header') %></h3>
+            <p><%= t('.how_it_works.first.description') %></p>
+        </div>
+        <div class="column">
+            <%= image_tag "asylum_process.png", :class => 'panel-image', :alt => t('.how_it_works.second.header') %>
+            <h3><%= t('.how_it_works.second.header') %></h3>
+            <p><%= t('.how_it_works.second.description') %></p>
+        </div>
+        <div class="column">
+            <%= image_tag "asylum_process.png", :class => 'panel-image', :alt => t('.how_it_works.third.header') %>
+            <h3><%= t('.how_it_works.third.header') %></h3>
+            <p><%= t('.how_it_works.third.description') %></p>
+        </div>
+        <div class="column">
+            <%= image_tag "asylum_process.png", :class => 'panel-image', :alt => t('.how_it_works.fourth.header') %>
+            <h3><%= t('.how_it_works.fourth.header') %></h3>
+            <p><%= t('.how_it_works.fourth.description') %></p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- A 3 Column grid -->
+<div class="band">
+    <div class="slice">
+        <h2 class="pad-top-2pc"><%= t('.available_courses.tag_line') %></h2>
+    </div>
+    <div class="three-column grid slice">
+        <div class="column">
+            <a class="symetrical tall panel" href="/">
+                <%= image_tag "asylum_process.png", :class => 'panel-image', :alt => 'Self confidence' %>
+                <h3>Self confidence</h3>
+                <p>How to empower yourself by rebuilding your confidence and self worth.</p>
+            </a>
+        </div>
+        <div class="column">
+            <a class="symetrical tall panel" href="/">
+                <%= image_tag "asylum_process.png", :class => 'panel-image', :alt => 'Self confidence' %>
+                <h3>Mastering stress</h3>
+                <p>How to empower yourself by rebuilding your confidence and self worth.</p>
+            </a>
+        </div>
+        <div class="column">
+            <a class="symetrical tall panel" href="building_case_no_lawyer.html">
+                <%= image_tag "asylum_process.png", :class => 'panel-image', :alt => 'Self confidence' %>
+                <h3>Legal support</h3>
+                <p>How to empower yourself by rebuilding your confidence and self worth.</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="white-bg band kick-vertical-5pc">
+    <div class="two-column grid slice">
+        <div class="column">
+            <%= image_tag "homepage_illustration.png", :alt => 'Soul Medicine' %>
+        </div>
+        <div class="column">
+            <!-- Note: Using utility classes to add extra padding etc so you can tweak as you need in the HTML -->
+            <div class="testimonial pad-left-15pc pad-vertical-5pc">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget consequat ex. Nunc quis tincidunt eros. Sed vitae consequat felis. Duis elementum porta metus eget porttitor. Mauris sit amet magna at mauris viverra fringilla. Vivamus sollicitudin in elit nec fringilla. Maecenas eu pharetra est. Sed at tincidunt eros.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Note: Contrained makes it not take up the full width of the div, symetrical is centered text basically -->
+<div class="band">
+    <div class="constrained symetrical slice">
+        <h2><%= t('.powered_by.tag_line') %></h2>
+        <p><%= t('.powered_by.description') %></p>
+        <form action="/" method="post" class="pad-vertical-5pc">
+            <input type="text" class="search" placeholder="Search">
+        </form>
+    </div>
+</div>
+
+
+
+<div class="band">
+    <%= image_tag "staff_diagram.png", :alt => '*' %>
+</div>
+
+
+<div class="band white-bg pad-vertical-5pc">
+    <div class="constrained symetrical slice">
+        <h2>Sign up to brighten your day:</h2>
+        <a href="/" class="cta">Subscribe</a>
+    </div>
+</div>
