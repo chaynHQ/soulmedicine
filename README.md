@@ -24,3 +24,5 @@
 * Deployment instructions
 
 * ... -->
+
+![](docs/erd-diagram.png)
