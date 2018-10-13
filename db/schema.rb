@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_002730) do
+ActiveRecord::Schema.define(version: 2018_10_13_214003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_09_04_002730) do
     t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
     t.index ["owner_id"], name: "index_courses_on_owner_id"
   end
 
@@ -43,6 +44,49 @@ ActiveRecord::Schema.define(version: 2018_09_04_002730) do
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lesson_translations", force: :cascade do |t|
+    t.integer "lesson_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "content"
+    t.string "notes"
+    t.index ["lesson_id"], name: "index_lesson_translations_on_lesson_id"
+    t.index ["locale"], name: "index_lesson_translations_on_locale"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.bigint "subject_id"
+    t.integer "sequential_id"
+    t.integer "status"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_lessons_on_subject_id"
+  end
+
+  create_table "subject_translations", force: :cascade do |t|
+    t.integer "subject_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "description"
+    t.string "notes"
+    t.index ["locale"], name: "index_subject_translations_on_locale"
+    t.index ["subject_id"], name: "index_subject_translations_on_subject_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.bigint "course_id"
+    t.integer "sequential_id"
+    t.integer "status"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_subjects_on_course_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,9 +104,12 @@ ActiveRecord::Schema.define(version: 2018_09_04_002730) do
     t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "courses", "users", column: "owner_id"
+  add_foreign_key "lessons", "subjects"
+  add_foreign_key "subjects", "courses"
 end
