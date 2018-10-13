@@ -42,6 +42,7 @@ bower.json
 
 # Ignore environment settings
 !/.env.sample
+/.env*
 .powenv
 
 # Ignore Byebug command history file.
@@ -59,5 +60,3 @@ yarn-debug.log*
 /public/packs
 /public/packs-test
 /.vscode
-/.env*
-/bin/*
