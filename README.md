@@ -5,6 +5,9 @@
 ## Development
 
 [![Build Status](https://travis-ci.org/chaynHQ/soulmedicine.svg?branch=development)](https://travis-ci.org/chaynHQ/soulmedicine)
+[![Heroku Build](https://heroku-badge.herokuapp.com/?app=project-sm&style=flat)](https://project-sm.herokuapp.com/)
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/chaynHQ/soulmedicine)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php)
 
 * Ruby version - `2.5.1`
 * Rails version - `5.2`
