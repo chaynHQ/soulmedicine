@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_13_214003) do
+ActiveRecord::Schema.define(version: 2018_10_15_011743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,23 @@ ActiveRecord::Schema.define(version: 2018_10_13_214003) do
     t.index ["course_id"], name: "index_subjects_on_course_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.bigint "subject_id"
+    t.bigint "lesson_id"
+    t.boolean "active"
+    t.integer "delivery_method"
+    t.time "delivery_time_of_day"
+    t.integer "delivery_frequency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_subscriptions_on_course_id"
+    t.index ["lesson_id"], name: "index_subscriptions_on_lesson_id"
+    t.index ["subject_id"], name: "index_subscriptions_on_subject_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -112,4 +129,8 @@ ActiveRecord::Schema.define(version: 2018_10_13_214003) do
   add_foreign_key "courses", "users", column: "owner_id"
   add_foreign_key "lessons", "subjects"
   add_foreign_key "subjects", "courses"
+  add_foreign_key "subscriptions", "courses"
+  add_foreign_key "subscriptions", "lessons"
+  add_foreign_key "subscriptions", "subjects"
+  add_foreign_key "subscriptions", "users"
 end

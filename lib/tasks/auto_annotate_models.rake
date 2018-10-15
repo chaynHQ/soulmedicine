@@ -7,7 +7,7 @@ if Rails.env.development?
     # You can override any of these by setting an environment variable of the
     # same name.
     Annotate.set_defaults(
-      "routes"                    => "true",
+      "routes"                    => "false",
       "position_in_routes"        => "before",
       "position_in_class"         => "before",
       "position_in_test"          => "before",
