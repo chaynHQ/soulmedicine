@@ -66,6 +66,7 @@ group :development do
   # A debugging tool for your Ruby on Rails applications. (https://github.com/rails/web-console)
   gem 'web-console', '>= 3.3.0'
   # Better error page for Rails and other Rack apps (https://github.com/charliesome/better_errors)
+  # Better error page for Rails and other Rack apps (https://github.com/BetterErrors/better_errors)
   gem 'better_errors'
   # Retrieve the binding of a method's caller. Can also retrieve bindings even further up the stack. (http://github.com/banister/binding_of_caller)
   gem 'binding_of_caller'
