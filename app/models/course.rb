@@ -23,5 +23,15 @@ class Course < ApplicationRecord
   belongs_to :owner, :class_name => :User, :foreign_key => :owner_id, :inverse_of => :user
   translates :name, :description, :notes
 
+  has_many :subjects, :dependent => :destroy
+  has_many :lessons, :through => :subjects
+
+  has_many :subscriptions
+
+  validates_presence_of [:name, :description, :sequential_id, :status]
+  validates :name, :uniqueness => true
+
   enum :status => %i[pending reviewed approved]
+
+  accepts_nested_attributes_for :subjects, :allow_destroy => true
 end

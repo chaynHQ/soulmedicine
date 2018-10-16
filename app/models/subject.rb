@@ -22,5 +22,19 @@ class Subject < ApplicationRecord
   belongs_to :course
   translates :name, :description, :notes
 
+  has_many :lessons, :dependent => :destroy
+  has_many :subscriptions
+
+  accepts_nested_attributes_for :course, :allow_destroy => true
+  accepts_nested_attributes_for :lessons, :allow_destroy => true
+
   enum :status => %i[pending reviewed approved]
+
+  def next
+    course.subjects.find_by "subjects.sequential_id > ?", sequential_id
+  end
+
+  def prev
+    course.subjects.find_by "subjects.sequential_id < ?", sequential_id
+  end
 end
