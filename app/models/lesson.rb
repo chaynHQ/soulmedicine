@@ -21,4 +21,26 @@
 class Lesson < ApplicationRecord
   belongs_to :subject
   translates :content, :notes
+
+  has_many :subscriptions
+
+  validates :name,
+  :uniqueness => { :scope => :subject }
+  validates :sequential_id,
+    :presence => true,
+    :numericality => true,
+    :uniqueness => { :scope => :subject }
+  validates :subject_id, :presence => true, :numericality => true
+
+  default_scope { order(:sequential_id) }
+
+
+  def next
+    subject.lessons.find_by "lessons.sequential_id > ?", sequential_id
+  end
+
+  def prev
+    subject.lessons.find_by "lessons.sequential_id < ?", sequential_id
+  end
+
 end
