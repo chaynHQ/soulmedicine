@@ -26,9 +26,9 @@ class Course < ApplicationRecord
   has_many :subjects, :dependent => :destroy
   has_many :lessons, :through => :subjects
 
-  has_many :subscriptions
+  has_many :subscriptions, :dependent => :destroy
 
-  validates_presence_of [:name, :description, :sequential_id, :status]
+  validates_presence_of %i[name description sequential_id status]
   validates :name, :uniqueness => true
 
   enum :status => %i[pending reviewed approved]

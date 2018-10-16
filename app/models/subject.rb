@@ -23,7 +23,7 @@ class Subject < ApplicationRecord
   translates :name, :description, :notes
 
   has_many :lessons, :dependent => :destroy
-  has_many :subscriptions
+  has_many :subscriptions, :dependent => :destroy
 
   accepts_nested_attributes_for :course, :allow_destroy => true
   accepts_nested_attributes_for :lessons, :allow_destroy => true
