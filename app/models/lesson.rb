@@ -7,19 +7,19 @@
 #  status        :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  course_id     :bigint(8)
 #  sequential_id :integer
-#  subject_id    :bigint(8)
 #
 # Indexes
 #
-#  index_lessons_on_subject_id  (subject_id)
+#  index_lessons_on_course_id  (course_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (subject_id => subjects.id)
+#  fk_rails_...  (course_id => courses.id)
 #
 class Lesson < ApplicationRecord
-  belongs_to :subject
+  belongs_to :course
   translates :content, :notes
 
   has_many :subscriptions, :dependent => :destroy
