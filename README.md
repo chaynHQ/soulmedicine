@@ -9,17 +9,17 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/chaynHQ/soulmedicine)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php)
 
-* Ruby version - `2.5.2`
-* Rails version - `5.2`
+* Ruby v2.5
+* Rails v5.2
 * System dependencies
-  * PostgreSQL
-  * Rails 5.2
+  * PostgreSQL v10.5
 * Configuration
   * Run `cp .env.sample .env.development` to create the local env file
   * Populate the environment variables
   * Run `rails secret` to generate an APP_SECRET
 * Database creation
   * Ensure that PG is running `pg_ctl start`
+    * Alternatively, you can use `docker-compose up -d`
   * Run `rails db:setup`
 <!-- TODO: Add more details
 * How to run the test suite
