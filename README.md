@@ -9,7 +9,7 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/chaynHQ/soulmedicine)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php)
 
-* Ruby version - `2.5.1`
+* Ruby version - `2.5.2`
 * Rails version - `5.2`
 * System dependencies
   * PostgreSQL
