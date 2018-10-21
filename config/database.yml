@@ -32,7 +32,11 @@ development:
 test:
   <<: *default
   # Explicitly set the database name for test
+  <% if ENV.include? 'DATABASE_NAME' %>
+  database: <%= ENV['DATABASE_NAME'] %>_test
+  <% else %>
   database: soulmedicine_test
+  <% end %>
 
 production:
   <<: *default
