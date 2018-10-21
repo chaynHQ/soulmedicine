@@ -21,6 +21,8 @@
 #
 class Course < ApplicationRecord
   belongs_to :owner, :class_name => :User, :foreign_key => :owner_id, :inverse_of => :user
+
+  extend Mobility
   translates :name, :description, :notes
 
   # has_many :subjects, :dependent => :destroy

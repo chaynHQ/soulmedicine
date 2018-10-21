@@ -20,6 +20,8 @@
 #
 class Lesson < ApplicationRecord
   belongs_to :course
+
+  extend Mobility
   translates :content, :notes
 
   has_many :subscriptions, :dependent => :destroy
