@@ -7,11 +7,8 @@ default: &default
   timeout: 5000
   template: template0
 
-  # The env var DATABASE_URL always takes precedence and will be used
-  # automatically by RAILS.
-  # (ref: https://guides.rubyonrails.org/v5.2/configuring.html#connection-preference)
-  #
-  # Thus, we expect that if DATABASE_URL is provided, it MUST contain:
+  # The env var DATABASE_URL always takes precedence.
+  # If provided, it MUST contain:
   # - The username and password
   # - The host and port
   # - The name of the database
@@ -19,19 +16,23 @@ default: &default
   # Example:
   # export DATABASE_URL="postgres://user1:supersecretpassword@myhost.com:5432/soulmedicine-production"
 
-  <% unless ENV.include? 'DATABASE_URL' %>
+  <% if ENV.include? 'DATABASE_URL' %>
+  database_url: ENV['DATABASE_URL']
+  <% else %>
   host: <%= ENV.fetch('DATABASE_HOST', 'localhost') %>
   port: <%= ENV.fetch('DATABASE_PORT', 5432) %>
   username: <%= ENV.fetch('DATABASE_USER') { raise 'DATABASE_USER missing' } %>
   password: <%= ENV.fetch('DATABASE_PASSWORD') { raise 'DATABASE_PASSWORD missing' } %>
+  database: <%= ENV.fetch('DATABASE_NAME') { raise 'DATABASE_NAME missing' } %>_<%= Rails.env %>
   <% end %>
 
 development:
   <<: *default
-  database: <%= ENV.fetch('DATABASE_NAME') { raise 'DATABASE_NAME missing' } %>_development
 
 test:
   <<: *default
+  # Explicitly set the database name for test (thus DATABASE_NAME must
+  # be set in test envs)
   database: <%= ENV.fetch('DATABASE_NAME') { raise 'DATABASE_NAME missing' } %>_test
 
 production:
