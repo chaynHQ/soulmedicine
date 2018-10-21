@@ -21,10 +21,6 @@ config/master.key
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml
 
-# dotenv
-# TODO Comment out this rule if environment variables can be committed
-.env
-
 ## Environment normalization:
 /.bundle
 /vendor/bundle
@@ -39,11 +35,6 @@ config/master.key
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
-
-# Ignore environment settings
-!/.env.sample
-/.env*
-.powenv
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -60,3 +51,5 @@ yarn-debug.log*
 /public/packs
 /public/packs-test
 /.vscode
+
+.env.local

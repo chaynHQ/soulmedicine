@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: 'postgres:10.5-alpine'
+    volumes:
+      - 'pgdata:/var/lib/postgresql/data'
+    environment:
+      - POSTGRES_USER=sm
+      - POSTGRES_PASSWORD=sm_password
+    ports:
+      - 5432:5432
+
+volumes:
+  pgdata:
