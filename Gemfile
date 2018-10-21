@@ -48,8 +48,6 @@ gem 'globalize', github: 'globalize/globalize'
 gem 'normalize-rails'
 # Facebook OAuth2 Strategy for OmniAuth (https://github.com/mkdynamic/omniauth-facebook)
 gem 'omniauth-facebook'
-# Automatic Ruby code style checking tool. (https://github.com/rubocop-hq/rubocop)
-gem 'rubocop', require: false
 # Forms made easy! (https://github.com/plataformatec/simple_form)
 gem 'simple_form'
 # MarcoPolo shows your app name and environment in your console prompt (http://github.com/arches/marco-polo)
@@ -72,6 +70,8 @@ group :development do
   gem 'binding_of_caller'
   # Annotates Rails Models, routes, fixtures, and others based on the database schema. (http://github.com/ctran/annotate_models)
   gem 'annotate'
+  # Automatic Ruby code style checking tool. (https://github.com/rubocop-hq/rubocop)
+  gem 'rubocop', require: false
 end
 
 group :development, :test do
