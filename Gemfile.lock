@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/globalize/globalize.git
-  revision: ff22b92bfa283bb9f378899031dbfad38de6280d
-  specs:
-    globalize (5.1.0)
-      activemodel (>= 4.2, < 5.3)
-      activerecord (>= 4.2, < 5.3)
-      request_store (~> 1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,10 +29,6 @@ GEM
       globalid (>= 0.3.6)
     activemodel (5.2.1)
       activesupport (= 5.2.1)
-    activemodel-serializers-xml (1.0.2)
-      activemodel (> 5.x)
-      activesupport (> 5.x)
-      builder (~> 3.1)
     activerecord (5.2.1)
       activemodel (= 5.2.1)
       activesupport (= 5.2.1)
@@ -149,6 +136,9 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    mobility (0.8.4)
+      i18n (>= 0.6.10, < 2)
+      request_store (~> 1.0)
     msgpack (1.2.4)
     msgpack (1.2.4-x64-mingw32)
     multi_json (1.13.1)
@@ -310,7 +300,6 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  activemodel-serializers-xml
   annotate
   better_errors
   binding_of_caller
@@ -324,11 +313,11 @@ DEPENDENCIES
   dotenv-rails
   duktape
   facebook-messenger
-  globalize!
   jbuilder (~> 2.5)
   jquery-rails
   marco-polo
   meta-tags
+  mobility
   normalize-rails
   omniauth-facebook
   pg (>= 0.18, < 2.0)

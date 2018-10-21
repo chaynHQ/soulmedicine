@@ -38,17 +38,14 @@ gem 'bootsnap', '>= 1.1.0', require: false # Reduces boot times through caching;
 # Use jQuery with Rails 4+ (https://github.com/rails/jquery-rails)
 gem 'jquery-rails'
 
-# XML serialization for your Active Model objects and Active Record models - extracted from Rails (http://github.com/rails/activemodel-serializers-xml)
-gem 'activemodel-serializers-xml'
-
 # Flexible authentication solution for Rails with Warden (https://github.com/plataformatec/devise)
 gem 'devise'
 
 # Translations for the devise gem (http://github.com/tigrish/devise-i18n)
 gem 'devise-i18n'
 
-# Rails I18n de-facto standard library for ActiveRecord model/data translation (http://github.com/globalize/globalize)
-gem 'globalize', github: 'globalize/globalize'
+# Pluggable Ruby translation framework (https://github.com/shioyama/mobility)
+gem 'mobility'
 
 # Normalize.css is a customisable CSS file that makes browsers render all elements more consistently and in line with modern standards. We researched the differences between default browser styles in order to precisely target only the styles that need normalizing. (https://github.com/markmcconachie/normalize-rails)
 gem 'normalize-rails'
