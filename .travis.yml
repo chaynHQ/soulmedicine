@@ -1,4 +1,9 @@
 language: ruby
+cache:
+  bundler: true
+  directories:
+    - /home/travis/.rvm/
+    - node_modules
 rvm:
   - 2.5.2
 services:
