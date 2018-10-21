@@ -1,6 +1,7 @@
 {
   "name": "soulmedicine",
   "scripts": {
+    "postdeploy": "rake postdeploy"
   },
   "env": {
     "LANG": {
