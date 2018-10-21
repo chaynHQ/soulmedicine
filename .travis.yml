@@ -19,7 +19,7 @@ before_install:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
-  - RAILS_ENV=test bundle install -j $(nproc) --path vendor
+  - RAILS_ENV=test bundle install -j $(nproc) --path vendor/bundle
   - bundle exec rubocop
   - RAILS_ENV=test bundle exec rake db:schema:load --trace
   - RAILS_ENV=test bundle exec rails db:migrate
