@@ -31,9 +31,8 @@ development:
 
 test:
   <<: *default
-  # Explicitly set the database name for test (thus DATABASE_NAME must
-  # be set in test envs)
-  database: <%= ENV.fetch('DATABASE_NAME') { raise 'DATABASE_NAME missing' } %>_test
+  # Explicitly set the database name for test
+  database: soulmedicine_test
 
 production:
   <<: *default
