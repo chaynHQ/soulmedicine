@@ -1,0 +1,20 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - bin/*
+    - node_modules/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 150
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
