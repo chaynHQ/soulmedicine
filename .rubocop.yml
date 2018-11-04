@@ -3,6 +3,7 @@ AllCops:
   DisplayStyleGuide: true
   Exclude:
     - bin/*
+    - db/schema.rb
     - node_modules/**/*
     - tmp/**/*
     - vendor/**/*
