@@ -11,8 +11,22 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - "db/migrate/*"
+    - "spec/**/*"
+
+Metrics/ClassLength:
+  Exclude:
+    - "spec/**/*"
+
 Metrics/LineLength:
   Max: 150
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*"
+    - "spec/**/*"
 
 Rails:
   Enabled: true
