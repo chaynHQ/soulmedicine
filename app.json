@@ -21,6 +21,12 @@
     },
     "SECRET_KEY_BASE": {
       "required": true
+    },
+    "STORYBLOK_TOKEN": {
+      "required": true
+    },
+    "CONTENT_PREVIEW_MODE": {
+      "required": true
     }
   },
   "formation": {

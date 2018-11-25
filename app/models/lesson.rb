@@ -1,0 +1,2 @@
+class Lesson < ContentModel
+end

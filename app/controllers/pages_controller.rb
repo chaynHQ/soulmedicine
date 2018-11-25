@@ -1,3 +1,5 @@
 class PagesController < ApplicationController
-  def landing; end
+  def landing
+    @courses = CoursesService.new(STORYBLOK_CLIENT).list
+  end
 end
