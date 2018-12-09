@@ -1,0 +1,166 @@
+{
+    "story": {
+        "name": "DIY: Online Safety",
+        "created_at": "2018-11-25T12:48:01.666Z",
+        "published_at": null,
+        "alternates": [],
+        "id": 428695,
+        "uuid": "5896757a-6975-4a2f-9672-71583d99d42f",
+        "content": {
+            "_uid": "8fc38dd0-6922-4f52-9945-5a8f0d213eb1",
+            "name": [
+                {
+                    "_uid": "d12fab0a-3fd5-4d09-8a61-8fe7adbca4b8",
+                    "lang": "en",
+                    "text": "How to be safe online",
+                    "text_rtl": "",
+                    "component": "l_text",
+                    "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"d12fab0a-3fd5-4d09-8a61-8fe7adbca4b8\", \"id\": \"428695\"}-->"
+                }
+            ],
+            "lessons": [
+                {
+                    "_uid": "401750f7-a375-4d58-a93f-ae7bf398f123",
+                    "name": [
+                        {
+                            "_uid": "084c3686-a712-4722-ac6e-324aa4c9dfaa",
+                            "lang": "en",
+                            "text": "Lesson 1 - How many sites and services do you use?",
+                            "text_rtl": "",
+                            "component": "l_text",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"084c3686-a712-4722-ac6e-324aa4c9dfaa\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "cd9df698-3155-4773-879a-09db40611829",
+                            "lang": "ar",
+                            "text": "",
+                            "text_rtl": "الدرس الأول: كم من المواقع الإلكترونية والخدمات على الإنترنت تستخدمين؟",
+                            "component": "l_text",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"cd9df698-3155-4773-879a-09db40611829\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "281cf96b-c8a3-4d22-aafb-2ab8011cba66",
+                            "lang": "ur",
+                            "text": "",
+                            "text_rtl": "سبق نمبر ١ – آپ کتنی ویب سائٹس اور سروسز کا استعمال کرتے ہیں ؟",
+                            "component": "l_text",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"281cf96b-c8a3-4d22-aafb-2ab8011cba66\", \"id\": \"428695\"}-->"
+                        }
+                    ],
+                    "slug": "how-many-sites-and-services-do-you-use",
+                    "content": [
+                        {
+                            "_uid": "06dc4cf5-fdb4-4b2e-8c01-d56b231b773a",
+                            "lang": "en",
+                            "content": "Hello, hope you're doing well and feeling good!",
+                            "component": "l_markdown",
+                            "content_rtl": "",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"06dc4cf5-fdb4-4b2e-8c01-d56b231b773a\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "bebf0675-bbbc-44fd-95c5-2a27d5c39432",
+                            "lang": "ar",
+                            "content": "",
+                            "component": "l_markdown",
+                            "content_rtl": "مرحباً، أتمنى أن كل شيء على مايرام وأن تكوني بصحة جيدة!",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"bebf0675-bbbc-44fd-95c5-2a27d5c39432\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "b5d37efa-757a-4f05-aa61-1c91c0505103",
+                            "lang": "ur",
+                            "content": "",
+                            "component": "l_markdown",
+                            "content_rtl": "****\n\nہیلو، امید ہے کہ آپ ٹھیک ہیں اور اچھا محسوس کر رہے ہیں!",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"b5d37efa-757a-4f05-aa61-1c91c0505103\", \"id\": \"428695\"}-->"
+                        }
+                    ],
+                    "component": "lesson",
+                    "_editable": "<!--#storyblok#{\"name\": \"lesson\", \"space\": \"50602\", \"uid\": \"401750f7-a375-4d58-a93f-ae7bf398f123\", \"id\": \"428695\"}-->"
+                },
+                {
+                    "_uid": "6706e592-8c5d-4c6f-85a0-aaa6c9fcb6b8",
+                    "name": [
+                        {
+                            "_uid": "cda99602-4c16-4b5f-a326-7cef944546f7",
+                            "lang": "en",
+                            "text": "Lesson 2 - Easy Wins Part 1",
+                            "text_rtl": "",
+                            "component": "l_text",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"cda99602-4c16-4b5f-a326-7cef944546f7\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "92d75df7-32c7-4347-8503-f4aaeacee0f6",
+                            "lang": "ar",
+                            "text": "",
+                            "text_rtl": "الدرس الثاني- انتصارات سهلة الجزء الأول",
+                            "component": "l_text",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"92d75df7-32c7-4347-8503-f4aaeacee0f6\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "6ed17173-0cbb-4592-9ef2-7667b6dc54a0",
+                            "lang": "ur",
+                            "text": "",
+                            "text_rtl": "سبق نمبر ٢ – آسان فتح حصّہ ١",
+                            "component": "l_text",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"6ed17173-0cbb-4592-9ef2-7667b6dc54a0\", \"id\": \"428695\"}-->"
+                        }
+                    ],
+                    "slug": "easy-wins-part-1",
+                    "content": [
+                        {
+                            "_uid": "f1fdac53-8282-4e3b-840d-185d0d9f87e6",
+                            "lang": "en",
+                            "content": "Hello, hope today is going well and you're feeling positive.",
+                            "component": "l_markdown",
+                            "content_rtl": "",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"f1fdac53-8282-4e3b-840d-185d0d9f87e6\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "f8b4a456-64b7-43bb-a7c3-ad6d7c958f85",
+                            "lang": "ar",
+                            "content": "",
+                            "component": "l_markdown",
+                            "content_rtl": "\nمرحباً، أتمنى أن تكوني بصحة جيدة، و أتمنى أن تكوني بطاقة إيجابية عالية",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"f8b4a456-64b7-43bb-a7c3-ad6d7c958f85\", \"id\": \"428695\"}-->"
+                        },
+                        {
+                            "_uid": "57d208cd-ea63-4df7-9e39-5c28f7c45717",
+                            "lang": "ur",
+                            "content": "",
+                            "component": "l_markdown",
+                            "content_rtl": "اسلام وعلیکم، امید ہے کہ آپ کا آج کا دن اچھا جا رہا ہے اور آپ مثبت محسوس کر رہے ہیں-",
+                            "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"57d208cd-ea63-4df7-9e39-5c28f7c45717\", \"id\": \"428695\"}-->"
+                        }
+                    ],
+                    "component": "lesson",
+                    "_editable": "<!--#storyblok#{\"name\": \"lesson\", \"space\": \"50602\", \"uid\": \"6706e592-8c5d-4c6f-85a0-aaa6c9fcb6b8\", \"id\": \"428695\"}-->"
+                }
+            ],
+            "component": "course",
+            "is_active": false,
+            "description": [
+                {
+                    "_uid": "19e5f316-f3ac-4179-be53-68df9a66a28c",
+                    "lang": "en",
+                    "content": "**--** *Easy, non-techy ways to tighten your online security and keep yourself safe from stalkers*",
+                    "component": "l_markdown",
+                    "content_rtl": "",
+                    "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"19e5f316-f3ac-4179-be53-68df9a66a28c\", \"id\": \"428695\"}-->"
+                }
+            ],
+            "_editable": "<!--#storyblok#{\"name\": \"course\", \"space\": \"50602\", \"uid\": \"8fc38dd0-6922-4f52-9945-5a8f0d213eb1\", \"id\": \"428695\"}-->"
+        },
+        "slug": "diy-online-safety",
+        "full_slug": "courses/diy-online-safety",
+        "sort_by_date": null,
+        "position": 0,
+        "tag_list": [],
+        "is_startpage": false,
+        "parent_id": 420172,
+        "meta_data": null,
+        "group_id": "c184f59b-81af-4e99-951c-cce165bae531",
+        "first_published_at": null,
+        "release_id": null,
+        "lang": "default"
+    }
+}
