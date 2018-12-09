@@ -1,0 +1,50 @@
+{
+  "stories": [
+    {
+      "name": "DIY: Online Safety",
+      "created_at": "2018-11-25T12:48:01.666Z",
+      "published_at": null,
+      "alternates": [],
+      "id": 428695,
+      "uuid": "5896757a-6975-4a2f-9672-71583d99d42f",
+      "content": {
+        "_uid": "8fc38dd0-6922-4f52-9945-5a8f0d213eb1",
+        "name": [
+          {
+            "_uid": "d12fab0a-3fd5-4d09-8a61-8fe7adbca4b8",
+            "lang": "en",
+            "text": "How to be safe online",
+            "text_rtl": "",
+            "component": "l_text",
+            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"d12fab0a-3fd5-4d09-8a61-8fe7adbca4b8\", \"id\": \"428695\"}-->"
+          }
+        ],
+        "component": "course",
+        "is_active": false,
+        "description": [
+          {
+            "_uid": "19e5f316-f3ac-4179-be53-68df9a66a28c",
+            "lang": "en",
+            "content": "**--** *Easy, non-techy ways to tighten your online security and keep yourself safe from stalkers*\n\nWe’ve heard over and over again that women who want to stay safe from internet stalkers and abusers should just delete their accounts and turn their laptops off. We STRONGLY disagree!\n\nSocial media, email and the internet are vital tools for your life, your finances and your support network, and you should be able to use them without fear.\n\nHowever, we all know there are risks to being online: people seeing where you are, what you’re doing, and finding out things you didn’t want them to know. This course will show you easy, free ways to improve your online security so you can use your accounts without fear.\n\nBest of all, no technical knowledge is required. If you can use Facebook, you can do this.",
+            "component": "l_markdown",
+            "content_rtl": "",
+            "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"19e5f316-f3ac-4179-be53-68df9a66a28c\", \"id\": \"428695\"}-->"
+          }
+        ],
+        "_editable": "<!--#storyblok#{\"name\": \"course\", \"space\": \"50602\", \"uid\": \"8fc38dd0-6922-4f52-9945-5a8f0d213eb1\", \"id\": \"428695\"}-->"
+      },
+      "slug": "diy-online-safety",
+      "full_slug": "courses/diy-online-safety",
+      "sort_by_date": null,
+      "position": 0,
+      "tag_list": [],
+      "is_startpage": false,
+      "parent_id": 420172,
+      "meta_data": null,
+      "group_id": "c184f59b-81af-4e99-951c-cce165bae531",
+      "first_published_at": null,
+      "release_id": null,
+      "lang": "default"
+    }
+  ]
+}
