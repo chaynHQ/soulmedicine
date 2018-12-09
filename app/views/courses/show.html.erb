@@ -1,0 +1,14 @@
+<h1>
+  <%= @course.name %>
+</h1>
+
+<div>
+  <h2><%= t('concepts.lesson').pluralize.titleize %></h2>
+  <ol>
+    <% @course.lessons.each do |l| %>
+      <li>
+        <%= link_to l.name, course_lesson_path(@course, l) %>
+      </li>
+    <% end %>
+  </ol>
+</div>
