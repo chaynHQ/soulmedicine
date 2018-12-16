@@ -24,6 +24,7 @@ Metrics/LineLength:
   Max: 150
 
 Metrics/MethodLength:
+  Max: 20
   Exclude:
     - "db/migrate/*"
     - "spec/**/*"

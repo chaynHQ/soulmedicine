@@ -4,13 +4,13 @@ class ContentModel
   include ActiveModel::Conversion
   include ShallowAttributes
 
-  attribute :slug, String
+  attribute :slug, String, present: true
 
   def id
     slug
   end
 
   def persisted?
-    false
+    true
   end
 end
