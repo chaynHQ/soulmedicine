@@ -4,6 +4,12 @@
     "postdeploy": "rake postdeploy"
   },
   "env": {
+    "CONTENT_PREVIEW_MODE": {
+      "required": true
+    },
+    "ENABLED_LOCALES": {
+      "required": true
+    },
     "LANG": {
       "required": true
     },
@@ -23,9 +29,6 @@
       "required": true
     },
     "STORYBLOK_TOKEN": {
-      "required": true
-    },
-    "CONTENT_PREVIEW_MODE": {
       "required": true
     }
   },
