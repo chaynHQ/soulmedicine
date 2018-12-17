@@ -1,6 +1,11 @@
 <h1>
+  <%= t('concepts.course').titleize %>:
   <%= @course.name %>
 </h1>
+
+<div>
+  <%= @course.description.html_safe %>
+</div>
 
 <div>
   <h2><%= t('concepts.lesson').pluralize.titleize %></h2>

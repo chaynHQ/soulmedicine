@@ -1,3 +1,4 @@
 class Lesson < ContentModel
-  attribute :name, String
+  translated_attribute :name
+  translated_attribute :content
 end

@@ -14,10 +14,11 @@ gem 'webpacker', '~> 3.5', '>= 3.5.5'
 gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
-gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'bootstrap', '~> 4.2', '>= 4.2.1'
 gem 'redis', '~> 4.0', '>= 4.0.3'
 gem 'storyblok', '~> 2.0'
 gem 'shallow_attributes', '~> 0.9.4'
+gem 'commonmarker', '~> 0.18.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

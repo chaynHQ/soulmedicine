@@ -40,18 +40,13 @@ RSpec.describe CoursesService, type: :service do
     context 'with courses' do
       let(:data) { load_json('courses-list.json') }
 
-      let :expected_courses do
-        [
-          Course.new(
-            slug: 'diy-online-safety',
-            uuid: '5896757a-6975-4a2f-9672-71583d99d42f',
-            name: 'How to be safe online'
-          )
-        ]
-      end
-
       it 'maps the courses data to objects as expected' do
-        expect(subject.list).to eq expected_courses
+        results = subject.list
+        expect(results.size).to eq 1
+        expect(results.first).to be_a Course
+        expect(results.first.slug).to eq 'diy-online-safety'
+        expect(results.first.name).to eq 'How to be safe online'
+        expect(results.first.name_en).to eq 'How to be safe online'
       end
     end
 
@@ -85,30 +80,16 @@ RSpec.describe CoursesService, type: :service do
 
     let(:data) { load_json('course-1.json') }
 
-    let :expected_course do
-      Course.new(
-        slug: slug,
-        uuid: '5896757a-6975-4a2f-9672-71583d99d42f',
-        name: 'How to be safe online',
-        lessons: [
-          {
-            slug: 'how-many-sites-and-services-do-you-use',
-            name: 'Lesson 1 - How many sites and services do you use?'
-          },
-          {
-            slug: 'easy-wins-part-1',
-            name: 'Lesson 2 - Easy Wins Part 1'
-          }
-        ]
-      )
-    end
-
     it 'maps the course data to objects as expected' do
       course = subject.get slug
 
-      expect(course).to eq expected_course
+      expect(course).to be_a Course
+      expect(course.slug).to eq slug
+      expect(course.name).to eq 'How to be safe online'
       expect(course.lessons.size).to be 2
       expect(course.lessons.first).to be_a Lesson
+      expect(course.lessons.map(&:slug)).to match_array ['how-many-sites-and-services-do-you-use', 'easy-wins-part-1']
+      expect(course.lessons.map(&:name)).to match_array ['Lesson 1 - How many sites and services do you use?', 'Lesson 2 - Easy Wins Part 1']
     end
 
     it 'raises a NotFound error if the slug provided is blank' do
