@@ -11,6 +11,12 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
+Layout/AlignParameters:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
 Metrics/BlockLength:
   Exclude:
     - "db/migrate/*"
@@ -29,8 +35,14 @@ Metrics/MethodLength:
     - "db/migrate/*"
     - "spec/**/*"
 
+Metrics/ParameterLists:
+  Enabled: false
+
 Rails:
   Enabled: true
+
+Style/AccessModifierDeclarations:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false

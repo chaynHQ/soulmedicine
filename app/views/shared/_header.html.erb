@@ -1,3 +1,16 @@
 <header>
+  <div class="float-right">
+    <ul class="list-inline">
+      <% I18n.available_locales.each do |l| %>
+        <li class="list-inline-item">
+          <% if I18n.locale == l %>
+            <span><%= l %></span>
+          <% else %>
+            <%= link_to l, params_with_locale(l) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
   This is SoulMedicine
 </header>
