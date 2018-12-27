@@ -56,24 +56,7 @@ class CoursesService
   private
 
   def deserialize_course(hash)
-    content = hash.fetch('content')
-
-    lessons = if content.key?('lessons')
-                content['lessons'].map do |l|
-                  {
-                    slug: l.fetch('slug'),
-                    name: l.fetch('name').first.fetch('text')
-                  }
-                end
-              else
-                []
-              end
-
-    Course.new(
-      slug: hash.fetch('slug'),
-      uuid: hash.fetch('uuid'),
-      name: content.fetch('name').first.fetch('text'),
-      lessons: lessons
-    )
+    mapped = CourseMapper.map_from hash
+    Course.new mapped
   end
 end

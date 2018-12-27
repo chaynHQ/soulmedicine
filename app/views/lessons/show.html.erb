@@ -1,4 +1,5 @@
 <h1>
+  <%= t('concepts.course').titleize %>:
   <%= @course.name %>
 </h1>
 
@@ -6,3 +7,7 @@
   <%= t('concepts.lesson').titleize %>:
   <%= @lesson.name %>
 </h2>
+
+<div>
+  <%= @lesson.content.html_safe %>
+</div>
