@@ -1,3 +1,32 @@
- // Custom bootstrap variables must be set or imported *before* bootstrap.
- // Available variables: https://github.com/twbs/bootstrap-rubygem/blob/master/assets/stylesheets/bootstrap/_variables.scss
- @import "bootstrap";
+@import "variables";
+
+@import "bootstrap";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body > .container {
+  padding-top: $spacer;
+  padding-bottom: $spacer;
+}
+
+.navbar-brand {
+  text-transform: uppercase;
+}
+
+.site-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+}
