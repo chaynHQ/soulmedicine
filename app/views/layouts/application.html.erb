@@ -18,7 +18,9 @@
   <body>
     <%= render 'shared/header' %>
 
-    <%= yield %>
+    <main role="main" class="container">
+      <%= yield %>
+    </main>
 
     <%= render 'shared/footer' %>
   </body>
