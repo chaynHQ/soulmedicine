@@ -2,3 +2,6 @@ en:
   concepts:
     course: pathway
     lesson: step
+  site-header:
+    home: Home
+    active: (current)
