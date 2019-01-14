@@ -1,13 +1,13 @@
 <h1>
   <%= t('concepts.course').titleize %>:
-  <%= @course.name %>
+  <%= tc(@course.name) %>
 </h1>
 
 <h2>
   <%= t('concepts.lesson').titleize %>:
-  <%= @lesson.name %>
+  <%= tc(@lesson.name) %>
 </h2>
 
 <div>
-  <%= @lesson.content.html_safe %>
+  <%= tc(@lesson.content.html_safe) %>
 </div>
