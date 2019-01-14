@@ -5,3 +5,6 @@ en:
   site-header:
     home: Home
     active: (current)
+  courses:
+    index:
+      other: More in other languages

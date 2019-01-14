@@ -39,4 +39,8 @@ module LocalesService
   def language_name(lang, in_locale: lang)
     lang.to_sym.localize(in_locale).as_language_code
   end
+
+  def with(locale, &block)
+    I18n.with_locale(locale, &block)
+  end
 end
