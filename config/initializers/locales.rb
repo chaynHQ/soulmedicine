@@ -1,8 +1,6 @@
 enabled_locales_var = ENV.fetch('ENABLED_LOCALES') { raise 'ENABLED_LOCALES missing' }
+enabled_locales = enabled_locales_var.split(',').map(&:strip).map(&:downcase).map(&:to_sym)
 
-Rails.application.config.i18n.available_locales = enabled_locales_var.split(',').map(&:strip).map(&:downcase).map(&:to_sym)
+LocalesService.enabled = enabled_locales
 
-Rails.application.config.i18n.default_locale = :en
-Rails.application.config.i18n.fallbacks = [:en]
-
-Rails.application.config.rtl_locales = %i[ar iw ur]
+LocalesService.default = :en

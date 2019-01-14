@@ -123,7 +123,7 @@ RSpec.describe ContentMapper do
 
     context 'key with `translated` options specified' do
       before do
-        allow(I18n).to receive(:available_locales).and_return(%i[en fr ar yy zz])
+        allow(LocalesService).to receive(:enabled).and_return(%i[en fr ar yy zz])
 
         subject.send :key, :foo, from: 'a', translated: { field: 'text' }
       end
