@@ -35,4 +35,8 @@ module LocalesService
   def rtl?(locale)
     RTL_LOCALES.include? locale.to_sym
   end
+
+  def language_name(lang, in_locale: lang)
+    lang.to_sym.localize(in_locale).as_language_code
+  end
 end
