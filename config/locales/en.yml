@@ -7,3 +7,6 @@ en:
   courses:
     index:
       other: More in other languages
+    shared:
+      unavailable: This pathway is not available in the selected language
+      other: See other available languages for this pathway
