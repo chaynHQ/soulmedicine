@@ -1,10 +1,10 @@
 <h1>
   <%= t('concepts.course').titleize %>:
-  <%= @course.name %>
+  <%= tc(@course.name) %>
 </h1>
 
 <div>
-  <%= @course.description.html_safe %>
+  <%= tc(@course.description.html_safe) %>
 </div>
 
 <div>
@@ -12,7 +12,7 @@
   <ol>
     <% @course.lessons.each do |l| %>
       <li>
-        <%= link_to l.name, course_lesson_path(@course, l) %>
+        <%= link_to tc(l.name), course_lesson_path(@course, l) %>
       </li>
     <% end %>
   </ol>

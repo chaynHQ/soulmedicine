@@ -5,6 +5,11 @@ module ApplicationHelper
     request.params.dup.merge(locale: locale)
   end
 
+  # For translated content
+  def tc(value)
+    value.presence || tag.span('Missing translated content', class: 'missing-translated-content')
+  end
+
   def header_nav_item(text, path, alternate_path: nil)
     is_active = current_page? path
     is_active ||= current_page?(alternate_path) if alternate_path
