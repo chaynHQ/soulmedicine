@@ -4,6 +4,8 @@ class CourseMapper
   key :slug, from: 'slug'
   key :uuid, from: 'uuid'
 
+  key :enabled_languages, from: %w[content enabled_languages]
+
   key :name,
     from: %w[content name],
     translated: { field: 'text' }
