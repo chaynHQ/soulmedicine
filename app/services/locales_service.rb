@@ -1,7 +1,7 @@
 module LocalesService
   module_function
 
-  RTL_LOCALES = %i[ar fa iw ur].freeze
+  RTL_LOCALES = %i[ar fa he iw ur].freeze
 
   def current
     I18n.locale
