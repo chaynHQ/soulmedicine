@@ -15,12 +15,12 @@ class ContentModel
   end
 
   def self.translated_attribute(name)
-    I18n.available_locales.each do |l|
+    LocalesService.enabled.each do |l|
       attribute "#{name}_#{l}".to_sym, String
     end
 
     define_method name do
-      send "#{name}_#{I18n.locale}"
+      send "#{name}_#{LocalesService.current}"
     end
   end
 end

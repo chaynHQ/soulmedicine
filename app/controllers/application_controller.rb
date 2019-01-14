@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     locale = params[:locale].to_s.strip.to_sym
-    I18n.locale = I18n.available_locales.include?(locale) ? locale : I18n.default_locale
+    LocalesService.current = locale
   end
 
   def default_url_options
-    { locale: I18n.locale }
+    { locale: LocalesService.current }
   end
 
   def courses_service

@@ -20,7 +20,7 @@ module ContentMapper
       if translated
         raise ArgumentError, "[ContentMapper] 'translated' must have a `field` specified and not blank" if translated[:field].blank?
 
-        I18n.available_locales.each do |lang|
+        LocalesService.enabled.each do |lang|
           keys << {
             name: "#{name}_#{lang}".to_sym,
             lang: lang,
@@ -58,7 +58,7 @@ module ContentMapper
 
       return entry if entry.blank?
 
-      if Rails.application.config.rtl_locales.include? lang
+      if LocalesService.rtl? lang
         entry.with_indifferent_access["#{options[:field]}_rtl"]
       else
         entry[options[:field]]
