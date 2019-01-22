@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+  scope '(:locale)', locale: /#{LocalesService.enabled.join("|")}/ do
     resources :courses, only: %i[index show], path: 'pathways' do
       resources :lessons, only: %i[show], path: 'steps'
     end

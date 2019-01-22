@@ -1,13 +1,15 @@
-<h1>
-  <%= t('concepts.course').titleize %>:
-  <%= @course.name %>
-</h1>
+<%= render "courses/check_available", course: @course do %>
+  <h1>
+    <%= t('concepts.course').titleize %>:
+    <%= tc(@course.name) %>
+  </h1>
 
-<h2>
-  <%= t('concepts.lesson').titleize %>:
-  <%= @lesson.name %>
-</h2>
+  <h2>
+    <%= t('concepts.lesson').titleize %>:
+    <%= tc(@lesson.name) %>
+  </h2>
 
-<div>
-  <%= @lesson.content.html_safe %>
-</div>
+  <div>
+    <%= tc(@lesson.content.html_safe) %>
+  </div>
+<% end %>

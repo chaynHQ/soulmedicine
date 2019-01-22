@@ -31,6 +31,9 @@
             "_editable": "<!--#storyblok#{\"name\": \"l_markdown\", \"space\": \"50602\", \"uid\": \"19e5f316-f3ac-4179-be53-68df9a66a28c\", \"id\": \"428695\"}-->"
           }
         ],
+        "enabled_languages": [
+          "en"
+        ],
         "_editable": "<!--#storyblok#{\"name\": \"course\", \"space\": \"50602\", \"uid\": \"8fc38dd0-6922-4f52-9945-5a8f0d213eb1\", \"id\": \"428695\"}-->"
       },
       "slug": "diy-online-safety",

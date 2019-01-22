@@ -18,14 +18,16 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarLangSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= I18n.locale %>
+            <%= LocalesService.language_name(LocalesService.current) %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarLangSelector">
-            <% I18n.available_locales.each do |l| %>
-              <% if I18n.locale == l %>
-                <span class="dropdown-item"><%= l %></span>
+            <% LocalesService.enabled.each do |l| %>
+              <% if LocalesService.current == l %>
+                <span class="dropdown-item">
+                  <%= LocalesService.language_name(l) %>
+                </span>
               <% else %>
-                <%= link_to l, params_with_locale(l), class: 'dropdown-item' %>
+                <%= link_to LocalesService.language_name(l), params_with_locale(l), class: 'dropdown-item' %>
               <% end %>
             <% end %>
           </div>

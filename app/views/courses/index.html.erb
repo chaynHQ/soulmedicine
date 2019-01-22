@@ -2,11 +2,37 @@
   <h1>
     <%= t('concepts.course').pluralize.titleize %>
   </h1>
+
   <ul>
     <% @courses.each do |c| %>
       <li>
-        <%= link_to c.name, course_path(c) %>
+        <%= link_to tc(c.name), course_path(c) %>
+
+        <% c.enabled_languages.each do |l| %>
+          <%= link_to LocalesService.language_name(l), course_path(c, locale: l), class: 'badge badge-pill badge-primary' %>
+        <% end %>
       </li>
     <% end %>
   </ul>
+
+  <% if @other_courses.present? %>
+    <h2><%= t('.other') %></h2>
+    <ul>
+      <% original_lang = LocalesService.current %>
+      <% @other_courses.each do |c| %>
+        <% lang = c.enabled_languages.first %>
+        <% LocalesService.with(lang) do %>
+          <li>
+            <%= link_to tc(c.name), course_path(c, locale: lang) %>
+
+            <% LocalesService.with(original_lang) do %>
+              <% c.enabled_languages.each do |l| %>
+                <%= link_to LocalesService.language_name(l), course_path(c, locale: l), class: 'badge badge-pill badge-primary' %>
+              <% end %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
 </section>
