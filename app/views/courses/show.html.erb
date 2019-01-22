@@ -1,19 +1,21 @@
-<h1>
-  <%= t('concepts.course').titleize %>:
-  <%= @course.name %>
-</h1>
+<%= render "courses/check_available", course: @course do %>
+  <h1>
+    <%= t('concepts.course').titleize %>:
+    <%= tc(@course.name) %>
+  </h1>
 
-<div>
-  <%= @course.description.html_safe %>
-</div>
+  <div>
+    <%= tc(@course.description.html_safe) %>
+  </div>
 
-<div>
-  <h2><%= t('concepts.lesson').pluralize.titleize %></h2>
-  <ol>
-    <% @course.lessons.each do |l| %>
-      <li>
-        <%= link_to l.name, course_lesson_path(@course, l) %>
-      </li>
-    <% end %>
-  </ol>
-</div>
+  <div>
+    <h2><%= t('concepts.lesson').pluralize.titleize %></h2>
+    <ol>
+      <% @course.lessons.each do |l| %>
+        <li>
+          <%= link_to tc(l.name), course_lesson_path(@course, l) %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+<% end %>

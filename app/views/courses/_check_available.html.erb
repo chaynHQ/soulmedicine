@@ -1,0 +1,26 @@
+<% if course.enabled_languages.include? LocalesService.current.to_s %>
+  <%= yield %>
+<% else %>
+  <div class="alert alert-warning" role="alert">
+    <p>
+      <%= t('courses.shared.unavailable') %>.
+    </p>
+    <p>
+      <%= t('courses.shared.other') %>:
+    </p>
+    <ul>
+      <% course.enabled_languages.each do |l| %>
+        <% LocalesService.with(l) do %>
+          <li>
+            <%= link_to course_path(course, locale: l) do %>
+              <span class="badge badge-pill badge-primary">
+                <%= LocalesService.language_name(l) %>
+              </span>
+              <span><%= tc(course.name) %></span>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
