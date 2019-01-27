@@ -28,7 +28,6 @@ module SoulMedicine
     # the framework and any gems in your application.
 
     config.generators do |g|
-      g.test_framework  false
       g.system_tests    false
       g.stylesheets     false
       g.javascripts     false

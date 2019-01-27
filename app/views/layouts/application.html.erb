@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= LocalesService.current %>">
   <head>
-    <title>Soul Medicine</title>
+    <title>
+      <%= yield(:title) + ' | ' if content_for?(:title) %>
+      Soul Medicine
+    </title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +13,8 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 

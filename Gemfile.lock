@@ -199,6 +199,9 @@ GEM
       rest-client (>= 1.8.0, < 3)
     thor (0.20.3)
     thread_safe (0.3.6)
+    turbolinks (5.2.0)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     twitter_cldr (4.4.3)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
@@ -244,6 +247,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   storyblok (~> 2.0)
+  turbolinks (~> 5.2)
   twitter_cldr (~> 4.4, >= 4.4.3)
   tzinfo-data
   web-console (>= 3.3.0)

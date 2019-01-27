@@ -1,0 +1,15 @@
+<div class="card shadow-sm mb-3 course-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= link_to tc(course.name), course_path(course) %>
+    </h5>
+    <h6 class="card-subtitle mb-2">
+      <% course.enabled_languages.each do |l| %>
+        <%= link_to LocalesService.language_name(l), course_path(course, locale: l), class: 'badge badge-primary' %>
+      <% end %>
+    </h6>
+    <div class="card-text course-description course-card__description">
+      <%= tc(course.description.html_safe) %>
+    </div>
+  </div>
+</div>
