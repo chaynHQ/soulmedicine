@@ -1,15 +1,25 @@
 <%= render "courses/check_available", course: @course do %>
-  <h1>
-    <%= t('concepts.course').titleize %>:
-    <%= tc(@course.name) %>
-  </h1>
+  <%
+   title @lesson.name + ' | ' + @course.name
+  %>
 
-  <h2>
-    <%= t('concepts.lesson').titleize %>:
-    <%= tc(@lesson.name) %>
-  </h2>
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to tc(@course.name), course_path(@course) %>
+      </li>
+    </ol>
+  </nav>
 
-  <div>
-    <%= tc(@lesson.content.html_safe) %>
-  </div>
+  <section class="lesson-page">
+    <h2>
+      <%= tc(@lesson.name) %>
+    </h2>
+
+    <div class="card">
+      <div class="card-body">
+        <%= tc(@lesson.content.html_safe) %>
+      </div>
+    </div>
+  </section>
 <% end %>

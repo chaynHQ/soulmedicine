@@ -1,21 +1,68 @@
 <%= render "courses/check_available", course: @course do %>
-  <h1>
-    <%= t('concepts.course').titleize %>:
-    <%= tc(@course.name) %>
-  </h1>
+  <%
+   title @course.name
+  %>
 
-  <div>
-    <%= tc(@course.description.html_safe) %>
-  </div>
+  <section class="course-page container">
+    <div class="row justify-content-around">
 
-  <div>
-    <h2><%= t('concepts.lesson').pluralize.titleize %></h2>
-    <ol>
-      <% @course.lessons.each do |l| %>
-        <li>
-          <%= link_to tc(l.name), course_lesson_path(@course, l) %>
-        </li>
-      <% end %>
-    </ol>
-  </div>
+      <div class="col-md-9 order-2">
+        <h2>
+          <%= tc(@course.name) %>
+        </h2>
+
+        <div class="mb-5">
+          <a class="btn btn-primary btn-lg shadow" href="#" role="button">
+            Sign up for free
+          </a>
+        </div>
+
+        <div class="course-description">
+          <%= tc(@course.description.html_safe) %>
+        </div>
+
+        <hr />
+
+        <div>
+          <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
+
+          <ul class="list-group">
+            <% @course.lessons.each do |l| %>
+              <li class="list-group-item">
+                <%= link_to tc(l.name), course_lesson_path(@course, l) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-2 order-1">
+        <div class="container">
+          <div class="row">
+            <div class="col col-md-12">
+              <div class="mb-5">
+                <%= image_tag(asset_pack_path('images/course_icon.svg'), class: 'align-top align-left', style: 'width: 120px;') %>
+              </div>
+            </div>
+            <div class="col col-md-12">
+              <div class="mb-5">
+                <p class="font-weight-bold text-uppercase">
+                  <%= t('concepts.language').pluralize.titleize %>
+                </p>
+                <ul class="list-unstyled">
+                  <% @course.enabled_languages.each do |l| %>
+                    <li>
+                      <%= link_to LocalesService.language_name(l), course_path(@course, locale: l), class: 'badge badge-primary' %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 <% end %>
