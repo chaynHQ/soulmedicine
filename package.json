@@ -22,6 +22,7 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "add": "^2.0.6",
+    "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "firebase": "^5.8.1",
     "firebaseui": "^3.5.2",
