@@ -236,7 +236,7 @@ DEPENDENCIES
   commonmarker (~> 0.18.2)
   dotenv-rails (~> 2.5)
   factory_bot_rails (~> 4.11, >= 4.11.1)
-  jwt (~> 2.1)
+  jwt
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)

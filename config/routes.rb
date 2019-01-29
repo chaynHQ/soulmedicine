@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :lessons, only: %i[show], path: 'steps'
     end
     get 'auth/log_in'
-    get 'auth/callback'
+    post 'auth/callback'
     get 'auth/logout'
 
     root to: 'pages#landing'
