@@ -13,8 +13,20 @@ class AuthController < ApplicationController
       json = JSON.parse(Net::HTTP.get(url))
       OpenSSL::X509::Certificate.new(json[header['kid']]).public_key
     end
-    # puts decoded_token
+    @user_name = decoded_token[0]['name']
+    @user_id = decoded_token[0]['user_id']
+    @user_email = decoded_token[0]['email']
+
+    user = User.where(:display_name => @user_name, :uid => @user_id, :email => @user_email).first_or_create
+    if user
+      session[:user] = user.id
+    end
+
+    redirect_to :controller => 'subscription', :action => 'index'
   end
 
-  def logout; end
+  def logout
+    session[:user] = nil
+    redirect_to :controller => 'pages', :action => 'landing'
+  end
 end

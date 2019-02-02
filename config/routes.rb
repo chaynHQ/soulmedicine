@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     post 'auth/callback'
     get 'auth/logout'
 
+    resources :subscription, only: %i[index]
+
     root to: 'pages#landing'
   end
 end
