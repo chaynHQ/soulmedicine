@@ -17,16 +17,14 @@ class AuthController < ApplicationController
     @user_id = decoded_token[0]['user_id']
     @user_email = decoded_token[0]['email']
 
-    user = User.where(:display_name => @user_name, :uid => @user_id, :email => @user_email).first_or_create
-    if user
-      session[:user] = user.id
-    end
+    user = User.where(display_name: @user_name, uid: @user_id, email: @user_email).first_or_create
+    session[:user] = user.id if user
 
-    redirect_to :controller => 'subscription', :action => 'index'
+    redirect_to controller: 'subscription', action: 'index'
   end
 
   def logout
     session[:user] = nil
-    redirect_to :controller => 'pages', :action => 'landing'
+    redirect_to controller: 'pages', action: 'landing'
   end
 end
