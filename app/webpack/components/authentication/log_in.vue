@@ -39,7 +39,13 @@ export default {
                 '/auth/callback',
                 { firebase_token: idtoken },
                 { headers: { 'X-CSRF-TOKEN': $self.csrf_token } }
-              );
+              )
+                .then(response => {
+                  if (Number.parseInt(response)) {
+                    console.log('Authenticated and session set!');
+                  }
+                })
+                .catch(error => {});
             })
             .catch(error => {});
         },
