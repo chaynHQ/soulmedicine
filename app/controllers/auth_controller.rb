@@ -10,7 +10,7 @@ class AuthController < ApplicationController
     user = User.where(display_name: @user_name, uid: @user_id, email: @user_email).first_or_create
     session[:user] = user.id if user
 
-    render :json => session[:user]
+    render json: session[:user]
   end
 
   def logout
