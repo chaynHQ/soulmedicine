@@ -28,6 +28,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: $spacer * 1.5;
 }
 
+.rtl {
+  @extend .text-right;
+
+  ul#{&} {
+    padding-inline-start: 0;
+  }
+}
+
 .site-header {
   border-bottom: 1px solid $border-color;
   box-shadow: 0 0 15px $border-color;
