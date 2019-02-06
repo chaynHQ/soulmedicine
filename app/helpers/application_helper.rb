@@ -30,4 +30,12 @@ module ApplicationHelper
       end
     end
   end
+
+  def rtl?
+    LocalesService.current_rtl?
+  end
+
+  def text_direction
+    rtl? ? 'rtl' : 'ltr'
+  end
 end

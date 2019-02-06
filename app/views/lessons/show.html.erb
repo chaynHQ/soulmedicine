@@ -3,7 +3,7 @@
    title @lesson.name + ' | ' + @course.name
   %>
 
-  <nav aria-label="breadcrumb" class="mb-4">
+  <nav aria-label="breadcrumb" class="mb-4 <%= text_direction %>" dir="<%= text_direction %>">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <%= link_to tc(@course.name), course_path(@course) %>
@@ -12,11 +12,11 @@
   </nav>
 
   <section class="lesson-page">
-    <h2>
+    <h2 class="<%= text_direction %>" dir="<%= text_direction %>">
       <%= tc(@lesson.name) %>
     </h2>
 
-    <div class="card">
+    <div class="card <%= text_direction %>" dir="<%= text_direction %>">
       <div class="card-body">
         <%= tc(@lesson.content.html_safe) %>
       </div>

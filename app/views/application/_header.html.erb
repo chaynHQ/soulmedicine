@@ -17,7 +17,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarLangSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= LocalesService.language_name(LocalesService.current) %>
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarLangSelector">
+          <div class="dropdown-menu dropdown-menu-right <%= text_direction %>" dir="<%= text_direction %>" aria-labelledby="navbarLangSelector">
             <% LocalesService.enabled.each do |l| %>
               <% if LocalesService.current == l %>
                 <span class="dropdown-item">
