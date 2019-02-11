@@ -31,7 +31,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
-  gem 'rubocop', '~> 0.62.0', require: false
+  gem 'rubocop', '~> 0.64.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
