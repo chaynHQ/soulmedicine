@@ -1,12 +1,12 @@
 <template>
   <div id="authentication-app">
-    <log-in v-if="!isAuthenticated"></log-in>
+    <sign-in v-if="authMethod === 'sign-in'"></sign-in>
   </div>
 </template>
 
 <script>
 import firebase from 'firebase/app';
-import LogIn from './log_in';
+import SignIn from './sign_in';
 export default {
   props: {
     apiKey: {
@@ -14,6 +14,10 @@ export default {
       required: true
     },
     projectId: {
+      type: String,
+      required: true
+    },
+    authMethod: {
       type: String,
       required: true
     }
@@ -27,32 +31,11 @@ export default {
     firebase.initializeApp(this.firebaseConfig);
   },
   data: function() {
-    return {
-      isAuthenticated: false
-    };
-  },
-  mounted() {
-    this.checkAuth();
-  },
-  methods: {
-    checkAuth() {
-      let $self = this;
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          $self.isAuthenticated = true;
-        } else {
-          $self.isAuthenticated = false;
-        }
-      });
-    }
+    return {};
   },
   components: {
-    LogIn
+    SignIn
   }
 };
 </script>
-
-<style lang="sass" scoped>
-
-</style>
 

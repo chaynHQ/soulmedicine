@@ -4,6 +4,8 @@ en:
     lesson: note
   site-header:
     home: Home
+    sign-in: Sign In
+    sign-out: Sign Out
   courses:
     index:
       other: More in other languages

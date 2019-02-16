@@ -1,5 +1,25 @@
 module AuthService
   class << self
+    def initialize; end
+
+    def authenticate(token)
+      decoded_token = decode_token(token)
+      # Rails.logger.info 'Authentication attempt with ' + decoded_token[0].inspect
+      User.where(uid: decoded_token[0]['user_id'])
+          .first_or_create
+          .update(
+            display_name: decoded_token[0]['name'],
+            email: decoded_token[0]['email'],
+            email_verified: decoded_token[0]['email_verified']
+          )
+
+      @user = User.find_by(uid: decoded_token[0]['user_id'])
+    end
+
+    def current_user
+      @user
+    end
+
     def decode_token(token)
       options = {
         algorithm: 'RS256',

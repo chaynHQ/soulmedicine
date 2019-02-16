@@ -15,8 +15,7 @@ gem 'storyblok', '~> 2.0'
 gem 'shallow_attributes', '~> 0.9.4'
 gem 'commonmarker', '~> 0.18.2'
 gem 'twitter_cldr', '~> 4.4', '>= 4.4.3'
-gem 'bcrypt', '~> 3.1.7'
-gem 'jwt'
+gem 'jwt', '~> 2.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

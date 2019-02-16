@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     { locale: LocalesService.current }
   end
 
+  def auth_service
+    @auth_service ||= AuthService.new
+  end
+
   def courses_service
     @courses_service ||= CoursesService.new(STORYBLOK_CLIENT)
   end
@@ -26,6 +30,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to controller: 'auth', action: 'log_in' unless current_user
+    session.delete(:forwarding_url)
+    return if current_user
+
+    session[:forwarding_url] = request.original_url if request.get?
+    flash[:danger] = 'Please Sign In'
+    redirect_to controller: 'auth', action: 'sign_in'
   end
 end
