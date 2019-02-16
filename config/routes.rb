@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :courses, only: %i[index show], path: 'pathways' do
       resources :lessons, only: %i[show], path: 'steps'
     end
-    get 'auth/log_in'
+    get  'auth/sign_in'
     post 'auth/callback'
-    get 'auth/logout'
+    get  'auth/sign_out'
 
     resources :subscription, only: %i[index]
 

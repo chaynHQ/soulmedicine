@@ -1,5 +1,5 @@
 <template>
-  <div id="authentication-log-in">
+  <div id="authentication-sign-in">
     <div class="loader" v-if="loading">loading...</div>
     <div ref="firebaseAuthContainer"></div>
   </div>
@@ -10,8 +10,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
-import 'axios';
 import Axios from 'axios';
+import Turbolinks from 'turbolinks';
 export default {
   created() {
     this.ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -41,13 +41,28 @@ export default {
                 { headers: { 'X-CSRF-TOKEN': $self.csrf_token } }
               )
                 .then(response => {
-                  if (Number.parseInt(response)) {
-                    console.log('Authenticated and session set!');
+                  if (response.data.user.email_verified === false) {
+                    const user = firebase.auth().currentUser;
+                    user
+                      .sendEmailVerification()
+                      .then(() => {
+                        console.log('Verification Email Sent');
+                      })
+                      .catch(error => {
+                        console.error(error);
+                      });
+                  }
+                  if (response.data.forwarding_url) {
+                    Turbolinks.visit(response.data.forwarding_url);
                   }
                 })
-                .catch(error => {});
+                .catch(error => {
+                  console.error(error);
+                });
             })
-            .catch(error => {});
+            .catch(error => {
+              console.error(error);
+            });
         },
         uiShown() {
           $self.onUiShown();
