@@ -36,6 +36,23 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+.alert-error {
+  @extend .alert-danger;
+}
+
+.fas {
+  color: $gray-500;
+  margin-right: 0.3em;
+}
+
 .site-header {
   border-bottom: 1px solid $border-color;
   box-shadow: 0 0 15px $border-color;

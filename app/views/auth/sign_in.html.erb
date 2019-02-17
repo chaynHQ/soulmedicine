@@ -1,5 +1,10 @@
-<auth-app
-  api-key="<%= ENV['FIREBASE_API_KEY'] %>"
-  project-id="<%= ENV['FIREBASE_PROJECT_ID'] %>"
-  auth-method="sign-in"
-></auth-app>
+<section id="sign_in">
+  <auth-app
+    api-key="<%= FirebaseConfig.api_key %>"
+    project-id="<%= FirebaseConfig.project_id %>">
+  </auth-app>
+
+  <noscript>
+    Please enable JavaScript to sign in
+  </noscript>
+</section>

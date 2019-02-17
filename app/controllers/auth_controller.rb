@@ -1,16 +1,24 @@
 class AuthController < ApplicationController
+  with_auth_session_management
+
   def sign_in
-    flash[:warning] = 'You are already signed in' if session[:user]
-    redirect_back(fallback_location: root_path) if session[:user]
+    if current_user # rubocop:disable Style/GuardClause
+      flash[:warning] = 'You are already signed in'
+      redirect_back fallback_location: root_path, allow_other_host: false
+    end
   end
 
   def callback
-    session[:user] = AuthService.authenticate(params['firebase_token']).id
-    render json: { 'user': AuthService.current_user, 'forwarding_url': session[:forwarding_url] || root_path }
+    token = params.require(:firebase_token)
+
+    result = sign_in_with_token token
+
+    render json: result
   end
 
   def sign_out
-    session[:user] = nil
+    sign_out_current_user
+
     redirect_to root_path
   end
 end
