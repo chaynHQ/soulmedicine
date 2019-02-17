@@ -13,6 +13,12 @@
         <%= header_nav_item t('site-header.home'), root_path, alternate_path: '/' %>
         <%= header_nav_item t('concepts.course').pluralize.titleize, courses_path %>
 
+      <ul class="nav navbar-nav navbar-right">
+        <% if @current_user %>
+          <%= header_nav_item t('site-header.sign-out'), auth_sign_out_path %>
+        <% else %>
+          <%= header_nav_item t('site-header.sign-in'), auth_sign_in_path %>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarLangSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= LocalesService.language_name(LocalesService.current) %>

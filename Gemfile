@@ -15,6 +15,7 @@ gem 'storyblok', '~> 2.0'
 gem 'shallow_attributes', '~> 0.9.4'
 gem 'commonmarker', '~> 0.18.2'
 gem 'twitter_cldr', '~> 4.4', '>= 4.4.3'
+gem 'jwt', '~> 2.1.0'
 gem 'turbolinks', '~> 5.2'
 
 group :development, :test do
