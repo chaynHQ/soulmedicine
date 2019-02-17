@@ -5,6 +5,8 @@ en:
     language: language
   site-header:
     home: Home
+    sign-in: Sign In
+    sign-out: Sign Out
   courses:
     index:
       no_courses: No pathways available in your selected language
