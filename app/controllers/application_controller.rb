@@ -5,11 +5,17 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
+  after_action :set_content_language_header
+
   protected
 
   def set_locale
     locale = params[:locale].to_s.strip.to_sym
     LocalesService.current = locale
+  end
+
+  def set_content_language_header
+    response.headers['Content-Language'] = LocalesService.current
   end
 
   def default_url_options

@@ -1,38 +1,32 @@
-<section>
-  <h1>
-    <%= t('concepts.course').pluralize.titleize %>
-  </h1>
+<%
+ title t('concepts.course').pluralize.titleize
+%>
 
-  <ul>
+<section class="courses-page">
+  <% if @courses.blank? %>
+    <div class="alert alert-warning" role="alert">
+      <%= t('.no_courses') %>
+    </div>
+  <% end %>
+
+  <div>
     <% @courses.each do |c| %>
-      <li>
-        <%= link_to tc(c.name), course_path(c) %>
-
-        <% c.enabled_languages.each do |l| %>
-          <%= link_to LocalesService.language_name(l), course_path(c, locale: l), class: 'badge badge-pill badge-primary' %>
-        <% end %>
-      </li>
+      <%= render partial: 'card', locals: { course: c } %>
     <% end %>
-  </ul>
+  </div>
 
   <% if @other_courses.present? %>
-    <h2><%= t('.other') %></h2>
-    <ul>
-      <% original_lang = LocalesService.current %>
-      <% @other_courses.each do |c| %>
-        <% lang = c.enabled_languages.first %>
-        <% LocalesService.with(lang) do %>
-          <li>
-            <%= link_to tc(c.name), course_path(c, locale: lang) %>
 
-            <% LocalesService.with(original_lang) do %>
-              <% c.enabled_languages.each do |l| %>
-                <%= link_to LocalesService.language_name(l), course_path(c, locale: l), class: 'badge badge-pill badge-primary' %>
-              <% end %>
-            <% end %>
-          </li>
-        <% end %>
+    <hr />
+
+    <h4><%= t('.other') %></h4>
+
+    <% @other_courses.each do |c| %>
+      <% lang = c.enabled_languages.first %>
+      <% LocalesService.with(lang) do %>
+        <%= render partial: 'card', locals: { course: c } %>
       <% end %>
-    </ul>
+    <% end %>
+
   <% end %>
 </section>

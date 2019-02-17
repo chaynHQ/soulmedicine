@@ -1,19 +1,17 @@
 <header class="site-header">
-  <div class="container">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="/">
-        <%= image_tag(asset_pack_path('images/logo.png'), class: 'logo d-inline-block align-top', alt: 'Soul Medicine Logo', width: '30', height: '30') %>
-        Soul Medicine
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <%= header_nav_item t('site-header.home'), root_path, alternate_path: '/' %>
-          <%= header_nav_item t('concepts.course').pluralize.titleize, courses_path %>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+      <%= image_tag(asset_pack_path('images/logo.png'), class: 'logo d-inline-block align-top', alt: 'Soul Medicine Logo') %>
+      Soul Medicine
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <%= header_nav_item t('site-header.home'), root_path, alternate_path: '/' %>
+        <%= header_nav_item t('concepts.course').pluralize.titleize, courses_path %>
 
       <ul class="nav navbar-nav navbar-right">
         <% if @current_user %>
@@ -25,7 +23,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarLangSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= LocalesService.language_name(LocalesService.current) %>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarLangSelector">
+          <div class="dropdown-menu dropdown-menu-right <%= text_direction %>" dir="<%= text_direction %>" aria-labelledby="navbarLangSelector">
             <% LocalesService.enabled.each do |l| %>
               <% if LocalesService.current == l %>
                 <span class="dropdown-item">
@@ -38,6 +36,6 @@
           </div>
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
