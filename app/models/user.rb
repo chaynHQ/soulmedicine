@@ -1,7 +1,14 @@
 class User < ApplicationRecord
-  validates :display_name, presence: true
-  validates :uid, presence: true, uniqueness: true
-  validates :email, presence: true
+  validates :display_name,
+    presence: true
 
-  scope :active, -> { where(email_verified: true) }
+  validates :firebase_id,
+    presence: true,
+    uniqueness: true
+
+  validates :email,
+    presence: true,
+    uniqueness: true
+
+  scope :verified, -> { where(email_verified: true) }
 end

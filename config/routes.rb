@@ -5,11 +5,12 @@ Rails.application.routes.draw do
     resources :courses, only: %i[index show], path: 'pathways' do
       resources :lessons, only: %i[show], path: 'steps'
     end
+
     get  'auth/sign_in'
     post 'auth/callback'
     get  'auth/sign_out'
 
-    resources :subscription, only: %i[index]
+    resources :subscriptions, only: %i[index]
 
     root to: 'pages#landing'
   end

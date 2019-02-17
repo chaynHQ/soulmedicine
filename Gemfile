@@ -17,12 +17,14 @@ gem 'commonmarker', '~> 0.18.2'
 gem 'twitter_cldr', '~> 4.4', '>= 4.4.3'
 gem 'jwt', '~> 2.1.0'
 gem 'turbolinks', '~> 5.2'
+gem 'memoist', '~> 0.16.0'
+gem 'http', '~> 4.0', '>= 4.0.5'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.5'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.1'
-  gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
+  gem 'factory_bot_rails', '~> 5.0', '>= 5.0.1'
 end
 
 group :development do
@@ -33,6 +35,10 @@ group :development do
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'rubocop', '~> 0.64.0', require: false
+end
+
+group :test do
+  gem 'timecop', '~> 0.9.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

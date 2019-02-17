@@ -10,6 +10,12 @@
     "ENABLED_LOCALES": {
       "required": true
     },
+    "FIREBASE_API_KEY": {
+      "required": true
+    },
+    "FIREBASE_PROJECT_ID": {
+      "required": true
+    },
     "LANG": {
       "required": true
     },
