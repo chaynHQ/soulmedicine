@@ -1,11 +1,43 @@
+$tan: #f2e9d0;
+$yellow: #ffcc33;
+$pink: #ffa7a6;
+$blue: #0e9cff;
+$red: #ff441b;
+$grey: #d8d4d4;
+$white: #fff;
+$pastel-cream: #FBFBF8;
+$alabaster: #f5f4f0;
 
-// Bootstrap overrides
 
-// Custom bootstrap variables must be set or imported *before* bootstrap.
-// Available variables: https://github.com/twbs/bootstrap-rubygem/blob/master/assets/stylesheets/bootstrap/_variables.scss
+// ----------------------------------------------------------------------------
+// Bootstrap overrides:
+// See:
+// - https://getbootstrap.com/docs/4.2/getting-started/theming/
+// - https://github.com/twbs/bootstrap/blob/v4.2.1/scss/_variables.scss
 
-$body-bg: #f5f4f0;
-$body-color: #333333;
+$enable-shadows: true;
+$enable-gradients: true;
 
+$theme-colors: (
+  "primary": $blue,
+  "secondary": $tan,
+  "warning": $yellow,
+  "danger": $red,
+  "light": $alabaster
+);
 
-// Other variables
+$line-height-base: 1.75;
+$line-height-lg: 1.75;
+$line-height-sm: 1.75;
+
+$body-bg: $white;
+$body-color: #333;
+
+$card-bg: $pastel-cream;
+
+$btn-border-radius: 0.9rem;
+$btn-border-radius-lg: 1.3rem;
+$btn-border-radius-sm: 0.6rem;
+
+$badge-font-size: 0.85rem;
+$badge-font-weight: normal;

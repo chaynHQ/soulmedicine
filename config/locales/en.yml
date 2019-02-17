@@ -2,13 +2,15 @@ en:
   concepts:
     course: pathway
     lesson: note
+    language: language
   site-header:
     home: Home
     sign-in: Sign In
     sign-out: Sign Out
   courses:
     index:
-      other: More in other languages
+      no_courses: No pathways available in your selected language
+      other: In other languages
     shared:
       unavailable: This pathway is not available in the selected language
       other: See other available languages for this pathway

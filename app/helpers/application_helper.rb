@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
+
   def params_with_locale(locale)
     request.params.dup.merge(locale: locale)
   end
@@ -25,5 +29,13 @@ module ApplicationHelper
         )
       end
     end
+  end
+
+  def rtl?
+    LocalesService.current_rtl?
+  end
+
+  def text_direction
+    rtl? ? 'rtl' : 'ltr'
   end
 end
