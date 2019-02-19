@@ -9,6 +9,9 @@ import firebase from 'firebase/app';
 import SignIn from './sign_in';
 
 export default {
+  components: {
+    SignIn
+  },
   props: {
     apiKey: {
       type: String,
@@ -19,6 +22,9 @@ export default {
       required: true
     }
   },
+  data() {
+    return {};
+  },
   created() {
     if (!firebase.apps.length) {
       this.firebaseConfig = {
@@ -28,12 +34,6 @@ export default {
       };
       firebase.initializeApp(this.firebaseConfig);
     }
-  },
-  data: function() {
-    return {};
-  },
-  components: {
-    SignIn
   }
 };
 </script>
