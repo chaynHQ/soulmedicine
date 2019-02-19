@@ -19,10 +19,10 @@ document.addEventListener('turbolinks:load', () => {
   if (element != null) {
     const app = new Vue({
       el: element,
-      data: {},
       components: {
         AuthApp
-      }
+      },
+      data: {}
     });
   }
 });
