@@ -24,6 +24,8 @@ before_install:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
+  - yarn install
+  - yarn lint
   - bundle install -j $(nproc) --path vendor/bundle
   - bundle exec rubocop
   - RAILS_ENV=test bundle exec rake db:schema:load --trace
