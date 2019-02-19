@@ -5,7 +5,8 @@ en:
     language: language
   site-header:
     home: Home
-    sign-in: Sign In
+    subscriptions: My Subscriptions
+    sign-in: Create Account / Sign In
     sign-out: Sign Out
   courses:
     index:
