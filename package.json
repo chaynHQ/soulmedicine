@@ -2,18 +2,15 @@
   "name": "soulmedicine",
   "private": true,
   "scripts": {
+    "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
     "lint-staged": "$(yarn bin)/lint-staged"
   },
   "lint-staged": {
     "config/webpack/**/*.js": [
-      "prettier --write",
-      "eslint",
-      "git add"
+      "eslint"
     ],
-    "app/webpack/**/*.js": [
-      "prettier --write",
-      "eslint",
-      "git add"
+    "app/webpack/**/*.{js,vue}": [
+      "eslint"
     ]
   },
   "pre-commit": [
@@ -38,13 +35,14 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
+    "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.6.0",
+    "eslint-config-prettier": "^4.0.0",
     "eslint-import-resolver-webpack": "^0.11.0",
-    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "lint-staged": "^8.1.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "lint-staged": "^8.1.4",
     "pre-commit": "^1.2.2",
     "prettier": "^1.16.1",
     "webpack-dev-server": "2.11.2"

@@ -1,7 +1,7 @@
 <template>
   <div id="authentication-sign-in">
     <div v-if="loading" class="text-center m-4">
-      <div  class="spinner-border" role="status">
+      <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
     </div>
@@ -18,6 +18,12 @@ import Axios from 'axios';
 import Turbolinks from 'turbolinks';
 
 export default {
+  data() {
+    return {
+      loading: true,
+      csrf_token: null
+    };
+  },
   created() {
     this.ui = firebaseui.auth.AuthUI.getInstance();
     if (!this.ui) {
@@ -50,24 +56,17 @@ export default {
     };
     this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
   },
-  data: function() {
-    return {
-      loading: true,
-      csrf_token: null
-    };
-  },
   methods: {
     onUiShown() {
       this.loading = false;
     },
-    signInSuccessWithAuthResult(authResult, redirectUrl) {
+    signInSuccessWithAuthResult() {
       firebase
         .auth()
-        .currentUser
-        .getIdToken(true)
+        .currentUser.getIdToken(true)
         .then(this.processIdToken)
         .catch(error => {
-          console.error(error);
+          console.error(error); // eslint-disable-line
         });
 
       return false;
@@ -77,28 +76,24 @@ export default {
         '/auth/callback',
         { firebase_token: idToken },
         { headers: { 'X-CSRF-TOKEN': this.csrf_token } }
-      )
-        .then(response => {
-          const data = response.data;
+      ).then(result => {
+        const { data } = result;
 
-          const onComplete = function() {
-            Turbolinks.clearCache();
-            Turbolinks.visit(data.forwarding_url || '/');
-          }
+        function onComplete() {
+          Turbolinks.clearCache();
+          Turbolinks.visit(data.forwarding_url || '/');
+        }
 
-          if (data.user.email_verified === false) {
-            const user = firebase.auth().currentUser;
-            return user
-              .sendEmailVerification()
-              .then(onComplete);
-          }
+        if (data.user.email_verified === false) {
+          const user = firebase.auth().currentUser;
+          return user.sendEmailVerification().then(onComplete);
+        }
 
-          onComplete();
-        });
+        return onComplete();
+      });
     }
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
