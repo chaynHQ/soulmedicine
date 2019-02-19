@@ -14,10 +14,18 @@
         <%= header_nav_item t('concepts.course').pluralize.titleize, courses_path %>
 
       <ul class="nav navbar-nav navbar-right">
-        <% if @current_user %>
-          <%= header_nav_item t('site-header.sign-out'), auth_sign_out_path %>
+        <% if current_user? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.display_name %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right <%= text_direction %>" dir="<%= text_direction %>" aria-labelledby="navbarUserDropdown">
+              <%= link_to t('site-header.subscriptions'), subscriptions_path, class: 'dropdown-item' %>
+              <%= link_to t('site-header.sign-out'), auth_sign_out_path, class: 'dropdown-item' %>
+            </div>
+          </li>
         <% else %>
-          <%= header_nav_item t('site-header.sign-in'), auth_sign_in_path %>
+          <%= header_nav_item t('site-header.sign-in'), auth_sign_in_path, icon_name: 'sign-in-alt' %>
         <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarLangSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

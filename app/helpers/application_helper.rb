@@ -14,7 +14,7 @@ module ApplicationHelper
     value.presence || tag.span('Missing translated content', class: 'missing-translated-content')
   end
 
-  def header_nav_item(text, path, alternate_path: nil)
+  def header_nav_item(text, path, alternate_path: nil, icon_name: nil)
     is_active = current_page? path
     is_active ||= current_page?(alternate_path) if alternate_path
     li_classes = ['nav-item']
@@ -22,11 +22,9 @@ module ApplicationHelper
 
     tag.li class: li_classes do
       link_to path, class: 'nav-link' do
-        safe_join(
-          [text].tap do |a|
-            a << tag.span(t('site-header.active'), class: 'sr-only') if is_active
-          end
-        )
+        concat(icon(icon_name)) if icon_name
+        concat(tag.span(text))
+        tag.span(t('site-header.active'), class: 'sr-only') if is_active
       end
     end
   end
@@ -37,5 +35,9 @@ module ApplicationHelper
 
   def text_direction
     rtl? ? 'rtl' : 'ltr'
+  end
+
+  def icon(name, size: '1x')
+    tag.i '', class: "fas fa-#{name} fa-#{size}"
   end
 end

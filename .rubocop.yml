@@ -15,6 +15,9 @@ Bundler/OrderedGems:
 Layout/AlignParameters:
   Enabled: false
 
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
 Metrics/AbcSize:
   Max: 20
 

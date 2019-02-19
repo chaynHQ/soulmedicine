@@ -10,11 +10,12 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import AuthApp from '../components/authentication/app.vue';
 
 Rails.start();
-Vue.use(TurbolinksAdapter);
 Turbolinks.start();
 
+Vue.use(TurbolinksAdapter);
+
 document.addEventListener('turbolinks:load', () => {
-  const element = document.getElementById('application');
+  const element = document.getElementById('sign_in');
   if (element != null) {
     const app = new Vue({
       el: element,
@@ -24,5 +25,4 @@ document.addEventListener('turbolinks:load', () => {
       }
     });
   }
-  // eslint-disable-next-line prettier/prettier
 });

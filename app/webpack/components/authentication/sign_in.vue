@@ -1,6 +1,10 @@
 <template>
   <div id="authentication-sign-in">
-    <div class="loader" v-if="loading">loading...</div>
+    <div v-if="loading" class="text-center m-4">
+      <div  class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
     <div ref="firebaseAuthContainer"></div>
   </div>
 </template>
@@ -12,15 +16,19 @@ import firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import Axios from 'axios';
 import Turbolinks from 'turbolinks';
+
 export default {
   created() {
-    this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+    this.ui = firebaseui.auth.AuthUI.getInstance();
+    if (!this.ui) {
+      this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+    }
     this.csrf_token = document
       .querySelector('meta[name="csrf-token"]')
       .getAttribute('content');
   },
   mounted() {
-    let $self = this;
+    const $self = this;
     this.uiConfig = {
       signInOptions: [
         {
@@ -30,42 +38,11 @@ export default {
       ],
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
-        signInSuccessWithAuthResult(authResult, redirectUrl) {
-          firebase
-            .auth()
-            .currentUser.getIdToken(true)
-            .then(idtoken => {
-              Axios.post(
-                '/auth/callback',
-                { firebase_token: idtoken },
-                { headers: { 'X-CSRF-TOKEN': $self.csrf_token } }
-              )
-                .then(response => {
-                  if (response.data.user.email_verified === false) {
-                    const user = firebase.auth().currentUser;
-                    user
-                      .sendEmailVerification()
-                      .then(() => {
-                        console.log('Verification Email Sent');
-                      })
-                      .catch(error => {
-                        console.error(error);
-                      });
-                  }
-                  if (response.data.forwarding_url) {
-                    Turbolinks.visit(response.data.forwarding_url);
-                  }
-                })
-                .catch(error => {
-                  console.error(error);
-                });
-            })
-            .catch(error => {
-              console.error(error);
-            });
-        },
         uiShown() {
           $self.onUiShown();
+        },
+        signInSuccessWithAuthResult(authResult, redirectUrl) {
+          $self.signInSuccessWithAuthResult(authResult, redirectUrl);
         }
       },
       tosUrl: '/terms-of-service',
@@ -82,6 +59,42 @@ export default {
   methods: {
     onUiShown() {
       this.loading = false;
+    },
+    signInSuccessWithAuthResult(authResult, redirectUrl) {
+      firebase
+        .auth()
+        .currentUser
+        .getIdToken(true)
+        .then(this.processIdToken)
+        .catch(error => {
+          console.error(error);
+        });
+
+      return false;
+    },
+    processIdToken(idToken) {
+      return Axios.post(
+        '/auth/callback',
+        { firebase_token: idToken },
+        { headers: { 'X-CSRF-TOKEN': this.csrf_token } }
+      )
+        .then(response => {
+          const data = response.data;
+
+          const onComplete = function() {
+            Turbolinks.clearCache();
+            Turbolinks.visit(data.forwarding_url || '/');
+          }
+
+          if (data.user.email_verified === false) {
+            const user = firebase.auth().currentUser;
+            return user
+              .sendEmailVerification()
+              .then(onComplete);
+          }
+
+          onComplete();
+        });
     }
   }
 };
@@ -89,4 +102,3 @@ export default {
 
 <style scoped>
 </style>
-
