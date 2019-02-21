@@ -29,9 +29,25 @@ export default {
     if (!this.ui) {
       this.ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
+
     this.csrf_token = document
       .querySelector('meta[name="csrf-token"]')
       .getAttribute('content');
+
+    this.onAuthStateChangedSubscription = firebase
+      .auth()
+      .onAuthStateChanged(user => {
+        if (user) {
+          this.loading = true;
+          return user
+            .getIdToken(true)
+            .then(this.serverSignIn)
+            .finally(() => {
+              this.loading = false;
+            });
+        }
+        return true;
+      });
   },
   mounted() {
     const $self = this;
@@ -47,8 +63,8 @@ export default {
         uiShown() {
           $self.onUiShown();
         },
-        signInSuccessWithAuthResult(authResult, redirectUrl) {
-          $self.signInSuccessWithAuthResult(authResult, redirectUrl);
+        signInSuccessWithAuthResult() {
+          return false;
         }
       },
       tosUrl: '/terms-of-service',
@@ -56,22 +72,16 @@ export default {
     };
     this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
   },
+  destroyed() {
+    if (this.onAuthStateChangedSubscription) {
+      this.onAuthStateChangedSubscription();
+    }
+  },
   methods: {
     onUiShown() {
       this.loading = false;
     },
-    signInSuccessWithAuthResult() {
-      firebase
-        .auth()
-        .currentUser.getIdToken(true)
-        .then(this.processIdToken)
-        .catch(error => {
-          console.error(error); // eslint-disable-line
-        });
-
-      return false;
-    },
-    processIdToken(idToken) {
+    serverSignIn(idToken) {
       return Axios.post(
         '/auth/callback',
         { firebase_token: idToken },
@@ -79,18 +89,26 @@ export default {
       ).then(result => {
         const { data } = result;
 
-        function onComplete() {
-          Turbolinks.clearCache();
-          Turbolinks.visit(data.forwarding_url || '/');
-        }
-
         if (data.user.email_verified === false) {
           const user = firebase.auth().currentUser;
-          return user.sendEmailVerification().then(onComplete);
+          return user
+            .sendEmailVerification()
+            .then(() => this.afterServerSignIn(data.forwarding_url));
         }
 
-        return onComplete();
+        return this.afterServerSignIn(data.forwarding_url);
       });
+    },
+    afterServerSignIn(forwardingUrl) {
+      // Once we're done with the token, and signed in by the server, we
+      // don't need the Firebase Auth session anymore, so sign that out.
+      return firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          Turbolinks.clearCache();
+          Turbolinks.visit(forwardingUrl || '/');
+        });
     }
   }
 };
