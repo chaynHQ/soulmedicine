@@ -60,7 +60,7 @@ module Authentication
         session[:user] = user.id
         flash[:notice] = 'You are now signed in'
       else
-        flash[:alert] = 'Please verify your account by clicking on the link in the verification email sent to you'
+        flash[:alert] = 'Cannot sign you in just yet - please verify your account by clicking on the link in the verification email sent to you'
       end
 
       {
