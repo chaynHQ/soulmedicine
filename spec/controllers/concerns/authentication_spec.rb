@@ -126,7 +126,7 @@ RSpec.describe 'Authentication Concern', type: :controller do
             expect(result[:user]['id']).not_to be_nil
             expect(result[:user]).to include(expected_result_user)
             expect(@controller.session[:user]).to be_nil
-            expect(@controller.flash[:alert]).to eq 'Please verify your account by clicking on the link in the verification email sent to you'
+            expect(@controller.flash[:alert]).to be_present
           end
         end
 
