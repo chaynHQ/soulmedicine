@@ -1,3 +1,3 @@
-desc 'Postdeploy task for setting up Heroku review apps'
-task postdeploy: ['db:schema:load', 'db:seed'] do
+desc 'Postdeploy task for Heroku review apps'
+task postdeploy: ['db:seed'] do
 end
