@@ -7,7 +7,8 @@ import Turbolinks from 'turbolinks';
 import 'bootstrap/dist/js/bootstrap';
 import Vue from 'vue/dist/vue.esm';
 import TurbolinksAdapter from 'vue-turbolinks';
-import AuthApp from '../components/authentication/app.vue';
+import SignIn from '../components/authentication/sign_in.vue';
+import Profile from '../components/user_profile/profile.vue';
 
 Rails.start();
 Turbolinks.start();
@@ -15,12 +16,22 @@ Turbolinks.start();
 Vue.use(TurbolinksAdapter);
 
 document.addEventListener('turbolinks:load', () => {
-  const element = document.getElementById('sign_in');
-  if (element != null) {
+  const signInEl = document.getElementById('sign_in');
+  const profileEl = document.getElementById('profile');
+  if (signInEl != null) {
     const app = new Vue({
-      el: element,
+      el: signInEl,
       components: {
-        AuthApp
+        SignIn
+      },
+      data: {}
+    });
+  }
+  if (profileEl != null) {
+    const app = new Vue({
+      el: profileEl,
+      components: {
+        Profile
       },
       data: {}
     });
