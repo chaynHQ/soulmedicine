@@ -3,7 +3,6 @@ import '../stylesheets/application.scss';
 
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
-
 import 'bootstrap/dist/js/bootstrap';
 import Vue from 'vue/dist/vue.esm';
 import TurbolinksAdapter from 'vue-turbolinks';

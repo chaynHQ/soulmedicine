@@ -18,3 +18,8 @@ en:
       other: See other available languages for this pathway
   profile:
     authenticate-again: Please sign in again to modify your profile
+    page-header: Hi there, %{name}
+    form:
+      display-name: Display Name
+      email: Email
+      update: Update
