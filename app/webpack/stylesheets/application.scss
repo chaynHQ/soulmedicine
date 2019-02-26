@@ -28,9 +28,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: $spacer * 1.5;
 }
 
+.ltr {
+  @extend .text-left;
+}
+
 .rtl {
   @extend .text-right;
 
+  ul,
   ul#{&} {
     padding-inline-start: 0;
   }
