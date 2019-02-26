@@ -6,6 +6,7 @@ en:
   site-header:
     home: Home
     subscriptions: My Subscriptions
+    profile: My Profile
     sign-in: Create Account / Sign In
     sign-out: Sign Out
   courses:
@@ -15,3 +16,5 @@ en:
     shared:
       unavailable: This pathway is not available in the selected language
       other: See other available languages for this pathway
+  profile:
+    authenticate-again: Please sign in again to modify your profile

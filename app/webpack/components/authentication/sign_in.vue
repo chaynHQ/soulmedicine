@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import firebase, { initializeApp } from 'firebase/app';
 import 'firebase/auth';
 import firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
@@ -18,6 +18,21 @@ import Axios from 'axios';
 import Turbolinks from 'turbolinks';
 
 export default {
+  props: {
+    apiKey: {
+      type: String,
+      required: true
+    },
+    projectId: {
+      type: String,
+      required: true
+    },
+    signOutAfterSeverSignIn: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
+  },
   data() {
     return {
       loading: true,
@@ -25,6 +40,9 @@ export default {
     };
   },
   created() {
+    if (!firebase.apps.length) {
+      this.initializeFirebaseApp();
+    }
     this.ui = firebaseui.auth.AuthUI.getInstance();
     if (!this.ui) {
       this.ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -78,6 +96,14 @@ export default {
     }
   },
   methods: {
+    initializeFirebaseApp() {
+      this.firebaseConfig = {
+        apiKey: this.apiKey,
+        authDomain: `${this.projectId}.firebaseapp.com`,
+        projectId: this.projectId
+      };
+      initializeApp(this.firebaseConfig);
+    },
     onUiShown() {
       this.loading = false;
     },
@@ -100,6 +126,13 @@ export default {
       });
     },
     afterServerSignIn(forwardingUrl) {
+      if (this.signOutAfterSeverSignIn) {
+        return this.firebaseSignOut(forwardingUrl);
+      }
+      Turbolinks.clearCache();
+      return this.$emit('ServerSignedIn', { forwarding_url: forwardingUrl });
+    },
+    firebaseSignOut(forwardingUrl) {
       // Once we're done with the token, and signed in by the server, we
       // don't need the Firebase Auth session anymore, so sign that out.
       return firebase
