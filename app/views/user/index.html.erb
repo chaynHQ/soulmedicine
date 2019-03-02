@@ -1,9 +1,9 @@
 <section id="profile">
   <profile
     api-key="<%= FirebaseConfig.api_key %>"
-    project-id="<%= FirebaseConfig.project_id %>">
+    project-id="<%= FirebaseConfig.project_id %>"
+    db-user-id="<%= current_user.id or '' %>">
   </profile>
-
   <noscript>
     Please enable JavaScript to sign in
   </noscript>
