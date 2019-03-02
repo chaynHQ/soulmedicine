@@ -46,10 +46,13 @@
                 id="button-updateDisplay"
                 class="btn btn-secondary"
                 type="button"
+                @click="onUpdateName"
               >
                 {{ updateI18n }}
               </button>
             </div>
+            <span class="w-100"></span>
+            <small id="nameHelpBlock" class="form-text text-muted"></small>
           </div>
         </div>
       </div>
@@ -73,19 +76,30 @@
                 id="button-updateEmail"
                 class="btn btn-secondary"
                 type="button"
+                @click="onUpdateEmail"
               >
                 {{ updateI18n }}
               </button>
             </div>
+            <span class="w-100"></span>
+            <small id="emailHelpBlock" class="form-text text-muted">
+              {{ emailHelpI18n }}
+            </small>
           </div>
         </div>
       </div>
       <div class="card bg-light">
-        <h5 class="card-title">Delete Your Account?</h5>
-        <h6 class="card-subtitle mb-2 text-muted">We're sorry to see you go</h6>
         <div class="card-body">
-          If you so desire, you can also delete your profile from Soul Medicine
-          entirely
+          <h5 class="card-title">{{ profileI18n.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            {{ profileI18n.subtitle }}
+          </h6>
+          <p class="card-text">
+            {{ profileI18n.text }}
+          </p>
+          <a :href="deletionMailtoLink" class="card-link">
+            {{ profileI18n.link }}
+          </a>
         </div>
       </div>
     </div>
@@ -94,6 +108,7 @@
 
 <script>
 import firebase, { initializeApp } from 'firebase/app';
+import Axios from 'axios';
 import Turbolinks from 'turbolinks';
 import SignIn from '../authentication/sign_in';
 
@@ -109,11 +124,17 @@ export default {
     projectId: {
       type: String,
       required: true
+    },
+    dbUserId: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   data() {
     return {
       loading: true,
+      csrf_token: null,
       currentUser: null,
       showSignIn: false,
       displayName: null,
@@ -147,11 +168,47 @@ export default {
           })
         : false;
     },
+    emailHelpI18n() {
+      return this.currentUser
+        ? window.I18n.t('profile.form.email-help', {
+            defaultValue:
+              'You will be logged out and will need to re-verify your new email '
+          })
+        : false;
+    },
     updateI18n() {
       return this.currentUser
         ? window.I18n.t('profile.form.update', {
             defaultValue: 'Update'
           })
+        : false;
+    },
+    profileI18n() {
+      return this.currentUser
+        ? {
+            title: window.I18n.t('profile.delete-user.title', {
+              defaultValue: 'Delete Your Account?'
+            }),
+            subtitle: window.I18n.t('profile.delete-user.subtitle', {
+              defaultValue: "We're sorry to see you go"
+            }),
+            text: window.I18n.t('profile.delete-user.text', {
+              defaultValue:
+                'Account deletion is final, with restoration not possible.'
+            }),
+            link: window.I18n.t('profile.delete-user.link', {
+              defaultValue: 'Request account deletion'
+            })
+          }
+        : false;
+    },
+    deletionMailtoLink() {
+      return this.currentUser
+        ? encodeURI(
+            `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${
+              this.currentUser.displayName
+            } (email address: ${this.currentUser.email})`
+          )
         : false;
     }
   },
@@ -159,6 +216,10 @@ export default {
     if (!firebase.apps.length) {
       this.initializeFirebaseApp();
     }
+    this.csrf_token = document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute('content');
+
     this.onAuthStateChangedSubscription = firebase
       .auth()
       .onAuthStateChanged(user => {
@@ -187,14 +248,69 @@ export default {
     onServerSignedIn() {
       Turbolinks.visit(window.location);
     },
-    firebaseSignOut(forwardingUrl) {
+    firebaseSignOut(serverSignOut) {
+      const visitLocation = serverSignOut ? '/auth/sign_out' : window.location;
       return firebase
         .auth()
         .signOut()
         .then(() => {
           Turbolinks.clearCache();
-          Turbolinks.visit(forwardingUrl || '/');
+          Turbolinks.visit(visitLocation);
         });
+    },
+    sendUpdate(data) {
+      const vm = this;
+      return Axios.put(`/profile/${vm.dbUserId}`, data, {
+        headers: { 'X-CSRF-TOKEN': this.csrf_token }
+      })
+        .then(response => {
+          vm.onUpdateSuccess(response);
+        })
+        .catch(error => {
+          throw new Error(error);
+        })
+        .then(() => {
+          vm.loading = false;
+        });
+    },
+    onUpdateName() {
+      const user = firebase.auth().currentUser;
+      const vm = this;
+      this.loading = true;
+      return user
+        .updateProfile({
+          displayName: this.displayName
+        })
+        .then(() => {
+          // Update the Rails App
+          vm.sendUpdate({
+            display_name: this.displayName
+          });
+        })
+        .catch(reason => {
+          throw new Error(reason);
+        });
+    },
+    onUpdateEmail() {
+      const user = firebase.auth().currentUser;
+      const vm = this;
+      this.loading = true;
+      return user
+        .updateEmail(this.userEmail)
+        .then(() => {
+          // Update the Rails App
+          vm.sendUpdate({
+            email: vm.userEmail,
+            email_verified: false
+          });
+        })
+        .catch(reason => {
+          throw new Error(reason);
+        });
+    },
+    onUpdateSuccess(serverResponse) {
+      const signOut = serverResponse.email_verified === false ? true : null;
+      this.firebaseSignOut(signOut);
     }
   }
 };
