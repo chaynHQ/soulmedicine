@@ -12,9 +12,30 @@
         </h2>
 
         <div class="mb-5">
-          <a class="btn btn-primary btn-lg shadow" href="#" role="button">
-            Sign up for free
-          </a>
+          <% if @subscription.present? %>
+            <div class="alert alert-info" role="alert">
+              <% if @subscription.active? %>
+                <%= t('courses.show.active_subscription') %>
+              <% else %>
+                <%= t('courses.show.paused_subscription') %>
+              <% end %>
+
+              <%=
+                link_to t('phrases.edit').capitalize,
+                  course_subscription_path(@course),
+                  class: 'ml-3'
+              %>
+            </div>
+          <% else %>
+            <%=
+              link_to(
+                t('courses.show.subscribe'),
+                course_subscription_path(@course),
+                class: 'btn btn-primary btn-lg shadow rounded-pill',
+                role: 'button'
+              )
+            %>
+          <% end %>
         </div>
 
         <div class="course-description">

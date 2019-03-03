@@ -1,0 +1,91 @@
+<% unless subscription.persisted? %>
+  <div class="alert alert-info">
+    <%= t('.explanation') %>
+  </div>
+<% end %>
+
+<%=
+  bootstrap_form_with(
+    model: subscription,
+    local: true,
+    url: course_subscription_path(subscription.course),
+    method: :put) do |form|
+%>
+  <%= form.alert_message t('forms.errors_alert') %>
+
+  <div class="row">
+    <div class="col-md">
+      <div class="card mb-2">
+        <div class="card-header">
+          <%= t('.schedule_section') %>
+        </div>
+        <div class="card-body">
+          <%=
+            form.select :days_utc,
+              Subscription::DAYS,
+              { label: t('.days_label') },
+              {
+                class: 'selectpicker',
+                multiple: true
+              }
+          %>
+
+          <%=
+            form.select :hours_utc,
+              subscription_hours_options,
+              {
+                label: t('.hours_label'),
+                help: t('.hours_help_text')
+              },
+              {
+                class: 'selectpicker',
+                multiple: true
+              }
+          %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card mb-2">
+        <div class="card-header">
+          <%= t('.languages_section') %>
+        </div>
+        <div class="card-body">
+          <%=
+            form.static_control :main_language_name,
+              label: t('.main_language_label'),
+              value: LocalesService.language_name(subscription.main_language),
+              class: 'rounded',
+              style: 'padding-left: 0.75rem'
+          %>
+          <%= form.hidden_field :main_language %>
+
+          <% other_language_options = subscription_other_languages_options(subscription) %>
+          <% if other_language_options.present? %>
+            <%=
+              form.select :other_languages,
+                other_language_options,
+                { label: t('.other_languages_label') },
+                {
+                  class: 'selectpicker',
+                  multiple: true
+                }
+            %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bg-light mb-3 px-3 pt-3">
+    <%= form.form_group :active, help: t('.make_active_consent_text') do %>
+      <%= form.check_box :active, label: t('.make_active'), custom: :checkbox %>
+    <% end %>
+  </div>
+
+  <% if subscription.persisted? %>
+    <%= subscription_unsubscribe_button subscription, css_class: 'float-right btn btn-danger' %>
+  <% end %>
+
+  <%= form.primary t('.submit_button') %>
+<% end %>
