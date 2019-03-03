@@ -20,6 +20,8 @@
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
+    "bootstrap-select": "^1.13.5",
+    "data-confirm-modal": "^1.6.2",
     "firebase": "^5.8.1",
     "firebaseui": "^3.5.2",
     "jquery": "^3.3.1",

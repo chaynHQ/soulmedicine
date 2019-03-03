@@ -1327,6 +1327,11 @@ bonjour@^3.5.0:
     multicast-dns "^6.0.1"
     multicast-dns-service-types "^1.1.0"
 
+bootstrap-select@^1.13.5:
+  version "1.13.8"
+  resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.13.8.tgz#c47047410511f6d8a8917a7738d1b03c95717d5d"
+  integrity sha512-WF6GJPgb98cv75X6/zoCWUNwM/HPoYKP6JDBryTNDCHMPV9YyMqU7xXncC7Se2M5VAt7kZQ/i2GSYwaf5Q/Z3w==
+
 bootstrap@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.2.1.tgz#8f8bdca024dbf0e8644da32e918c8a03a90a5757"
@@ -2272,6 +2277,11 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
+
+data-confirm-modal@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/data-confirm-modal/-/data-confirm-modal-1.6.2.tgz#81fc8ea298cfd9311d066915d1710b3cfa57d96b"
+  integrity sha512-UYYgx8hS65X8Y336YRp1x6A5Gfkhh4iYkLq5jw7oS++hTcq/3yO8JOrbfHvvr7qqqQxBSPRyvUXnFEFIr4ja4w==
 
 date-fns@^1.27.2:
   version "1.30.1"

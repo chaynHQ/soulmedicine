@@ -19,12 +19,17 @@ gem 'jwt', '~> 2.1.0'
 gem 'turbolinks', '~> 5.2'
 gem 'memoist', '~> 0.16.0'
 gem 'http', '~> 4.0', '>= 4.0.5'
+gem 'default_value_for', '~> 3.1'
+gem 'bootstrap_form', '~> 4.2'
+gem 'sidekiq', '~> 5.2', '>= 5.2.5'
+gem 'sidekiq-history', '~> 0.0.11'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.5'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.1'
   gem 'factory_bot_rails', '~> 5.0', '>= 5.0.1'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
 end
 
 group :development do
