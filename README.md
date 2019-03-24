@@ -6,7 +6,7 @@
 
 ### Prerequisites
 
-- **Ruby 2.5.3**
+- **Ruby 2.5.5**
 - **NodeJS 8+**
 - **Yarn 1.10+**
 - **PostgreSQL 10.5**
