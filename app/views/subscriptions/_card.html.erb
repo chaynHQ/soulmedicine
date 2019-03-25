@@ -1,0 +1,91 @@
+<%
+  course = subscription.course
+%>
+
+<div class="card shadow-sm mb-3 subscription-card <%= text_direction %>" dir="<%= text_direction %>">
+  <div class="card-header">
+    <%= link_to tc(course.name), course_path(course) %>
+
+    <% if subscription.active %>
+      <span class="badge badge-primary float-right ml-2">
+        <%= t('phrases.active').capitalize %>
+      </span>
+    <% else %>
+      <span class="badge badge-dark float-right ml-2">
+        <%= t('phrases.paused').capitalize %>
+      </span>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <span class="text-muted">
+        <%= t('concepts.language').pluralize.capitalize %>:
+      </span>
+      <br />
+      <% languages = [subscription.main_language] + subscription.other_languages %>
+      <%= languages.map { |l| LocalesService.language_name(l)  }.to_sentence %>
+    </p>
+
+    <p class="card-text">
+      <span class="text-muted">
+        <%= t('concepts.schedule').capitalize %>:
+      </span>
+      <br />
+      <%= subscription.days_utc.to_sentence %>
+      <br />
+      <%= subscription.hours_utc.map(&method(:subscription_format_hour_slot)).to_sentence %>
+    </p>
+
+    <div class="card-text mb-3">
+      <div class="text-muted">
+        <%= t('phrases.progress').capitalize %>:
+      </div>
+
+      <% current_lesson_count = subscription.lessons_delivered.size %>
+      <% progress = ((current_lesson_count / course.lessons.size.to_f) * 100).round %>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: <%= progress -%>%" aria-valuenow="<%= current_lesson_count -%>" aria-valuemin="0" aria-valuemax="<%= course.lessons.size -%>"></div>
+      </div>
+      <div>
+        <% if current_lesson_count == 0 %>
+          <span class="text-muted"><%= t('.no_lessons_sent') %></span>
+        <% elsif current_lesson_count == course.lessons.size %>
+          <%= t('.all_lessons_sent') %>
+        <% else %>
+          <%= t('.lessons_sent', current: current_lesson_count, total: course.lessons.size) %>
+        <% end %>
+
+        <% if subscription.last_delivered_at %>
+          <br />
+          <small class="text-muted">
+            <%= t('.last_delivery', delivery_time_ago: time_ago_in_words(subscription.last_delivered_at)) %>
+          </small>
+        <% end %>
+      </div>
+    </div>
+
+    <%= subscription_unsubscribe_button subscription, css_class: 'float-right btn btn-sm btn-danger' %>
+
+    <%=
+      link_to t('phrases.edit').capitalize,
+        course_subscription_path(course),
+        class: 'btn btn-sm btn-primary'
+    %>
+
+    <% if subscription.active %>
+      <%=
+        link_to t('phrases.pause').capitalize,
+          pause_course_subscription_path(course),
+          method: :patch,
+          class: 'btn btn-sm btn-primary'
+      %>
+    <% else %>
+      <%=
+        link_to t('phrases.unpause').capitalize,
+          unpause_course_subscription_path(course),
+          method: :patch,
+          class: 'btn btn-sm btn-primary'
+      %>
+    <% end %>
+  </div>
+</div>

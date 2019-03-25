@@ -1,6 +1,7 @@
 @import "variables";
 
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-select/sass/bootstrap-select';
 
 html {
   position: relative;
@@ -92,6 +93,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .course-card {
+  background-color: $pastel-cream;
+
   &__description {
     width: 100%;
     height: 1.5em;

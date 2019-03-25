@@ -30,11 +30,16 @@ module SoulMedicine
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
 
-      g.system_tests    false
-      g.stylesheets     false
-      g.javascripts     false
-      g.helper          false
-      g.channel         assets: false
+      g.system_tests false
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.channel assets: false
+
+      g.test_framework :rspec,
+        controller_specs: false,
+        helper_specs: false,
+        view_specs: false
     end
   end
 end
