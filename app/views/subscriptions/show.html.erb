@@ -1,0 +1,13 @@
+<%
+  course = @subscription.course
+%>
+
+<%
+  title t('.title', course_name: tc(course.name))
+%>
+
+<h1>
+  <%= t('.title_html', course_link: link_to(tc(course.name), course_path(course))) %>
+</h1>
+
+<%= render 'form', subscription: @subscription %>

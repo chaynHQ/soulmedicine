@@ -1,0 +1,16 @@
+<h1>
+  <%= link_to @lesson.name, course_lesson_url(@languages.first, @course, @lesson) %>
+</h1>
+
+<% @languages.each do |l| %>
+  <% LocalesService.with(l) do %>
+    <% if @lesson.content.present? %>
+      <div class="<%= text_direction %>" dir="<%= text_direction %>">
+        <%= @lesson.content.html_safe %>
+        <br />
+        <hr />
+        <br />
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

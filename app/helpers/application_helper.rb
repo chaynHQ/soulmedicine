@@ -29,15 +29,15 @@ module ApplicationHelper
     end
   end
 
+  def icon(name, size: '1x')
+    tag.i '', class: "fas fa-#{name} fa-#{size}"
+  end
+
   def rtl?
     LocalesService.current_rtl?
   end
 
   def text_direction
     rtl? ? 'rtl' : 'ltr'
-  end
-
-  def icon(name, size: '1x')
-    tag.i '', class: "fas fa-#{name} fa-#{size}"
   end
 end

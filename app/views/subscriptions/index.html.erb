@@ -1,1 +1,19 @@
-Subscriptions will go here
+<%
+ title t('.title')
+%>
+
+<h1><%= t('.title') %></h1>
+
+<section class="subscriptions-page">
+  <% if @subscriptions.blank? %>
+    <div class="alert alert-info" role="alert">
+      <%= t('.no_subscriptions_html', pathways_link: link_to(t('concepts.course').pluralize, courses_path)) %>
+    </div>
+  <% end %>
+
+  <div>
+    <% @subscriptions.each do |s| %>
+      <%= render partial: 'card', locals: { subscription: s } %>
+    <% end %>
+  </div>
+</section>
