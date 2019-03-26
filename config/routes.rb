@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resource :subscription, only: %i[show update destroy] do
         patch :pause
         patch :unpause
+        get '/unsubscribe/:user_id', action: :unsubscribe, as: 'unsubscribe'
       end
     end
 

@@ -40,6 +40,14 @@ class Subscription < ApplicationRecord
   end
   memoize :course
 
+  def pause!
+    update! active: false
+  end
+
+  def unpause!
+    update! active: true
+  end
+
   protected
 
   def validate_course_exists
