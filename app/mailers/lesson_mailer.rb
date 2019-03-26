@@ -4,6 +4,7 @@ class LessonMailer < ApplicationMailer
   def lesson_email(user:, course:, lesson:, languages:)
     email_with_name = %("#{user.display_name}" <#{user.email}>)
 
+    @user = user
     @course = course
     @lesson = lesson
     @languages = (LocalesService.enabled & languages.map(&:to_sym))

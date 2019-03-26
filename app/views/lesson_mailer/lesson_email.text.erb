@@ -12,3 +12,11 @@
 <% end %>
 <% end %>
 <% end %>
+
+Unsubscribe (pause emails for this pathway):
+<<%=
+  unsubscribe_course_subscription_url(
+    course_id: @course.to_param,
+    user_id: @user.to_sgid_param(for: :unsubscribe_course)
+  )
+-%>>

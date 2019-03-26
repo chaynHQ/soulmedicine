@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :require_authentication
+  before_action :require_authentication, except: %i[unsubscribe]
 
   before_action :find_or_initialize_subscription, only: %i[show update destroy pause unpause]
 
@@ -35,16 +35,31 @@ class SubscriptionsController < ApplicationController
 
   # PATCH /pathways/:course_id/subscription/pause
   def pause
-    @subscription.update! active: false
+    @subscription.pause!
 
-    redirect_to subscriptions_url, notice: 'Subscription was successfully paused.'
+    redirect_to subscriptions_url, notice: 'Subscription paused.'
   end
 
   # PATCH /pathways/:course_id/subscription/unpause
   def unpause
-    @subscription.update! active: true
+    @subscription.unpause!
 
-    redirect_to subscriptions_url, notice: 'Subscription was successfully activated.'
+    redirect_to subscriptions_url, notice: 'Subscription activated.'
+  end
+
+  # GET /pathways/:course_id/subscription/unsubscribe/:user_id
+  def unsubscribe
+    redirect_path = root_path
+
+    user = SignedGlobalID.find(params[:user_id], for: :unsubscribe_course)
+    if user
+      subscription = user.subscriptions.find_by(course_slug: params[:course_id])
+      subscription&.pause!
+
+      redirect_path = subscriptions_path if current_user
+    end
+
+    redirect_to redirect_path, notice: 'Subscription paused.'
   end
 
   private
