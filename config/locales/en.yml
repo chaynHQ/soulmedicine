@@ -48,9 +48,10 @@ en:
       explanation: "Make the path work for you! Now it’s the time to customize the schedule to receive your note, the languages you want to read it in and if you don’t want anyone to find out, you can also choose to have a disguised subject line."
       schedule_section: Choose the schedule
       languages_section: Choose the language(s)
+      user_timezone_label: "Your timezone:"
       days_label: "Set the best days for you (one or more):"
-      hours_label: "Set the best time slots (one or more):"
-      hours_help_text: "We cannot guarantee but usually it will come in that slot"
+      hour_label: "Set the best time slot for you:"
+      hour_help_text: "We cannot guarantee this time slot but will do our best"
       main_language_label: "Main language"
       other_languages_label: "Others (optional):"
       make_active: Make this subscription active?
