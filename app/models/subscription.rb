@@ -1,8 +1,9 @@
 class Subscription < ApplicationRecord
   extend Memoist
 
-  DAYS = Date::ABBR_DAYNAMES
   HOURS = (0..23).to_a.freeze
+
+  TIMEZONE_IDS = ActiveSupport::TimeZone.all.map(&:name).freeze
 
   scope :active, -> { where(active: true) }
 
@@ -24,14 +25,27 @@ class Subscription < ApplicationRecord
 
   validates :delivery_method, presence: true
 
-  validates :days_utc, presence: true
-  validates :hours_utc, presence: true
+  validates :user_timezone,
+    inclusion: { in: TIMEZONE_IDS }
+  validates :days_utc,
+    presence: true
+  validates :hours_utc,
+    presence: true,
+    length: { is: 1 } # For now we only support one time slot (to make it easier to translate to/from the user's timezone)
 
   validate :validate_course_exists
   validate :validate_languages
   validate :validate_schedule
 
   default_value_for :delivery_method, 'email'
+
+  def days
+    converted_schedule[:days]
+  end
+
+  def hour
+    converted_schedule[:hour]
+  end
 
   def course
     courses_service.get(course_slug) if course_slug.present?
@@ -49,6 +63,15 @@ class Subscription < ApplicationRecord
   end
 
   protected
+
+  def converted_schedule
+    TimeZoneScheduleConverter.convert(
+      from_zone: 'UTC',
+      to_zone: user_timezone,
+      days: days_utc,
+      hour: hours_utc.first
+    )
+  end
 
   def validate_course_exists
     errors.add(:base, 'course is not available') if course.blank?
@@ -69,7 +92,7 @@ class Subscription < ApplicationRecord
   end
 
   def validate_schedule
-    errors.add(:days_utc, "can only contain #{DAYS.to_sentence}") if days_utc.any? { |d| !DAYS.include?(d) }
+    errors.add(:days_utc, "can only contain #{Date::ABBR_DAYNAMES.to_sentence}") if days_utc.any? { |d| !Date::ABBR_DAYNAMES.include?(d) }
 
     errors.add(:hours_utc, "can only contain #{HOURS.to_sentence}") if hours_utc.any? { |h| !HOURS.include?(h) }
   end

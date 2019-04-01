@@ -17,10 +17,19 @@ class SubscriptionsController < ApplicationController
 
     # Remove blank values
     params[:other_languages].reject!(&:blank?) if params.key?(:other_languages)
-    params[:days_utc].reject!(&:blank?) if params.key?(:days_utc)
-    params[:hours_utc].reject!(&:blank?) if params.key?(:hours_utc)
+    params[:days].reject!(&:blank?) if params.key?(:days)
 
-    if @subscription.update(params)
+    utc_schedule = TimeZoneScheduleConverter.convert(
+      from_zone: params[:user_timezone],
+      to_zone: 'UTC',
+      days: params[:days],
+      hour: params[:hour].presence&.to_i
+    )
+
+    @subscription.days_utc = utc_schedule[:days]
+    @subscription.hours_utc = [utc_schedule[:hour]]
+
+    if @subscription.update(params.except(:days, :hour))
       redirect_to course_path(@subscription.course), notice: 'Subscription was successfully updated.'
     else
       render :show # We expect the `show` view to render the form
@@ -70,15 +79,23 @@ class SubscriptionsController < ApplicationController
     @subscription = current_user
       .subscriptions
       .find_or_initialize_by(course_slug: course_slug) do |subscription|
+        last_timezone = current_user
+          .subscriptions
+          .order(:updated_at)
+          .last
+          &.user_timezone
+
         subscription.user = current_user
         subscription.course_slug = course_slug
         subscription.main_language = LocalesService.current
-        subscription.days_utc = Subscription::DAYS.dup
+        subscription.user_timezone = last_timezone || 'UTC'
+        subscription.days_utc = Date::ABBR_DAYNAMES.dup
+        subscription.hours_utc = [12]
       end
   end
 
   # Only allow a trusted parameter "white list" through.
   def subscription_params
-    params.require(:subscription).permit(:active, :main_language, other_languages: [], days_utc: [], hours_utc: [])
+    params.require(:subscription).permit(:active, :main_language, :user_timezone, :hour, other_languages: [], days: [])
   end
 end
