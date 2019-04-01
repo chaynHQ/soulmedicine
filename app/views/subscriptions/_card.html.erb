@@ -31,9 +31,11 @@
         <%= t('concepts.schedule').capitalize %>:
       </span>
       <br />
-      <%= subscription.days_utc.to_sentence %>
+      <%= ActiveSupport::TimeZone[subscription.user_timezone].to_s %>
       <br />
-      <%= subscription.hours_utc.map(&method(:subscription_format_hour_slot)).to_sentence %>
+      <%= subscription.days.to_sentence %>
+      <br />
+      <%= subscription_format_hour_slot subscription.hour %>
     </p>
 
     <div class="card-text mb-3">

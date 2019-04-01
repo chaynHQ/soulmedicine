@@ -21,8 +21,18 @@
         </div>
         <div class="card-body">
           <%=
-            form.select :days_utc,
-              Subscription::DAYS,
+            form.time_zone_select :user_timezone,
+              nil,
+              {
+                label: t('.user_timezone_label'),
+                default: 'UTC'
+              },
+              { class: 'selectpicker' }
+          %>
+
+          <%=
+            form.select :days,
+              Date::ABBR_DAYNAMES,
               { label: t('.days_label') },
               {
                 class: 'selectpicker',
@@ -31,16 +41,13 @@
           %>
 
           <%=
-            form.select :hours_utc,
+            form.select :hour,
               subscription_hours_options,
               {
-                label: t('.hours_label'),
-                help: t('.hours_help_text')
+                label: t('.hour_label'),
+                help: t('.hour_help_text')
               },
-              {
-                class: 'selectpicker',
-                multiple: true
-              }
+              { class: 'selectpicker' }
           %>
         </div>
       </div>
