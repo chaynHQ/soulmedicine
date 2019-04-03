@@ -84,6 +84,12 @@
     </div>
   </div>
 
+  <div class="mb-4 px-3 pt-3">
+    <%= form.form_group :disguised, help: t('.disguised_email_text') do %>
+      <%= form.check_box :disguised, label: t('.disguised_email'), custom: :checkbox %>
+    <% end %>
+  </div>
+
   <div class="card bg-light mb-3 px-3 pt-3">
     <%= form.form_group :active, help: t('.make_active_consent_text') do %>
       <%= form.check_box :active, label: t('.make_active'), custom: :checkbox %>
