@@ -22,7 +22,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-select": "^1.13.9",
     "data-confirm-modal": "^1.6.2",
-    "firebase": "^5.8.1",
+    "firebase": "^5.9.2",
     "firebaseui": "^3.5.2",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7",
