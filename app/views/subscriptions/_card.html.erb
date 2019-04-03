@@ -38,6 +38,16 @@
       <%= subscription_format_hour_slot subscription.hour %>
     </p>
 
+    <p class="card-text">
+      <span class="text-muted">
+        <%= t('.disguised_email_title') %>
+      </span>
+      <br />
+      <span>
+        <%= humanize_boolean(subscription.disguised).capitalize %>
+      </span>
+    </p>
+
     <div class="card-text mb-3">
       <div class="text-muted">
         <%= t('phrases.progress').capitalize %>:

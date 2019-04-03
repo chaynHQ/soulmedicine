@@ -151,7 +151,8 @@ RSpec.describe SubscriptionsProcessorService, type: :service do
                 user: subscription.user,
                 course: subscription.course,
                 lesson: lesson,
-                languages: [subscription.main_language] + subscription.other_languages
+                languages: [subscription.main_language] + subscription.other_languages,
+                disguised: subscription.disguised
               )
               .and_return(email)
             expect(email).to receive(:deliver_now)

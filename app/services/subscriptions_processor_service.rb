@@ -72,7 +72,8 @@ class SubscriptionsProcessorService
       user: subscription.user,
       course: subscription.course,
       lesson: lesson,
-      languages: languages
+      languages: languages,
+      disguised: subscription.disguised
     ).deliver_now
 
     subscription.update!(
