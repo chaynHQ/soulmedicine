@@ -28,9 +28,9 @@
     "popper.js": "^1.14.7",
     "rails-ujs": "^5.2.3",
     "turbolinks": "^5.2.0",
-    "vue": "^2.5.22",
+    "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
-    "vue-template-compiler": "^2.5.22",
+    "vue-template-compiler": "^2.6.10",
     "vue-turbolinks": "^2.0.4",
     "webpack": "^4.29.6",
     "yarn": "^1.13.0"
