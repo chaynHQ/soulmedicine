@@ -30,7 +30,7 @@ class SubscriptionsController < ApplicationController
     @subscription.hours_utc = [utc_schedule[:hour]]
 
     if @subscription.update(params.except(:days, :hour))
-      redirect_to course_path(@subscription.course), notice: 'Subscription was successfully updated.'
+      redirect_to subscriptions_path, notice: 'Subscription was successfully updated.'
     else
       render :show # We expect the `show` view to render the form
     end
@@ -96,6 +96,6 @@ class SubscriptionsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def subscription_params
-    params.require(:subscription).permit(:active, :main_language, :user_timezone, :hour, other_languages: [], days: [])
+    params.require(:subscription).permit(:active, :main_language, :user_timezone, :hour, :disguised, other_languages: [], days: [])
   end
 end

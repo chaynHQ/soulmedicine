@@ -40,4 +40,12 @@ module ApplicationHelper
   def text_direction
     rtl? ? 'rtl' : 'ltr'
   end
+
+  def humanize_boolean(value)
+    if value
+      t('phrases.yes')
+    else
+      t('phrases.no')
+    end
+  end
 end
