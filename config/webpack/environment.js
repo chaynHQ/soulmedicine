@@ -1,8 +1,12 @@
 const { environment } = require('@rails/webpacker');
 const webpack = require('webpack');
+
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 const vue = require('./loaders/vue');
 
-environment.loaders.append('vue', vue);
+environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin());
+environment.loaders.prepend('vue', vue);
 
 environment.plugins.append(
   'Provide',
