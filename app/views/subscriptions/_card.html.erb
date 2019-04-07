@@ -20,7 +20,7 @@
     <div class="card-body">
       <p class="card-text">
         <span class="text-muted">
-          <%= t('concepts.language').pluralize.capitalize %>:
+          <%= t('concepts.language').pluralize.capitalize %>
         </span>
         <br />
         <% languages = [subscription.main_language] + subscription.other_languages %>
@@ -29,7 +29,7 @@
 
       <p class="card-text">
         <span class="text-muted">
-          <%= t('concepts.schedule').capitalize %>:
+          <%= t('concepts.schedule').capitalize %>
         </span>
         <br />
         <%= ActiveSupport::TimeZone[subscription.user_timezone].to_s %>
@@ -51,7 +51,7 @@
 
       <div class="card-text mb-3">
         <div class="text-muted">
-          <%= t('phrases.progress').capitalize %>:
+          <%= t('phrases.progress').capitalize %>
         </div>
 
         <% current_lesson_count = subscription.lessons_delivered.size %>
