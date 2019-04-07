@@ -39,7 +39,7 @@ en:
       title: My Subscriptions
       no_subscriptions_html: "You don't have any subscriptions to pathways at the moment. Why not browse the available %{pathways_link} and subscribe to one."
     card:
-      disguised_email_title: Safe email subject lines?
+      disguised_email_title: Safe email subject lines
       no_lessons_sent: No notes sent to you yet
       all_lessons_sent: Congrats! You have received all the latest notes from this pathway
       lessons_sent: "%{current} out of %{total} notes sent so far"

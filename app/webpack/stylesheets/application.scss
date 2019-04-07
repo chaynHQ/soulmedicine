@@ -36,6 +36,10 @@ h1, h2, h3, h4, h5, h6 {
 .rtl {
   @extend .text-right;
 
+  .float-right {
+    float: left !important;
+  }
+
   ul,
   ul#{&} {
     padding-inline-start: 0;
