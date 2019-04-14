@@ -18,11 +18,12 @@ class AuthController < ApplicationController
 
   def accept_policy
     return unless current_user?
+
     acceptance = params.require(:policy_accepted)
 
     user = current_user
     user.policy_accepted = acceptance
-    user.save()
+    user.save
     render json: user.policy_accepted
   end
 
