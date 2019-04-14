@@ -29,6 +29,10 @@ module ApplicationHelper
     end
   end
 
+  def header_nav_separator
+    tag.li ' ', class: 'nav-item nav-link'
+  end
+
   def icon(name, size: '1x')
     tag.i '', class: "fas fa-#{name} fa-#{size}"
   end

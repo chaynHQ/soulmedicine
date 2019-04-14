@@ -9,11 +9,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav ml-auto">
+      <ul class="nav navbar-nav navbar-right ml-auto">
         <%= header_nav_item t('site-header.home'), root_path, alternate_path: '/' %>
         <%= header_nav_item t('concepts.course').pluralize.titleize, courses_path %>
+        <%= header_nav_item t('site-header.about-us'), page_path('about-us') %>
 
-      <ul class="nav navbar-nav navbar-right">
+        <%= header_nav_separator %>
+
         <% if current_user? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,6 +29,9 @@
         <% else %>
           <%= header_nav_item t('site-header.sign-in'), auth_sign_in_path, icon_name: 'sign-in-alt' %>
         <% end %>
+
+        <%= header_nav_separator %>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarLangSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= LocalesService.language_name(LocalesService.current) %>
