@@ -48,6 +48,7 @@ module Authentication
       display_name
       email
       email_verified
+      policy_accepted
     ].freeze
 
     def sign_in_with_token(token)
@@ -56,10 +57,13 @@ module Authentication
       user = create_or_fetch_authed_user payload
 
       # Only actually sign user in if email is verified
-      if user.email_verified
+      if !user.policy_accepted
+        session[:user] = user.id
+      elsif user.email_verified
         session[:user] = user.id
         flash[:notice] = 'You are now signed in'
       else
+        session[:user] = nil
         flash[:alert] = 'Cannot sign you in just yet - please verify your account by clicking on the link in the verification email sent to you'
       end
 

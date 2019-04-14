@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     get  'auth/sign_in'
     post 'auth/callback'
+    post 'auth/accept_policy'
     get  'auth/sign_out'
 
     resources :subscriptions, only: %i[index]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_014059) do
+ActiveRecord::Schema.define(version: 2019_03_20_203256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_014059) do
     t.datetime "last_seen_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "policy_accepted", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["firebase_id"], name: "index_users_on_firebase_id", unique: true
   end
