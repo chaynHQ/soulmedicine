@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     resources :subscriptions, only: %i[index]
 
+    resources :pages, only: %i[show]
     root to: 'pages#landing'
   end
 
