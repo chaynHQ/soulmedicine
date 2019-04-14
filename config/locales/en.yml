@@ -20,9 +20,13 @@ en:
     errors_alert: "Please fix the issues below:"
   site-header:
     home: Home
+    about-us: About Us
     subscriptions: My Subscriptions
     sign-in: Create Account / Sign In
     sign-out: Sign Out
+  site-footer:
+    privacy-policy: Privacy Policy
+    terms-of-service: Terms of Service
   courses:
     index:
       no_courses: No pathways available in your selected language
