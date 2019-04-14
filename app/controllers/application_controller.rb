@@ -29,4 +29,9 @@ class ApplicationController < ActionController::Base
     CoursesService.new(STORYBLOK_CLIENT)
   end
   memoize :courses_service
+
+  def pages_service
+    PagesService.new(STORYBLOK_CLIENT)
+  end
+  memoize :pages_service
 end
