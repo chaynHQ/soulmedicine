@@ -126,7 +126,7 @@ RSpec.describe 'Authentication Concern', type: :controller do
             expect(result[:user]['id']).not_to be_nil
             expect(result[:user]).to include(expected_result_user)
             expect(@controller.session[:user]).not_to be_nil
-            result = @controller.accept_user_policy()
+            result = @controller.accept_user_policy
             expect(result).not_to be_nil
             expect(@controller.session[:user]).not_to be_nil
           end
@@ -134,7 +134,7 @@ RSpec.describe 'Authentication Concern', type: :controller do
         context 'when email is not verified' do
           it 'doesn\'t sign the user in and sets an alert flash' do
             @controller.sign_in_with_token(token)
-            @controller.accept_user_policy()
+            @controller.accept_user_policy
             result = @controller.sign_in_with_token(token)
             expect(result[:user]['id']).not_to be_nil
             expect(result[:user]).to include(expected_result_user)

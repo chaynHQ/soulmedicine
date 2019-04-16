@@ -18,9 +18,8 @@ class AuthController < ApplicationController
 
   def accept_policy
     return unless current_user?
-    acceptance = params.require(:policy_accepted)
 
-    puts acceptance
+    params.require(:policy_accepted)
 
     result = accept_user_policy
 

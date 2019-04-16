@@ -75,10 +75,11 @@ module Authentication
 
     def accept_user_policy
       return unless current_user?
+
       user = current_user
       user.policy_accepted = true
       user.save
-      
+
       {
         policy_accepted: user.policy_accepted
       }
