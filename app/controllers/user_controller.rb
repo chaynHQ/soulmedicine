@@ -4,7 +4,8 @@ class UserController < ApplicationController
   def index; end
 
   def update
-    @user = User.find(params[:id])
+    return unless current_user?
+    @user = current_user
     if @user.update(user_params)
       flash[:success] = 'Your profile has been updated'
       render json: @user.to_json
