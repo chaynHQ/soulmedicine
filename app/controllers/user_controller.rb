@@ -5,6 +5,7 @@ class UserController < ApplicationController
 
   def update
     return unless current_user?
+
     @user = current_user
     if @user.update(user_params)
       flash[:success] = 'Your profile has been updated'
