@@ -23,6 +23,7 @@ gem 'default_value_for', '~> 3.1'
 gem 'bootstrap_form', '~> 4.2'
 gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'sidekiq-history', '~> 0.0.11'
+gem 'rollbar', '~> 2.19', '>= 2.19.3'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
