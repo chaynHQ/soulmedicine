@@ -66,8 +66,8 @@
               </div>
             </div>
             <div class="col col-md-12">
-              <div class="mb-5">
-                <p class="font-weight-bold text-uppercase">
+              <div class="mb-4">
+                <p class="font-weight-bold text-uppercase mb-2">
                   <%= t('concepts.language').pluralize.titleize %>
                 </p>
                 <ul class="list-unstyled <%= text_direction %>">
@@ -77,6 +77,14 @@
                     </li>
                   <% end %>
                 </ul>
+              </div>
+              <div class="mb-4">
+                <p class="font-weight-bold text-uppercase mb-2">
+                  <%= t('concepts.lesson').pluralize.titleize %>
+                </p>
+                <p>
+                  <%= @course.lessons.size %>
+                </p>
               </div>
             </div>
           </div>
