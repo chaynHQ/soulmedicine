@@ -1,10 +1,4 @@
 class LessonMailer < ApplicationMailer
-  DISGUISED_SUBJECT_LINES = [
-    'Horoscope Reminder',
-    'Funniest Videos',
-    'News and Weather'
-  ].freeze
-
   helper :application
 
   def lesson_email(user:, course:, lesson:, languages:, disguised:)
@@ -16,7 +10,7 @@ class LessonMailer < ApplicationMailer
     @languages = (LocalesService.enabled & languages.map(&:to_sym))
 
     subject = if disguised
-                DISGUISED_SUBJECT_LINES.sample
+                disguised_subject_line
               else
                 lesson.name
               end
@@ -24,5 +18,15 @@ class LessonMailer < ApplicationMailer
     LocalesService.with(@languages.first) do
       mail(to: email_with_name, subject: subject)
     end
+  end
+
+  private
+
+  def disguised_subject_line
+    SettingsService
+      .new(STORYBLOK_CLIENT)
+      .get
+      .disguised_subject_lines
+      .sample
   end
 end
