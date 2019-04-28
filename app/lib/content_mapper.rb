@@ -68,13 +68,19 @@ module ContentMapper
     def apply_mapper(value, mapper)
       return value if value.blank? || mapper.nil?
 
-      case value
-      when Array
-        value.map { |v| mapper.map_from v }
-      when Hash
-        mapper.map_from value
+      # If the `mapper` is a Proc or lambda, then use that directly,
+      # otherwise assume that it's another ContentMapper.
+      if mapper.respond_to? :call
+        mapper.call value
       else
-        raise "[Mapper] only Array and Hash values can be further mapped - got #{value.class.name}"
+        case value
+        when Array
+          value.map { |v| mapper.map_from v }
+        when Hash
+          mapper.map_from value
+        else
+          raise "[Mapper] only Array and Hash values can be further mapped with another ContentMapper - got #{value.class.name}"
+        end
       end
     end
     protected :apply_mapper
