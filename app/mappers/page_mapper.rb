@@ -4,5 +4,5 @@ class PageMapper
   key :slug, from: 'slug'
   key :uuid, from: 'uuid'
 
-  key :content_html, from: %w[content content_html]
+  key :content_html, from: %w[content content_html code]
 end
