@@ -71,52 +71,82 @@ RSpec.describe ContentMapper do
     end
 
     context 'key with a `mapper` specified' do
-      let :mapper_class do
-        Class.new do
-          include ContentMapper
-          key :bar, from: %w[b c]
+      context 'with a Proc or lambda mapper' do
+        let :mapper do
+          lambda do |value|
+            value + ' world'
+          end
         end
-      end
 
-      before do
-        subject.send :key, :foo, from: ['a'], mapper: mapper_class
-      end
+        before do
+          subject.send :key, :foo, from: ['a'], mapper: mapper
+        end
 
-      context 'when the value from the source hash is an Array' do
         let :source do
           {
-            'a' => [
-              { 'b' => { 'c' => 1 } },
-              { 'b' => { 'c' => 2 } }
-            ]
+            'a' => 'hello'
           }
         end
 
         let :result do
           {
-            foo: [
-              { bar: 1 },
-              { bar: 2 }
-            ]
+            foo: 'hello world'
           }
-        end
-
-        it 'uses the specified mapper to process the values' do
-          expect(subject.map_from(source)).to eq result
-        end
-      end
-
-      context 'when the value from the source hash is a Hash' do
-        let :source do
-          { 'a' => { 'b' => { 'c' => 1 } } }
-        end
-
-        let :result do
-          { foo: { bar: 1 } }
         end
 
         it 'uses the specified mapper to process the value' do
           expect(subject.map_from(source)).to eq result
+        end
+      end
+
+      context 'with another Content Mapper' do
+        let :mapper_class do
+          Class.new do
+            include ContentMapper
+            key :bar, from: %w[b c]
+          end
+        end
+
+        before do
+          subject.send :key, :foo, from: ['a'], mapper: mapper_class
+        end
+
+        context 'when the value from the source hash is an Array' do
+          let :source do
+            {
+              'a' => [
+                { 'b' => { 'c' => 1 } },
+                { 'b' => { 'c' => 2 } }
+              ]
+            }
+          end
+
+          let :result do
+            {
+              foo: [
+                { bar: 1 },
+                { bar: 2 }
+              ]
+            }
+          end
+
+          it 'uses the specified mapper to process the values' do
+            expect(subject.map_from(source)).to eq result
+          end
+        end
+
+        context 'when the value from the source hash is a Hash' do
+          let :source do
+            { 'a' => { 'b' => { 'c' => 1 } } }
+          end
+
+          let :result do
+            { foo: { bar: 1 } }
+          end
+
+          it 'uses the specified mapper to process the value' do
+            expect(subject.map_from(source)).to eq result
+          end
         end
       end
     end

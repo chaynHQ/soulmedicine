@@ -4,12 +4,14 @@ class LessonMailerPreview < ActionMailer::Preview
     course = CoursesService.new(STORYBLOK_CLIENT).get params[:course]
     lesson = course.lessons[params[:lesson_no].to_i - 1]
     languages = params[:languages].split(',')
+    disguised = params[:disguised] == 'true'
 
     LessonMailer.lesson_email(
       user: User.first,
       course: course,
       lesson: lesson,
-      languages: languages
+      languages: languages,
+      disguised: disguised
     )
   end
 end
