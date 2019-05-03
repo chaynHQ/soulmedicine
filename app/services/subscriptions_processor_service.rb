@@ -82,8 +82,8 @@ class SubscriptionsProcessorService
     )
 
     true
-  rescue StandardError => ex
-    error_serialised = "[#{ex.class.name}] #{ex.message} - #{ex.backtrace.join(' | ')}"
+  rescue StandardError => e
+    error_serialised = "[#{e.class.name}] #{e.message} - #{e.backtrace.join(' | ')}"
 
     Rails.logger.error [
       "Failed to deliver subscription #{subscription.id}",
