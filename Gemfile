@@ -19,7 +19,6 @@ gem 'jwt', '~> 2.1.0'
 gem 'turbolinks', '~> 5.2'
 gem 'memoist', '~> 0.16.0'
 gem 'http', '~> 4.0', '>= 4.0.5'
-gem 'i18n-js', '~>3.2.1'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

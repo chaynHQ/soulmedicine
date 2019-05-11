@@ -143,62 +143,31 @@ export default {
   },
   computed: {
     authenticateMessage() {
-      return window.I18n.t('profile.authenticate-again', {
-        defaultValue: 'Please authenticate again'
-      });
+      return 'Please sign in again to modify your profile';
     },
     pageHeader() {
-      return this.currentUser
-        ? window.I18n.t('profile.page-header', {
-            name: this.currentUser.displayName
-          })
-        : false;
+      return `Hi there, ${this.currentUser.displayName}`;
     },
     displayNameI18n() {
-      return this.currentUser
-        ? window.I18n.t('profile.form.display-name', {
-            defaultValue: 'Display Name'
-          })
-        : false;
+      return 'Display Name';
     },
     emailI18n() {
-      return this.currentUser
-        ? window.I18n.t('profile.form.email', {
-            defaultValue: 'Email'
-          })
-        : false;
+      return 'Email';
     },
     emailHelpI18n() {
-      return this.currentUser
-        ? window.I18n.t('profile.form.email-help', {
-            defaultValue:
-              'You will be logged out and will need to re-verify your new email '
-          })
-        : false;
+      return 'You will be logged out and will need to re-verify your new email address';
     },
     updateI18n() {
-      return this.currentUser
-        ? window.I18n.t('profile.form.update', {
-            defaultValue: 'Update'
-          })
-        : false;
+      return 'Update';
     },
     profileI18n() {
       return this.currentUser
         ? {
-            title: window.I18n.t('profile.delete-user.title', {
-              defaultValue: 'Delete Your Account?'
-            }),
-            subtitle: window.I18n.t('profile.delete-user.subtitle', {
-              defaultValue: "We're sorry to see you go"
-            }),
-            text: window.I18n.t('profile.delete-user.text', {
-              defaultValue:
-                'Account deletion is final, with restoration not possible.'
-            }),
-            link: window.I18n.t('profile.delete-user.link', {
-              defaultValue: 'Request account deletion'
-            })
+            title: 'Delete Your Account?',
+            subtitle: "We're sorry to see you go",
+            text:
+              'Account deletion is final, with restoration not possible. In order to comply with local and international regulations, it may take up to two weeks for your account to be entirely removed from our systems.',
+            link: 'Request account deletion'
           }
         : false;
     },
