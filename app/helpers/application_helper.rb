@@ -1,6 +1,36 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def google_analytics
+    return if Rails.application.config.google_analytics_id.blank?
+
+    analytics_id = Rails.application.config.google_analytics_id
+
+    safe_join(
+      [
+        raw( # rubocop:disable Rails/OutputSafety
+          <<-GA
+          <script async src="https://www.googletagmanager.com/gtag/js?id=#{analytics_id}"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '#{analytics_id}');
+
+            document.addEventListener('turbolinks:load', event => {
+              if (typeof gtag === 'function') {
+                gtag('config', '#{analytics_id}', {
+                  'page_location': event.data.url
+                });
+              }
+            });
+          </script>
+          GA
+        )
+      ]
+    )
+  end
+
   def title(page_title)
     content_for(:title) { page_title }
   end
@@ -29,6 +59,14 @@ module ApplicationHelper
     end
   end
 
+  def header_nav_separator
+    tag.li ' ', class: 'nav-item nav-link'
+  end
+
+  def icon(name, size: '1x')
+    tag.i '', class: "fas fa-#{name} fa-#{size}"
+  end
+
   def rtl?
     LocalesService.current_rtl?
   end
@@ -37,7 +75,11 @@ module ApplicationHelper
     rtl? ? 'rtl' : 'ltr'
   end
 
-  def icon(name, size: '1x')
-    tag.i '', class: "fas fa-#{name} fa-#{size}"
+  def humanize_boolean(value)
+    if value
+      t('phrases.yes')
+    else
+      t('phrases.no')
+    end
   end
 end

@@ -9,5 +9,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = courses_service.get params[:id]
+
+    @subscription = (current_user.subscriptions.find_by(course_slug: @course.slug) if current_user?)
   end
 end

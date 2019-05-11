@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  extend Memoist
+
   include ErrorHandlers
   include Authentication
 
@@ -24,6 +26,12 @@ class ApplicationController < ActionController::Base
   end
 
   def courses_service
-    @courses_service ||= CoursesService.new(STORYBLOK_CLIENT)
+    CoursesService.new(STORYBLOK_CLIENT)
   end
+  memoize :courses_service
+
+  def pages_service
+    PagesService.new(STORYBLOK_CLIENT)
+  end
+  memoize :pages_service
 end
