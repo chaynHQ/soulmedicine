@@ -16,17 +16,3 @@ en:
     shared:
       unavailable: This pathway is not available in the selected language
       other: See other available languages for this pathway
-  profile:
-    authenticate-again: Please sign in again to modify your profile
-    page-header: Hi there, %{name}
-    form:
-      display-name: Display Name
-      email: Email
-      email-help: You will be logged out and will need to re-verify your new email address
-      email: Email
-      update: Update
-    delete-user:
-      title: Delete Your Account?
-      subtitle: We're sorry to see you go
-      text: Account deletion is final, with restoration not possible. In order to comply with local and international regulations, it may take up to two weeks for your account to be entirely removed from our systems.
-      link: Request account deletion
