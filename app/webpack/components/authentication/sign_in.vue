@@ -54,10 +54,17 @@
         <div class="firebaseui-card-actions">
           <div class="firebaseui-form-actions">
             <button
+              class="mdl-button mdl-js-button"
+              @click="handlePrivacyPolicyReject"
+            >
+              I don't accept
+            </button>
+            <button
+              type="submit"
               class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
               data-upgraded=",MaterialButton"
             >
-              Finish Sign In
+              Accept and sign in
             </button>
           </div>
         </div>
@@ -127,8 +134,8 @@ export default {
           return false;
         }
       },
-      tosUrl: '/terms-of-service',
-      privacyPolicyUrl: '/privacy-policy'
+      tosUrl: '/pages/terms-of-service',
+      privacyPolicyUrl: '/pages/privacy-policy'
     };
     this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
   },
@@ -167,6 +174,21 @@ export default {
 
         return this.afterServerSignIn(data.forwarding_url);
       });
+    },
+    handlePrivacyPolicyReject() {
+      const user = firebase.auth().currentUser;
+      return firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          Turbolinks.clearCache();
+          Turbolinks.visit('/auth/sign_out');
+          window.open(
+            `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${
+              user.displayName
+            } (email address: ${user.email})`
+          );
+        });
     },
     handlePrivacyPolicySubmit() {
       return Axios.post(
