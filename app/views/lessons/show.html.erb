@@ -1,6 +1,7 @@
 <%= render "courses/check_available", course: @course do %>
   <%
-   title @lesson.name + ' | ' + @course.name
+    title @lesson.name + ' | ' + @course.name
+    description @lesson.content
   %>
 
   <nav aria-label="breadcrumb" class="mb-4 <%= text_direction %>" dir="<%= text_direction %>">

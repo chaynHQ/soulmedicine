@@ -1,3 +1,8 @@
+<%
+  title @page.title
+  description @page.description if @page.description.present?
+%>
+
 <%= tag.section id: "page-#{@page.slug}" do %>
   <%= raw @page.content_html %>
 <% end %>
