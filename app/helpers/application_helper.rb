@@ -31,10 +31,6 @@ module ApplicationHelper
     )
   end
 
-  def title(page_title)
-    content_for(:title) { page_title }
-  end
-
   def params_with_locale(locale)
     request.params.dup.merge(locale: locale)
   end
