@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     post 'auth/callback'
     get  'auth/sign_out'
 
-    resources :user, only: %i[index update destroy], path: 'profile'
+    resource :profile, only: %i[show update destroy]
 
     resources :subscriptions, only: %i[index]
 

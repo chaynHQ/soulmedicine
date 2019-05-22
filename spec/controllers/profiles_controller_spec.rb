@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe UserController, type: :controller do
-  describe 'GET #index' do
+RSpec.describe ProfilesController, type: :controller do
+  describe 'GET #show' do
     before do
       @controller.class.send :before_action, :require_authentication
 
@@ -16,7 +16,7 @@ RSpec.describe UserController, type: :controller do
       end
 
       it 'renders the page as expected' do
-        get :index
+        get :show
         expect(response).to have_http_status(:success)
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe UserController, type: :controller do
       end
 
       it 'redirects to the sign in page and sets a forwarding_url' do
-        get :index
+        get :show
         expect(response).to redirect_to auth_sign_in_path
         expect(session[:forwarding_url]).not_to be_nil
       end
