@@ -21,7 +21,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right <%= text_direction %>" dir="<%= text_direction %>" aria-labelledby="navbarUserDropdown">
               <%= link_to t('site-header.subscriptions'), subscriptions_path, class: 'dropdown-item' %>
-              <%= link_to t('site-header.profile'), user_index_path, class: 'dropdown-item' %>
+              <%= link_to t('site-header.profile'), profile_path, class: 'dropdown-item' %>
               <%= link_to t('site-header.sign-out'), auth_sign_out_path, class: 'dropdown-item' %>
             </div>
           </li>
