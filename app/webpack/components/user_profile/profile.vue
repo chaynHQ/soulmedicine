@@ -124,11 +124,6 @@ export default {
     projectId: {
       type: String,
       required: true
-    },
-    dbUserId: {
-      type: String,
-      required: false,
-      default: ''
     }
   },
   data() {
