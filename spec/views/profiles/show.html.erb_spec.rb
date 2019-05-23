@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'profile/index.html.erb', type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe 'profiles/show.html.erb', type: :view do
+  it "renders with vue component" do
+    render
+
+    expect(rendered).to match /profile/
+  end
 end
