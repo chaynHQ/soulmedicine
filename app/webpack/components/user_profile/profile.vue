@@ -20,7 +20,7 @@
       <sign-in
         :api-key="apiKey"
         :project-id="projectId"
-        :sign-out-after-sever-sign-in="false"
+        :sign-out-after-server-sign-in="false"
         @ServerSignedIn="onServerSignedIn"
       ></sign-in>
     </div>
@@ -229,7 +229,7 @@ export default {
     },
     sendUpdate(data) {
       const vm = this;
-      return Axios.put(`/profile/${vm.dbUserId}`, data, {
+      return Axios.put('/profile', data, {
         headers: { 'X-CSRF-TOKEN': this.csrf_token }
       })
         .then(response => {
