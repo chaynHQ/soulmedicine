@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :courses, only: %i[index show], path: 'pathways' do
       resources :lessons, only: %i[show], path: 'notes'
 
-      resource :subscription, only: %i[show update] do
+      resource :subscription, only: %i[show update destroy] do
         patch :pause
         patch :unpause
         get '/unsubscribe/:user_id', action: :unsubscribe, as: 'unsubscribe'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     post 'auth/callback'
     get  'auth/sign_out'
 
-    resource :profile, only: %i[show update destroy]
+    resource :profile, only: %i[show update]
 
     resources :subscriptions, only: %i[index]
 
