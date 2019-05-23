@@ -1,0 +1,22 @@
+<%= @lesson.name %>
+
+<<%= course_lesson_url(@languages.first, @course, @lesson) %>>
+
+<% @languages.each do |l| %>
+<% LocalesService.with(l) do %>
+<% if @lesson.content.present? %>
+<%= strip_tags(@lesson.content).gsub("\n", "\n\n") %>
+
+---
+
+<% end %>
+<% end %>
+<% end %>
+
+Unsubscribe (pause emails for this pathway):
+<<%=
+  unsubscribe_course_subscription_url(
+    course_id: @course.to_param,
+    user_id: @user.to_sgid_param(for: :unsubscribe_course)
+  )
+-%>>

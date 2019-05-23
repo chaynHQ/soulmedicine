@@ -1,3 +1,5 @@
+require: rubocop-performance
+
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
@@ -12,6 +14,9 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
+Layout/AlignArguments:
+  Enabled: false
+
 Layout/AlignParameters:
   Enabled: false
 
@@ -19,7 +24,7 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 40
 
 Metrics/BlockLength:
   Exclude:
@@ -34,7 +39,7 @@ Metrics/LineLength:
   Max: 150
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 30
   Exclude:
     - "db/migrate/*"
     - "spec/**/*"

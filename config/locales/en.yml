@@ -3,16 +3,70 @@ en:
     course: pathway
     lesson: note
     language: language
+    subscription: subscription
+    schedule: schedule
+  phrases:
+    'yes': 'yes'
+    'no': 'no'
+    none: none
+    edit: edit
+    active: active
+    paused: paused
+    pause: pause
+    unpause: activate
+    unsubscribe: unsubscribe
+    progress: progress
+  forms:
+    errors_alert: "Please fix the issues below:"
   site-header:
     home: Home
+    about-us: About Us
     subscriptions: My Subscriptions
     profile: My Profile
     sign-in: Create Account / Sign In
     sign-out: Sign Out
+  site-footer:
+    privacy-policy: Privacy Policy
+    terms-of-service: Terms of Service
   courses:
     index:
       no_courses: No pathways available in your selected language
       other: In other languages
+    show:
+      active_subscription: "You have an active subscription for this pathway"
+      paused_subscription: "You have a paused subscription for this pathway"
+      subscribe: Subscribe for free
     shared:
       unavailable: This pathway is not available in the selected language
       other: See other available languages for this pathway
+  subscriptions:
+    index:
+      title: My Subscriptions
+      no_subscriptions_html: "You don't have any subscriptions to pathways at the moment. Why not browse the available %{pathways_link} and subscribe to one."
+    card:
+      disguised_email_title: Safe email subject lines
+      no_lessons_sent: No notes sent to you yet
+      all_lessons_sent: Congrats! You have received all the latest notes from this pathway
+      lessons_sent: "%{current} out of %{total} notes sent so far"
+      last_delivery: "Last note was sent to you %{delivery_time_ago} ago"
+    show:
+      title: "Join the %{course_name} path"
+      title_html: "Join the %{course_link} path"
+    form:
+      explanation: "Make the path work for you! Now it’s the time to customize the schedule to receive your note, the languages you want to read it in and if you don’t want anyone to find out, you can also choose to have a disguised subject line."
+      schedule_section: Choose the schedule
+      languages_section: Choose the language(s)
+      user_timezone_label: "Your timezone:"
+      days_label: "Set the best days for you (one or more):"
+      hour_label: "Set the best time slot for you:"
+      hour_help_text: "We cannot guarantee this time slot but will do our best"
+      main_language_label: "Main language"
+      other_languages_label: "Others (optional):"
+      disguised_email: Would you prefer to have your emails sent with our safe subject lines?
+      disguised_email_text: We recognise that many survivors are still living in abusive homes and their email may be watched. This feature allows us to send you masked emails by using misleading subject lines such as "Horoscope Reminder".
+      make_active: Make this subscription active?
+      make_active_consent_text: By accepting you agree to receive content for this pathway.
+      submit_button: "Let's go!"
+    shared:
+      unsubscribe_confirm_title: "Cancel subscription for: %{course_name}"
+      unsubscribe_confirm_text: "Are you sure you want to cancel this subscription? You can still subscribe again later, but your progress will be lost."

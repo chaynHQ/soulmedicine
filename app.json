@@ -4,7 +4,13 @@
     "postdeploy": "rake postdeploy"
   },
   "env": {
+    "ADMIN_BASIC_AUTH": {
+      "required": true
+    },
     "CONTENT_PREVIEW_MODE": {
+      "required": true
+    },
+    "EMAIL_FROM_ADDRESS": {
       "required": true
     },
     "ENABLED_LOCALES": {
@@ -16,7 +22,22 @@
     "FIREBASE_PROJECT_ID": {
       "required": true
     },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
     "LANG": {
+      "required": true
+    },
+    "MAILGUN_SMTP_LOGIN": {
+      "required": true
+    },
+    "MAILGUN_SMTP_PASSWORD": {
+      "required": true
+    },
+    "MAILGUN_SMTP_PORT": {
+      "required": true
+    },
+    "MAILGUN_SMTP_SERVER": {
       "required": true
     },
     "RACK_ENV": {
@@ -31,6 +52,9 @@
     "RAILS_SERVE_STATIC_FILES": {
       "required": true
     },
+    "ROLLBAR_ACCESS_TOKEN": {
+      "required": true
+    },
     "SECRET_KEY_BASE": {
       "required": true
     },
@@ -41,10 +65,19 @@
   "formation": {
     "web": {
       "quantity": 1
+    },
+    "worker": {
+      "quantity": 0
     }
   },
   "addons": [
     "heroku-postgresql",
+    "heroku-redis:hobby-dev",
+    {
+      "plan": "heroku-redis:hobby-dev",
+      "as": "REDIS_CACHE"
+    },
+    "mailgun:starter",
     "papertrail:choklad"
   ],
   "buildpacks": [
