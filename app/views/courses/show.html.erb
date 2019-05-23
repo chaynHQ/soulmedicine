@@ -1,6 +1,7 @@
 <%= render "courses/check_available", course: @course do %>
   <%
-   title @course.name
+    title @course.name
+    description @course.description
   %>
 
   <section class="course-page container">
@@ -12,9 +13,30 @@
         </h2>
 
         <div class="mb-5">
-          <a class="btn btn-primary btn-lg shadow" href="#" role="button">
-            Sign up for free
-          </a>
+          <% if @subscription.present? %>
+            <div class="alert alert-info" role="alert">
+              <% if @subscription.active? %>
+                <%= t('courses.show.active_subscription') %>
+              <% else %>
+                <%= t('courses.show.paused_subscription') %>
+              <% end %>
+
+              <%=
+                link_to t('phrases.edit').capitalize,
+                  course_subscription_path(@course),
+                  class: 'ml-3'
+              %>
+            </div>
+          <% else %>
+            <%=
+              link_to(
+                t('courses.show.subscribe'),
+                course_subscription_path(@course),
+                class: 'btn btn-primary btn-lg shadow rounded-pill',
+                role: 'button'
+              )
+            %>
+          <% end %>
         </div>
 
         <div class="course-description">
@@ -41,12 +63,12 @@
           <div class="row">
             <div class="col col-md-12">
               <div class="mb-5">
-                <%= image_tag(asset_pack_path('images/course_icon.svg'), class: 'align-top align-left', style: 'width: 120px;') %>
+                <%= image_tag(asset_pack_path('media/images/course_icon.svg'), class: 'align-top align-left', style: 'width: 120px;') %>
               </div>
             </div>
             <div class="col col-md-12">
-              <div class="mb-5">
-                <p class="font-weight-bold text-uppercase">
+              <div class="mb-4">
+                <p class="font-weight-bold text-uppercase mb-2">
                   <%= t('concepts.language').pluralize.titleize %>
                 </p>
                 <ul class="list-unstyled <%= text_direction %>">
@@ -56,6 +78,14 @@
                     </li>
                   <% end %>
                 </ul>
+              </div>
+              <div class="mb-4">
+                <p class="font-weight-bold text-uppercase mb-2">
+                  <%= t('concepts.lesson').pluralize.titleize %>
+                </p>
+                <p>
+                  <%= @course.lessons.size %>
+                </p>
               </div>
             </div>
           </div>

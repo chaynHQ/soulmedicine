@@ -1,5 +1,9 @@
 <footer class="site-footer">
   <div class="container">
-    © <%= Time.now.year %>, Chayn
+    <span>
+      © <%= Time.now.year %>, Chayn
+    </span>
+    <span class="ml-4"><%= link_to t('site-footer.privacy-policy'), page_path('privacy-policy') %></span>
+    <span class="ml-4"><%= link_to t('site-footer.terms-of-service'), page_path('terms-of-service') %></span>
   </div>
 </footer>

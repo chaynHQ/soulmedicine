@@ -1,0 +1,17 @@
+<%
+  course = @subscription.course
+%>
+
+<%= render "courses/check_available", course: course do %>
+  <%
+    title t('subscriptions.show.title', course_name: tc(course.name))
+  %>
+
+  <section class="subscription-page">
+    <h1>
+      <%= t('subscriptions.show.title_html', course_link: link_to(tc(course.name), course_path(course))) %>
+    </h1>
+
+    <%= render 'form', subscription: @subscription %>
+  </section>
+<% end %>

@@ -5,10 +5,6 @@ RSpec.describe CoursesService, type: :service do
 
   subject { described_class.new storyblok_client }
 
-  def load_json(filename)
-    JSON.parse file_fixture(filename).read
-  end
-
   def mock_courses_list_api(data)
     allow(storyblok_client).to receive(:stories)
       .with(

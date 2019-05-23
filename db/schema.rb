@@ -10,11 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_014059) do
+ActiveRecord::Schema.define(version: 2019_04_03_193852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.string "course_slug", null: false
+    t.boolean "active", default: false, null: false
+    t.string "main_language", null: false
+    t.string "other_languages", default: [], null: false, array: true
+    t.string "delivery_method", null: false
+    t.string "days_utc", default: [], null: false, array: true
+    t.integer "hours_utc", default: [], null: false, array: true
+    t.string "lessons_delivered", default: [], array: true
+    t.datetime "last_delivered_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_timezone", default: "UTC"
+    t.boolean "disguised", default: false
+    t.index ["active"], name: "index_subscriptions_on_active"
+    t.index ["user_id", "course_slug"], name: "index_subscriptions_on_user_id_and_course_slug", unique: true
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "display_name", null: false
@@ -28,4 +48,5 @@ ActiveRecord::Schema.define(version: 2019_01_28_014059) do
     t.index ["firebase_id"], name: "index_users_on_firebase_id", unique: true
   end
 
+  add_foreign_key "subscriptions", "users"
 end

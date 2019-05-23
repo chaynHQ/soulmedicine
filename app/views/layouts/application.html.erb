@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="<%= LocalesService.current %>">
   <head>
-    <title>
-      <%= yield(:title) + ' | ' if content_for?(:title) %>
-      Soul Medicine
-    </title>
+    <%=
+      display_meta_tags(
+        site: 'Soul Medicine',
+        reverse: true,
+        twitter: {
+          card: 'summary',
+          site: '@ChaynHQ',
+          title: :full_title,
+          description:  :description
+        },
+        og: {
+          title: :full_title,
+          site_name: :site,
+          description: :description
+        }
+      )
+    %>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <%= google_analytics %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
