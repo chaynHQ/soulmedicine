@@ -4,18 +4,14 @@ class ProfilesController < ApplicationController
   def show; end
 
   def update
-    return unless current_user?
-
     @user = current_user
     if @user.update(profile_params)
       flash[:success] = 'Your profile has been updated'
-      render json: @user.to_json
+      render json: { msg: 'Your profile has been updated' }
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
-  def destroy; end
 
   private
 
