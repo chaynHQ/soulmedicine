@@ -27,7 +27,7 @@ export default {
       type: String,
       required: true
     },
-    signOutAfterSeverSignIn: {
+    signOutAfterServerSignIn: {
       type: Boolean,
       required: false,
       default: true
@@ -126,7 +126,7 @@ export default {
       });
     },
     afterServerSignIn(forwardingUrl) {
-      if (this.signOutAfterSeverSignIn) {
+      if (this.signOutAfterServerSignIn) {
         return this.firebaseSignOut(forwardingUrl);
       }
       Turbolinks.clearCache();
