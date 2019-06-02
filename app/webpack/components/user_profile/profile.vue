@@ -20,7 +20,7 @@
       <sign-in
         :api-key="apiKey"
         :project-id="projectId"
-        :sign-out-after-server-sign-in="false"
+        :sign-out-firebase-after-server-sign-in="false"
         @ServerSignedIn="onServerSignedIn"
       ></sign-in>
     </div>
