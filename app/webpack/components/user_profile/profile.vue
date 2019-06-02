@@ -175,6 +175,11 @@ export default {
         return true;
       });
   },
+  destroyed() {
+    if (this.onAuthStateChangedSubscription) {
+      this.onAuthStateChangedSubscription();
+    }
+  },
   methods: {
     initializeFirebaseApp() {
       this.firebaseConfig = {
