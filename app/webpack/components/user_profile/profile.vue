@@ -46,7 +46,7 @@
                 id="button-updateDisplay"
                 class="btn btn-secondary"
                 type="button"
-                @click="onUpdateName"
+                @click="updateName"
               >
                 Update
               </button>
@@ -76,7 +76,7 @@
                 id="button-updateEmail"
                 class="btn btn-secondary"
                 type="button"
-                @click="onUpdateEmail"
+                @click="updateEmail"
               >
                 Update
               </button>
@@ -202,7 +202,7 @@ export default {
           Turbolinks.visit(visitLocation);
         });
     },
-    sendUpdate(data) {
+    updateProfileOnServer(data) {
       const vm = this;
       return Axios.put('/profile', data, {
         headers: { 'X-CSRF-TOKEN': this.csrf_token }
@@ -217,7 +217,7 @@ export default {
           vm.loading = false;
         });
     },
-    onUpdateName() {
+    updateName() {
       const user = firebase.auth().currentUser;
       const vm = this;
       this.loading = true;
@@ -226,8 +226,7 @@ export default {
           displayName: this.displayName
         })
         .then(() => {
-          // Update the Rails App
-          vm.sendUpdate({
+          vm.updateProfileOnServer({
             display_name: this.displayName
           });
         })
@@ -235,7 +234,7 @@ export default {
           throw new Error(reason);
         });
     },
-    onUpdateEmail() {
+    updateEmail() {
       const user = firebase.auth().currentUser;
       const vm = this;
       this.loading = true;
@@ -243,7 +242,7 @@ export default {
         .updateEmail(this.userEmail)
         .then(() => {
           // Update the Rails App
-          vm.sendUpdate({
+          vm.updateProfileOnServer({
             email: vm.userEmail,
             email_verified: false
           });
