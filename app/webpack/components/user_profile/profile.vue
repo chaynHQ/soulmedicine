@@ -111,29 +111,22 @@
 </template>
 
 <script>
-import firebase, { initializeApp } from 'firebase/app';
+import firebase from 'firebase/app';
 import Axios from 'axios';
 import Turbolinks from 'turbolinks';
 import SignIn from '../authentication/sign_in';
+
+import csfrTokenMixin from '../mixins/csrfTokenMixin';
+import firebaseAppMixin from '../mixins/firebaseAppMixin';
 
 export default {
   components: {
     SignIn
   },
-  props: {
-    apiKey: {
-      type: String,
-      required: true
-    },
-    projectId: {
-      type: String,
-      required: true
-    }
-  },
+  mixins: [csfrTokenMixin, firebaseAppMixin],
   data() {
     return {
       loading: true,
-      csrf_token: null,
       currentUser: null,
       showSignIn: false,
       displayName: null,
@@ -152,13 +145,6 @@ export default {
     }
   },
   created() {
-    if (!firebase.apps.length) {
-      this.initializeFirebaseApp();
-    }
-    this.csrf_token = document
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute('content');
-
     this.onAuthStateChangedSubscription = firebase
       .auth()
       .onAuthStateChanged(user => {
@@ -181,14 +167,6 @@ export default {
     }
   },
   methods: {
-    initializeFirebaseApp() {
-      this.firebaseConfig = {
-        apiKey: this.apiKey,
-        authDomain: `${this.projectId}.firebaseapp.com`,
-        projectId: this.projectId
-      };
-      initializeApp(this.firebaseConfig);
-    },
     onServerSignedIn() {
       Turbolinks.visit(window.location);
     },

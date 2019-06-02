@@ -10,23 +10,19 @@
 </template>
 
 <script>
-import firebase, { initializeApp } from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import Axios from 'axios';
 import Turbolinks from 'turbolinks';
 
+import csfrTokenMixin from '../mixins/csrfTokenMixin';
+import firebaseAppMixin from '../mixins/firebaseAppMixin';
+
 export default {
+  mixins: [csfrTokenMixin, firebaseAppMixin],
   props: {
-    apiKey: {
-      type: String,
-      required: true
-    },
-    projectId: {
-      type: String,
-      required: true
-    },
     signOutFirebaseAfterServerSignIn: {
       type: Boolean,
       required: false,
@@ -35,22 +31,14 @@ export default {
   },
   data() {
     return {
-      loading: true,
-      csrf_token: null
+      loading: true
     };
   },
   created() {
-    if (!firebase.apps.length) {
-      this.initializeFirebaseApp();
-    }
     this.ui = firebaseui.auth.AuthUI.getInstance();
     if (!this.ui) {
       this.ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
-
-    this.csrf_token = document
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute('content');
 
     this.onAuthStateChangedSubscription = firebase
       .auth()
@@ -96,14 +84,6 @@ export default {
     }
   },
   methods: {
-    initializeFirebaseApp() {
-      this.firebaseConfig = {
-        apiKey: this.apiKey,
-        authDomain: `${this.projectId}.firebaseapp.com`,
-        projectId: this.projectId
-      };
-      initializeApp(this.firebaseConfig);
-    },
     onUiShown() {
       this.loading = false;
     },
