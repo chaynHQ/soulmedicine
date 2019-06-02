@@ -6,7 +6,7 @@
       </div>
     </div>
     <div v-if="showSignIn" id="user-authenticate">
-      <div v-if="showSignIn" class="alert alert-dismissible alert-warning">
+      <div class="alert alert-dismissible alert-warning">
         <button
           type="button"
           class="close"
