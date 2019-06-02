@@ -15,7 +15,7 @@
         >
           &times;
         </button>
-        {{ authenticateMessage }}
+        Please sign in again to modify your profile
       </div>
       <sign-in
         :api-key="apiKey"
@@ -25,10 +25,10 @@
       ></sign-in>
     </div>
     <div v-if="currentUser" id="user-profile-form">
-      <h1>{{ pageHeader }}</h1>
+      <h1>Hi there, {{ currentUser.displayName }}</h1>
       <div class="form-group row">
         <label for="inputDisplayName" class="col-sm-3 col-form-label">
-          {{ displayNameI18n }}
+          Display Name
         </label>
         <div class="col-sm-9">
           <div class="input-group mb-3">
@@ -48,7 +48,7 @@
                 type="button"
                 @click="onUpdateName"
               >
-                {{ updateI18n }}
+                Update
               </button>
             </div>
             <span class="w-100"></span>
@@ -58,7 +58,7 @@
       </div>
       <div class="form-group row">
         <label for="inputEmail" class="col-sm-3 col-form-label">
-          {{ emailI18n }}
+          Email
         </label>
         <div class="col-sm-9">
           <div class="input-group mb-3">
@@ -78,27 +78,31 @@
                 type="button"
                 @click="onUpdateEmail"
               >
-                {{ updateI18n }}
+                Update
               </button>
             </div>
             <span class="w-100"></span>
             <small id="emailHelpBlock" class="form-text text-muted">
-              {{ emailHelpI18n }}
+              You will be logged out and will need to re-verify your new email
+              address
             </small>
           </div>
         </div>
       </div>
       <div class="card bg-light">
         <div class="card-body">
-          <h5 class="card-title">{{ profileI18n.title }}</h5>
+          <h5 class="card-title">Delete Your Account?</h5>
           <h6 class="card-subtitle mb-2 text-muted">
-            {{ profileI18n.subtitle }}
+            We're sorry to see you go
           </h6>
           <p class="card-text">
-            {{ profileI18n.text }}
+            Account deletion is final, with restoration not possible. In order
+            to comply with local and international regulations, it may take up
+            to two weeks for your account to be entirely removed from our
+            systems.
           </p>
           <a :href="deletionMailtoLink" class="card-link">
-            {{ profileI18n.link }}
+            Request account deletion
           </a>
         </div>
       </div>
@@ -137,35 +141,6 @@ export default {
     };
   },
   computed: {
-    authenticateMessage() {
-      return 'Please sign in again to modify your profile';
-    },
-    pageHeader() {
-      return `Hi there, ${this.currentUser.displayName}`;
-    },
-    displayNameI18n() {
-      return 'Display Name';
-    },
-    emailI18n() {
-      return 'Email';
-    },
-    emailHelpI18n() {
-      return 'You will be logged out and will need to re-verify your new email address';
-    },
-    updateI18n() {
-      return 'Update';
-    },
-    profileI18n() {
-      return this.currentUser
-        ? {
-            title: 'Delete Your Account?',
-            subtitle: "We're sorry to see you go",
-            text:
-              'Account deletion is final, with restoration not possible. In order to comply with local and international regulations, it may take up to two weeks for your account to be entirely removed from our systems.',
-            link: 'Request account deletion'
-          }
-        : false;
-    },
     deletionMailtoLink() {
       return this.currentUser
         ? encodeURI(
