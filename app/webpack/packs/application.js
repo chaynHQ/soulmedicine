@@ -18,26 +18,29 @@ Turbolinks.start();
 Vue.use(TurbolinksAdapter);
 
 document.addEventListener('turbolinks:load', () => {
-  const signInEl = document.getElementById('sign_in');
-  const profileEl = document.getElementById('profile');
-  if (signInEl != null) {
-    const app = new Vue({
-      el: signInEl,
-      components: {
-        SignIn
-      },
+  const components = [
+    {
+      element_id: 'sign_in',
+      components: { SignIn },
       data: {}
-    });
-  }
-  if (profileEl != null) {
-    const app = new Vue({
-      el: profileEl,
-      components: {
-        Profile
-      },
+    },
+    {
+      element_id: 'profile',
+      components: { Profile },
       data: {}
-    });
-  }
+    }
+  ];
+
+  components.forEach(e => {
+    const element = document.getElementById(e.element_id);
+    if (element != null) {
+      const app = new Vue({
+        el: element,
+        components: e.components,
+        data: e.data
+      });
+    }
+  });
 });
 
 // Make bootstrap-select work with Turbolinks
