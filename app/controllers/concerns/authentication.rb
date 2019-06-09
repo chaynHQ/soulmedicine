@@ -50,7 +50,7 @@ module Authentication
       email_verified
     ].freeze
 
-    def sign_in_with_token(token)
+    def sign_in_with_token(token, inline_flow: false)
       payload = firebase_auth_service.verify_and_get_token_payload(token)
 
       user = create_or_fetch_authed_user payload
@@ -58,20 +58,30 @@ module Authentication
       # Only actually sign user in if email is verified
       if user.email_verified
         session[:user] = user.id
-        flash[:notice] = 'You are now signed in'
+        flash[:notice] = 'You are now signed in' unless inline_flow
       else
-        flash[:alert] = 'Cannot sign you in just yet - please verify your account by clicking on the link in the verification email sent to you'
+        session[:user] = nil
+        flash[:alert] = [
+          'Thanks for signing up! Now you\'ll need to verify your account',
+          'by clicking on the link in the verification email sent to you.'
+        ].join(' ')
       end
 
       {
+        signed_in: !session[:user].nil?,
         user: user.attributes.slice(*ALLOWED_USER_ATTRIBUTES),
         forwarding_url: session.delete(:forwarding_url) || root_path
       }
     end
 
-    def sign_out_current_user
+    def sign_out_current_user(message = nil)
       session[:user] = nil
-      flash[:notice] = 'You have been signed out'
+
+      flash_message = [
+        'You have been signed out',
+        (". #{message}" if message.present?)
+      ].compact.join(' ')
+      flash[:notice] = flash_message
     end
 
     private
