@@ -137,9 +137,7 @@ export default {
     deletionMailtoLink() {
       return this.currentUser
         ? encodeURI(
-            `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${
-              this.currentUser.displayName
-            } (email address: ${this.currentUser.email})`
+            `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${this.currentUser.displayName} (email address: ${this.currentUser.email})`
           )
         : false;
     }
