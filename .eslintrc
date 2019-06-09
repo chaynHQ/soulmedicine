@@ -13,7 +13,8 @@
   },
 
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-param-reassign": ["error", { "props": false }]
   },
 
   "parserOptions": {

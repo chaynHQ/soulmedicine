@@ -11,13 +11,16 @@ class AuthController < ApplicationController
   def callback
     token = params.require(:firebase_token)
 
-    result = sign_in_with_token token
+    result = sign_in_with_token(
+      token,
+      inline_flow: ActiveRecord::Type::Boolean.new.cast(params[:inline_flow])
+    )
 
     render json: result
   end
 
   def sign_out
-    sign_out_current_user
+    sign_out_current_user params[:message]
 
     redirect_to root_path
   end
