@@ -39,11 +39,11 @@
   <body>
     <%= render 'header' %>
 
-    <main role="main" class="container">
+    <%= tag.main role: 'main', class: main_container_class do %>
       <%= render 'flash' %>
 
       <%= yield %>
-    </main>
+    <% end %>
 
     <%= render 'footer' %>
   </body>
