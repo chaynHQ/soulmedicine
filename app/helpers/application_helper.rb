@@ -34,9 +34,7 @@ module ApplicationHelper
   def main_container_class
     is_root = current_page?(root_path) || current_page?('/')
 
-    return 'p-4' if is_root
-
-    'container'
+    is_root ? 'container-fluid pt-4' : 'container'
   end
 
   def params_with_locale(locale)
