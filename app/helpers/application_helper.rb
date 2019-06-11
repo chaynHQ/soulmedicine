@@ -31,6 +31,14 @@ module ApplicationHelper
     )
   end
 
+  def main_container_class
+    is_root = current_page?(root_path) || current_page?('/')
+
+    return 'p-4' if is_root
+
+    'container'
+  end
+
   def params_with_locale(locale)
     request.params.dup.merge(locale: locale)
   end
