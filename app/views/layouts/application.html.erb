@@ -36,7 +36,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="<%= body_style -%>">
     <%= render 'header' %>
 
     <%= tag.main role: 'main', class: main_container_class do %>
