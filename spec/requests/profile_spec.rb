@@ -16,4 +16,20 @@ RSpec.describe 'Profile', type: :request do
       end
     end
   end
+
+  describe 'update - PUT /profile' do
+    it_behaves_like 'unauthenticated redirects to sign in' do
+      before do
+        put profile_path
+      end
+    end
+
+    it_behaves_like 'authenticated' do
+      it 'updates the current user' do
+        put profile_path, params: { display_name: 'brand new name' }
+        expect(response).to be_successful
+        expect(current_user.reload.display_name).to eq 'brand new name'
+      end
+    end
+  end
 end

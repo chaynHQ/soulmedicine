@@ -1,11 +1,11 @@
 const csrfTokenMixin = {
   data() {
     return {
-      csrf_token: null
+      csrfToken: null
     };
   },
   created() {
-    this.csrf_token = document
+    this.csrfToken = document
       .querySelector('meta[name="csrf-token"]')
       .getAttribute('content');
   }
