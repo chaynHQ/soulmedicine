@@ -226,7 +226,7 @@ export default {
       });
     },
     updateName() {
-      if (!this.displayName) {
+      if (!this.newDisplayName) {
         this.errorMessage = 'Display name cannot be blank';
         return null;
       }
