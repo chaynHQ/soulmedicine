@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     @user = current_user
     if @user.update(profile_params)
       flash[:success] = 'Your profile has been updated'
-      render json: { msg: 'Your profile has been updated' }
+      head :no_content
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -16,6 +16,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.permit(:display_name, :email, :email_verified)
+    params.permit(:display_name, :email)
   end
 end

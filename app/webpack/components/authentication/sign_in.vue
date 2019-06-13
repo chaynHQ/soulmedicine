@@ -19,14 +19,15 @@ import Turbolinks from 'turbolinks';
 
 import csfrTokenMixin from '../mixins/csrfTokenMixin';
 import firebaseAppMixin from '../mixins/firebaseAppMixin';
+import firebaseAuthStateChangedMixin from '../mixins/firebaseAuthStateChangedMixin';
 
 export default {
-  mixins: [csfrTokenMixin, firebaseAppMixin],
+  mixins: [csfrTokenMixin, firebaseAppMixin, firebaseAuthStateChangedMixin],
   props: {
-    signOutFirebaseAfterServerSignIn: {
+    inlineFlow: {
       type: Boolean,
       required: false,
-      default: true
+      default: false
     }
   },
   data() {
@@ -39,24 +40,9 @@ export default {
     if (!this.ui) {
       this.ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
-
-    this.onAuthStateChangedSubscription = firebase
-      .auth()
-      .onAuthStateChanged(user => {
-        if (user) {
-          this.loading = true;
-          return user
-            .getIdToken(true)
-            .then(this.serverSignIn)
-            .finally(() => {
-              this.loading = false;
-            });
-        }
-        return true;
-      });
   },
   mounted() {
-    const $self = this;
+    const vm = this;
     this.uiConfig = {
       signInOptions: [
         {
@@ -67,54 +53,76 @@ export default {
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
         uiShown() {
-          $self.onUiShown();
+          vm.onUiShown();
         },
         signInSuccessWithAuthResult() {
           return false;
         }
       },
-      tosUrl: '/terms-of-service',
-      privacyPolicyUrl: '/privacy-policy'
+      tosUrl: '/pages/terms-of-service',
+      privacyPolicyUrl: '/pages/privacy-policy'
     };
     this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
-  },
-  destroyed() {
-    if (this.onAuthStateChangedSubscription) {
-      this.onAuthStateChangedSubscription();
-    }
   },
   methods: {
     onUiShown() {
       this.loading = false;
     },
+    onAuthStateChanged(user) {
+      const vm = this;
+      if (user) {
+        vm.loading = true;
+        return user
+          .getIdToken(true)
+          .then(this.serverSignIn)
+          .finally(() => {
+            vm.loading = false;
+          });
+      }
+      return true;
+    },
     serverSignIn(idToken) {
       return Axios.post(
         '/auth/callback',
-        { firebase_token: idToken },
-        { headers: { 'X-CSRF-TOKEN': this.csrf_token } }
+        {
+          firebase_token: idToken,
+          inline_flow: this.inlineFlow
+        },
+        { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
       ).then(result => {
-        const { data } = result;
-
-        if (data.user.email_verified === false) {
-          const user = firebase.auth().currentUser;
-          return user
-            .sendEmailVerification()
-            .then(() => this.afterServerSignIn(data.forwarding_url));
-        }
-
-        return this.afterServerSignIn(data.forwarding_url);
+        return this.afterServerSignIn(result.data);
       });
     },
-    afterServerSignIn(forwardingUrl) {
-      if (this.signOutFirebaseAfterServerSignIn) {
-        return this.firebaseSignOut(forwardingUrl);
+    afterServerSignIn(data) {
+      // If the email is not verified, then the server will not have signed in,
+      // and we should sign out of the Firebase Auth session and redirect away.
+      //
+      // Otherwise…
+      //
+      // If we're in an inline flow:
+      // - Keep the Firebase Auth session alive
+      // - Don't redirect at the end
+      //
+      // If we're *not* in an inline flow:
+      // - Sign out of the Firebase Auth session
+      // - Redirect to the forwarding_url (or homepage)
+
+      const vm = this;
+
+      if (data.user.email_verified === false) {
+        const user = firebase.auth().currentUser;
+        return user.sendEmailVerification().then(() => {
+          return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
+        });
       }
-      Turbolinks.clearCache();
-      return this.$emit('ServerSignedIn', { forwarding_url: forwardingUrl });
+
+      if (!this.inlineFlow) {
+        return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
+      }
+
+      return null;
     },
-    firebaseSignOut(forwardingUrl) {
-      // Once we're done with the token, and signed in by the server, we
-      // don't need the Firebase Auth session anymore, so sign that out.
+    clearFirebaseSessionAndRedirect(forwardingUrl) {
       return firebase
         .auth()
         .signOut()
