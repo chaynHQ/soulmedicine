@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def settings
+    SettingsService.new(STORYBLOK_CLIENT).get
+  end
+
   def google_analytics
     return if Rails.application.config.google_analytics_id.blank?
 
@@ -35,6 +39,19 @@ module ApplicationHelper
     is_root = current_page?(root_path) || current_page?('/')
 
     is_root ? 'container-fluid pt-4' : 'container'
+  end
+
+  def body_style
+    is_courses_index = current_page? courses_path
+
+    return '' unless is_courses_index
+
+    image_url = settings.courses_bg_image
+
+    [
+      "background: url('#{image_url}') no-repeat;",
+      'background-size: cover;'
+    ].join('')
   end
 
   def params_with_locale(locale)

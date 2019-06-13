@@ -14,4 +14,6 @@ class SettingsMapper
     from: %w[content disguised_subject_lines],
     mapper: disguised_subject_lines_mapper,
     default: []
+
+  key :courses_bg_image, from: %w[content courses_bg_image]
 end
