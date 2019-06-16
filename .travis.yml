@@ -26,6 +26,8 @@ before_script:
 script:
   - yarn install
   - yarn lint
+  - bin/rails assets:precompile
+  - yarn es-check
   - bundle install -j $(nproc) --path vendor/bundle
   - bundle exec rubocop
   - RAILS_ENV=test bundle exec rake db:schema:load --trace
