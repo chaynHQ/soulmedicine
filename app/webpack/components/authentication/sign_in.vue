@@ -5,7 +5,104 @@
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <div ref="firebaseAuthContainer"></div>
+
+    <div v-if="!loading && !showTermsStep" ref="firebaseAuthContainer"></div>
+
+    <div v-if="!loading && showTermsStep">
+      <div class="mdl-card mdl-shadow--2dp firebaseui-container">
+        <form @submit.prevent="handleTermsAccept">
+          <div class="firebaseui-card-header">
+            <h1 class="firebaseui-title">
+              Notifications and Privacy Policy
+            </h1>
+          </div>
+          <div class="firebaseui-card-content">
+            <div class="firebaseui-relative-wrapper">
+              <div class="mdl-card__supporting-text">
+                We will be emailing you about important system updates and you
+                can choose when else you want to hear from us!
+              </div>
+              <ul class="mdl-list">
+                <li class="mdl-list__item">
+                  Announcements about Soul Medicine
+                </li>
+                <li class="mdl-list__item">
+                  Updates about new courses
+                </li>
+                <li class="mdl-list__item">
+                  Updates on existing courses
+                </li>
+              </ul>
+              <label
+                class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                for="acceptCheckBox"
+              >
+                <input
+                  id="acceptCheckBox"
+                  ref="acceptCheckBox"
+                  type="checkbox"
+                  class="mdl-checkbox__input"
+                  required
+                />
+                <span class="mdl-checkbox__label">
+                  I have read and agree to the
+                  <a :href="privacyPolicyUrl" target="_blank">Privacy Policy</a>
+                  and <a :href="tosUrl" target="_blank">Terms of Service</a>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="firebaseui-card-actions">
+            <div class="firebaseui-form-actions">
+              <button
+                id="acceptButton"
+                ref="acceptButton"
+                type="submit"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                data-upgraded=",MaterialButton"
+              >
+                Accept and sign in
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <p class="mt-3 font-bold" style="font-size: 1.4em; text-align: center;">
+        OR
+      </p>
+
+      <div class="mdl-card mdl-shadow--2dp firebaseui-container">
+        <div class="firebaseui-card-header">
+          <h1 class="firebaseui-title">
+            Reject and don't proceed
+          </h1>
+        </div>
+        <div class="firebaseui-card-content">
+          <div class="firebaseui-relative-wrapper">
+            <div class="mdl-card__supporting-text">
+              You can choose to not proceed and reject the Privacy Policy and
+              Terms of Service.
+              <br />
+              <br />
+              Clicking on the button below will sign you out, and then pop open
+              a window where you can request deletion of your account.
+            </div>
+          </div>
+        </div>
+        <div class="firebaseui-card-actions">
+          <div class="firebaseui-form-actions">
+            <button
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+              data-upgraded=",MaterialButton"
+              @click="handleTermsReject"
+            >
+              Reject
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,7 +129,11 @@ export default {
   },
   data() {
     return {
-      loading: true
+      tosUrl: '/pages/terms-of-service',
+      privacyPolicyUrl: '/pages/privacy-policy',
+      loading: false,
+      showTermsStep: false,
+      idToken: null
     };
   },
   created() {
@@ -59,14 +160,29 @@ export default {
           return false;
         }
       },
-      tosUrl: '/pages/terms-of-service',
-      privacyPolicyUrl: '/pages/privacy-policy'
+      tosUrl: this.tosUrl,
+      privacyPolicyUrl: this.privacyPolicyUrl
     };
     this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
+  },
+  destroyed() {
+    if (!this.inlineFlow) {
+      return firebase.auth().signOut();
+    }
+
+    return null;
   },
   methods: {
     onUiShown() {
       this.loading = false;
+    },
+    setUpValidityHandling() {
+      const { acceptCheckBox, acceptButton } = this.$refs;
+
+      acceptButton.disabled = !acceptCheckBox.checked;
+      acceptCheckBox.addEventListener('click', () => {
+        acceptButton.disabled = !acceptCheckBox.checked;
+      });
     },
     onAuthStateChanged(user) {
       const vm = this;
@@ -74,19 +190,23 @@ export default {
         vm.loading = true;
         return user
           .getIdToken(true)
-          .then(this.serverSignIn)
+          .then(idToken => {
+            vm.idToken = idToken;
+            vm.serverSignIn(null);
+          })
           .finally(() => {
             vm.loading = false;
           });
       }
       return true;
     },
-    serverSignIn(idToken) {
+    serverSignIn(termsAccepted) {
       return Axios.post(
         '/auth/callback',
         {
-          firebase_token: idToken,
-          inline_flow: this.inlineFlow
+          firebase_token: this.idToken,
+          inline_flow: this.inlineFlow,
+          terms_accepted: termsAccepted
         },
         { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
       ).then(result => {
@@ -94,6 +214,9 @@ export default {
       });
     },
     afterServerSignIn(data) {
+      // If the user has not accepted terms yet then show the terms acceptance
+      // flow before carrying on.
+      //
       // If the email is not verified, then the server will not have signed in,
       // and we should sign out of the Firebase Auth session and redirect away.
       //
@@ -109,6 +232,12 @@ export default {
 
       const vm = this;
 
+      if (data.user.terms_accepted === false) {
+        this.showTermsStep = true;
+        this.$nextTick(this.setUpValidityHandling);
+        return null;
+      }
+
       if (data.user.email_verified === false) {
         const user = firebase.auth().currentUser;
         return user.sendEmailVerification().then(() => {
@@ -116,7 +245,7 @@ export default {
         });
       }
 
-      if (!this.inlineFlow) {
+      if (!vm.inlineFlow) {
         return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
       }
 
@@ -129,6 +258,27 @@ export default {
         .then(() => {
           Turbolinks.clearCache();
           Turbolinks.visit(forwardingUrl || '/');
+        });
+    },
+    handleTermsAccept() {
+      const vm = this;
+      vm.loading = true;
+
+      return this.serverSignIn(true).finally(() => {
+        vm.loading = false;
+      });
+    },
+    handleTermsReject() {
+      const user = firebase.auth().currentUser;
+      return firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          Turbolinks.clearCache();
+          Turbolinks.visit('/auth/sign_out');
+          window.open(
+            `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${user.displayName} (email address: ${user.email})`
+          );
         });
     }
   }
