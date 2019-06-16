@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     post 'auth/callback'
     get  'auth/sign_out'
 
-    resource :profile, only: %i[show update]
+    resource :profile, only: %i[show update], controller: 'profile'
 
     resources :subscriptions, only: %i[index]
 

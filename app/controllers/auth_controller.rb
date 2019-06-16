@@ -9,11 +9,12 @@ class AuthController < ApplicationController
   end
 
   def callback
-    token = params.require(:firebase_token)
+    token = params.require :firebase_token
 
     result = sign_in_with_token(
       token,
-      inline_flow: ActiveRecord::Type::Boolean.new.cast(params[:inline_flow])
+      inline_flow: ActiveRecord::Type::Boolean.new.cast(params[:inline_flow]),
+      terms_accepted: params[:terms_accepted]
     )
 
     render json: result
