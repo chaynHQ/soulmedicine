@@ -2,6 +2,7 @@
   "name": "soulmedicine",
   "private": true,
   "scripts": {
+    "es-check": "es-check es5 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
     "lint-staged": "$(yarn bin)/lint-staged"
   },
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "es-check": "^5.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.3.0",
