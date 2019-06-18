@@ -3,6 +3,8 @@
 %>
 
 <section class="courses-page">
+  <%= render partial: 'languages_selector' %>
+
   <% if @courses.blank? %>
     <div class="alert alert-warning" role="alert">
       <%= t('.no_courses') %>

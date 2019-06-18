@@ -30,25 +30,6 @@
         <% else %>
           <%= header_nav_item t('site-header.sign-in'), auth_sign_in_path, icon_name: 'sign-in-alt' %>
         <% end %>
-
-        <%= header_nav_separator %>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarLangSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= LocalesService.language_name(LocalesService.current) %>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right <%= text_direction %>" dir="<%= text_direction %>" aria-labelledby="navbarLangSelector">
-            <% LocalesService.enabled.each do |l| %>
-              <% if LocalesService.current == l %>
-                <span class="dropdown-item">
-                  <%= LocalesService.language_name(l) %>
-                </span>
-              <% else %>
-                <%= link_to LocalesService.language_name(l), params_with_locale(l), class: 'dropdown-item' %>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
       </ul>
     </div>
   </nav>
