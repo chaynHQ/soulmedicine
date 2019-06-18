@@ -1,0 +1,18 @@
+<div class="text-right mb-2">
+  <div class="btn-group" role="group" aria-label="Languages selector">
+    <button id="languagesSelectorDropdown" type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= LocalesService.language_name(LocalesService.current) %>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right <%= text_direction %>" dir="<%= text_direction %>" aria-labelledby="languagesSelectorDropdown">
+      <% LocalesService.enabled.each do |l| %>
+        <% if LocalesService.current == l %>
+          <span class="dropdown-item">
+            <%= LocalesService.language_name(l) %>
+          </span>
+        <% else %>
+          <%= link_to LocalesService.language_name(l), params_with_locale(l), class: 'dropdown-item' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
