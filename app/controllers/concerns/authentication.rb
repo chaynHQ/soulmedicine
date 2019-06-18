@@ -42,34 +42,32 @@ module Authentication
   module SessionManagement
     extend Memoist
 
-    ALLOWED_USER_ATTRIBUTES = %w[
-      id
-      firebase_id
-      display_name
-      email
-      email_verified
-    ].freeze
-
-    def sign_in_with_token(token, inline_flow: false)
+    def sign_in_with_token(token, inline_flow: false, terms_accepted: nil)
       payload = firebase_auth_service.verify_and_get_token_payload(token)
 
       user = create_or_fetch_authed_user payload
 
-      # Only actually sign user in if email is verified
-      if user.email_verified
-        session[:user] = user.id
-        flash[:notice] = 'You are now signed in' unless inline_flow
-      else
+      user.update!(terms_accepted: terms_accepted) unless terms_accepted.nil?
+
+      # Only actually sign user in on the server if both are true:
+      # - terms have been accepted
+      # - email is verified
+      if !user.terms_accepted
+        session[:user] = nil
+      elsif !user.email_verified
         session[:user] = nil
         flash[:alert] = [
           'Thanks for signing up! Now you\'ll need to verify your account',
           'by clicking on the link in the verification email sent to you.'
         ].join(' ')
+      else
+        session[:user] = user.id
+        flash[:notice] = 'You are now signed in' unless inline_flow
       end
 
       {
         signed_in: !session[:user].nil?,
-        user: user.attributes.slice(*ALLOWED_USER_ATTRIBUTES),
+        user: ActiveModelSerializers::SerializableResource.new(user).as_json,
         forwarding_url: session.delete(:forwarding_url) || root_path
       }
     end

@@ -25,6 +25,7 @@ gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'sidekiq-history', '~> 0.0.11'
 gem 'rollbar', '~> 2.19', '>= 2.19.3'
 gem 'meta-tags', '~> 2.11', '>= 2.11.1'
+gem 'active_model_serializers', '~> 0.10.9'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
