@@ -122,9 +122,9 @@ RSpec.describe 'Authentication Concern', type: :controller do
       shared_examples_for 'sign in with token' do
         context 'when email is not verified' do
           it 'doesn\'t sign the user in and sets an alert flash' do
-            result = @controller.sign_in_with_token(token)
-            expect(result[:user]['id']).not_to be_nil
-            expect(result[:user]).to include(expected_result_user)
+            result = @controller.sign_in_with_token(token, terms_accepted: true).as_json
+            expect(result['user']['id']).not_to be_nil
+            expect(result['user']).to include(expected_result_user)
             expect(@controller.session[:user]).to be_nil
             expect(@controller.flash[:alert]).to be_present
           end
@@ -136,10 +136,10 @@ RSpec.describe 'Authentication Concern', type: :controller do
           end
 
           it 'signs the user in by setting the user session' do
-            result = @controller.sign_in_with_token(token)
-            expect(result[:user]['id']).not_to be_nil
-            expect(result[:user]).to include(expected_result_user)
-            expect(@controller.session[:user]).to be result[:user]['id']
+            result = @controller.sign_in_with_token(token, terms_accepted: true).as_json
+            expect(result['user']['id']).not_to be_nil
+            expect(result['user']).to include(expected_result_user)
+            expect(@controller.session[:user]).to be result['user']['id']
             expect(@controller.flash[:alert]).to be_nil
           end
         end

@@ -10,6 +10,9 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true
 
+  validates :terms_accepted,
+    inclusion: { in: [true, false] }
+
   scope :verified, -> { where(email_verified: true) }
 
   has_many :subscriptions, dependent: :destroy
