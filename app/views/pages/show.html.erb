@@ -3,6 +3,15 @@
   description @page.description if @page.description.present?
 %>
 
-<%= tag.section id: "page-#{@page.slug}" do %>
+<%=
+  tag.section(
+    id: "page-#{@page.slug}",
+    class: [
+      'page',
+      "page-#{@page.slug}",
+      (@page.full_width ? 'page-full-width': nil)
+    ].compact
+  ) do
+%>
   <%= raw @page.content_html %>
 <% end %>
