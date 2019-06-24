@@ -7,6 +7,11 @@
   <nav aria-label="breadcrumb" class="mb-4 <%= text_direction %>" dir="<%= text_direction %>">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
+        <%=
+          image_tag @course.image,
+            style: 'width: 60px;',
+            alt: @course.summary
+        %>
         <%= link_to tc(@course.name), course_path(@course) %>
       </li>
     </ol>

@@ -12,7 +12,11 @@
           <%= tc(@course.name) %>
         </h2>
 
-        <div class="mb-5">
+        <div class="lead mb-3">
+          <%= @course.summary %>
+        </div>
+
+        <div class="mb-3">
           <% if @subscription.present? %>
             <div class="alert alert-info" role="alert">
               <% if @subscription.active? %>
@@ -58,12 +62,16 @@
         </div>
       </div>
 
-      <div class="col-md-2 order-1 <%= text_direction %>" dir="<%= text_direction %>">
+      <div class="col-md-3 order-1 <%= text_direction %>" dir="<%= text_direction %>">
         <div class="container">
           <div class="row">
             <div class="col col-md-12">
-              <div class="mb-5">
-                <%= image_tag(asset_pack_path('media/images/course_icon.svg'), class: 'align-top align-left', style: 'width: 120px;') %>
+              <div class="mb-4">
+                <%=
+                  image_tag @course.image,
+                    class: 'img-fluid w-100',
+                    alt: @course.summary
+                %>
               </div>
             </div>
             <div class="col col-md-12">

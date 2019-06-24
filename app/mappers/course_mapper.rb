@@ -6,8 +6,14 @@ class CourseMapper
 
   key :enabled_languages, from: %w[content enabled_languages]
 
+  key :image, from: %w[content image]
+
   key :name,
     from: %w[content name],
+    translated: { field: 'text' }
+
+  key :summary,
+    from: %w[content summary],
     translated: { field: 'text' }
 
   key :description,
