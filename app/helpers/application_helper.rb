@@ -36,9 +36,12 @@ module ApplicationHelper
   end
 
   def main_container_class
-    is_root = current_page?(root_path) || current_page?('/')
+    return 'container' unless defined?(@page)
 
-    is_root ? 'container-fluid pt-4' : 'container'
+    [
+      'page-container',
+      @page.full_width ? 'container-fluid' : 'container'
+    ].join(' ')
   end
 
   def body_style

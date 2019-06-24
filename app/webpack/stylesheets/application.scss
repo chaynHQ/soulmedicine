@@ -15,9 +15,14 @@ body {
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
 }
 
-body > .container {
+body > .container:not(.page-container),
+body > .container-fluid:not(.page-container) {
   padding-top: $spacer * 2;
   padding-bottom: $spacer * 2;
+}
+
+.page-container .flash-alert {
+  margin-top: $spacer;
 }
 
 hr {
