@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="card-columns">
     <% @courses.each do |c| %>
       <%= render partial: 'card', locals: { course: c } %>
     <% end %>
