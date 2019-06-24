@@ -19,6 +19,7 @@
             "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"d12fab0a-3fd5-4d09-8a61-8fe7adbca4b8\", \"id\": \"428695\"}-->"
           }
         ],
+        "image": "https://a.storyblok.com/f/50602/4962x3508/d0164c9d9b/how-to-be-safe-online.png",
         "component": "course",
         "is_active": false,
         "description": [
@@ -33,6 +34,16 @@
         ],
         "enabled_languages": [
           "en"
+        ],
+        "summary": [
+          {
+            "_uid": "3f71a27e-fa30-4401-9849-ce23b2cd255b",
+            "lang": "en",
+            "text": "Easy, non-techy ways to tighten your online security and keep yourself safe from stalkers",
+            "text_rtl": "",
+            "component": "l_text",
+            "_editable": "<!--#storyblok#{\"name\": \"l_text\", \"space\": \"50602\", \"uid\": \"3f71a27e-fa30-4401-9849-ce23b2cd255b\", \"id\": \"428695\"}-->"
+          }
         ],
         "_editable": "<!--#storyblok#{\"name\": \"course\", \"space\": \"50602\", \"uid\": \"8fc38dd0-6922-4f52-9945-5a8f0d213eb1\", \"id\": \"428695\"}-->"
       },
