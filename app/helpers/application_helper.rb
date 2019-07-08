@@ -51,10 +51,7 @@ module ApplicationHelper
 
     image_url = settings.courses_bg_image
 
-    [
-      "background: url('#{image_url}') no-repeat;",
-      'background-size: cover;'
-    ].join('')
+    "background: url('#{image_url}');"
   end
 
   def params_with_locale(locale)
