@@ -23,12 +23,14 @@
 
     <h4><%= t('.other') %></h4>
 
-    <% @other_courses.each do |c| %>
-      <% lang = c.enabled_languages.first %>
-      <% LocalesService.with(lang) do %>
-        <%= render partial: 'card', locals: { course: c } %>
+    <div class="card-columns">
+      <% @other_courses.each do |c| %>
+        <% lang = c.enabled_languages.first %>
+        <% LocalesService.with(lang) do %>
+          <%= render partial: 'card', locals: { course: c } %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
   <% end %>
 </section>
