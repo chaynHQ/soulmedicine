@@ -1,11 +1,11 @@
-<div class="card shadow-sm mb-3 course-card <%= text_direction %>" dir="<%= text_direction %>">
+<div class="card shadow-sm mb-3 course-card <%= text_direction -%>" dir="<%= text_direction -%>">
   <%=
     image_tag course.image,
       class: 'card-img-top',
       alt: course.summary
   %>
   <div class="card-body">
-    <h5 class="card-title">
+    <h5 class="card-title <%= language_class -%>">
       <%= link_to tc(course.name), course_path(course) %>
     </h5>
     <h6 class="card-subtitle mb-2">
@@ -13,7 +13,7 @@
         <%= link_to LocalesService.language_name(l), course_path(course, locale: l), class: 'badge badge-primary' %>
       <% end %>
     </h6>
-    <div class="card-text">
+    <div class="card-text <%= language_class -%>">
       <%= tc(course.summary) %>
     </div>
   </div>

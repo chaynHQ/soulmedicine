@@ -5,7 +5,7 @@
 <% @languages.each do |l| %>
   <% LocalesService.with(l) do %>
     <% if @lesson.content.present? %>
-      <div class="<%= text_direction %>" dir="<%= text_direction %>">
+      <div class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
         <%= @lesson.content.html_safe %>
         <br />
         <hr />
