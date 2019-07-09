@@ -86,12 +86,16 @@ module ApplicationHelper
     tag.i '', class: "fas fa-#{name} fa-#{size}"
   end
 
-  def rtl?
-    LocalesService.current_rtl?
+  def language_class(lang = LocalesService.current)
+    "lang-#{lang}"
   end
 
   def text_direction
     rtl? ? 'rtl' : 'ltr'
+  end
+
+  def rtl?
+    LocalesService.current_rtl?
   end
 
   def humanize_boolean(value)

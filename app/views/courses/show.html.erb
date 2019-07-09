@@ -7,12 +7,12 @@
   <section class="course-page container">
     <div class="row justify-content-around">
 
-      <div class="col-md-9 order-2 <%= text_direction %>" dir="<%= text_direction %>">
-        <h2>
+      <div class="col-md-9 order-2 <%= text_direction -%>" dir="<%= text_direction -%>">
+        <h2 class="<%= language_class -%>">
           <%= tc(@course.name) %>
         </h2>
 
-        <div class="lead mb-3">
+        <div class="lead mb-3 <%= language_class -%>">
           <%= @course.summary %>
         </div>
 
@@ -43,7 +43,7 @@
           <% end %>
         </div>
 
-        <div class="course-description">
+        <div class="course-description <%= language_class -%>">
           <%= tc(@course.description.html_safe) %>
         </div>
 
@@ -52,7 +52,7 @@
         <div>
           <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
 
-          <ul class="list-group <%= text_direction %>">
+          <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
             <% @course.lessons.each do |l| %>
               <li class="list-group-item">
                 <%= link_to tc(l.name), course_lesson_path(@course, l) %>
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 order-1 <%= text_direction %>" dir="<%= text_direction %>">
+      <div class="col-md-3 order-1 <%= text_direction -%>" dir="<%= text_direction -%>">
         <div class="container">
           <div class="row">
             <div class="col col-md-12">
@@ -79,7 +79,7 @@
                 <p class="font-weight-bold text-uppercase mb-2">
                   <%= t('concepts.language').pluralize.titleize %>
                 </p>
-                <ul class="list-unstyled <%= text_direction %>">
+                <ul class="list-unstyled <%= text_direction -%>" dir="<%= text_direction -%>">
                   <% @course.enabled_languages.each do |l| %>
                     <li>
                       <%= link_to LocalesService.language_name(l), course_path(@course, locale: l), class: 'badge badge-primary' %>

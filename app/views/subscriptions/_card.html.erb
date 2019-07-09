@@ -3,9 +3,9 @@
 %>
 
 <% LocalesService.with(subscription.main_language) do %>
-  <div class="card shadow-sm mb-3 subscription-card <%= text_direction %>" dir="<%= text_direction %>">
+  <div class="card shadow-sm mb-3 subscription-card <%= text_direction -%>" dir="<%= text_direction -%>">
     <div class="card-header">
-      <%= link_to tc(course.name), course_path(course) %>
+      <%= link_to tc(course.name), course_path(course, locale: subscription.main_language), class: language_class %>
 
       <% if subscription.active %>
         <span class="badge badge-primary float-right ml-2">
