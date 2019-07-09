@@ -4,7 +4,7 @@
     description @lesson.content
   %>
 
-  <nav aria-label="breadcrumb" class="mb-4 <%= text_direction %>" dir="<%= text_direction %>">
+  <nav aria-label="breadcrumb" class="mb-4 <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <%=
@@ -18,11 +18,11 @@
   </nav>
 
   <section class="lesson-page">
-    <h2 class="<%= text_direction %>" dir="<%= text_direction %>">
+    <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
       <%= tc(@lesson.name) %>
     </h2>
 
-    <div class="card <%= text_direction %>" dir="<%= text_direction %>">
+    <div class="card <%= text_direction -%>" dir="<%= text_direction -%>">
       <div class="card-header">
         <ul class="nav nav-pills card-header-pills" role="tablist">
           <li class="nav-item">
@@ -50,7 +50,7 @@
       </div>
       <div class="card-body tab-content">
         <!-- Current language content -->
-        <div class="tab-pane fade show active <%= text_direction %>" id="lesson-content-<%= LocalesService.current -%>" dir="<%= text_direction %>">
+        <div class="tab-pane fade show active <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= LocalesService.current -%>" dir="<%= text_direction -%>">
           <%= tc(@lesson.content.html_safe) %>
         </div>
 
@@ -58,7 +58,7 @@
         <% @course.enabled_languages.each do |l| %>
           <% if l != LocalesService.current.to_s %>
             <% LocalesService.with(l) do %>
-              <div class="tab-pane fade <%= text_direction %>" id="lesson-content-<%= l -%>" role="tabpanel" aria-labelledby="nav-home-tab" dir="<%= text_direction %>">
+              <div class="tab-pane fade <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= l -%>" role="tabpanel" aria-labelledby="nav-home-tab" dir="<%= text_direction -%>">
                 <%= tc(@lesson.content.html_safe) %>
               </div>
             <% end %>

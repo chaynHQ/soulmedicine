@@ -3,6 +3,17 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-select/sass/bootstrap-select';
 
+@font-face {
+  font-family: 'Noto Nastaliq Urdu Draft';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.eot);
+  src: url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.ttf) format('truetype');
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -49,6 +60,11 @@ h1, h2, h3, h4, h5, h6 {
   ul#{&} {
     padding-inline-start: 0;
   }
+}
+
+.lang-ur {
+  font-family: 'Noto Nastaliq Urdu', 'Noto Nastaliq Urdu Draft', 'Cabin', Helvetica, Arial, sans-serif;
+  line-height: 2.3;
 }
 
 .alert-notice {

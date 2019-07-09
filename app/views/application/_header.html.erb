@@ -21,7 +21,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= current_user.display_name %>
             </a>
-            <div class="dropdown-menu dropdown-menu-right <%= text_direction %>" dir="<%= text_direction %>" aria-labelledby="navbarUserDropdown">
+            <div class="dropdown-menu dropdown-menu-right <%= text_direction -%>" dir="<%= text_direction -%>" aria-labelledby="navbarUserDropdown">
               <%= link_to t('site-header.subscriptions'), subscriptions_path, class: 'dropdown-item' %>
               <%= link_to t('site-header.profile'), profile_path, class: 'dropdown-item' %>
               <%= link_to t('site-header.sign-out'), auth_sign_out_path, class: 'dropdown-item' %>
