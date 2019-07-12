@@ -299,7 +299,7 @@ export default {
           .signOut()
           .then(() => {
             const message =
-              'Please verify your updated email address by clicking on the link in the verification email sent to you.';
+              'Verify your updated email address by clicking on the link in the verification email sent to you.';
             vm.serverSignOut(message);
           });
       });
