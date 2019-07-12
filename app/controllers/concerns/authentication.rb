@@ -50,7 +50,7 @@ module Authentication
       user.update!(terms_accepted: terms_accepted) unless terms_accepted.nil?
 
       # Clears out and resets previous sessions to prevent Session Fixation Attack
-      reset_session
+      # reset_session
 
       # Only actually sign user in on the server if both are true:
       # - terms have been accepted
