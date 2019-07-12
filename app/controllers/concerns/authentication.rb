@@ -80,7 +80,8 @@ module Authentication
       {
         signed_in: !session[:user].nil?,
         user: ActiveModelSerializers::SerializableResource.new(user).as_json,
-        forwarding_url: session.delete(:forwarding_url) || root_path
+        forwarding_url: session.delete(:forwarding_url) || root_path,
+        sendEmailVerification: sendEmailVerification
       }
     end
 

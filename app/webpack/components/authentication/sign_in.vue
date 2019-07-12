@@ -229,7 +229,6 @@ export default {
       // If we're *not* in an inline flow:
       // - Sign out of the Firebase Auth session
       // - Redirect to the forwarding_url (or homepage)
-
       const vm = this;
 
       if (data.user.terms_accepted === false) {
@@ -238,7 +237,7 @@ export default {
         return null;
       }
 
-      if (data.user.email_verified === false) {
+      if (data.user.email_verified === false && data.sendEmailVerification === true) {
         const user = firebase.auth().currentUser;
         return user.sendEmailVerification().then(() => {
           return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
