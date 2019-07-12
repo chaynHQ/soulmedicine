@@ -49,6 +49,9 @@ module Authentication
 
       user.update!(terms_accepted: terms_accepted) unless terms_accepted.nil?
 
+      # Clears out and resets previous sessions to prevent Session Fixation Attack
+      reset_session
+
       # Only actually sign user in on the server if both are true:
       # - terms have been accepted
       # - email is verified
@@ -58,7 +61,7 @@ module Authentication
         session[:user] = nil
         flash[:alert] = [
           'Thanks for signing up! Now you\'ll need to verify your account',
-          'by clicking on the link in the verification email sent to you.'
+          'by clicking on the link in the verification email sent to you!'
         ].join(' ')
       else
         session[:user] = user.id
