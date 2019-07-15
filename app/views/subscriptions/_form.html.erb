@@ -22,7 +22,7 @@
         <div class="card-body">
           <%=
             form.time_zone_select :user_timezone,
-              nil,
+              :user_timezone,
               {
                 label: t('.user_timezone_label'),
                 default: 'UTC'
