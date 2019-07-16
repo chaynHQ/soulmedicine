@@ -237,7 +237,10 @@ export default {
         return null;
       }
 
-      if (data.user.email_verified === false && data.sendEmailVerification === true) {
+      if (
+        data.user.email_verified === false &&
+        data.sendEmailVerification === true
+      ) {
         const user = firebase.auth().currentUser;
         return user.sendEmailVerification().then(() => {
           return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
