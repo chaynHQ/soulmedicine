@@ -69,4 +69,56 @@ bundle exec rspec
 
 ### Dev tips
 
-- To get Rubocop to fix detected issues automatically (where it can): `bundle exec rubocop -a`
+- To get Rubocop to fix detected issues automatically (where it can):
+  - `bundle exec rubocop -a`
+
+## Testing subscription emails
+
+### Local dev
+
+#### Email templates
+
+When working on email templates, [Action Mailer Previews](https://guides.rubyonrails.org/action_mailer_basics.html#previewing-emails) provide a way to test the output of these templates without having to actually send any emails. We have one set up for subscription lesson emails – example usage:
+
+http://localhost:3000/rails/mailers/lesson_mailer/lesson_email?course=how-to-manage-your-money&lesson_no=1&languages=en,ar&disguised=true
+
+Note: this preview currently uses the first `User` in the database, so make sure you have one registered locally!
+
+#### Full subscription email flow
+
+You can also test out the full subscription email flow locally. We use [mailcatcher](https://github.com/sj26/mailcatcher) to capture all sent email from the local app. An instance of mailcatcher will already be running if you've used the Docker Compose set up mentioned above – you can open this at http://localhost:1080/.
+
+Steps to test:
+
+1. Start up the Sidekiq background worker using:
+  - `bundle exec sidekiq -c 1`
+2. Make or edit a new subscription in the app – make sure the schedule is set accordingly (i.e. to send you an email within the current time slot; note the timezone option, especially if you're currently in daylight savings time).
+3. Trigger the subscriptions processor:
+  - `bin/rails subscriptions:trigger_worker`
+4. Watch the logs for the Sidekiq background worker to see it processing subscriptions and potentially sending out lesson emails.
+5. Open up the mailcatcher interface to view all sent emails:
+  - http://localhost:1080/
+
+### On Heroku review apps
+
+By default, newly created review apps on Heroku won't have any of the subscriptions processing and email sending set up. If you do need to test out subscriptions on a review app you can set this up:
+
+- A Mailgun email service add-on should already be provisioned within the review app – you now need to add your email address to the "allow list" to ensure emails are received:
+  - Go to the "Resources" section of your review app in the Heroku console
+  - Click on the "Mailgun" add-on – this opens up the Mailgun console
+  - Click on "Overview" in the left hand sidebar
+  - In the "Authorized Recipients" section of the page, add your email address
+  - A confirmation email will be sent to you with an activation link that you'll need to click on
+- Now enable a worker dyno for the Sidekiq background worker:
+  - Go to the "Resources" section of your review app in the Heroku console
+  - Enable a single worker dyno under the "Hobby Dynos" section
+- Now set up a recurring job to trigger the subscriptions processing:
+  - Go to the "Resources" section of your review app in the Heroku console
+  - Under "Add-ons" search for "scheduler" and select "Heroku Scheduler", then click on "Provision"
+  - Now click on the new "Heroku Scheduler" entry in the list to open it's console
+  - Click on "Create job"
+    - Schedule for "Every hour at..." ":00" (or a different time point if needed for testing)
+    - Set the run command to: `bin/rails subscriptions:trigger_worker`
+    - Then click on "Save job"
+  - This will run the subscriptions processor on an hourly basis
+- Now you're ready to create subscriptions in that review app instance and receive lesson emails from it
