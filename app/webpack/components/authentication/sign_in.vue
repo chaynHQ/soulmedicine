@@ -6,9 +6,12 @@
       </div>
     </div>
 
-    <div v-if="!loading && !showTermsStep" ref="firebaseAuthContainer"></div>
+    <div
+      v-if="!loading && !showTermsStep && !showVerificationStep"
+      ref="firebaseAuthContainer"
+    ></div>
 
-    <div v-if="!loading && showTermsStep">
+    <div v-if="!loading && showTermsStep && !showVerificationStep">
       <div class="mdl-card mdl-shadow--2dp firebaseui-container">
         <form @submit.prevent="handleTermsAccept">
           <div class="firebaseui-card-header">
@@ -103,6 +106,35 @@
         </div>
       </div>
     </div>
+
+    <div v-if="!loading && !showTermsStep && showVerificationStep">
+      <div class="mdl-card mdl-shadow--2dp firebaseui-container">
+        <div class="firebaseui-card-header">
+          <h1 class="firebaseui-title">
+            Email Verification
+          </h1>
+        </div>
+        <div class="firebaseui-card-content">
+          <div class="firebaseui-relative-wrapper">
+            <div class="mdl-card__supporting-text">
+              We will be emailing you about important system updates and you can
+              choose when else you want to hear from us!
+            </div>
+          </div>
+        </div>
+        <div class="firebaseui-card-actions">
+          <div class="firebaseui-form-actions">
+            <button
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+              data-upgraded=",MaterialButton"
+              @click="sendVerificationEmail('/en')"
+            >
+              Resend Verification Email
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -133,6 +165,7 @@ export default {
       privacyPolicyUrl: '/pages/privacy-policy',
       loading: false,
       showTermsStep: false,
+      showVerificationStep: false,
       idToken: null
     };
   },
@@ -214,6 +247,8 @@ export default {
       });
     },
     afterServerSignIn(data) {
+      // TODO: Update this text here.
+
       // If the user has not accepted terms yet then show the terms acceptance
       // flow before carrying on.
       //
@@ -232,19 +267,20 @@ export default {
       const vm = this;
 
       if (data.user.terms_accepted === false) {
+        this.showVerificationStep = false;
         this.showTermsStep = true;
         this.$nextTick(this.setUpValidityHandling);
         return null;
       }
 
-      if (
-        data.user.email_verified === false &&
-        data.sendEmailVerification === true
-      ) {
-        const user = firebase.auth().currentUser;
-        return user.sendEmailVerification().then(() => {
-          return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
-        });
+      if (data.user.email_verified === false) {
+        this.showVerificationStep = true;
+        this.showTermsStep = false;
+
+        if (data.sendEmailVerification === true) {
+          return this.sendVerificationEmail(data.forwarding_url);
+        }
+        return null;
       }
 
       if (!vm.inlineFlow) {
@@ -282,6 +318,17 @@ export default {
             `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${user.displayName} (email address: ${user.email})`
           );
         });
+    },
+    sendVerificationEmail(forwardingUrl) {
+      const vm = this;
+      const user = firebase.auth().currentUser;
+      // const actionCodeSettings = {
+      //   url: 'www.soul-medicine-dev.firebaseapp.com'
+      // };
+
+      return user.sendEmailVerification().then(() => {
+        return vm.clearFirebaseSessionAndRedirect(forwardingUrl);
+      });
     }
   }
 };

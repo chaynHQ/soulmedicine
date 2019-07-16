@@ -61,16 +61,11 @@ module Authentication
       # - email is verified
       if !user.terms_accepted
         session[:user] = nil
-      elsif sendEmailVerification
+      elsif !user.email_verified
         session[:user] = nil
         flash[:alert] = [
           'Thanks for signing up! Now you\'ll need to verify your account',
           'by clicking on the link in the verification email sent to you!'
-        ].join(' ')
-      elsif !user.email_verified
-        session[:user] = nil
-        flash[:alert] = [
-          'Thanks for coming back! You still need to verify your account. Resend Verification Email.'
         ].join(' ')
       else
         session[:user] = user.id
