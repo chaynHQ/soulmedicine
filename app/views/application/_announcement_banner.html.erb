@@ -1,0 +1,7 @@
+<% content = settings.announcement_banner %>
+
+<% if content.present? %>
+  <div class="alert alert-danger" role="alert">
+    <%= raw content %>
+  </div>
+<% end %>
