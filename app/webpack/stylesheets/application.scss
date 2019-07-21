@@ -1,7 +1,9 @@
-@import "variables";
+@import "./theme/variables";
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-select/sass/bootstrap-select';
+
+@import "./theme/custom";
 
 @font-face {
   font-family: 'Noto Nastaliq Urdu Draft';
@@ -22,8 +24,6 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-
-  font-family: 'Cabin', Helvetica, Arial, sans-serif;
 }
 
 body > .container:not(.page-container),
@@ -118,8 +118,4 @@ h1, h2, h3, h4, h5, h6 {
 
 .course-description {
   color: $text-muted;
-}
-
-.course-card {
-  background-color: $pastel-cream;
 }
