@@ -30,6 +30,7 @@ Metrics/BlockLength:
   Exclude:
     - "db/migrate/*"
     - "spec/**/*"
+    - "config/routes.rb"
 
 Metrics/ClassLength:
   Exclude:
