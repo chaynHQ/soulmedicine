@@ -33,6 +33,14 @@
                   Updates on existing courses
                 </li>
               </ul>
+              <div class="mdl-card__supporting-text">
+                We care about your privacy! We will securely store the
+                information you have provided to us (name, email, language,
+                country and IP address) for a minimum of 9 months. If you want
+                us to remove it, we will delete this information. Your
+                information might be shared with other apps such as analytics to
+                see who is using Soul Medicine which helps us improve it.
+              </div>
               <label
                 class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                 for="acceptCheckBox"
