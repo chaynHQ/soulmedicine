@@ -2,7 +2,7 @@
 
 <div class='email-header'>
   <h1>
-    <%=@course.name%>
+    <%=link_to @course.name, course_url(@languages.first, @course)%>
     <br/>
     <%= link_to @lesson.name, course_lesson_url(@languages.first, @course, @lesson) %>
   </h1>
