@@ -5,6 +5,8 @@
 
 @import "./theme/custom";
 
+@import 'application.scss';
+
 @font-face {
   font-family: 'Noto Nastaliq Urdu Draft';
   font-style: normal;
@@ -43,21 +45,4 @@ img {
   background: $success;
   margin: auto;
   margin-bottom: 20px;
-}
-
-.ltr {
-  @extend .text-left;
-}
-
-.rtl {
-  @extend .text-right;
-
-  .float-right {
-    float: left !important;
-  }
-
-  ul,
-  ul#{&} {
-    padding-inline-start: 0;
-  }
 }
