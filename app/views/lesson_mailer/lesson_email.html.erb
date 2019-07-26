@@ -1,21 +1,26 @@
-<h1>
-  <%= link_to @lesson.name, course_lesson_url(@languages.first, @course, @lesson) %>
-</h1>
+
+
+<div class='email-header'>
+  <h1>
+    <%=@course.name%>
+    <br/>
+    <%= link_to @lesson.name, course_lesson_url(@languages.first, @course, @lesson) %>
+  </h1>
+  <%= image_tag attachments['icon.png'].url, alt: 'Company logo'%>
+</div>
 
 <% @languages.each do |l| %>
   <% LocalesService.with(l) do %>
     <% if @lesson.content.present? %>
       <div class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
         <%= @lesson.content.html_safe %>
-        <br />
-        <hr />
-        <br />
+        <div class='divider'></div>
       </div>
     <% end %>
   <% end %>
 <% end %>
 
-<div style="text-align: center">
+<div class='unsubscribe-footer'>
   <%=
     link_to(
       'Unsubscribe (pause emails for this pathway)',
