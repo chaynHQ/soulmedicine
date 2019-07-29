@@ -39,9 +39,12 @@
   <body style="<%= body_style -%>">
 
     <%= tag.main role: 'main', class: main_container_class do %>
+      <div class="col-12 pt-5">
+        <!--Leave Empty-->
+      </div>
 
       <%= yield %>
-      
+
     <% end %>
 
   </body>
