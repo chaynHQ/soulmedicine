@@ -1,0 +1,48 @@
+@import "./theme/variables";
+
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-select/sass/bootstrap-select';
+
+@import "./theme/custom";
+
+@import 'application.scss';
+
+@font-face {
+  font-family: 'Noto Nastaliq Urdu Draft';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.eot);
+  src: url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/notonastaliqurdudraft/v4/NotoNastaliqUrduDraft.ttf) format('truetype');
+}
+
+body {
+  width: 70%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+img {
+  max-height: 100px;
+}
+
+.unsubscribe-footer {
+  text-align: center;
+}
+
+.email-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.divider {
+  height: 8px;
+  width: 20%;
+  background: $success;
+  margin: auto;
+  margin-bottom: 20px;
+}
