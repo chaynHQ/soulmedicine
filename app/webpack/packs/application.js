@@ -11,6 +11,7 @@ import Vue from 'vue/dist/vue.esm';
 import TurbolinksAdapter from 'vue-turbolinks';
 import SignIn from '../components/authentication/sign_in.vue';
 import Profile from '../components/user_profile/profile.vue';
+import CookieLaw from '../components/cookie_law/cookie_law.vue';
 
 Rails.start();
 Turbolinks.start();
@@ -27,6 +28,11 @@ document.addEventListener('turbolinks:load', () => {
     {
       element_id: 'profile',
       components: { Profile },
+      data: {}
+    },
+    {
+      element_id: 'cookie-law',
+      components: { CookieLaw },
       data: {}
     }
   ];
