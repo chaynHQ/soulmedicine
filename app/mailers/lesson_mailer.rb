@@ -16,6 +16,7 @@ class LessonMailer < ApplicationMailer
               end
 
     LocalesService.with(@languages.first) do
+      attachments.inline['icon.png'] = URI.parse(@course.image).read
       mail(to: email_with_name, subject: subject)
     end
   end
