@@ -16,4 +16,6 @@ class SettingsMapper
     default: []
 
   key :courses_bg_image, from: %w[content courses_bg_image]
+
+  key :announcement_banner, from: %w[content announcement_banner code]
 end
