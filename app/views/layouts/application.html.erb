@@ -1,41 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%=
-      display_meta_tags(
-        site: 'Soul Medicine',
-        reverse: true,
-        twitter: {
-          card: 'summary',
-          site: '@ChaynHQ',
-          title: :full_title,
-          description:  :description
-        },
-        og: {
-          title: :full_title,
-          site_name: :site,
-          description: :description
-        }
-      )
-    %>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name=viewport content="width=device-width, initial-scale=1">
-
-    <%= google_analytics %>
-
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
+  <%= render 'head' %>
+  
   <body style="<%= body_style -%>">
     <%= render 'header' %>
 
