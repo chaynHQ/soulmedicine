@@ -36,5 +36,6 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
+  config.include_context 'settings helper'
   config.include_context 'courses data helper'
 end
