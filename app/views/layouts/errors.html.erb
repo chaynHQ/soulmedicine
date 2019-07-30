@@ -3,17 +3,15 @@
   <%= render 'head' %>
   
   <body style="<%= body_style -%>">
-    <%= render 'cookie_law'%>
-    <%= render 'header' %>
-
-    <%= render 'announcement_banner' %>
 
     <%= tag.main role: 'main', class: main_container_class do %>
-      <%= render 'flash' %>
+      <div class="col-12 pt-5">
+        <!--Leave Empty-->
+      </div>
 
       <%= yield %>
+
     <% end %>
 
-    <%= render 'footer' %>
   </body>
 </html>
