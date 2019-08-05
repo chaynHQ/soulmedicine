@@ -1,8 +1,11 @@
 storyblok_token = ENV.fetch('STORYBLOK_TOKEN') { raise 'STORYBLOK_TOKEN missing' }
 
+logger = Rails.env.development? ? Rails.logger : nil
+
 STORYBLOK_CLIENT = if ENV['CONTENT_PREVIEW_MODE'] == 'true'
                      Storyblok::Client.new(
                        token: storyblok_token,
+                       logger: logger,
                        version: 'draft'
                      )
                    else
@@ -15,6 +18,7 @@ STORYBLOK_CLIENT = if ENV['CONTENT_PREVIEW_MODE'] == 'true'
                      Storyblok::Client.new(
                        cache: cache,
                        token: storyblok_token,
+                       logger: logger,
                        version: 'published'
                      )
                    end
