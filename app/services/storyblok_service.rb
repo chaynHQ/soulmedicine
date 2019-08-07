@@ -19,7 +19,7 @@ class StoryblokService
   end
 
   def fetch(path)
-    @client.story path
+    @client.story path, cache_version: latest_cache_version
   rescue RestClient::NotFound
     raise NotFound.new path: path
   rescue RestClient::RequestFailed => e
@@ -29,6 +29,13 @@ class StoryblokService
   end
 
   private
+
+  def latest_cache_version
+    # NOTE: this call will also be cached in Redis, which is beneficial, since
+    # we only want to fetch the new cache version when the Redis cache has been
+    # invalidated
+    @client.space['data']['space']['version']
+  end
 
   def deserialize(hash, mapper, model_class)
     mapped = mapper.map_from hash
