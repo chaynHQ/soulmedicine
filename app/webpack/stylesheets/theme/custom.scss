@@ -14,7 +14,8 @@
 .navbar {
   @include shadow();
   background-color: $white;
-  border-color: darken(#fff, 5%);
+  border-color: $pink;
+  border-width: 0 0 2px 0;
   font-weight: 400;
 }
 
