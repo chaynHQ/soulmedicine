@@ -293,6 +293,10 @@
   @include box-shadow(none);
 }
 
+.language-dropdown-item {
+  color: $black
+}
+
 .breadcrumb {
   border-color: darken($breadcrumb-bg, 5%);
   @include shadow();
