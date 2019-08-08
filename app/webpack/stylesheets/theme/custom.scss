@@ -15,6 +15,7 @@
   @include shadow();
   background-color: $white;
   border-color: darken(#fff, 5%);
+  font-weight: 400;
 }
 
 .bg-primary {
