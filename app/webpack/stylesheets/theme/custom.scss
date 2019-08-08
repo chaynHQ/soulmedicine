@@ -13,6 +13,8 @@
 
 .navbar {
   @include shadow();
+  background-color: $white;
+  border-color: darken(#fff, 5%);
 }
 
 .bg-primary {
