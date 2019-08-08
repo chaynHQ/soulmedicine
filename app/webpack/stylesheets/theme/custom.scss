@@ -297,6 +297,10 @@
   color: $black
 }
 
+.langauge-selector {
+  padding: 3px;
+}
+
 .breadcrumb {
   border-color: darken($breadcrumb-bg, 5%);
   @include shadow();
