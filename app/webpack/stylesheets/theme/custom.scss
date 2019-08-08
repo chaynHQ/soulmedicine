@@ -265,7 +265,7 @@
 .nav-tabs {
 
   .nav-link {
-    color: $body-color;
+    color: $black;
 
     &,
     &.disabled,
@@ -288,6 +288,14 @@
   &.nav-justified > li {
     vertical-align: bottom;
   }
+}
+.nav-link {
+  color: $black;
+}
+
+.active > .nav-link{
+  color: $blue;
+  font-weight: bold; 
 }
 
 .dropdown-menu {
