@@ -19,12 +19,12 @@ en:
   forms:
     errors_alert: "Please fix the issues below:"
   site-header:
-    home: Home
-    about-us: About Us
-    subscriptions: My Subscriptions
-    profile: My Profile
-    sign-in: Create Account / Sign In
-    sign-out: Sign Out
+    home: home
+    about-us: about us
+    subscriptions: my subscriptions
+    profile: my profile
+    sign-in: create account / sign in
+    sign-out: sign out
   site-footer:
     privacy-policy: Privacy Policy
     terms-of-service: Terms of Service
