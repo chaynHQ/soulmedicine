@@ -2,9 +2,7 @@ class AuthController < ApplicationController
   with_auth_session_management
 
   def sign_in
-    if current_user # rubocop:disable Style/GuardClause
-      redirect_to courses_path
-    end
+    redirect_to courses_path if current_user
   end
 
   def callback
