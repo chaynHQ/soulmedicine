@@ -11,7 +11,7 @@ gem 'puma', '~> 3.12'
 gem 'webpacker', '~> 4.0', '>= 4.0.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redis', '~> 4.1', '>= 4.1.0'
-gem 'storyblok', '~> 2.0'
+gem 'storyblok', '~> 2.0.5'
 gem 'shallow_attributes', '~> 0.9.4'
 gem 'commonmarker', '~> 0.20'
 gem 'twitter_cldr', '~> 4.4', '>= 4.4.3'

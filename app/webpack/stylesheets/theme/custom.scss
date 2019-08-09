@@ -13,6 +13,10 @@
 
 .navbar {
   @include shadow();
+  background-color: $white;
+  border-color: $pink;
+  border-width: 0 0 2px 0;
+  font-weight: 400;
 }
 
 .bg-primary {
@@ -261,7 +265,7 @@
 .nav-tabs {
 
   .nav-link {
-    color: $body-color;
+    color: $black;
 
     &,
     &.disabled,
@@ -285,12 +289,28 @@
     vertical-align: bottom;
   }
 }
+.nav-link {
+  color: $black;
+}
+
+.active > .nav-link{
+  color: $blue;
+  font-weight: bold;
+}
 
 .dropdown-menu {
   margin-top: 0;
   @include shadow();
   border-top-width: 1px;
   @include box-shadow(none);
+}
+
+.language-dropdown-item {
+  color: $black
+}
+
+.langauge-selector {
+  padding: 3px;
 }
 
 .breadcrumb {
@@ -369,6 +389,7 @@
 .alert {
   color: $white;
   @include shadow();
+  font-weight: bold;
 
   &-primary {
     background-color: $primary;
@@ -505,3 +526,9 @@ a.list-group-item {
   border: 0;
   font-size: 1em;
 }
+
+
+// Sign-in ==================================================================
+ .mdl-button--raised.mdl-button--colored {
+   background: $pink !important;
+ }

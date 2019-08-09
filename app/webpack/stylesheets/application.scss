@@ -80,12 +80,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fas {
-  color: $gray-500;
   margin-right: 0.3em;
 }
 
 .site-header {
-  border-bottom: 1px solid $border-color;
 
   .navbar-brand {
     font-family: Helvetica, Arial, sans-serif;
@@ -93,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 
     .logo {
-      max-width: 30px;
+      max-width: 100px;
       margin-right: 1em;
     }
   }
@@ -117,5 +115,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .course-description {
-  color: $text-muted;
+  color: $black;
 }

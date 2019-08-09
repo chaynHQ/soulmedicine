@@ -2,7 +2,8 @@ class CoursesService < StoryblokService
   def list
     response = @client.stories(
       starts_with: 'courses',
-      excluding_fields: 'lessons'
+      excluding_fields: 'lessons',
+      cache_version: latest_cache_version
     )
     stories = response.dig 'data', 'stories'
     Array(stories).map(&method(:deserialize_course))
