@@ -295,7 +295,7 @@
 
 .active > .nav-link{
   color: $blue;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .dropdown-menu {
@@ -389,6 +389,7 @@
 .alert {
   color: $white;
   @include shadow();
+  font-weight: bold;
 
   &-primary {
     background-color: $primary;
