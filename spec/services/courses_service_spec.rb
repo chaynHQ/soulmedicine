@@ -5,18 +5,28 @@ RSpec.describe CoursesService, type: :service do
 
   subject { described_class.new storyblok_client }
 
+  let(:latest_cache_version) { '123' }
+
+  before do
+    allow(storyblok_client).to receive(:space)
+      .and_return(
+        'data' => { 'space' => { 'version' => latest_cache_version } }
+      )
+  end
+
   def mock_courses_list_api(data)
     allow(storyblok_client).to receive(:stories)
       .with(
         starts_with: 'courses',
-        excluding_fields: 'lessons'
+        excluding_fields: 'lessons',
+        cache_version: latest_cache_version
       )
       .and_return('data' => data)
   end
 
   def mock_course_api(slug, data)
     allow(storyblok_client).to receive(:story)
-      .with("courses/#{slug}")
+      .with("courses/#{slug}", cache_version: latest_cache_version)
       .and_return('data' => data)
   end
 
@@ -54,7 +64,8 @@ RSpec.describe CoursesService, type: :service do
         allow(storyblok_client).to receive(:stories)
           .with(
             starts_with: 'courses',
-            excluding_fields: 'lessons'
+            excluding_fields: 'lessons',
+            cache_version: latest_cache_version
           )
           .and_raise(RestClient::RequestFailed)
       end
