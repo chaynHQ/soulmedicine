@@ -2,10 +2,7 @@ class AuthController < ApplicationController
   with_auth_session_management
 
   def sign_in
-    if current_user # rubocop:disable Style/GuardClause
-      flash[:warning] = 'You are already signed in'
-      redirect_back fallback_location: root_path, allow_other_host: false
-    end
+    redirect_to courses_path if current_user
   end
 
   def callback
