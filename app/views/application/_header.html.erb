@@ -1,9 +1,9 @@
 <header class="site-header">
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <nav class="navbar navbar-expand-md">
     <a class="navbar-brand" href="/">
       <%= image_tag(asset_pack_path('media/images/logo.png'), class: 'logo d-inline-block align-top', alt: 'Soul Medicine Logo') %>
-      Soul Medicine
     </a>
+    <h1 class='sr-only'>Soul Medicine</h1>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="nav navbar-nav navbar-right ml-auto">
         <%= header_nav_item t('site-header.home'), root_path, alternate_path: '/' %>
-        <%= header_nav_item t('concepts.course').pluralize.titleize, courses_path %>
+        <%= header_nav_item t('concepts.course').pluralize, courses_path %>
         <%= header_nav_item t('site-header.about-us'), page_path('about-us') %>
 
         <%= header_nav_separator %>
