@@ -122,3 +122,23 @@ By default, newly created review apps on Heroku won't have any of the subscripti
     - Then click on "Save job"
   - This will run the subscriptions processor on an hourly basis
 - Now you're ready to create subscriptions in that review app instance and receive lesson emails from it
+
+## Storyblok content preview mode and caching
+
+The env var `CONTENT_PREVIEW_MODE` determines the behaviour of content fetches from Storyblok…
+
+When `CONTENT_PREVIEW_MODE` is set to `true`:
+- **draft** versions of content are fetched
+- content is not cached
+- --> this is useful for review apps and preview environments, for testing the very latest content
+
+When `CONTENT_PREVIEW_MODE` is set to `false`:
+- only the last **published** versions of content are fetched
+- content is cached in the Redis specified by the env var `REDIS_CACHE_URL`
+- --> so subsequent requests for this data don't need to fetch from Storyblok
+- --> this is important for staging and production environments
+- --> **this means any published content updates may take some time to show up live** (details below)
+
+The cached content, by default, expires after an hour, after which new published content will be fetched from Storyblok. This expiry can be controlled by the `CONTENT_CACHE_TTL_MINS` env var, if required.
+
+To flush the cache manually, open up the endpoint `<site_base_url>/admin/flush_cache` in a browser. Now the very latest published content will be fetched from Storyblok.
