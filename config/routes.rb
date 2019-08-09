@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   match '/500', to: 'errors#internal_server_error', via: :all
   match '/403', to: 'errors#forbidden', via: :all
 
+  get 'admin/flush_cache', to: 'admin#flush_cache'
+
   scope '(:locale)', locale: /#{LocalesService.enabled.join("|")}/ do
     resources :subscriptions, only: [:index]
 
