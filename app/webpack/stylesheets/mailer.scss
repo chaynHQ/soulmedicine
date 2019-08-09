@@ -22,6 +22,7 @@ body {
   width: 70%;
   margin: auto;
   padding-top: 50px;
+  background-color: $white
 }
 
 img {
@@ -37,6 +38,10 @@ img {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.email-intro {
+  text-align: center;
 }
 
 .divider {
