@@ -1,7 +1,7 @@
 <template>
   <button
     id="leave-site"
-    class="btn btn-primary btn-lg leave-button"
+    class="btn btn-secondary btn-lg leave-button"
     @click="leaveSite"
   >
     Leave this site
