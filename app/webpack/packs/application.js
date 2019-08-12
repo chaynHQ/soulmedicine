@@ -12,6 +12,7 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import SignIn from '../components/authentication/sign_in.vue';
 import Profile from '../components/user_profile/profile.vue';
 import CookieLaw from '../components/cookie_law/cookie_law.vue';
+import LeaveSite from '../components/leave_site/leave_site.vue';
 
 Rails.start();
 Turbolinks.start();
@@ -33,6 +34,11 @@ document.addEventListener('turbolinks:load', () => {
     {
       element_id: 'cookie-law',
       components: { CookieLaw },
+      data: {}
+    },
+    {
+      element_id: 'leave-site',
+      components: { LeaveSite },
       data: {}
     }
   ];
