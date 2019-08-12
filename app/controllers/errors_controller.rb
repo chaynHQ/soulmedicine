@@ -1,4 +1,6 @@
 class ErrorsController < ApplicationController
+  before_action :set_format
+
   def not_found
     render(status: :not_found)
   end
@@ -10,4 +12,11 @@ class ErrorsController < ApplicationController
   def forbidden
     render(status: :forbidden)
   end
+
+  private
+
+   def set_format
+    request.format = :html
+  end
+  
 end
