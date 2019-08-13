@@ -36,15 +36,20 @@ module ApplicationHelper
   end
 
   def main_container_class
-    return 'container' unless defined?(@page)
+    is_courses_index = current_page? courses_path
 
-    [
-      'page-container',
-      @page.full_width ? 'container-fluid' : 'container'
-    ].join(' ')
+    if !defined?(@page) && !is_courses_index
+      puts 'returning container'
+      return 'container'
+    elsif is_courses_index
+      puts 'returning container fluid'
+      return 'container_fluid'
+    else
+      return [ 'page-container', @page.full_width ? 'container-fluid' : 'container'].join(' ')
+    end
   end
 
-  def body_style
+  def main_style
     is_courses_index = current_page? courses_path
 
     return '' unless is_courses_index

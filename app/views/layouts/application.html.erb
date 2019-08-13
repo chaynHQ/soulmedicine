@@ -2,13 +2,13 @@
 <html>
   <%= render 'head' %>
 
-  <body style="<%= body_style -%>">
+  <body>
     <%= render 'cookie_law'%>
     <%= render 'header' %>
 
     <%= render 'announcement_banner' %>
 
-    <%= tag.main role: 'main', class: main_container_class do %>
+    <%= tag.main role: 'main', class: main_container_class, style: main_style do %>
       <%= render 'flash' %>
 
       <%= yield %>
