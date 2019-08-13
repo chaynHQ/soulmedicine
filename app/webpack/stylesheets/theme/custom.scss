@@ -542,12 +542,12 @@ a.list-group-item {
 
 // Courses ==================================================================
 .courses-intro {
-  margin: auto;
   background-color: $white;
-  padding: 1em;
-  margin-bottom: 1em;
-  
-  p {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+
+  h2 {
     margin-bottom:0;
   }
 }
