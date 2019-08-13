@@ -102,6 +102,13 @@
   }
 }
 
+.leave-button {
+  position: fixed;
+  right: 10px;
+  bottom: 60px;
+  z-index: 20;
+}
+
 // Typography ==================================================================
 
 .text-secondary {
