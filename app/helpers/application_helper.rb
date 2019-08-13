@@ -38,14 +38,13 @@ module ApplicationHelper
   def main_container_class
     is_courses_index = current_page? courses_path
 
-    if !defined?(@page) && !is_courses_index
-      puts 'returning container'
+    case
+    when !defined?(@page) && !is_courses_index
       return 'container'
-    elsif is_courses_index
-      puts 'returning container fluid'
+    when is_courses_index
       return 'container_fluid'
     else
-      return [ 'page-container', @page.full_width ? 'container-fluid' : 'container'].join(' ')
+      return ['page-container', @page.full_width ? 'container-fluid' : 'container'].join(' ')
     end
   end
 
