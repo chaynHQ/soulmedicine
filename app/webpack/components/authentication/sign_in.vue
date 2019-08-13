@@ -251,7 +251,10 @@ export default {
 
       if (data.user.email_verified === false) {
         const user = firebase.auth().currentUser;
-        return user.sendEmailVerification().then(() => {
+        const actionCodeSettings = {
+          url: 'https://soulmedicine.io'
+        };
+        return user.sendEmailVerification(actionCodeSettings).then(() => {
           return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
         });
       }
