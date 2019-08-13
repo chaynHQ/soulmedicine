@@ -136,6 +136,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    continueUrl: {
+      type: String,
+      required: true,
+      default: 'https://soulmedicine.io'
     }
   },
   data() {
@@ -252,7 +257,7 @@ export default {
       if (data.user.email_verified === false) {
         const user = firebase.auth().currentUser;
         const actionCodeSettings = {
-          url: 'https://soulmedicine.io'
+          url: vm.continueUrl
         };
         return user.sendEmailVerification(actionCodeSettings).then(() => {
           return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
