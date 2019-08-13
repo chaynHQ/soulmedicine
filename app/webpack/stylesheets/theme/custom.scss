@@ -539,3 +539,15 @@ a.list-group-item {
  .mdl-button--raised.mdl-button--colored {
    background: $pink !important;
  }
+
+// Courses ==================================================================
+.courses-intro {
+  margin: auto;
+  background-color: $white;
+  padding: 1em;
+  margin-bottom: 1em;
+  
+  p {
+    margin-bottom:0;
+  }
+}
