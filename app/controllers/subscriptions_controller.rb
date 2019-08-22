@@ -79,18 +79,18 @@ class SubscriptionsController < ApplicationController
     @subscription = current_user
       .subscriptions
       .find_or_initialize_by(course_slug: course_slug) do |subscription|
-        last_timezone = current_user
+        last_subscription = current_user
           .subscriptions
           .order(:updated_at)
           .last
-          &.user_timezone
 
         subscription.user = current_user
         subscription.course_slug = course_slug
         subscription.main_language = LocalesService.current
-        subscription.user_timezone = last_timezone || 'UTC'
+        subscription.user_timezone = last_subscription&.user_timezone || 'UTC'
         subscription.days_utc = Date::ABBR_DAYNAMES.dup
         subscription.hours_utc = [12]
+        subscription.disguised = last_subscription&.disguised
       end
   end
 
