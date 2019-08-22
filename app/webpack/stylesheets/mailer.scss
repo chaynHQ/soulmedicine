@@ -1,12 +1,5 @@
 @import "./theme/variables";
 
-@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap-select/sass/bootstrap-select';
-
-@import "./theme/custom";
-
-@import 'application.scss';
-
 @font-face {
   font-family: 'Noto Nastaliq Urdu Draft';
   font-style: normal;
@@ -22,7 +15,42 @@ body {
   width: 70%;
   margin: auto;
   padding-top: 50px;
-  background-color: $white
+  background-color: $white;
+  font-family: $font-family-sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #000;
+  text-align: left;
+  min-width: 992px !important;
+}
+
+.email-intro {
+  text-align: center;
+  line-height: 1.2;
+  font-weight: 500;
+  margin-top: 0;
+  font-size: 1.53125rem;
+  margin-bottom: 1.5rem;
+}
+
+.email-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 2.1875rem;
+}
+
+a {
+      color: #4490CE;
 }
 
 img {
@@ -33,21 +61,32 @@ img {
   text-align: center;
 }
 
-.email-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.email-intro {
-  text-align: center;
-}
-
 .divider {
   height: 8px;
   width: 20%;
   background: $success;
   margin: auto;
   margin-bottom: 20px;
+}
+
+.lang-ur {
+  font-family: 'Noto Nastaliq Urdu', 'Noto Nastaliq Urdu Draft', 'Cabin', Helvetica, Arial, sans-serif;
+  line-height: 2.3;
+}
+
+.ltr {
+  text-align: left!important;
+}
+
+.rtl {
+  text-align: right!important;
+
+  .float-right {
+    float: right !important;
+  }
+
+  ul,
+  ul#{&} {
+    padding-inline-start: 0;
+  }
 }
