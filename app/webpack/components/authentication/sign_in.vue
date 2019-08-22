@@ -139,8 +139,7 @@ export default {
     },
     continueUrl: {
       type: String,
-      required: true,
-      default: 'https://soulmedicine.io'
+      required: true
     }
   },
   data() {
