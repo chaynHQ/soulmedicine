@@ -27,7 +27,12 @@
                 label: t('.user_timezone_label'),
                 default: 'UTC'
               },
-              { class: 'selectpicker' }
+              {
+                class: 'selectpicker',
+                data: {
+                  'live-search': true
+                }
+              }
           %>
 
           <%=
