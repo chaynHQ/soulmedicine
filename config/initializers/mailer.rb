@@ -15,11 +15,7 @@ Rails.application.config.action_mailer.smtp_settings = {
   authentication: :plain
 }
 
-host_uri = if ENV.key?('HEROKU_APP_NAME')
-             URI("https://#{ENV['HEROKU_APP_NAME']}.herokuapp.com")
-           else
-             URI(ENV.fetch('SITE_BASE_URL'))
-           end
+host_uri = Rails.configuration.host_uri
 
 Rails.application.config.action_mailer.default_url_options = { host: host_uri.hostname }
 Rails.application.config.action_mailer.default_url_options[:port] = host_uri.port if host_uri.port != host_uri.default_port

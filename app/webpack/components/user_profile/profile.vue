@@ -15,6 +15,7 @@
           :api-key="apiKey"
           :project-id="projectId"
           :inline-flow="true"
+          :continue-url="continueUrl"
         ></sign-in>
       </div>
 

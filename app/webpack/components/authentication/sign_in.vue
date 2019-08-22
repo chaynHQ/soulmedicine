@@ -136,6 +136,10 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    continueUrl: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -251,7 +255,10 @@ export default {
 
       if (data.user.email_verified === false) {
         const user = firebase.auth().currentUser;
-        return user.sendEmailVerification().then(() => {
+        const actionCodeSettings = {
+          url: vm.continueUrl
+        };
+        return user.sendEmailVerification(actionCodeSettings).then(() => {
           return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
         });
       }
