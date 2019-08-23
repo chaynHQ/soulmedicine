@@ -295,7 +295,8 @@ export default {
           Turbolinks.clearCache();
           Turbolinks.visit('/auth/sign_out');
           window.open(
-            `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${user.displayName} (email address: ${user.email})`
+            `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${user.displayName} (email address: ${user.email})`,
+            '_self'
           );
         });
     }
