@@ -7,7 +7,7 @@
 <section class="subscriptions-page">
   <% if @subscriptions.blank? %>
     <div class="alert alert-secondary" role="alert">
-      <%= t('.no_subscriptions_html', pathways_link: link_to(t('concepts.course').pluralize, courses_path)) %>
+      <%= t('.no_subscriptions_html', pathways_link: link_to(t('concepts.course').pluralize, courses_path, { :class=>"alert-link" } )) %>
     </div>
   <% end %>
 
