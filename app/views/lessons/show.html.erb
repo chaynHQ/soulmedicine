@@ -18,10 +18,6 @@
   </nav>
 
   <section class="lesson-page">
-    <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
-      <%= tc(@lesson.name) %>
-    </h2>
-
     <div class="card <%= text_direction -%>" dir="<%= text_direction -%>">
       <div class="card-header">
         <ul class="nav nav-pills card-header-pills" role="tablist">
@@ -51,7 +47,12 @@
       <div class="card-body tab-content">
         <!-- Current language content -->
         <div class="tab-pane fade show active <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= LocalesService.current -%>" dir="<%= text_direction -%>">
-          <%= tc(@lesson.content.html_safe) %>
+          <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
+            <%= tc(@lesson.name) %>
+          </h2>
+          <div>
+            <%= tc(@lesson.content.html_safe) %>
+          </div>
         </div>
 
         <!-- Other languages content -->
@@ -59,7 +60,12 @@
           <% if l != LocalesService.current.to_s %>
             <% LocalesService.with(l) do %>
               <div class="tab-pane fade <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= l -%>" role="tabpanel" aria-labelledby="nav-home-tab" dir="<%= text_direction -%>">
-                <%= tc(@lesson.content.html_safe) %>
+                <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
+                  <%= tc(@lesson.name) %>
+                </h2>
+                <div>
+                  <%= tc(@lesson.content.html_safe) %>
+                </div>
               </div>
             <% end %>
           <% end %>
