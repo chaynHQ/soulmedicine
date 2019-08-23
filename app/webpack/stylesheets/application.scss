@@ -79,14 +79,6 @@ h1, h2, h3, h4, h5, h6 {
   @extend .alert-danger;
 }
 
-.alert-secondary {
-  color: $white;
-
-  a {
-    color: $blue
-  }
-}
-
 .fas {
   margin-right: 0.3em;
 }
