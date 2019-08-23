@@ -107,8 +107,8 @@
   right: 10px;
   bottom: 60px;
   z-index: 20;
-  border: 2px solid black;
-  color: black;
+  border: 2px solid $black;
+  color: $black;
 }
 
 // Typography ==================================================================
@@ -298,6 +298,7 @@
     vertical-align: bottom;
   }
 }
+
 .nav-link {
   color: $black;
 }
@@ -523,17 +524,16 @@ a.list-group-item {
 // Cookies ==================================================================
 .Cookie--soulmedicine {
   background: $secondary;
-  color: black;
+  color: $black;
   padding: 1.25em;
 }
 
 .Cookie__button {
   background: $success;
   padding: 0.625em 3.125em;
-  color: #fff;
+  color: $white;
   border-radius: 20px;
   border: 0;
-  font-size: 1em;
 }
 
 .Cookie>* {
@@ -548,15 +548,4 @@ a.list-group-item {
 // Courses ==================================================================
 .courses-intro {
   background-color: $white;
-  padding-top: 2em;
-  padding-bottom: 2em;
-
-  h2 {
-    margin-bottom:0;
-  }
-}
-
-.courses-page {
-  padding-top: 2em;
-  padding-bottom: 2em;
 }
