@@ -30,7 +30,7 @@ script:
   - yarn es-check
   - bundle install -j $(nproc) --path vendor/bundle
   - bundle exec rubocop
-  - bundle exec brakeman
+  - bundle exec brakeman -z
   - RAILS_ENV=test bundle exec rake db:schema:load --trace
   - RAILS_ENV=test bundle exec rails db:migrate
   - RAILS_ENV=test bundle exec rails db:seed
