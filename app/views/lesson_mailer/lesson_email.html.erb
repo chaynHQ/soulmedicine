@@ -1,14 +1,15 @@
 
-<h3 class='email-intro'>It’s like having an informative friend in your pocket that gives you guidence and help on the days that you need it most.</h3>
+<h3 class='email-intro'>
+  It’s like having an informative friend in your pocket that gives you guidance and help on the days that you need it most.
+</h3>
 
 <div class='divider'></div>
 
 <div class='email-header'>
-  <h1>
-    <%=link_to @course.name, course_url(@languages.first, @course)%>
-    <br/>
-    <%= link_to @lesson.name, course_lesson_url(@languages.first, @course, @lesson) %>
-  </h1>
+  <div class='col'>
+  <h2> <%=link_to @course.name, course_url(@languages.first, @course)%> </h2>
+  <h3><i><%= link_to @lesson.name, course_lesson_url(@languages.first, @course, @lesson) %></i></h3>
+  </div>
   <%= image_tag attachments['icon.png'].url, alt: 'Course logo'%>
 </div>
 
