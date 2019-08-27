@@ -45,6 +45,7 @@ group :development do
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'rubocop', '~> 0.68.0', require: false
   gem 'rubocop-performance', '~> 1.1', require: false
+  gem 'brakeman'
 end
 
 group :test do
