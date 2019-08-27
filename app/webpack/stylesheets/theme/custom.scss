@@ -419,6 +419,7 @@
   &-info {
     background-color: $info;
     border-color: darken($info, 5%);
+    color: $black;
   }
 
   &-danger {
