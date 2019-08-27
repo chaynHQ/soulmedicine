@@ -1,0 +1,37 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "7c123e86812a533bd9c32bb2c9a2afee890a95048a4738190b3b762d2944420e",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped parameter value",
+      "file": "app/views/pages/show.html.erb",
+      "line": 16,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "pages_service.get(params[:id]).content_html",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "PagesController",
+          "method": "show",
+          "line": 10,
+          "file": "app/controllers/pages_controller.rb",
+          "rendered": {
+            "name": "pages/show",
+            "file": "app/views/pages/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "pages/show"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "note": "HTML from storyblok"
+    }
+  ],
+  "updated": "2019-08-27 11:03:00 +0100",
+  "brakeman_version": "4.6.1"
+}

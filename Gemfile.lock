@@ -63,6 +63,7 @@ GEM
     bootstrap_form (4.2.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    brakeman (4.6.1)
     builder (3.2.3)
     byebug (10.0.2)
     camertron-eprun (1.1.1)
@@ -289,6 +290,7 @@ DEPENDENCIES
   binding_of_caller (~> 0.8.0)
   bootsnap (>= 1.1.0)
   bootstrap_form (~> 4.2)
+  brakeman
   byebug
   commonmarker (~> 0.20)
   default_value_for (~> 3.1)
