@@ -72,6 +72,11 @@ bundle exec rspec
 - To get Rubocop to fix detected issues automatically (where it can):
   - `bundle exec rubocop -a`
 
+- To run Brakeman locally
+  - `brakeman`
+- To step through the ignored warnings
+  - `brakeman -I`
+
 ## Testing subscription emails
 
 ### Local dev
