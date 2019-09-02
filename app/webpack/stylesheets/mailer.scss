@@ -34,9 +34,13 @@ body {
 
 .email-header {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .header-text{
+    min-width: 260px;
+  }
+  
 }
 
 a {
