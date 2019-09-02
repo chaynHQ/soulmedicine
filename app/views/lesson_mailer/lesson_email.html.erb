@@ -10,9 +10,7 @@
     <h2> <%=link_to @course.name, course_url(@languages.first, @course)%> </h2>
     <h3><i><%= link_to @lesson.name, course_lesson_url(@languages.first, @course, @lesson) %></i></h3>
   </div>
-  <div class='header-image'>
-    <%= image_tag attachments['icon.png'].url, alt: 'Course logo'%>
-  </div>
+  <%= image_tag attachments['icon.png'].url, alt: 'Course logo'%>
 </div>
 
 <% @languages.each do |l| %>
