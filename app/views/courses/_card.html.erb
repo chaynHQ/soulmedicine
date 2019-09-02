@@ -8,9 +8,9 @@
     <h5 class="card-title <%= language_class -%>">
       <%= link_to tc(course.name), course_path(course) %>
     </h5>
-    <h6 class="card-subtitle mb-2">
+    <h6 class="card-subtitle">
       <% course.enabled_languages.each do |l| %>
-        <%= link_to LocalesService.language_name(l), course_path(course, locale: l), class: 'badge badge-primary' %>
+        <%= link_to LocalesService.language_name(l), course_path(course, locale: l), class: 'badge badge-primary mb-2' %>
       <% end %>
     </h6>
     <div class="card-text <%= language_class -%>">
