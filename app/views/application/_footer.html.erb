@@ -1,21 +1,25 @@
 <footer class="site-footer">
   <div class="container">
-    <div class="col p-5">
-        <%= link_to 'About us', page_path('about-us') %>
-        <br />
-        <%= link_to 'Blog', 'https://medium.com/hack-for-chayn' %>
-        <br />
-        <%= link_to 'Donate', 'https://www.paypal.me/chaynhq' %>
-        <br />
-        <br />
-        <%= link_to 'Facebook', 'https://www.facebook.com/chayn/' %> /
-        <%= link_to 'Twitter', 'https://twitter.com/ChaynHQ' %> /
-        <%= link_to 'Spotify', 'https://open.spotify.com/show/5QOSUw3m5EQK7lEwtGDYpn' %>
+    <div class='row p-5'>
+      <div class="col-8">
+          <%= link_to 'About us', page_path('about-us') %>
+          <br />
+          <%= link_to 'Blog', 'https://medium.com/hack-for-chayn' %>
+          <br />
+          <%= link_to 'Donate', 'https://www.paypal.me/chaynhq' %>
+          <br />
+          <br />
+          <%= link_to 'Facebook', 'https://www.facebook.com/chayn/' %> /
+          <%= link_to 'Twitter', 'https://twitter.com/ChaynHQ' %> /
+          <%= link_to 'Spotify', 'https://open.spotify.com/show/5QOSUw3m5EQK7lEwtGDYpn' %>
+      </div>
     </div>
-    <span>
-      © <%= Time.now.year %>, Chayn
-    </span>
-    <span class="ml-4"><%= link_to t('site-footer.privacy-policy'), page_path('privacy-policy') %></span>
-    <span class="ml-4"><%= link_to t('site-footer.terms-of-service'), page_path('terms-of-service') %></span>
+    <div class='row'>
+      <span>
+        © <%= Time.now.year %>, Chayn
+      </span>
+      <span class="ml-4"><%= link_to t('site-footer.privacy-policy'), page_path('privacy-policy') %></span>
+      <span class="ml-4"><%= link_to t('site-footer.terms-of-service'), page_path('terms-of-service') %></span>
+    </div>
   </div>
 </footer>
