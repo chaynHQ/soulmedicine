@@ -26,14 +26,11 @@ class CoursesService < StoryblokService
     raise NotFound.new(type: 'Lesson') if course_slug.blank? || lesson_slug.blank?
 
     course = get course_slug
-    current_lesson = course.lessons.find { |l| l.slug == lesson_slug }
+    lesson = course.lessons.find { |l| l.slug == lesson_slug }
 
-    next_lesson = course.next_lesson(lesson_slug)
-    previous_lesson = course.previous_lesson(lesson_slug)
+    raise NotFound.new(type: 'Lessons', id: "#{course_slug}/#{lesson_slug}") if lesson.blank?
 
-    raise NotFound.new(type: 'Lessons', id: "#{course_slug}/#{lesson_slug}") if current_lesson.blank?
-
-    [course, current_lesson, next_lesson, previous_lesson]
+    [course, lesson]
   end
 
   private
