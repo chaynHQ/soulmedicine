@@ -19,4 +19,15 @@ class Course < ContentModel
     end
     lesson
   end
+
+  def previous_lesson(slug)
+    return lessons.first if slug.blank?
+
+    lesson = nil
+    lessons.each_cons(2) do |x, y|
+      lesson = x if y.slug == slug
+    end
+    lesson
+  end
+
 end
