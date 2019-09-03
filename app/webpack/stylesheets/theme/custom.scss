@@ -550,3 +550,36 @@ a.list-group-item {
 .courses-intro {
   background-color: $white;
 }
+
+// SignIn ===================================================================
+#sign_in {
+  height: 75%;
+
+  .info {
+    background-color: $pink;
+
+    img{
+      width: 100%;
+    }
+
+    h2, h4 {
+      text-align: left;
+      width: 85%;
+    }
+  }
+
+  .sign-in {
+    background-image: url("https://a.storyblok.com/f/50602/1280x905/962f4bf99e/chayn_patterns_homepage-01.png");
+    background-position: center;
+    background-size: cover;
+
+    .bg-beige {
+        background-color: $white;
+        max-width: 420px;
+    }
+
+    h5 {
+      max-width: 360px;
+    }
+  }
+}
