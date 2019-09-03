@@ -326,7 +326,11 @@
 .breadcrumb {
   border-color: darken($breadcrumb-bg, 5%);
   @include shadow();
+  display: flex;
+  justify-content: space-between;
 }
+
+.breadcrumb > li + li.my-auto:before {content: none;}
 
 .pagination {
 
