@@ -328,6 +328,8 @@
   @include shadow();
 }
 
+.breadcrumb > li + li.ml-auto:before {content: none;}
+
 .pagination {
 
   > li > a,
