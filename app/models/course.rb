@@ -29,5 +29,4 @@ class Course < ContentModel
     end
     lesson
   end
-
 end
