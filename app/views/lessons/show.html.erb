@@ -1,7 +1,7 @@
 <%= render "courses/check_available", course: @course do %>
   <%
-    title @current_lesson.name + ' | ' + @course.name
-    description @current_lesson.content
+    title @lesson.name + ' | ' + @course.name
+    description @lesson.content
   %>
 
   <nav aria-label="breadcrumb" class="mb-4 <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
@@ -59,10 +59,10 @@
         <!-- Current language content -->
         <div class="tab-pane fade show active <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= LocalesService.current -%>" dir="<%= text_direction -%>">
           <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
-            <%= tc(@current_lesson.name) %>
+            <%= tc(@lesson.name) %>
           </h2>
           <div>
-            <%= tc(@current_lesson.content.html_safe) %>
+            <%= tc(@lesson.content.html_safe) %>
           </div>
         </div>
 
@@ -72,10 +72,10 @@
             <% LocalesService.with(l) do %>
               <div class="tab-pane fade <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= l -%>" role="tabpanel" aria-labelledby="nav-home-tab" dir="<%= text_direction -%>">
                 <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
-                  <%= tc(@current_lesson.name) %>
+                  <%= tc(@lesson.name) %>
                 </h2>
                 <div>
-                  <%= tc(@current_lesson.content.html_safe) %>
+                  <%= tc(@lesson.content.html_safe) %>
                 </div>
               </div>
             <% end %>
