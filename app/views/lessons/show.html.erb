@@ -14,7 +14,7 @@
               %>
               <%= link_to tc(@course.name), course_path(@course) %>
             </li>
-            <li class="breadcrumb-item ml-auto my-auto">
+            <li class="breadcrumb-item my-auto">
               <% if @previous_lesson.present? %>
                 <%= link_to 'Back', course_lesson_path(@course, @previous_lesson) %>
               <% end %>
