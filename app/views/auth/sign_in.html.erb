@@ -2,12 +2,24 @@
   title 'Create account / sign in'
 %>
 
-<section id="sign_in">
-  <sign-in
-    api-key="<%= FirebaseConfig.api_key %>"
-    project-id="<%= FirebaseConfig.project_id %>"
-    continue-url="<%= FirebaseConfig.continueURL %>">
-  </sign-in>
+<section id="sign_in" class='row'>
+  <div class="col-sm-6 info p-5 text-center">
+    <h2 class='mt-5 text-left'><b>Read our notes of love to take control of your life and get out of toxic situations.</b></h2>
+    <h4 class='text-left'>Create an account to follow the pathways online or get them delivered to your inbox at a time and a day that works for you.</h4>
+    <%= image_tag('https://a.storyblok.com/f/50602/450x318/b70902732b/sign-in.png', class: '', alt: '...') %>
+  </div>
+  <div class="sign-in col-sm-6 p-5">
+    <div class="bg-beige p-3 mt-5 mx-auto align-middle ">
+      <h5 class='my-4 mx-auto'>If you are signing up for the first time, you can give us any name like "Marshmallow Forest".</h5>
+      <h5 class='my-4 mx-auto'>And if you’re signing in, welcome back superstar!</h5>
+      <sign-in
+        api-key="<%= FirebaseConfig.api_key %>"
+        project-id="<%= FirebaseConfig.project_id %>"
+        continue-url="<%= FirebaseConfig.continueURL %>"
+        class='mb-4'>
+      </sign-in>
+    </div>
+  </div>
 
   <noscript>
     Please enable JavaScript to sign in
