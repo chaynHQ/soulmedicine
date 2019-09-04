@@ -37,12 +37,13 @@ module ApplicationHelper
 
   def main_container_class
     is_courses_index = current_page? courses_path
+    is_auth_sign_in_path = current_page? auth_sign_in_path
 
     case
-    when !defined?(@page) && !is_courses_index
-      return 'container'
-    when is_courses_index
+    when is_courses_index || is_auth_sign_in_path
       return 'container_fluid'
+    when !defined?(@page)
+      return 'container'
     else
       return ['page-container', @page.full_width ? 'container-fluid' : 'container'].join(' ')
     end
