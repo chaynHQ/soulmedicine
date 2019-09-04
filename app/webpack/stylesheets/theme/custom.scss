@@ -558,12 +558,11 @@ a.list-group-item {
   .info {
     background-color: $pink;
 
-    img{
+    img {
       width: 100%;
     }
 
     h2, h4 {
-      text-align: left;
       width: 85%;
     }
   }
@@ -573,6 +572,7 @@ a.list-group-item {
     background-position: center;
     background-size: cover;
 
+    // Max Widths dictated by firebase UI component
     .bg-beige {
         background-color: $white;
         max-width: 420px;
