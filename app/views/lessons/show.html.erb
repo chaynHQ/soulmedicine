@@ -5,25 +5,27 @@
   %>
 
   <nav aria-label="breadcrumb" class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item d-flex align-items-center">
-                <%=
-                  image_tag @course.image,
-                    style: 'width: 100px;',
-                    alt: @course.summary
-                %>
-                <%= link_to tc(@course.name), course_path(@course), class: 'flex-grow-1'%>
-            </li>
-        </ol>
-    </nav>
-    <div class='my-4 p-3'>
-      <% if @previous_lesson.present? %>
-        <%= link_to raw('&lt;&lt; Previous Note'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
-      <% end %>
-      <% if @next_lesson.present? %>
-        <%= link_to raw('Next Note &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
-      <% end %>
-    </div>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item d-flex align-items-center">
+        <%= image_tag @course.image,
+            style: 'width: 100px;',
+            alt: @course.summary
+        %>
+        <%= link_to tc(@course.name),
+            course_path(@course),
+            class: 'flex-grow-1'
+        %>
+      </li>
+    </ol>
+  </nav>
+  <div class='my-4 p-3'>
+    <% if @previous_lesson.present? %>
+      <%= link_to raw('&lt;&lt; Previous Note'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
+    <% end %>
+    <% if @next_lesson.present? %>
+      <%= link_to raw('Next Note &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+    <% end %>
+  </div>
   <section class="lesson-page">
     <div class="card <%= text_direction -%>" dir="<%= text_direction -%>">
       <div class="card-header">
