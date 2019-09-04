@@ -1,9 +1,5 @@
 <div class="card shadow-sm mb-3 course-card <%= text_direction -%>" dir="<%= text_direction -%>">
-  <%=
-    image_tag course.image,
-      class: 'card-img-top',
-      alt: course.summary
-  %>
+  <%= link_to image_tag(course.image, class: 'card-img-top', alt: course.summary), course_path(course) %>
   <div class="card-body">
     <h5 class="card-title <%= language_class -%>">
       <%= link_to tc(course.name), course_path(course) %>

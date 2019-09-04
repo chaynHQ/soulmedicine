@@ -7,5 +7,8 @@ class LessonsController < ApplicationController
       course_id,
       lesson_id
     )
+
+    @next_lesson = @course.next_lesson(@lesson.slug)
+    @previous_lesson = @course.previous_lesson(@lesson.slug)
   end
 end
