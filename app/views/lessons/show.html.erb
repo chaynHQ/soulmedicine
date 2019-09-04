@@ -4,7 +4,7 @@
     description @lesson.content
   %>
 
-  <nav aria-label="breadcrumb" class="mb-4 <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
+  <nav aria-label="breadcrumb" class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
               <%=
@@ -14,20 +14,16 @@
               %>
               <%= link_to tc(@course.name), course_path(@course) %>
             </li>
-            <li class="breadcrumb-item my-auto">
-              <% if @previous_lesson.present? %>
-                <%= link_to 'Back', course_lesson_path(@course, @previous_lesson) %>
-              <% end %>
-              <% if @previous_lesson.present? && @next_lesson.present?  %>
-                &nbsp; | &nbsp;
-              <% end %>
-              <% if @next_lesson.present? %>
-                <%= link_to 'Next', course_lesson_path(@course,@next_lesson) %>
-              <% end %>
-            </li>
         </ol>
     </nav>
-
+    <div class='my-4 p-3'>
+      <% if @previous_lesson.present? %>
+        <%= link_to '<< Previous Note', course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
+      <% end %>
+      <% if @next_lesson.present? %>
+        <%= link_to 'Next Note >>', course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <% end %>
+    </div>
   <section class="lesson-page">
     <div class="card <%= text_direction -%>" dir="<%= text_direction -%>">
       <div class="card-header">
