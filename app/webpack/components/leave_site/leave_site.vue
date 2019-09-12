@@ -12,7 +12,7 @@
 export default {
   methods: {
     leaveSite() {
-      window.open('http://www.comicrelief.com/', '_newtab');
+      window.open('http://www.wikipedia.org/', '_newtab');
       window.location.replace(
         'https://www.google.com/search?tbm=isch&q=cute+baby+animal+memes'
       );
