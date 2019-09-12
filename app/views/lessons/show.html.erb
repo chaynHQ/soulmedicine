@@ -20,10 +20,10 @@
   </nav>
   <div class='my-4 p-3'>
     <% if @previous_lesson.present? %>
-      <%= link_to raw('&lt;&lt; Previous Note'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
+      <%= link_to raw('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to raw('Next Note &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to raw('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
     <% end %>
   </div>
   <section class="lesson-page">
@@ -84,10 +84,10 @@
   </section>
   <div class='my-4 p-3'>
     <% if @previous_lesson.present? %>
-      <%= link_to raw('&lt;&lt; Previous Note'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
+      <%= link_to raw('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to raw('Next Note &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to raw('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
     <% end %>
   </div>
 <% end %>
