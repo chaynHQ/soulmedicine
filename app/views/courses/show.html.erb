@@ -81,7 +81,7 @@
                 </p>
                 <ul class="list-unstyled <%= text_direction -%>" dir="<%= text_direction -%>">
                   <% @course.enabled_languages.each do |l| %>
-                    <li class="langauge-selector">
+                    <li class="language-selector">
                       <%= link_to LocalesService.language_name(l), course_path(@course, locale: l), class: 'badge badge-primary' %>
                     </li>
                   <% end %>
