@@ -16,6 +16,7 @@ class User < ApplicationRecord
   scope :verified, -> { where(email_verified: true) }
 
   has_many :subscriptions, dependent: :destroy
+  has_many :votes
 
   def verified?
     email_verified == true
