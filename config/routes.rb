@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     post 'auth/callback'
     get  'auth/sign_out'
 
+    post '/vote', to: 'votes#create', as: 'vote'
+
     resource :profile, only: %i[show update], controller: 'profile'
 
     resources :subscriptions, only: %i[index]

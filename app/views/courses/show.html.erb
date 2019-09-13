@@ -100,8 +100,14 @@
                   <%= 'like'.pluralize.titleize %>
                 </p>
                 <p>
-                  <%= octicon "heart", :height => 32,  :class => "", :"aria-label" => "heart", :fill => heart_fill %>
-                  <%= @course.lessons.size %>
+                <%= link_to vote_path(:course_slug => @course.slug), method: :post do %>
+                    <%= octicon "heart",
+                        :height => 32,
+                        :class => "",
+                        :"aria-label" => "heart",
+                        :fill => heart_fill %>
+                <% end %>
+                <%= @course.lessons.size %>
                 </p>
               </div>
             </div>
