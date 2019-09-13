@@ -27,6 +27,9 @@ gem 'rollbar', '~> 2.19', '>= 2.19.3'
 gem 'meta-tags', '~> 2.11', '>= 2.11.1'
 gem 'active_model_serializers', '~> 0.10.9'
 gem 'premailer-rails', '~>1.10.3'
+gem 'octicons'
+gem 'octicons_helper'
+
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

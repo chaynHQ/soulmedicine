@@ -95,6 +95,15 @@
                   <%= @course.lessons.size %>
                 </p>
               </div>
+              <div class="mb-4">
+                <p class="font-weight-bold text-uppercase mb-2">
+                  <%= 'like'.pluralize.titleize %>
+                </p>
+                <p>
+                  <%= octicon "heart", :height => 32,  :class => "", :"aria-label" => "heart", :fill => heart_fill %>
+                  <%= @course.lessons.size %>
+                </p>
+              </div>
             </div>
           </div>
         </div>
