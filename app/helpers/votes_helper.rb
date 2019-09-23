@@ -10,7 +10,7 @@ module VotesHelper
   def has_user_voted
 
     vote = current_user.votes.where(["course_slug = ?", @course.slug]).first
-    return vote.liked ? true : false
+    return !vote.nil? && vote.liked ? true : false
 
   end
 
