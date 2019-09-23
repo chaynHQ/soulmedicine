@@ -1,10 +1,6 @@
 class VotesController < ApplicationController
   def create
 
-    puts ' *********'
-    puts current_user?
-    puts '*******'
-
     if !current_user?
       flash[:alert] = 'Please sign in to vote'
       redirect_to auth_sign_in_path
