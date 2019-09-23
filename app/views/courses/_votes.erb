@@ -2,7 +2,7 @@
   <%= 'like'.pluralize.titleize %>
 </p>
 <p>
-<%= link_to vote_path(:course_slug => @course.slug), method: :post, remote: true do %>
+<%= link_to vote_path(:course_slug => @course.slug), class: 'voting-button', method: :post, remote: true do %>
   <%= icon heart_fill %>
 <% end %>
 <%= @vote_total %>
