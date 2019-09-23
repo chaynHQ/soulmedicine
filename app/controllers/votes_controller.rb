@@ -1,5 +1,10 @@
 class VotesController < ApplicationController
   def create
+
+    puts ' *********'
+    puts current_user?
+    puts '*******'
+
     if !current_user?
       flash[:alert] = 'Please sign in to vote'
       redirect_to auth_sign_in_path
@@ -12,8 +17,8 @@ class VotesController < ApplicationController
       vote.liked = !vote.liked
       vote.save
 
-    end
+      redirect_to course_path(vote.course_slug)
 
-    redirect_to course_path(vote.course_slug)
+    end
   end
 end

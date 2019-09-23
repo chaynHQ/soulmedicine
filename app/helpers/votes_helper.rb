@@ -1,6 +1,6 @@
 module VotesHelper
   def heart_fill
-    @voted = user_voted?
+    @voted = current_user? ? user_voted? : false
     @voted ? 'fas fa-heart' : 'far fa-heart'
   end
 
