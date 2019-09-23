@@ -79,8 +79,12 @@ h1, h2, h3, h4, h5, h6 {
   @extend .alert-danger;
 }
 
-.fas {
+.fas, .far {
   margin-right: 0.3em;
+}
+
+.voting-button {
+  text-decoration: none !important;
 }
 
 .site-header {
