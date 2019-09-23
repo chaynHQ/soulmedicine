@@ -19,10 +19,4 @@ class VotesController < ApplicationController
 
   end
 
-  private
-
-  def has_user_voted
-    #Search for current user_id & course_id to see if they have voted. This will change what colour the heart is
-  end
-
 end
