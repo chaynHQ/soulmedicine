@@ -88,7 +88,7 @@ module ApplicationHelper
   end
 
   def icon(name, size: '1x')
-    tag.i '', class: "fas fa-#{name} fa-#{size}"
+    tag.i '', class: "#{name} fa-#{size}"
   end
 
   def language_class(lang = LocalesService.current)
