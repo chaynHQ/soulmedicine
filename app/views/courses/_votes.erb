@@ -3,7 +3,7 @@
 </p>
 <p>
 <%= link_to vote_path(:course_slug => @course.slug), class: 'voting-button', method: :post, remote: true do %>
-  <%= icon heart_fill %>
+  <%= icon 'heart', variant: heart_fill %>
 <% end %>
 <%= @vote_total %>
 </p>
