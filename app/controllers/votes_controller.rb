@@ -23,9 +23,4 @@ class VotesController < ApplicationController
     #Search for current user_id & course_id to see if they have voted. This will change what colour the heart is
   end
 
-  def get_course_vote_total
-    
-
-  end
-
 end

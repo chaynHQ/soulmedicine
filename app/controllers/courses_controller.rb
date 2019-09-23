@@ -11,5 +11,7 @@ class CoursesController < ApplicationController
     @course = courses_service.get params[:id]
 
     @subscription = (current_user.subscriptions.find_by(course_slug: @course.slug) if current_user?)
+
+    @vote_total = Vote.get_course_vote_total(@course.slug)
   end
 end
