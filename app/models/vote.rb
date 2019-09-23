@@ -6,6 +6,6 @@ class Vote < ApplicationRecord
     uniqueness: { scope: :user_id }
 
   def self.get_course_vote_total(course_slug)
-    @total_votes = Vote.where(course_slug: course_slug, liked: true).count
+    @total_votes = Vote.where(course_slug: course_slug).count
   end
 end

@@ -20,13 +20,13 @@ Rails.application.routes.draw do
         patch :unpause
         get '/unsubscribe/:user_id', action: :unsubscribe, as: 'unsubscribe'
       end
+
+      resource :vote, only: %i[create destroy]
     end
 
     get  'auth/sign_in'
     post 'auth/callback'
     get  'auth/sign_out'
-
-    post '/vote', to: 'votes#create', as: 'vote'
 
     resource :profile, only: %i[show update], controller: 'profile'
 
