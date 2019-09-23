@@ -1,17 +1,22 @@
 class VotesController < ApplicationController
-
   before_action :require_authentication
 
+  before_action :find_or_initialize_vote, only: %i[create destroy]
+
   def create
+    redirect_to course_path(@vote.course_slug)
+  end
 
-    @votes = current_user.votes
+  def destroy
+    @vote.destroy
+    redirect_to course_path(@vote.course_slug)
+  end
 
-    vote = @votes.find_or_initialize_by(course_slug: params[:course_slug])
-    vote.user_id = current_user.id
-    vote.liked = !vote.liked
-    vote.save
+  private
 
-    redirect_to course_path(vote.course_slug)
-
+  def find_or_initialize_vote
+    @vote = current_user.votes.find_or_initialize_by(course_slug: params[:course_id])
+    @vote.user_id = current_user.id
+    @vote.save
   end
 end

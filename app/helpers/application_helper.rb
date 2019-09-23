@@ -88,7 +88,6 @@ module ApplicationHelper
   end
 
   def icon(name, variant: 'fas', size: '1x')
-    puts name
     tag.i '', class: "#{variant} fa-#{name} fa-#{size}"
   end
 

@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_09_13_125420) do
   create_table "votes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
     t.string "course_slug", null: false
-    t.boolean "liked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_votes_on_user_id"
