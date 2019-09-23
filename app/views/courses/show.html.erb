@@ -96,15 +96,7 @@
                 </p>
               </div>
               <div class="mb-4">
-                <p class="font-weight-bold text-uppercase mb-2">
-                  <%= 'like'.pluralize.titleize %>
-                </p>
-                <p>
-                <%= link_to vote_path(:course_slug => @course.slug), method: :post do %>
-                  <%= icon heart_fill %>
-                <% end %>
-                <%= @vote_total %>
-                </p>
+                <%= render "votes"%>
               </div>
             </div>
           </div>

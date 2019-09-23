@@ -15,6 +15,8 @@ class VotesController < ApplicationController
 
     end
 
+    redirect_to course_path(vote.course_slug)
+
   end
 
   private
