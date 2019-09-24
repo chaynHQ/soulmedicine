@@ -4,12 +4,16 @@ class VotesController < ApplicationController
   before_action :find_or_initialize_vote, only: %i[create destroy]
 
   def create
-    redirect_to course_path(@vote.course_slug)
+    respond_to do |format|
+      format.js { redirect_to course_path(@vote.course_slug) }
+    end
   end
 
   def destroy
     @vote.destroy
-    redirect_to course_path(@vote.course_slug)
+    respond_to do |format|
+      format.js { redirect_to course_path(@vote.course_slug) }
+    end
   end
 
   private

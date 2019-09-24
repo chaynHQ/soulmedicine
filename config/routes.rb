@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         get '/unsubscribe/:user_id', action: :unsubscribe, as: 'unsubscribe'
       end
 
-      resource :vote, only: %i[create destroy]
+      resource :vote, only: %i[create destroy], constraints: { format: :js }
     end
 
     get  'auth/sign_in'
