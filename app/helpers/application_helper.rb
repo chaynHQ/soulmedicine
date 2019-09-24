@@ -87,8 +87,8 @@ module ApplicationHelper
     tag.li ' ', class: 'nav-item nav-link'
   end
 
-  def icon(name, variant: 'fas', size: '1x')
-    tag.i '', class: "#{variant} fa-#{name} fa-#{size}"
+  def icon(name, css_class: '', variant: 'fas', size: '1x')
+    tag.i '', class: "#{variant} fa-#{name} fa-#{size} #{css_class}"
   end
 
   def language_class(lang = LocalesService.current)
