@@ -96,7 +96,15 @@
                 </p>
               </div>
               <div class="mb-4">
-                <%= render "votes"%>
+                <p class="font-weight-bold text-uppercase mb-2">
+                  <%= 'like'.pluralize.titleize %>
+                </p>
+                <p>
+                  <%= link_to course_vote_path(@course), class: 'voting-button', method: vote_method(current_user, @course.slug) , remote: true do %>
+                    <%= icon 'heart', variant: heart_fill(current_user, @course.slug) %>
+                  <% end %>
+                  <%= @vote_total %>
+                </p>
               </div>
             </div>
           </div>
