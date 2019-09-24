@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_125420) do
     t.string "course_slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_slug"], name: "index_votes_on_course_slug"
     t.index ["user_id", "course_slug"], name: "index_votes_on_user_id_and_course_slug", unique: true
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
