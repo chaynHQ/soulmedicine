@@ -6,6 +6,7 @@ STORYBLOK_CLIENT = if ENV['CONTENT_PREVIEW_MODE'] == 'true'
                      Storyblok::Client.new(
                        token: storyblok_token,
                        logger: logger,
+                       log_level: Rails.logger.level,
                        version: 'draft'
                      )
                    else
@@ -19,6 +20,7 @@ STORYBLOK_CLIENT = if ENV['CONTENT_PREVIEW_MODE'] == 'true'
                        cache: cache,
                        token: storyblok_token,
                        logger: logger,
+                       log_level: Rails.logger.level,
                        version: 'published'
                      )
                    end
