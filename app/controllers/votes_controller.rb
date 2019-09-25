@@ -6,14 +6,14 @@ class VotesController < ApplicationController
   def create
     @vote.save!
     respond_to do |format|
-      format.js { redirect_to course_path(@vote.course_slug) }
+      format.js { redirect_to redirect_url }
     end
   end
 
   def destroy
     @vote.destroy if @vote.persisted?
     respond_to do |format|
-      format.js { redirect_to course_path(@vote.course_slug) }
+      format.js { redirect_to redirect_url }
     end
   end
 
@@ -21,5 +21,9 @@ class VotesController < ApplicationController
 
   def find_or_initialize_vote
     @vote = current_user.votes.find_or_initialize_by(course_slug: params[:course_id])
+  end
+
+  def redirect_url
+    params[:redirect].presence || course_path(@vote.course_slug)
   end
 end

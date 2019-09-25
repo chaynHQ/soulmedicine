@@ -100,14 +100,7 @@
                   <%= 'like'.pluralize.titleize %>
                 </p>
                 <p>
-                  <% if current_user? %>
-                    <%= link_to course_vote_path(@course), class: 'voting-button', method: vote_method(current_user, @course.slug) , remote: true do %>
-                      <%= icon 'heart', variant: heart_fill(current_user, @course.slug) %>
-                    <% end %>
-                  <% else %>
-                    <%= icon 'heart', variant: heart_fill(current_user, @course.slug), css_class: 'icon-primary' %>
-                  <% end %>
-                  <%= @vote_total %>
+                  <%= render 'votes', course: @course, total: @vote_total %>
                 </p>
               </div>
             </div>

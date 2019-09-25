@@ -22,7 +22,14 @@
 
   <div class="card-columns">
     <% @courses.each do |c| %>
-      <%= render partial: 'card', locals: { course: c } %>
+      <%=
+        render partial: 'card',
+          locals: {
+            course: c,
+            current_user_subscription: @courses_current_user_subscriptions[c.slug],
+            vote_count: @courses_votes[c.slug]
+          }
+      %>
     <% end %>
   </div>
 
@@ -36,7 +43,14 @@
       <% @other_courses.each do |c| %>
         <% lang = c.enabled_languages.first %>
         <% LocalesService.with(lang) do %>
-          <%= render partial: 'card', locals: { course: c } %>
+          <%=
+            render partial: 'card',
+              locals: {
+                course: c,
+                current_user_subscription: @courses_current_user_subscriptions[c.slug],
+                vote_count: @courses_votes[c.slug]
+              }
+          %>
         <% end %>
       <% end %>
     </div>
