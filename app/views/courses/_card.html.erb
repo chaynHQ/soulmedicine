@@ -13,4 +13,19 @@
       <%= tc(course.summary) %>
     </div>
   </div>
+  <div class="card-footer">
+    <% if current_user? && current_user_subscription %>
+      <%= link_to course_subscription_path(course), class: 'float-right font-weight-bold text-success' do %>
+        <%= current_user_subscription.active? ? 'Active' : 'Paused' %>
+        subscription
+      <% end %>
+    <% end %>
+
+    <%=
+      render 'votes',
+        course: course,
+        total: vote_count,
+        redirect_url: courses_url
+    %>
+  </div>
 </div>
