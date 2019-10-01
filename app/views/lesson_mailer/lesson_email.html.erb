@@ -27,13 +27,23 @@
 <div class='unsubscribe-footer'>
   <%=
     link_to(
-      'Unsubscribe (pause emails for this pathway)',
-      unsubscribe_course_subscription_url(
+      'Pause this pathway',
+      subscription_unsubscribe_url(
         course_id: @course.to_param,
         user_id: @user.to_sgid_param(for: :unsubscribe_course)
       )
     )
   %>
+  |
+  <%=
+    link_to(
+      'Pause all pathways',
+      subscription_unsubscribe_url(
+        user_id: @user.to_sgid_param(for: :unsubscribe_course)
+      )
+    )
+  %>
+  <p>Both of these options will unsubscribe you from emails.</p>
 </div>
 
 <br />
