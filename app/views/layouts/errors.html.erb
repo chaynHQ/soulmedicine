@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
   <%= render 'head' %>
-  
-  <body style="<%= body_style -%>">
 
-    <%= tag.main role: 'main', class: main_container_class do %>
+  <body>
+
+    <main role="main">
+
       <div class="col-12 pt-5">
         <!--Leave Empty-->
       </div>
 
       <%= yield %>
 
-    <% end %>
+    </main>
 
   </body>
 </html>
