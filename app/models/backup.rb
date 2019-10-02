@@ -1,0 +1,2 @@
+class Backup < ApplicationRecord
+end

@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_125420) do
+ActiveRecord::Schema.define(version: 2019_10_02_180118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "backups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "key"
+    t.jsonb "data"
+    t.index ["key"], name: "index_backups_on_key", unique: true
+    t.index ["user_id"], name: "index_backups_on_user_id"
+  end
+
+  create_table "storyblok_backups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "key"
+    t.string "String"
+    t.jsonb "data"
+    t.index ["key"], name: "index_storyblok_backups_on_key", unique: true
+    t.index ["user_id"], name: "index_storyblok_backups_on_user_id"
+  end
 
   create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
@@ -59,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_09_13_125420) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "backups", "users"
+  add_foreign_key "storyblok_backups", "users"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "votes", "users"
 end

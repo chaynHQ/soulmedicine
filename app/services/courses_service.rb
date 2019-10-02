@@ -33,6 +33,10 @@ class CoursesService < StoryblokService
     [course, lesson]
   end
 
+  def get_all
+    response = fetch_all"courses"
+  end
+
   private
 
   def deserialize_course(story)
