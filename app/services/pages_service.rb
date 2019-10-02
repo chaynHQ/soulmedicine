@@ -9,7 +9,7 @@ class PagesService < StoryblokService
     deserialize story, PageMapper, Page
   end
 
-  def get_all
-    response = fetch_all "pages"
+  def all
+    fetch_all 'pages'
   end
 end

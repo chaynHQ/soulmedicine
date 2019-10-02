@@ -5,6 +5,7 @@ class CreateBackups < ActiveRecord::Migration[5.2]
       t.string :key
       t.jsonb :data
 
+      t.timestamps
       t.index :key, unique: true
     end
   end
