@@ -51,6 +51,7 @@ RSpec.describe CoursesService, type: :service do
         expect(results.size).to eq 1
         expect(results.first).to be_a Course
         expect(results.first.slug).to eq 'diy-online-safety'
+        expect(results.first.tags).to contain_exactly 'foo', 'bar'
         expect(results.first.enabled_languages).to eq ['en']
         expect(results.first.name).to eq 'How to be safe online'
         expect(results.first.name_en).to eq 'How to be safe online'

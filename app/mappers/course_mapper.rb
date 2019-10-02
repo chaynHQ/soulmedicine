@@ -4,6 +4,8 @@ class CourseMapper
   key :slug, from: 'slug'
   key :uuid, from: 'uuid'
 
+  key :tags, from: 'tag_list'
+
   key :enabled_languages, from: %w[content enabled_languages]
 
   key :image, from: %w[content image]
