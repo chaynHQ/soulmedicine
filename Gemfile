@@ -31,8 +31,8 @@ gem 'premailer-rails', '~>1.10.3'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.5'
-  gem 'rspec-rails', '~> 3.8', '>= 3.8.1'
-  gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails', '~> 5.1'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   gem 'simplecov', require: false
 end
@@ -44,8 +44,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
-  gem 'rubocop', '~> 0.68.0', require: false
-  gem 'rubocop-performance', '~> 1.1', require: false
+  gem 'rubocop', '~> 0.75.0', require: false
+  gem 'rubocop-performance', '~> 1.5', require: false
+  gem 'rubocop-rails', '~> 2.2', require: false
   gem 'brakeman'
 end
 
