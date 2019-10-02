@@ -95,6 +95,14 @@
                   <%= @course.lessons.size %>
                 </p>
               </div>
+              <div class="mb-4">
+                <p class="font-weight-bold text-uppercase mb-2">
+                  <%= 'like'.pluralize.titleize %>
+                </p>
+                <p>
+                  <%= render 'votes', course: @course, total: @vote_total %>
+                </p>
+              </div>
             </div>
           </div>
         </div>
