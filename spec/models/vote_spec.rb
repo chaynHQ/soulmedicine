@@ -25,7 +25,7 @@ RSpec.describe Vote, type: :model do
   describe '#course_totals' do
     context 'when there are no course_slugs' do
       it 'returns an empty dict' do
-        expect(Vote.course_totals([])).to be({})
+        expect(Vote.course_totals([])).to be_empty
       end
     end
 
