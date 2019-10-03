@@ -18,6 +18,8 @@ module Authentication
 
     return if current_user?
 
+    # TODO: I think this is where we can actually set the url as this is where the redirect happens.
+
     session[:forwarding_url] = request.original_url if request.get?
 
     flash[:alert] = 'Please sign in to continue'
@@ -62,7 +64,6 @@ module Authentication
         ].join(' ')
       else
         session[:user] = user.id
-        flash[:notice] = 'You are now signed in' unless inline_flow
       end
 
       {

@@ -270,12 +270,15 @@ export default {
       return null;
     },
     clearFirebaseSessionAndRedirect(forwardingUrl) {
+      // TODO: Hardcoded during development, need to update
+      const forwardingUrlWithParams = forwardingUrl + '/?course_id=how-to-manage-your-money&?signed_in=true';
+
       return firebase
         .auth()
         .signOut()
         .then(() => {
           Turbolinks.clearCache();
-          Turbolinks.visit(forwardingUrl || '/');
+          Turbolinks.visit(forwardingUrlWithParams|| '/');
         });
     },
     handleTermsAccept() {

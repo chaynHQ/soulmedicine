@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def landing
     params[:id] = 'landing'
+    @signedIn = params[:signed_in]
+    @course = courses_service.get params[:course_id] if params.has_key?(:course_id)
     show
   end
 
