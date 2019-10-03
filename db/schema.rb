@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 2019_10_02_180118) do
     t.index ["user_id"], name: "index_backups_on_user_id"
   end
 
-  create_table "storyblok_backups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id"
-    t.string "key"
-    t.string "String"
-    t.jsonb "data"
-    t.index ["key"], name: "index_storyblok_backups_on_key", unique: true
-    t.index ["user_id"], name: "index_storyblok_backups_on_user_id"
-  end
-
   create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.string "course_slug", null: false
