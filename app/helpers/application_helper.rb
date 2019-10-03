@@ -35,6 +35,7 @@ module ApplicationHelper
     )
   end
 
+  # rubocop:disable Rails/HelperInstanceVariable
   def main_container_class
     is_courses_index = current_page? courses_path
     is_auth_sign_in_path = current_page? auth_sign_in_path
@@ -48,6 +49,7 @@ module ApplicationHelper
       return ['page-container', @page.full_width ? 'container-fluid' : 'container'].join(' ')
     end
   end
+  # rubocop:enable Rails/HelperInstanceVariable
 
   def main_style
     is_courses_index = current_page? courses_path
