@@ -24,7 +24,6 @@ Pause this pathway:
 Pause all pathways:
 <<%=
   subscription_unsubscribe_url(
-    course_id: @course.to_param,
     user_id: @user.to_sgid_param(for: :unsubscribe_course)
   )
 -%>>
