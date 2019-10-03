@@ -96,7 +96,7 @@ RSpec.describe CoursesService, type: :service do
       expect(course.name).to eq 'How to be safe online'
       expect(course.lessons.size).to be 2
       expect(course.lessons.first).to be_a Lesson
-      expect(course.lessons.map(&:slug)).to match_array ['how-many-sites-and-services-do-you-use', 'easy-wins-part-1']
+      expect(course.lessons.map(&:slug)).to match_array %w[how-many-sites-and-services-do-you-use easy-wins-part-1]
       expect(course.lessons.map(&:name)).to match_array ['Lesson 1 - How many sites and services do you use?', 'Lesson 2 - Easy Wins Part 1']
     end
 

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         patch :pause
         patch :unpause
       end
+
+      resource :vote, only: %i[create destroy], constraints: { format: :js }
     end
 
     get  'auth/sign_in'
