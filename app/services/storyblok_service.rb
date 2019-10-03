@@ -24,7 +24,15 @@ class StoryblokService
     raise NotFound.new path: path
   rescue RestClient::RequestFailed => e
     Rails.logger.error "[#{self.class.name}] Failed to fetch path '#{path}' from Storyblok – exception: #{e.inspect}"
+    raise CmsAccessError
+  end
 
+  def fetch_all(path)
+    @client.stories(starts_with: path)
+  rescue RestClient::NotFound
+    raise NotFound.new path: path
+  rescue RestClient::RequestFailed => e
+    Rails.logger.error "[#{self.class.name}] Failed to fetch path '#{path}' from Storyblok – exception: #{e.inspect}"
     raise CmsAccessError
   end
 
