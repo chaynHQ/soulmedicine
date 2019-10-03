@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_180118) do
   enable_extension "plpgsql"
 
   create_table "backups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "key"
+    t.string "key", null: false
     t.jsonb "data", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
