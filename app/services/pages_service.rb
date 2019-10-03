@@ -8,4 +8,8 @@ class PagesService < StoryblokService
     story = response.dig 'data', 'story'
     deserialize story, PageMapper, Page
   end
+
+  def all
+    fetch_all 'pages'
+  end
 end
