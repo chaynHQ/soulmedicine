@@ -16,7 +16,7 @@ module SubscriptionsHelper
   end
 
   def subscription_format_hour_slot(hour)
-    "#{format('%02d', hour)}:00 - #{format('%02d', (hour + 2))}:00"
+    "#{format('%02d', hour)}:00 - #{format('%02d', (hour + 2))}:00" # rubocop:disable Style/FormatStringToken
   end
 
   def subscription_unsubscribe_button(subscription, css_class: nil)
