@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'admin/flush_cache', to: 'admin#flush_cache'
 
   scope '(:locale)', locale: /#{LocalesService.enabled.join("|")}/ do
-    resources :subscriptions, only: [:index]
+    resources :subscriptions, only: %i[index]
+    get '/unsubscribe/:user_id', controller: :subscriptions, action: :unsubscribe, as: 'subscription_unsubscribe'
 
     resources :courses, only: %i[index show], path: 'pathways' do
       resources :lessons, only: %i[show], path: 'notes'
@@ -18,7 +19,6 @@ Rails.application.routes.draw do
       resource :subscription, only: %i[show update destroy] do
         patch :pause
         patch :unpause
-        get '/unsubscribe/:user_id', action: :unsubscribe, as: 'unsubscribe'
       end
 
       resource :vote, only: %i[create destroy], constraints: { format: :js }
@@ -29,8 +29,6 @@ Rails.application.routes.draw do
     get  'auth/sign_out'
 
     resource :profile, only: %i[show update], controller: 'profile'
-
-    resources :subscriptions, only: %i[index]
 
     resources :pages, only: %i[show]
     root to: 'pages#landing'

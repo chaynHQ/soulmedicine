@@ -31,7 +31,7 @@ RSpec.describe SubscriptionsController, type: :routing do
     end
 
     it 'routes to #unsubscribe' do
-      expect(get: '/pathways/foo/subscription/unsubscribe/123').to route_to('subscriptions#unsubscribe', course_id: 'foo', user_id: '123')
+      expect(get: '/unsubscribe/123').to route_to('subscriptions#unsubscribe', user_id: '123')
     end
   end
 end
