@@ -60,16 +60,15 @@ class SubscriptionsController < ApplicationController
   def unsubscribe
     user = SignedGlobalID.find(params[:user_id], for: :unsubscribe_course)
 
-    if user
-      if params[:course_id]
-        subscriptions = user.subscriptions.select { |subscription| subscription.course_slug == params[:course_id] }
-        notice_text = 'Subscription paused.'
-      else
-        subscriptions = user.subscriptions
-        notice_text = 'All subscriptions paused.'
-      end
+    not_found_error if user.blank?
 
-      subscriptions.each { |subscription| subscription&.pause! }
+    if params.key? :course_id
+      subscription = user.subscriptions.find_by(course_slug: params[:course_id])
+      subscription&.pause!
+      notice_text = 'Subscription paused.'
+    else
+      user.subscriptions.each(&:pause!)
+      notice_text = 'All subscriptions paused.'
     end
 
     redirect_path = current_user? ? subscriptions_path : root_path
