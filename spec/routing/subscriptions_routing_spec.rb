@@ -30,5 +30,8 @@ RSpec.describe SubscriptionsController, type: :routing do
       expect(patch: '/pathways/foo/subscription/unpause').to route_to('subscriptions#unpause', course_id: 'foo')
     end
 
+    it 'routes to #unsubscribe' do
+      expect(get: '/unsubscribe/123').to route_to('subscriptions#unsubscribe', user_id: '123')
+    end
   end
 end
