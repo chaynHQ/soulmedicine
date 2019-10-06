@@ -56,19 +56,23 @@ class SubscriptionsController < ApplicationController
     redirect_to subscriptions_url, notice: 'Subscription activated.'
   end
 
-  # GET /pathways/:course_id/subscription/unsubscribe/:user_id
+  # GET /subscriptions/unsubscribe/:user_id
   def unsubscribe
-    redirect_path = root_path
-
     user = SignedGlobalID.find(params[:user_id], for: :unsubscribe_course)
-    if user
+
+    not_found_error if user.blank?
+
+    if params.key? :course_id
       subscription = user.subscriptions.find_by(course_slug: params[:course_id])
       subscription&.pause!
-
-      redirect_path = subscriptions_path if current_user
+      notice_text = 'Subscription paused.'
+    else
+      user.subscriptions.each(&:pause!)
+      notice_text = 'All subscriptions paused.'
     end
 
-    redirect_to redirect_path, notice: 'Subscription paused.'
+    redirect_path = current_user? ? subscriptions_path : root_path
+    redirect_to redirect_path, notice: notice_text
   end
 
   private
