@@ -5,6 +5,7 @@ class ContentModel
   include ShallowAttributes
 
   attribute :slug, String, present: true
+  attribute :tags, Array, of: String
 
   def id
     slug
