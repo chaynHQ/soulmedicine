@@ -87,6 +87,22 @@
                   <% end %>
                 </ul>
               </div>
+              <% if @course.tags.present? %>
+                <div class="mb-4">
+                  <p class="font-weight-bold text-uppercase mb-2">
+                    <%= t('concepts.tag').pluralize.titleize %>
+                  </p>
+                  <% if @course.tags.present? %>
+                    <ul class="list-unstyled">
+                      <% @course.tags.each do |tag| %>
+                        <li>
+                          <%= tag %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                </div>
+              <% end %>
               <div class="mb-4">
                 <p class="font-weight-bold text-uppercase mb-2">
                   <%= t('concepts.lesson').pluralize.titleize %>

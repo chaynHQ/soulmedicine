@@ -51,7 +51,7 @@
       "full_slug": "courses/diy-online-safety",
       "sort_by_date": null,
       "position": 0,
-      "tag_list": [],
+      "tag_list": ["foo", "bar"],
       "is_startpage": false,
       "parent_id": 420172,
       "meta_data": null,

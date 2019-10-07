@@ -5,6 +5,7 @@ en:
     language: language
     subscription: subscription
     schedule: schedule
+    tag: tag
   phrases:
     'yes': 'yes'
     'no': 'no'
