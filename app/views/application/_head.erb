@@ -2,17 +2,20 @@
   <%=
     display_meta_tags(
       site: 'Soul Medicine',
+      image_src: default_image_meta_tag,
       reverse: true,
       twitter: {
         card: 'summary',
         site: '@ChaynHQ',
         title: :full_title,
-        description:  :description
+        description:  :description,
+        image: :image_src
       },
       og: {
         title: :full_title,
         site_name: :site,
-        description: :description
+        description: :description,
+        image: :image_src
       }
     )
   %>
