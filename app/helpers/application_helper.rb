@@ -1,5 +1,5 @@
 module ApplicationHelper
-  DEFAULT_IMAGE_META_TAG = 'https://a.storyblok.com/f/50602/96x96/3b94139709/favicon.png'.freeze
+  DEFAULT_IMAGE_META_TAG = 'https://a.storyblok.com/f/50602/200x200/3b94139709/favicon.png'.freeze
 
   def settings
     SettingsService.new(STORYBLOK_CLIENT).get
