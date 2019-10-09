@@ -2,6 +2,7 @@
   <%
     title @lesson.name + ' | ' + @course.name
     description @lesson.content
+    set_meta_tags image_src: @course.image
   %>
 
   <nav aria-label="breadcrumb" class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
