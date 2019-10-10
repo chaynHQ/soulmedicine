@@ -4,8 +4,8 @@
       alt: '...') %>
   <div class='col-sm-8 my-auto'>
     <h1>You are now signed in!</h1>
-    <%if @course %>
-      <p>You recently viewed <%= link_to tc(@course.name), course_path(@course) %>. </p>
+    <%if @previous_course %>
+      <p>You recently viewed <%= link_to tc(@previous_course.name), course_path(@previous_course) %>. </p>
     <% end %>
   </div>
 </div>
