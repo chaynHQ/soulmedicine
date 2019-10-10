@@ -14,6 +14,11 @@ class AuthController < ApplicationController
       terms_accepted: params[:terms_accepted]
     )
 
+    # TODO: check if this exists
+
+    result[:course_id] = session[:course_id]
+    # TODO: Can we set the forwardingUrl here too rather than passing it back and forth?
+    
     render json: result
   end
 

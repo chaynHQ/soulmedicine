@@ -256,7 +256,7 @@ export default {
       if (data.user.email_verified === false) {
         const user = firebase.auth().currentUser;
         const actionCodeSettings = {
-          url: vm.continueUrl
+          url: `${vm.continueUrl}/?course_id=${data.course_id}`
         };
         return user.sendEmailVerification(actionCodeSettings).then(() => {
           return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
@@ -271,14 +271,14 @@ export default {
     },
     clearFirebaseSessionAndRedirect(forwardingUrl) {
       // TODO: Hardcoded during development, need to update
-      const forwardingUrlWithParams = forwardingUrl + '/?course_id=how-to-manage-your-money&?signed_in=true';
+      const forwardingUrlWithParams = `${forwardingUrl}/?course_id=how-to-manage-your-money&?signed_in=true`;
 
       return firebase
         .auth()
         .signOut()
         .then(() => {
           Turbolinks.clearCache();
-          Turbolinks.visit(forwardingUrlWithParams|| '/');
+          Turbolinks.visit(forwardingUrlWithParams || '/');
         });
     },
     handleTermsAccept() {

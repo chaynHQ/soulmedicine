@@ -19,7 +19,7 @@ module Authentication
     return if current_user?
 
     # TODO: I think this is where we can actually set the url as this is where the redirect happens.
-
+    session[:course_id] = params[:course_id] if params.key?(:course_id)
     session[:forwarding_url] = request.original_url if request.get?
 
     flash[:alert] = 'Please sign in to continue'
@@ -58,6 +58,7 @@ module Authentication
         session[:user] = nil
       elsif !user.email_verified
         session[:user] = nil
+        session[:previous_course] =
         flash[:alert] = [
           'Thanks for signing up! Now you\'ll need to verify your account',
           'by clicking on the link in the verification email sent to you.'
