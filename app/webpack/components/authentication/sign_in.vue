@@ -264,14 +264,24 @@ export default {
       }
 
       if (!vm.inlineFlow) {
-        return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
+        return vm.clearFirebaseSessionAndRedirect(
+          data.forwarding_url,
+          data.course_id,
+          true
+        );
       }
-
       return null;
     },
-    clearFirebaseSessionAndRedirect(forwardingUrl) {
-      // TODO: Hardcoded during development, need to update
-      const forwardingUrlWithParams = `${forwardingUrl}/?course_id=how-to-manage-your-money&?signed_in=true`;
+    clearFirebaseSessionAndRedirect(forwardingUrl, courseId, signedIn) {
+      let forwardingUrlWithParams = forwardingUrl;
+
+      if (courseId !== undefined && signedIn !== undefined) {
+        forwardingUrlWithParams = `${forwardingUrlWithParams}/?course_id=${courseId}&?signed_in=${signedIn}`;
+      } else if (signedIn !== undefined) {
+        forwardingUrlWithParams = `${forwardingUrlWithParams}/?signed_in=${signedIn}`;
+      } else if (courseId !== undefined) {
+        forwardingUrlWithParams = `${forwardingUrlWithParams}/?course_id=${courseId}`;
+      }
 
       return firebase
         .auth()
