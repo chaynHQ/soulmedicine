@@ -7,7 +7,7 @@ class BackupsProcessorService
 
       data = service.all
 
-      puts 'Data with key: ' + key.to_s + ' has ' + data['data']['stories'][0].keys.length.to_s + ' keys per story.'
+      Rails.logger.info 'Data with key: ' + key.to_s + ' has ' + data['data']['stories'][0].keys.length.to_s + ' keys per story.'
 
       Backup.find_or_initialize_by(key: key).update!(
         data: data
