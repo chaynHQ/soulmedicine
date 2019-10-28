@@ -18,7 +18,6 @@ module Authentication
 
     return if current_user?
 
-    # TODO: I think this is where we can actually set the url as this is where the redirect happens.
     session[:course_id] = params[:course_id] if params.key?(:course_id)
     session[:forwarding_url] = request.original_url if request.get?
 
@@ -56,21 +55,34 @@ module Authentication
       # - email is verified
       if !user.terms_accepted
         session[:user] = nil
+        forwarding_url = session[:forwarding_url]
+        course_id = session[:course_id]
+
       elsif !user.email_verified
         session[:user] = nil
-        session[:previous_course] =
+
+        # Delete forwarding URL so we always end up back at the homepage
+        session.delete(:forwarding_url)
+        forwarding_url = root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
+        course_id = session.delete(:course_id)
+
         flash[:alert] = [
           'Thanks for signing up! Now you\'ll need to verify your account',
           'by clicking on the link in the verification email sent to you.'
         ].join(' ')
       else
         session[:user] = user.id
+        forwarding_url = session.delete(:forwarding_url) || root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
+        course_id = session.delete(:course_id)
       end
+
+      #TODO: Check if we use this signed_in value
 
       {
         signed_in: !session[:user].nil?,
         user: ActiveModelSerializers::SerializableResource.new(user).as_json,
-        forwarding_url: session.delete(:forwarding_url) || root_path
+        forwarding_url: forwarding_url,
+        course_id: course_id
       }
     end
 

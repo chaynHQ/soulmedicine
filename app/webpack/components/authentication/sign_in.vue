@@ -255,40 +255,31 @@ export default {
 
       if (data.user.email_verified === false) {
         const user = firebase.auth().currentUser;
-        const actionCodeSettings = {
-          url: `${vm.continueUrl}/?course_id=${data.course_id}`
-        };
+        const actionCodeSettings =
+          data.course_id != null
+            ? {
+                url: `${vm.continueUrl}/?course_id=${data.course_id}`
+              }
+            : {
+                url: vm.continueUrl
+              };
         return user.sendEmailVerification(actionCodeSettings).then(() => {
           return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
         });
       }
 
       if (!vm.inlineFlow) {
-        return vm.clearFirebaseSessionAndRedirect(
-          data.forwarding_url,
-          data.course_id,
-          true
-        );
+        return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
       }
       return null;
     },
-    clearFirebaseSessionAndRedirect(forwardingUrl, courseId, signedIn) {
-      let forwardingUrlWithParams = forwardingUrl;
-
-      if (courseId !== undefined && signedIn !== undefined) {
-        forwardingUrlWithParams = `${forwardingUrlWithParams}/?course_id=${courseId}&?signed_in=${signedIn}`;
-      } else if (signedIn !== undefined) {
-        forwardingUrlWithParams = `${forwardingUrlWithParams}/?signed_in=${signedIn}`;
-      } else if (courseId !== undefined) {
-        forwardingUrlWithParams = `${forwardingUrlWithParams}/?course_id=${courseId}`;
-      }
-
+    clearFirebaseSessionAndRedirect(forwardingUrl) {
       return firebase
         .auth()
         .signOut()
         .then(() => {
           Turbolinks.clearCache();
-          Turbolinks.visit(forwardingUrlWithParams || '/');
+          Turbolinks.visit(forwardingUrl || '/');
         });
     },
     handleTermsAccept() {
