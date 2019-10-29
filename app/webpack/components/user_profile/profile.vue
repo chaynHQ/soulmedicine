@@ -16,6 +16,7 @@
           :project-id="projectId"
           :inline-flow="true"
           :continue-url="continueUrl"
+          profile-signin
         ></sign-in>
       </div>
 

@@ -10,13 +10,15 @@
       v-if="!loading && !showTermsStep && !showVerificationStep"
       ref="firebaseAuthContainer"
     >
-      <h5 class="my-4 mx-auto">
-        If you are signing up for the first time, you can give us any name like
-        "Marshmallow Forest".
-      </h5>
-      <h5 class="my-4 mx-auto">
-        And if you’re signing in, welcome back superstar!
-      </h5>
+      <template v-if="!profileSignin">
+        <h5 class="my-4 mx-auto">
+          If you are signing up for the first time, you can give us any name
+          like "Marshmallow Forest".
+        </h5>
+        <h5 class="my-4 mx-auto">
+          And if you’re signing in, welcome back superstar!
+        </h5>
+      </template>
     </div>
 
     <div v-if="!loading && showTermsStep">
@@ -156,6 +158,9 @@ export default {
     continueUrl: {
       type: String,
       required: true
+    },
+    profileSignin: {
+      type: Boolean
     }
   },
   data() {
