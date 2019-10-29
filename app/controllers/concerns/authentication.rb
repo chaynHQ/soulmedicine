@@ -43,7 +43,8 @@ module Authentication
   module SessionManagement
     extend Memoist
 
-    def sign_in_with_token(token, inline_flow: false, terms_accepted: nil)
+# This method is too complicated - rubocop is complaining!
+    def sign_in_with_token(token, terms_accepted: nil)
       payload = firebase_auth_service.verify_and_get_token_payload(token)
 
       user = create_or_fetch_authed_user payload
@@ -76,7 +77,7 @@ module Authentication
         course_id = session.delete(:course_id)
       end
 
-      #TODO: Check if we use this signed_in value
+      # TODO: Check if we use this signed_in value
 
       {
         signed_in: !session[:user].nil?,

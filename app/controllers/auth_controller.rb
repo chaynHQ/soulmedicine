@@ -11,7 +11,6 @@ class AuthController < ApplicationController
 
     result = sign_in_with_token(
       token,
-      inline_flow: ActiveRecord::Type::Boolean.new.cast(params[:inline_flow]),
       terms_accepted: params[:terms_accepted]
     )
 
