@@ -250,7 +250,7 @@ export default {
       // flow before carrying on.
       //
       // If the email is not verified, then the server will not have signed in,
-      // and we should sign out of the Firebase Auth session and redirect away.
+      // and we should sign out of the Firebase Auth session and display verfication message.
       //
       // Otherwise…
       //
@@ -284,23 +284,23 @@ export default {
                 url: vm.continueUrl
               };
         return user.sendEmailVerification(actionCodeSettings).then(() => {
-          return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
+          return vm.clearFirebaseSession();
         });
       }
 
       if (!vm.inlineFlow) {
-        return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
+        return vm.clearFirebaseSession(data.forwarding_url).then(() => {
+          vm.redirect(data.forwarding_url);
+        });
       }
       return null;
     },
-    clearFirebaseSessionAndRedirect(forwardingUrl) {
-      return firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          Turbolinks.clearCache();
-          Turbolinks.visit(forwardingUrl || '/');
-        });
+    clearFirebaseSession() {
+      return firebase.auth().signOut();
+    },
+    redirect(forwardingUrl) {
+      Turbolinks.clearCache();
+      Turbolinks.visit(forwardingUrl || '/');
     },
     handleTermsAccept() {
       const vm = this;
