@@ -73,10 +73,7 @@ module Authentication
         course_id = session.delete(:course_id)
       end
 
-      # TODO: Check if we use this signed_in value
-
       {
-        signed_in: !session[:user].nil?,
         user: ActiveModelSerializers::SerializableResource.new(user).as_json,
         forwarding_url: forwarding_url,
         course_id: course_id
