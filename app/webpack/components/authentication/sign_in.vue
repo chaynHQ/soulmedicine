@@ -6,7 +6,18 @@
       </div>
     </div>
 
-    <div v-if="!loading && !showTermsStep" ref="firebaseAuthContainer"></div>
+    <div
+      v-if="!loading && !showTermsStep && !showVerificationStep"
+      ref="firebaseAuthContainer"
+    >
+      <h5 class="my-4 mx-auto">
+        If you are signing up for the first time, you can give us any name like
+        "Marshmallow Forest".
+      </h5>
+      <h5 class="my-4 mx-auto">
+        And if you’re signing in, welcome back superstar!
+      </h5>
+    </div>
 
     <div v-if="!loading && showTermsStep">
       <div class="mdl-card mdl-shadow--2dp firebaseui-container">
@@ -114,6 +125,11 @@
         </div>
       </div>
     </div>
+    <div v-if="!loading && showVerificationStep" class="p-4 text-center">
+      <h4>Thanks for signing up!</h4>
+      <h4><b>We've sent you an email to verify your account.</b></h4>
+      <h4><b>Please check your email.</b></h4>
+    </div>
   </div>
 </template>
 
@@ -148,6 +164,7 @@ export default {
       privacyPolicyUrl: '/pages/privacy-policy',
       loading: false,
       showTermsStep: false,
+      showVerificationStep: false,
       idToken: null
     };
   },
@@ -248,12 +265,15 @@ export default {
       const vm = this;
 
       if (data.user.terms_accepted === false) {
+        this.showVerificationStep = false;
         this.showTermsStep = true;
         this.$nextTick(this.setUpValidityHandling);
         return null;
       }
 
       if (data.user.email_verified === false) {
+        this.showTermsStep = false;
+        this.showVerificationStep = true;
         const user = firebase.auth().currentUser;
         const actionCodeSettings =
           data.course_id != null

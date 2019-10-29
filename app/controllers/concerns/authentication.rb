@@ -67,10 +67,6 @@ module Authentication
         forwarding_url = root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
         course_id = session.delete(:course_id)
 
-        flash[:alert] = [
-          'Thanks for signing up! Now you\'ll need to verify your account',
-          'by clicking on the link in the verification email sent to you.'
-        ].join(' ')
       else
         session[:user] = user.id
         forwarding_url = session.delete(:forwarding_url) || root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
