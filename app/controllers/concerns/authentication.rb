@@ -43,7 +43,6 @@ module Authentication
   module SessionManagement
     extend Memoist
 
-# This method is too complicated - rubocop is complaining!
     def sign_in_with_token(token, terms_accepted: nil)
       payload = firebase_auth_service.verify_and_get_token_payload(token)
 
@@ -64,12 +63,12 @@ module Authentication
 
         # Delete forwarding URL so we always end up back at the homepage
         session.delete(:forwarding_url)
-        forwarding_url = root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
+        forwarding_url = root_path_with_params
         course_id = session.delete(:course_id)
 
       else
         session[:user] = user.id
-        forwarding_url = session.delete(:forwarding_url) || root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
+        forwarding_url = session.delete(:forwarding_url) || root_path_with_params
         course_id = session.delete(:course_id)
       end
 
@@ -109,6 +108,10 @@ module Authentication
             u.save!
           end
       end
+    end
+
+    def root_path_with_params
+      root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
     end
   end
 end
