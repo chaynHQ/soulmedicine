@@ -1,7 +1,13 @@
 <div class='jumbotron row m-4 px-5 py-3'>
-  <%= image_tag('https://a.storyblok.com/f/50602/354x250/a8ee54faab/building_case_no_lawyer.png',
-      class: 'col-sm-4',
-      alt: '...') %>
+  <%if @previous_course %>
+    <%= image_tag(@previous_course.image,
+        class: 'col-sm-4',
+        alt: '...') %>
+  <% else %>
+    <%= image_tag('https://a.storyblok.com/f/50602/350x247/dfebba3390/homepage_icons-03.pnglsof -wni tcp:3000',
+        class: 'col-sm-4',
+        alt: '...') %>
+  <% end %>
   <div class='col-sm-8 my-auto'>
     <h1>You are now signed in!</h1>
     <%if @previous_course %>
