@@ -111,7 +111,7 @@ module Authentication
     end
 
     def root_path_with_params
-      root_path(last_course_id: session[:last_course_id], signed_in: !session[:user].nil? ? true : nil)
+      root_path(last_course_id: session[:last_course_id], just_signed_in: !session[:user].nil? ? true : nil)
     end
   end
 end
