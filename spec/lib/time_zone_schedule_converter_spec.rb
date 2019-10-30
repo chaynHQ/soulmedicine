@@ -42,13 +42,15 @@ RSpec.describe TimeZoneScheduleConverter do
     context 'when all days are provided' do
       let(:from_zone) { 'UTC' }
       let(:to_zone) { 'Amsterdam' }
+      let(:to_zone_offset) { ActiveSupport::TimeZone[to_zone].utc_offset / 60 / 60 }
       let(:days) { Date::ABBR_DAYNAMES }
       let(:hour) { 23 }
+      let(:adjusted_hour) { to_zone_offset - 1 }
 
       it 'returns the adjusted hour but same days' do
         expect(subject).to eq(
           days: days,
-          hour: 1
+          hour: adjusted_hour
         )
       end
     end
@@ -56,15 +58,18 @@ RSpec.describe TimeZoneScheduleConverter do
     context 'when some days are provided' do
       let(:days) { %w[Sun Wed Sat] }
 
+      let(:to_zone_offset) { ActiveSupport::TimeZone[to_zone].utc_offset / 60 / 60 }
+
       context 'when the adjusted hour doesn\'t affect the days' do
         let(:from_zone) { 'UTC' }
         let(:to_zone) { 'Amsterdam' }
         let(:hour) { 12 }
+        let(:adjusted_hour) { hour + to_zone_offset }
 
         it 'returns the adjusted hour and same days' do
           expect(subject).to eq(
             days: days,
-            hour: 14
+            hour: adjusted_hour
           )
         end
       end
@@ -73,11 +78,12 @@ RSpec.describe TimeZoneScheduleConverter do
         let(:from_zone) { 'UTC' }
         let(:to_zone) { 'Greenland' }
         let(:hour) { 1 }
+        let(:adjusted_hour) { 24 + to_zone_offset + 1 }
 
         it 'returns the adjusted hour and previous day(s)' do
           expect(subject).to eq(
             days: %w[Sat Tue Fri],
-            hour: 23
+            hour: adjusted_hour
           )
         end
       end
@@ -86,11 +92,12 @@ RSpec.describe TimeZoneScheduleConverter do
         let(:from_zone) { 'UTC' }
         let(:to_zone) { 'Amsterdam' }
         let(:hour) { 23 }
+        let(:adjusted_hour) { to_zone_offset - 1 }
 
         it 'returns the adjusted hour and next days' do
           expect(subject).to eq(
             days: %w[Mon Thu Sun],
-            hour: 1
+            hour: adjusted_hour
           )
         end
       end
