@@ -281,9 +281,9 @@ export default {
         this.showVerificationStep = true;
         const user = firebase.auth().currentUser;
         const actionCodeSettings =
-          data.course_id != null
+          data.last_course_id != null
             ? {
-                url: `${vm.continueUrl}/?course_id=${data.course_id}`
+                url: `${vm.continueUrl}/?last_course_id=${data.last_course_id}`
               }
             : {
                 url: vm.continueUrl

@@ -18,7 +18,7 @@ module Authentication
 
     return if current_user?
 
-    session[:course_id] = params[:course_id] if params.key?(:course_id)
+    session[:last_course_id] = params[:course_id] if params.key?(:course_id)
     session[:forwarding_url] = request.original_url if request.get?
 
     flash[:alert] = 'Please sign in to continue'
@@ -56,7 +56,7 @@ module Authentication
       if !user.terms_accepted
         session[:user] = nil
         forwarding_url = session[:forwarding_url]
-        course_id = session[:course_id]
+        last_course_id = session[:last_course_id]
 
       elsif !user.email_verified
         session[:user] = nil
@@ -64,18 +64,18 @@ module Authentication
         # Delete forwarding URL so we always end up back at the homepage
         session.delete(:forwarding_url)
         forwarding_url = root_path_with_params
-        course_id = session.delete(:course_id)
+        last_course_id = session.delete(:last_course_id)
 
       else
         session[:user] = user.id
         forwarding_url = session.delete(:forwarding_url) || root_path_with_params
-        course_id = session.delete(:course_id)
+        last_course_id = session.delete(:last_course_id)
       end
 
       {
         user: ActiveModelSerializers::SerializableResource.new(user).as_json,
         forwarding_url: forwarding_url,
-        course_id: course_id
+        last_course_id: last_course_id
       }
     end
 
@@ -111,7 +111,7 @@ module Authentication
     end
 
     def root_path_with_params
-      root_path(course_id: session[:course_id], signed_in: !session[:user].nil? ? true : nil)
+      root_path(last_course_id: session[:last_course_id], signed_in: !session[:user].nil? ? true : nil)
     end
   end
 end
