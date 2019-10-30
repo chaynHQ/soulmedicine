@@ -255,7 +255,7 @@ export default {
       // flow before carrying on.
       //
       // If the email is not verified, then the server will not have signed in,
-      // and we should sign out of the Firebase Auth session and display verfication message.
+      // and we should sign out of the Firebase Auth session and display verification message.
       //
       // Otherwise…
       //
