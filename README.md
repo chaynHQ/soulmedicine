@@ -155,3 +155,6 @@ When `CONTENT_PREVIEW_MODE` is set to `false`:
 The cached content, by default, expires after an hour, after which new published content will be fetched from Storyblok. This expiry can be controlled by the `CONTENT_CACHE_TTL_MINS` env var, if required.
 
 To flush the cache manually, open up the endpoint `<site_base_url>/admin/flush_cache` in a browser. Now the very latest published content will be fetched from Storyblok.
+
+# Support Us
+Soul Medicine is created by Chayn a global volunteer network with over 400 volunteers from 15 countries. If you like what you see and you want to join our team of volunteers get in touch. Or you can [donate](https://www.paypal.me/chaynhq); all proceeds go to improving Soul Medicine and building more tools and resources at ChaynHQ.
