@@ -10,7 +10,7 @@
       v-if="!loading && !showTermsStep && !showVerificationStep"
       ref="firebaseAuthContainer"
     >
-      <template v-if="!profileSignin">
+      <template v-if="!inlineFlow">
         <h5 class="my-4 mx-auto">
           If you are signing up for the first time, you can give us any name
           like "Marshmallow Forest".
@@ -158,9 +158,6 @@ export default {
     continueUrl: {
       type: String,
       required: true
-    },
-    profileSignin: {
-      type: Boolean
     }
   },
   data() {
