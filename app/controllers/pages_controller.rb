@@ -14,8 +14,8 @@ class PagesController < ApplicationController
   private
 
   def previous_course
-      courses_service.get params[:last_course_id] if params.key?(:last_course_id)
-    rescue CoursesService::NotFound
-      nil
+    courses_service.get params[:last_course_id] if params.key?(:last_course_id)
+  rescue CoursesService::NotFound
+    nil
   end
 end
