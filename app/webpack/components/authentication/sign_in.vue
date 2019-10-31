@@ -239,7 +239,6 @@ export default {
         '/auth/callback',
         {
           firebase_token: this.idToken,
-          inline_flow: this.inlineFlow,
           terms_accepted: termsAccepted
         },
         { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
