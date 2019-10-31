@@ -18,7 +18,6 @@ module Authentication
 
     return if current_user?
 
-
     # Will only remember course_id and forwarding_url for users that are authenticated.
     # Will only remember course_id when the request contains a course_id such
     # as the subscription new/edit route.
