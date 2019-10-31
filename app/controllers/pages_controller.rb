@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def landing
     params[:id] = 'landing'
-    @just_signed_in = params[:just_signed_in]
+    @just_signed_in = ActiveRecord::Type::Boolean.new.cast(params[:just_signed_in])
     @previous_course = previous_course
     show
   end
