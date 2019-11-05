@@ -57,5 +57,11 @@ document.addEventListener('turbolinks:load', () => {
 
 // Make bootstrap-select work with Turbolinks
 document.addEventListener('turbolinks:load', () => {
-  $(window).trigger('load.bs.select.data-api'); // eslint-disable-line no-undef
+  /* eslint-disable no-undef */
+  $(window).trigger('load.bs.select.data-api');
+
+  $(() => {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  /* eslint-enable no-undef */
 });

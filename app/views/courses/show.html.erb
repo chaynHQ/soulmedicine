@@ -131,8 +131,14 @@
       <% @course.lessons.each do |l| %>
         <li class="list-group-item">
           <div class='row'>
-            <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-9' %>
-            <p class='col-3 text-right' data-toggle="tooltip" data-placement="top" title="Tooltip on top">👀💌👑</p>
+            <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-11' %>
+            <div class='col-1'>
+              <div class='row'>
+                <span class='text-right' data-toggle="tooltip" data-placement="top" title="You've visited this note online.">👀</span>
+                <span class='text-right' data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">💌</span>
+                <span class='text-right' data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered.">👑</span>
+              </div>
+            </div>
           </div>
         </li>
       <% end %>
