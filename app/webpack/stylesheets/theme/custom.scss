@@ -32,6 +32,10 @@
   border-color: darken(#fff, 5%);
 }
 
+.bg-success {
+  background-color: $success;
+}
+
 // Buttons =====================================================================
 
 .btn {
@@ -324,6 +328,11 @@
 }
 
 .breadcrumb {
+  background:none;
+}
+
+.breadcrumb-notes {
+  background-color: #f0f0f0;
   border-color: darken($breadcrumb-bg, 5%);
   @include shadow();
 }

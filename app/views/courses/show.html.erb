@@ -5,127 +5,117 @@
     set_meta_tags image_src: @course.image
   %>
 
-  <section class="course-page container">
-    <div class="row justify-content-around">
-
-      <div class="col-md-9 order-2 <%= text_direction -%>" dir="<%= text_direction -%>">
-        <h2 class="<%= language_class -%>">
-          <%= tc(@course.name) %>
-        </h2>
-
-        <div class="lead mb-3 <%= language_class -%>">
-          <%= @course.summary %>
-        </div>
-
-        <div class="mb-3">
-          <% if @subscription.present? %>
-            <div class="alert alert-info" role="alert">
-              <% if @subscription.active? %>
-                <%= t('courses.show.active_subscription') %>
-              <% else %>
-                <%= t('courses.show.paused_subscription') %>
-              <% end %>
-
-              <%=
-                link_to t('phrases.edit').capitalize,
-                  course_subscription_path(@course),
-                  class: 'ml-3'
-              %>
-            </div>
-          <% else %>
-            <%=
-              link_to(
-                t('courses.show.subscribe'),
-                course_subscription_path(@course),
-                class: 'btn btn-primary btn-lg shadow rounded-pill',
-                role: 'button'
-              )
-            %>
-          <% end %>
-        </div>
-
-        <div class="course-description <%= language_class -%>">
-          <%= tc(@course.description.html_safe) %>
-        </div>
-
-        <hr />
-
-        <div>
-          <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
-
-          <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
-            <% @course.lessons.each do |l| %>
-              <li class="list-group-item">
-                <%= link_to tc(l.name), course_lesson_path(@course, l) %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+  <div class="row mx-5">
+    <nav class="col-sm-8" aria-label="breadcrumb">
+      <ol class="breadcrumb my-auto">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= courses_path -%>">Pathways</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= tc(@course.name) %></li>
+      </ol>
+    </nav>
+    <div class="col-sm-4 my-auto text-right dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%=  LocalesService.language_name(params[:locale]) %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% @course.enabled_languages.each do |l| %>
+            <%= link_to LocalesService.language_name(l),
+              course_path(@course, locale: l),
+              class: "#{'active' if l == params[:locale]} dropdown-item " %>
+        <% end %>
       </div>
-
-      <div class="col-md-3 order-1 <%= text_direction -%>" dir="<%= text_direction -%>">
-        <div class="container">
-          <div class="row">
-            <div class="col col-md-12">
-              <div class="mb-4">
-                <%=
-                  image_tag @course.image,
-                    class: 'img-fluid w-100',
-                    alt: @course.summary
-                %>
-              </div>
-            </div>
-            <div class="col col-md-12">
-              <div class="mb-4">
-                <p class="font-weight-bold text-uppercase mb-2">
-                  <%= t('concepts.language').pluralize.titleize %>
-                </p>
-                <ul class="list-unstyled <%= text_direction -%>" dir="<%= text_direction -%>">
-                  <% @course.enabled_languages.each do |l| %>
-                    <li class="language-selector">
-                      <%= link_to LocalesService.language_name(l), course_path(@course, locale: l), class: 'badge badge-primary' %>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-              <% if @course.tags.present? %>
-                <div class="mb-4">
-                  <p class="font-weight-bold text-uppercase mb-2">
-                    <%= t('concepts.tag').pluralize.titleize %>
-                  </p>
-                  <% if @course.tags.present? %>
-                    <ul class="list-unstyled">
-                      <% @course.tags.each do |tag| %>
-                        <li>
-                          <%= tag %>
-                        </li>
-                      <% end %>
-                    </ul>
-                  <% end %>
-                </div>
-              <% end %>
-              <div class="mb-4">
-                <p class="font-weight-bold text-uppercase mb-2">
-                  <%= t('concepts.lesson').pluralize.titleize %>
-                </p>
-                <p>
-                  <%= @course.lessons.size %>
-                </p>
-              </div>
-              <div class="mb-4">
-                <p class="font-weight-bold text-uppercase mb-2">
-                  <%= 'like'.pluralize.titleize %>
-                </p>
-                <p>
-                  <%= render 'votes', course: @course, total: @vote_total %>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
-  </section>
+  </div>
+
+  <div class="col my-5">
+    <h2 class="text-center <%= language_class -%>">
+      <%= tc(@course.name) %>
+    </h2>
+    <p class="lead mx-auto text-center <%= language_class -%>">
+      <%= @course.summary %>
+    </p>
+  </div>
+
+  <div class="row bg-success">
+    <div class="col-sm-4 my-auto">
+      <%=
+        image_tag @course.image,
+          class: 'img-fluid w-100',
+          alt: @course.summary
+      %>
+    </div>
+    <div class="col-sm-8 p-5 course-description <%= language_class -%>">
+      <%= tc(@course.description.html_safe) %>
+      <div class="row">
+        <% if @course.tags.present? %>
+          <div class="col-sm-4">
+            <p class="font-weight-bold text-uppercase mb-2">
+              <%= t('concepts.tag').pluralize.titleize %>
+            </p>
+            <% if @course.tags.present? %>
+              <ul class="list-unstyled">
+                <% @course.tags.each do |tag| %>
+                  <li>
+                    <%= tag %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="col-sm-4">
+          <p class="font-weight-bold text-uppercase mb-2">
+            <%= t('concepts.lesson').pluralize.titleize %>
+          </p>
+          <p>
+            <%= @course.lessons.size %>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p class="font-weight-bold text-uppercase mb-2">
+            <%= 'like'.pluralize.titleize %>
+          </p>
+          <p>
+            <%= render 'votes', course: @course, total: @vote_total %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class= "col my-4 mx-auto w-75">
+    <h4 class="text-center">Our bite-sized information is put together in digestible steps. Follow these below.</h4>
+    <h5 class="text-center">To track your progress or to get bite-sized content emailed directly to you
+      <%# TODO: What do we do when someone has a subscription %>
+      <%=
+        link_to(
+          "create an account",
+          course_subscription_path(@course),
+        )
+      %>
+      or
+      <%=
+        link_to(
+          "sign in",
+          course_subscription_path(@course),
+        )
+      %>.
+    </h5>
+
+  <div>
+    <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
+
+    <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
+      <% @course.lessons.each do |l| %>
+        <li class="list-group-item">
+          <div class='row'>
+            <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-9' %>
+            <p class='col-3 text-right'>👀💌👑</p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
 <% end %>
