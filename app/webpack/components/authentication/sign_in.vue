@@ -6,7 +6,20 @@
       </div>
     </div>
 
-    <div v-if="!loading && !showTermsStep" ref="firebaseAuthContainer"></div>
+    <div
+      v-if="!loading && !showTermsStep && !showVerificationStep"
+      ref="firebaseAuthContainer"
+    >
+      <template v-if="!inlineFlow">
+        <h5 class="my-4 mx-auto">
+          If you are signing up for the first time, you can give us any name
+          like "Marshmallow Forest".
+        </h5>
+        <h5 class="my-4 mx-auto">
+          And if you’re signing in, welcome back superstar!
+        </h5>
+      </template>
+    </div>
 
     <div v-if="!loading && showTermsStep">
       <div class="mdl-card mdl-shadow--2dp firebaseui-container">
@@ -114,6 +127,11 @@
         </div>
       </div>
     </div>
+    <div v-if="!loading && showVerificationStep" class="p-4 text-center">
+      <h4>Thanks for signing up!</h4>
+      <h4><b>We've sent you an email to verify your account.</b></h4>
+      <h4><b>Please check your email.</b></h4>
+    </div>
   </div>
 </template>
 
@@ -148,6 +166,7 @@ export default {
       privacyPolicyUrl: '/pages/privacy-policy',
       loading: false,
       showTermsStep: false,
+      showVerificationStep: false,
       idToken: null
     };
   },
@@ -220,7 +239,6 @@ export default {
         '/auth/callback',
         {
           firebase_token: this.idToken,
-          inline_flow: this.inlineFlow,
           terms_accepted: termsAccepted
         },
         { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
@@ -233,7 +251,7 @@ export default {
       // flow before carrying on.
       //
       // If the email is not verified, then the server will not have signed in,
-      // and we should sign out of the Firebase Auth session and redirect away.
+      // and we should sign out of the Firebase Auth session and display verification message.
       //
       // Otherwise…
       //
@@ -248,35 +266,42 @@ export default {
       const vm = this;
 
       if (data.user.terms_accepted === false) {
+        this.showVerificationStep = false;
         this.showTermsStep = true;
         this.$nextTick(this.setUpValidityHandling);
         return null;
       }
 
       if (data.user.email_verified === false) {
+        this.showTermsStep = false;
+        this.showVerificationStep = true;
         const user = firebase.auth().currentUser;
-        const actionCodeSettings = {
-          url: vm.continueUrl
-        };
+        const actionCodeSettings =
+          data.last_course_id != null
+            ? {
+                url: `${vm.continueUrl}/?last_course_id=${data.last_course_id}`
+              }
+            : {
+                url: vm.continueUrl
+              };
         return user.sendEmailVerification(actionCodeSettings).then(() => {
-          return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
+          return vm.clearFirebaseSession();
         });
       }
 
       if (!vm.inlineFlow) {
-        return vm.clearFirebaseSessionAndRedirect(data.forwarding_url);
+        return vm.clearFirebaseSession(data.forwarding_url).then(() => {
+          vm.redirect(data.forwarding_url);
+        });
       }
-
       return null;
     },
-    clearFirebaseSessionAndRedirect(forwardingUrl) {
-      return firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          Turbolinks.clearCache();
-          Turbolinks.visit(forwardingUrl || '/');
-        });
+    clearFirebaseSession() {
+      return firebase.auth().signOut();
+    },
+    redirect(forwardingUrl) {
+      Turbolinks.clearCache();
+      Turbolinks.visit(forwardingUrl || '/');
     },
     handleTermsAccept() {
       const vm = this;

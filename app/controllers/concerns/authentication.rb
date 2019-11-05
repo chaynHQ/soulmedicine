@@ -18,6 +18,10 @@ module Authentication
 
     return if current_user?
 
+    # Will only remember course_id and forwarding_url for users that are authenticated.
+    # Will only remember course_id when the request contains a course_id such
+    # as the subscription new/edit route.
+    session[:last_course_id] = params[:course_id] if params.key?(:course_id)
     session[:forwarding_url] = request.original_url if request.get?
 
     flash[:alert] = 'Please sign in to continue'
@@ -42,7 +46,7 @@ module Authentication
   module SessionManagement
     extend Memoist
 
-    def sign_in_with_token(token, inline_flow: false, terms_accepted: nil)
+    def sign_in_with_token(token, terms_accepted: nil)
       payload = firebase_auth_service.verify_and_get_token_payload(token)
 
       user = create_or_fetch_authed_user payload
@@ -54,21 +58,27 @@ module Authentication
       # - email is verified
       if !user.terms_accepted
         session[:user] = nil
+        forwarding_url = session[:forwarding_url]
+        last_course_id = session[:last_course_id]
+
       elsif !user.email_verified
         session[:user] = nil
-        flash[:alert] = [
-          'Thanks for signing up! Now you\'ll need to verify your account',
-          'by clicking on the link in the verification email sent to you.'
-        ].join(' ')
+
+        # Delete forwarding URL so we always end up back at the homepage
+        session.delete(:forwarding_url)
+        forwarding_url = root_path_with_params
+        last_course_id = session.delete(:last_course_id)
+
       else
         session[:user] = user.id
-        flash[:notice] = 'You are now signed in' unless inline_flow
+        forwarding_url = session.delete(:forwarding_url) || root_path_with_params
+        last_course_id = session.delete(:last_course_id)
       end
 
       {
-        signed_in: !session[:user].nil?,
         user: ActiveModelSerializers::SerializableResource.new(user).as_json,
-        forwarding_url: session.delete(:forwarding_url) || root_path
+        forwarding_url: forwarding_url,
+        last_course_id: last_course_id
       }
     end
 
@@ -101,6 +111,10 @@ module Authentication
             u.save!
           end
       end
+    end
+
+    def root_path_with_params
+      root_path(last_course_id: session[:last_course_id], just_signed_in: !session[:user].nil? ? true : nil)
     end
   end
 end
