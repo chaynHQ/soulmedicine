@@ -1,0 +1,13 @@
+linters:
+  ErbSafety:
+    enabled: true
+  FinalNewline:
+    enabled: true
+  RightTrim:
+    enabled: true
+    enforced_style: '-'
+  SpaceAroundErbTag:
+    enabled: true
+  SelfClosingTag:
+    enabled: true
+    enforced_style: 'always'

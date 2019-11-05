@@ -1,5 +1,5 @@
 <div class='jumbotron row m-4 px-5 py-3'>
-  <%if @previous_course %>
+  <% if @previous_course %>
     <%= image_tag(@previous_course.image,
         class: 'col-sm-4',
         alt: @previous_course.name) %>
@@ -10,7 +10,7 @@
   <% end %>
   <div class='col-sm-8 my-auto'>
     <h1>You are now signed in!</h1>
-    <%if @previous_course %>
+    <% if @previous_course %>
       <p>You recently viewed <%= link_to tc(@previous_course.name), course_path(@previous_course) %>. </p>
     <% end %>
   </div>
