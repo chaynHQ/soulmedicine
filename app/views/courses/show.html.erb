@@ -84,23 +84,45 @@
   </div>
 
   <div class= "col my-4 mx-auto w-75">
-    <h4 class="text-center">Our bite-sized information is put together in digestible steps. Follow these below.</h4>
-    <h5 class="text-center">To track your progress or to get bite-sized content emailed directly to you
-      <%# TODO: What do we do when someone has a subscription %>
-      <%=
-        link_to(
-          "create an account",
-          course_subscription_path(@course),
-        )
-      %>
-      or
-      <%=
-        link_to(
-          "sign in",
-          course_subscription_path(@course),
-        )
-      %>.
-    </h5>
+    <h4 class="text-center">Our bite-sized information is put together in
+      digestible steps called notes. Follow these below.</h4>
+    <% if @subscription.present? %>
+      <h5 class="text-center">You already have a subscription for this pathway.
+        Make it work for you by
+        <%=
+          link_to(
+            "editing your subscription.",
+            course_subscription_path(@course),
+          )
+        %>
+      </h5>
+    <% elsif current_user? %>
+      <h5 class="text-center">To get the notes for this pathway emailed directly to you
+        <%=
+          link_to(
+            "sign up for a subscription.",
+            course_subscription_path(@course),
+          )
+        %>
+      </h5>
+    <% else %>
+      <h5 class="text-center">To track your progress or to get bite-sized
+        content emailed directly to you
+        <%=
+          link_to(
+            "create an account",
+            course_subscription_path(@course),
+          )
+        %>
+        or
+        <%=
+          link_to(
+            "sign in.",
+            course_subscription_path(@course),
+          )
+        %>
+      </h5>
+    <% end %>
 
   <div>
     <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
@@ -110,7 +132,7 @@
         <li class="list-group-item">
           <div class='row'>
             <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-9' %>
-            <p class='col-3 text-right'>👀💌👑</p>
+            <p class='col-3 text-right' data-toggle="tooltip" data-placement="top" title="Tooltip on top">👀💌👑</p>
           </div>
         </li>
       <% end %>
