@@ -45,7 +45,7 @@
         </div>
 
         <div class="course-description <%= language_class -%>">
-          <%== tc(@course.description) %>
+          <%= sanitize(tc(@course.description)) %>
         </div>
 
         <hr />
