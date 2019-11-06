@@ -10,5 +10,7 @@ class LessonsController < ApplicationController
 
     @next_lesson = @course.next_lesson(@lesson.slug)
     @previous_lesson = @course.previous_lesson(@lesson.slug)
+    
+    @reaction = true
   end
 end

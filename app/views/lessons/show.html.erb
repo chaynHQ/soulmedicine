@@ -79,6 +79,52 @@
           <% end %>
         <% end %>
       </div>
+      <div class="card-header">
+        <% if @reaction %>
+          <div class='col text-right'>
+            <h5 class='my-1 pr-2'>You said this note made you feel empowered
+              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered."><%= emojify(':crown:') %></span>
+            </h5>
+            <p class='mt-4'>Change your reaction:
+              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel strong."><%= emojify(':muscle:') %></span>
+              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel knowledable."><%= emojify(':brain:') %></span>
+              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel magical."><%= emojify(':unicorn:') %></span>
+              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel peaceful."><%= emojify(':dove:') %></span>
+            </p>
+          </div>
+        <% elsif current_user? %>
+          <div class='row float-right align-middle'>
+            <h6 class='my-1 pr-4'>How does this note make you feel?</h6>
+            <%#  Todo: Make these clickable and store the right information. %>
+            <%#  Todo: Update the titles %>
+            <%#  Todo: Can we store the five options/reuse the enum from the model? %>
+            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered."><%= emojify(':crown:') %></span>
+            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel strong."><%= emojify(':muscle:') %></span>
+            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel knowledable."><%= emojify(':brain:') %></span>
+            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel magical."><%= emojify(':unicorn:') %></span>
+            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel peaceful."><%= emojify(':dove:') %></span>
+          </div>
+      <% else %>
+        <h6 class='my-2'>To get these notes emailed directly to you
+          <%=
+            link_to(
+              "create an subscription.",
+              course_subscription_path(@course),
+            )
+          %>
+        </h6>
+        <h6 class='my-2'>Or you can
+          <%#  Todo: need to add correct forwarding URL here %>
+          <%=
+            link_to(
+              "sign in",
+              auth_sign_in_path,
+            )
+          %>
+          to keep track of your reactions to each note and monitor your progress.
+        </h6>
+        <% end %>
+      </div>
     </div>
   </section>
   <div class='my-4 p-3'>
