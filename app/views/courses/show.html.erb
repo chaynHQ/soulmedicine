@@ -136,9 +136,13 @@
               <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-10' %>
               <div class='col-2'>
                 <div class='row float-right'>
-                  <span data-toggle="tooltip" data-placement="top" title="You've visited this note online.">👀</span>
-                  <span data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">💌</span>
-                  <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered.">👑</span>
+                  <span data-toggle="tooltip" data-placement="top" title="You've visited this note online."><%= emojify(':eyes:') %></span>
+                  <span data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email."><%= emojify(':love_letter:') %></span>
+                  <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered."><%= emojify(':crown:') %></span>
+                  <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel strong."><%= emojify(':muscle:') %></span>
+                  <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel knowledable."><%= emojify(':brain:') %></span>
+                  <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel magical."><%= emojify(':unicorn:') %></span>
+                  <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel peaceful."><%= emojify(':dove:') %></span>
                 </div>
               </div>
             </div>
