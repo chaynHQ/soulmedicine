@@ -1,12 +1,11 @@
 <% redirect_url = local_assigns.fetch :redirect_url, nil  %>
 
-<%# TODO: Redo heart_fill to make proper colour and work across pages %>
 <% if current_user? %>
   <%= link_to course_vote_path(course, redirect: redirect_url), class: 'voting-button', method: vote_method(current_user, course.slug) , remote: true do %>
     <%= icon 'heart', variant: heart_fill(current_user, course.slug), css_class: 'text-success' %>
   <% end %>
 <% else %>
-  <%= icon 'heart', variant: heart_fill(current_user, course.slug)%>
+  <%= icon 'heart', variant: heart_fill(current_user, course.slug), css_class: 'text-success' %>
 <% end %>
 
 <%= total %>

@@ -46,103 +46,106 @@
     </div>
     <div class="col-sm-8 p-5 course-description <%= language_class -%>">
       <%= tc(@course.description.html_safe) %>
-      <div class="row">
-        <% if @course.tags.present? %>
-          <div class="col-sm-4">
-            <p class="font-weight-bold text-uppercase mb-2">
-              <%= t('concepts.tag').pluralize.titleize %>
-            </p>
-            <% if @course.tags.present? %>
-              <ul class="list-unstyled">
-                <% @course.tags.each do |tag| %>
-                  <li>
-                    <%= tag %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </div>
-        <% end %>
-        <div class="col-sm-4">
-          <p class="font-weight-bold text-uppercase mb-2">
-            <%= t('concepts.lesson').pluralize.titleize %>
-          </p>
-          <p>
-            <%= @course.lessons.size %>
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <p class="font-weight-bold text-uppercase mb-2">
-            <%= 'like'.pluralize.titleize %>
-          </p>
-          <p>
-            <%= render 'votes', course: @course, total: @vote_total %>
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 
-  <div class= "col my-4 mx-auto w-75">
-    <h4 class="text-center">Our bite-sized information is put together in
-      digestible steps called notes. Follow these below.</h4>
-    <% if @subscription.present? %>
-      <h5 class="text-center">You already have a subscription for this pathway.
-        Make it work for you by
-        <%=
-          link_to(
-            "editing your subscription.",
-            course_subscription_path(@course),
-          )
-        %>
-      </h5>
-    <% elsif current_user? %>
-      <h5 class="text-center">To get the notes for this pathway emailed directly to you
-        <%=
-          link_to(
-            "sign up for a subscription.",
-            course_subscription_path(@course),
-          )
-        %>
-      </h5>
-    <% else %>
-      <h5 class="text-center">To track your progress or to get bite-sized
-        content emailed directly to you
-        <%=
-          link_to(
-            "create an account",
-            course_subscription_path(@course),
-          )
-        %>
-        or
-        <%=
-          link_to(
-            "sign in.",
-            course_subscription_path(@course),
-          )
-        %>
-      </h5>
-    <% end %>
+  <div class= "row my-4 mx-auto w-75">
+      <h4 class="mx-auto">Our bite-sized information is put together in
+        digestible steps called notes. Follow these below.</h4>
+      <% if @subscription.present? %>
+        <h5 class="mx-auto">You already have a subscription for this pathway.
+          Make it work for you by
+          <%=
+            link_to(
+              "editing your subscription.",
+              course_subscription_path(@course),
+            )
+          %>
+        </h5>
+      <% elsif current_user? %>
+        <h5 class="mx-auto">To get the notes for this pathway emailed directly to you
+          <%=
+            link_to(
+              "sign up for a subscription.",
+              course_subscription_path(@course),
+            )
+          %>
+        </h5>
+      <% else %>
+        <h5 class="mx-auto">To track your progress or to get bite-sized
+          content emailed directly to you
+          <%=
+            link_to(
+              "create an account",
+              course_subscription_path(@course),
+            )
+          %>
+          or
+          <%=
+            link_to(
+              "sign in.",
+              course_subscription_path(@course),
+            )
+          %>
+        </h5>
+      <% end %>
+  </div>  
 
-  <div>
-    <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
+  <div class='row w-75 mx-auto'>
+    <div class="col-sm-3">
+      <% if @course.tags.present? %>
+        <div >
+          <p class="font-weight-bold text-uppercase mb-2">
+            <%= t('concepts.tag').pluralize.titleize %>
+          </p>
+          <% if @course.tags.present? %>
+            <ul class="list-unstyled">
+              <% @course.tags.each do |tag| %>
+                <li>
+                  <%= tag %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+      <div>
+        <p class="font-weight-bold text-uppercase mb-2">
+          <%= t('concepts.lesson').pluralize.titleize %>
+        </p>
+        <p>
+          <%= @course.lessons.size %>
+        </p>
+      </div>
+      <div>
+        <p class="font-weight-bold text-uppercase mb-2">
+          <%= 'like'.pluralize.titleize %>
+        </p>
+        <p>
+          <%= render 'votes', course: @course, total: @vote_total %>
+        </p>
+      </div>
+    </div>
+    <div class='col-sm-9'>
+      <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
 
-    <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
-      <% @course.lessons.each do |l| %>
-        <li class="list-group-item">
-          <div class='row'>
-            <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-11' %>
-            <div class='col-1'>
-              <div class='row'>
-                <span class='text-right' data-toggle="tooltip" data-placement="top" title="You've visited this note online.">👀</span>
-                <span class='text-right' data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">💌</span>
-                <span class='text-right' data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered.">👑</span>
+      <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
+        <% @course.lessons.each do |l| %>
+          <li class="list-group-item">
+            <div class='row'>
+              <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-10' %>
+              <div class='col-2'>
+                <div class='row float-right'>
+                  <span data-toggle="tooltip" data-placement="top" title="You've visited this note online.">👀</span>
+                  <span data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">💌</span>
+                  <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered.">👑</span>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 
