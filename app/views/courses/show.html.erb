@@ -15,7 +15,7 @@
     </nav>
     <div class="col-sm-4 my-auto text-right dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%=  LocalesService.language_name(params[:locale]) %>
+        <%= LocalesService.language_name(params[:locale]) %>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <% @course.enabled_languages.each do |l| %>
@@ -45,11 +45,11 @@
       %>
     </div>
     <div class="col-sm-8 p-5 course-description <%= language_class -%>">
-      <%= tc(@course.description.html_safe) %>
+      <%= sanitize(tc(@course.description)) %>
     </div>
   </div>
 
-  <div class= "row my-4 mx-auto w-75">
+  <div class="row my-4 mx-auto w-75">
       <h4 class="mx-auto">Our bite-sized information is put together in
         digestible steps called notes. Follow these below.</h4>
       <% if @subscription.present? %>
@@ -89,12 +89,12 @@
           %>
         </h5>
       <% end %>
-  </div>  
+  </div>
 
   <div class='row w-75 mx-auto'>
     <div class="col-sm-3">
       <% if @course.tags.present? %>
-        <div >
+        <div>
           <p class="font-weight-bold text-uppercase mb-2">
             <%= t('concepts.tag').pluralize.titleize %>
           </p>
