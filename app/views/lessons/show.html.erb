@@ -10,21 +10,19 @@
       <li class="breadcrumb-item d-flex align-items-center">
         <%= image_tag @course.image,
             style: 'width: 100px;',
-            alt: @course.summary
-        %>
+            alt: @course.summary %>
         <%= link_to tc(@course.name),
             course_path(@course),
-            class: 'flex-grow-1'
-        %>
+            class: 'flex-grow-1' %>
       </li>
     </ol>
   </nav>
   <div class='my-4 p-3'>
     <% if @previous_lesson.present? %>
-      <%= link_to raw('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
+      <%= link_to sanitize('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to raw('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
     <% end %>
   </div>
   <section class="lesson-page">
@@ -61,7 +59,7 @@
             <%= tc(@lesson.name) %>
           </h2>
           <div>
-            <%= tc(@lesson.content.html_safe) %>
+            <%== tc(@lesson.content) %>
           </div>
         </div>
 
@@ -74,7 +72,7 @@
                   <%= tc(@lesson.name) %>
                 </h2>
                 <div>
-                  <%= tc(@lesson.content.html_safe) %>
+                  <%== tc(@lesson.content) %>
                 </div>
               </div>
             <% end %>
@@ -85,10 +83,10 @@
   </section>
   <div class='my-4 p-3'>
     <% if @previous_lesson.present? %>
-      <%= link_to raw('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
+      <%= link_to sanitize('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to raw('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
     <% end %>
   </div>
 <% end %>

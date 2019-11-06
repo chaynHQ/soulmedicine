@@ -1,0 +1,17 @@
+<div class='jumbotron row m-4 px-5 py-3'>
+  <% if @previous_course %>
+    <%= image_tag(@previous_course.image,
+        class: 'col-sm-4',
+        alt: @previous_course.name) %>
+  <% else %>
+    <%= image_tag('https://a.storyblok.com/f/50602/350x247/dfebba3390/homepage_icons-03.png',
+        class: 'col-sm-4',
+        alt: 'Homepage Icon') %>
+  <% end %>
+  <div class='col-sm-8 my-auto'>
+    <h1>You are now signed in!</h1>
+    <% if @previous_course %>
+      <p>You recently viewed <%= link_to tc(@previous_course.name), course_path(@previous_course) %>. </p>
+    <% end %>
+  </div>
+</div>

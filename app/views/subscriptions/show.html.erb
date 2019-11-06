@@ -1,6 +1,4 @@
-<%
-  course = @subscription.course
-%>
+<% course = @subscription.course %>
 
 <%= render "courses/check_available", course: course do %>
   <%
@@ -13,5 +11,6 @@
     </h1>
 
     <%= render 'form', subscription: @subscription %>
+
   </section>
 <% end %>

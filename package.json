@@ -4,7 +4,8 @@
   "scripts": {
     "es-check": "es-check es5 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
-    "lint-staged": "$(yarn bin)/lint-staged"
+    "lint-staged": "$(yarn bin)/lint-staged",
+    "lint-erb": "erblint app/views/**/*.html{+*,}.erb"
   },
   "lint-staged": {
     "config/webpack/**/*.js": [
@@ -15,7 +16,8 @@
     ]
   },
   "pre-commit": [
-    "lint-staged"
+    "lint-staged",
+    "lint-erb"
   ],
   "dependencies": {
     "@rails/webpacker": "^4.0.7",
