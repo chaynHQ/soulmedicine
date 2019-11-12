@@ -11,6 +11,7 @@ class LessonsController < ApplicationController
     @next_lesson = @course.next_lesson(@lesson.slug)
     @previous_lesson = @course.previous_lesson(@lesson.slug)
     
-    @reaction = true
+    #todo: set this properly
+    @reaction = false
   end
 end

@@ -79,8 +79,8 @@
           <% end %>
         <% end %>
       </div>
-      <div class="card-header">
-        <% if @reaction %>
+      <div class="card-footer">
+        <% if @reaction && current_user? %>
           <div class='col text-right'>
             <h5 class='my-1 pr-2'>You said this note made you feel empowered
               <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered."><%= emojify(':crown:') %></span>
@@ -118,7 +118,7 @@
           <%=
             link_to(
               "sign in",
-              auth_sign_in_path,
+              auth_sign_in_path(course_id: @course.to_param),
             )
           %>
           to keep track of your reactions to each note and monitor your progress.

@@ -2,7 +2,14 @@ class AuthController < ApplicationController
   with_auth_session_management
 
   def sign_in
-    session[:last_course_id] = params[:last_course_id] if params.key?(:last_course_id)
+    
+    session.delete(:last_course_id)
+    if params.key?(:last_course_id)
+      session[:last_course_id] = params[:last_course_id]
+    elsif params.key?(:course_id)
+      session[:last_course_id] = params[:course_id]
+    end
+    
     redirect_to courses_path if current_user
   end
 
