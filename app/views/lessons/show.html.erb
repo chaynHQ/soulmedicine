@@ -95,18 +95,15 @@
         <% elsif current_user? %>
           <div class='row float-right align-middle'>
             <h6 class='my-1 pr-4'>How does this note make you feel?</h6>
-            <%#  Todo: Make these clickable and store the right information. %>
-
             <% @possible_reactions.each do |r| %>
               <%= link_to course_lesson_reaction_path(@course, @lesson, reaction_name: r),
                   method: reaction_method(current_user, @course.slug, @lesson.slug),
                   remote: true do %>
-                  <span class='px-2'
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="#{r.capitalize}">
-                      <%= emojify(":#{r}:") %>
-                  </span>
+                  <%= content_tag(:span, emojify(":#{r}:"),
+                    title: r.to_s.capitalize,
+                    class: 'px-2',
+                    "data-toggle": "tooltip",
+                    "data-placement": "top") %>
               <% end %>
             <% end %>
           </div>

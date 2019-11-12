@@ -14,7 +14,7 @@ module EmojiHelper
   emoji_names_to_reactions = { 'brain' => 'knowledable', 'crown' => 'empowered', 'muscle' => 'strong', 'unicorn' => 'magical', 'dove' => 'peaceful' }
 
   emoji_names_to_reactions.each do |emoji_name, reaction|
-    emoji = Emoji.find_by(emoji_name)
+    emoji = Emoji.find_by_alias(emoji_name)
     Emoji.edit_emoji(emoji) do |char|
       char.add_alias(reaction)
     end
@@ -23,7 +23,7 @@ module EmojiHelper
   def emojify(content)
     if content.present?
       h(content).to_str.gsub(/:([\w+-]+):/) do |match|
-        if emoji == Emoji.find_by(Regexp.last_match(1))
+        if emoji = Emoji.find_by_alias(Regexp.last_match(1))
           %(<img alt="#{Regexp.last_match(1)}"
             src="#{asset_pack_path("media/images/emoji/#{emoji.image_filename}")}"
             style="vertical-align:middle" width="20" height="20" />)
