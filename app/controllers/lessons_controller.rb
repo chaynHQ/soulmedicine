@@ -10,8 +10,10 @@ class LessonsController < ApplicationController
 
     @next_lesson = @course.next_lesson(@lesson.slug)
     @previous_lesson = @course.previous_lesson(@lesson.slug)
-    
-    #todo: set this properly
+
+    # TODO: set this properly
     @reaction = false
+
+    @possible_reactions = NoteReaction.reaction_names.keys unless @reaction
   end
 end

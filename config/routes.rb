@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     get '/unsubscribe/:user_id', controller: :subscriptions, action: :unsubscribe, as: 'subscription_unsubscribe'
 
     resources :courses, only: %i[index show], path: 'pathways' do
-      resources :lessons, only: %i[show], path: 'notes'
+      resources :lessons, only: %i[show], path: 'notes' do
+        resource :reaction, only: %i[create update], constraints: { format: :js }
+      end
 
       resource :subscription, only: %i[show update destroy] do
         patch :pause

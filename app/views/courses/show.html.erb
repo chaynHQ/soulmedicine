@@ -50,10 +50,10 @@
   </div>
 
   <div class="row my-4 mx-auto w-75">
-      <h4 class="text-center">Our bite-sized information is put together in
+      <h4 class="mx-auto text-center">Our bite-sized information is put together in
         digestible steps called notes. Follow these below.</h4>
       <% if @subscription.present? %>
-        <h5 class="text-center">You already have a subscription for this pathway.
+        <h5 class="mx-auto text-center">You already have a subscription for this pathway.
           Make it work for you by
           <%=
             link_to(
@@ -63,7 +63,7 @@
           %>
         </h5>
       <% elsif current_user? %>
-        <h5 class="text-center">To get the notes for this pathway emailed directly to you
+        <h5 class="mx-auto text-center">To get the notes for this pathway emailed directly to you
           <%=
             link_to(
               "sign up for a subscription.",
@@ -72,7 +72,7 @@
           %>
         </h5>
       <% else %>
-        <h5 class="text-center">To track your progress or to get bite-sized
+        <h5 class="mx-auto text-center">To track your progress or to get bite-sized
           content emailed directly to you
           <%=
             link_to(

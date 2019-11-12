@@ -96,13 +96,19 @@
           <div class='row float-right align-middle'>
             <h6 class='my-1 pr-4'>How does this note make you feel?</h6>
             <%#  Todo: Make these clickable and store the right information. %>
-            <%#  Todo: Update the titles %>
-            <%#  Todo: Can we store the five options/reuse the enum from the model? %>
-            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered."><%= emojify(':crown:') %></span>
-            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel strong."><%= emojify(':muscle:') %></span>
-            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel knowledable."><%= emojify(':brain:') %></span>
-            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel magical."><%= emojify(':unicorn:') %></span>
-            <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel peaceful."><%= emojify(':dove:') %></span>
+
+            <% @possible_reactions.each do |r| %>
+              <%= link_to course_lesson_reaction_path(@course, @lesson, reaction_name: r),
+                  method: reaction_method(current_user, @course.slug, @lesson.slug),
+                  remote: true do %>
+                  <span class='px-2'
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="#{r.capitalize}">
+                      <%= emojify(":#{r}:") %>
+                  </span>
+              <% end %>
+            <% end %>
           </div>
       <% else %>
         <h6 class='my-2'>To get these notes emailed directly to you
