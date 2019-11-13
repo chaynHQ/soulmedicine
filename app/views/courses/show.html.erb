@@ -137,7 +137,13 @@
               <div class='col-2'>
                 <div class='row float-right'>
                   <span class='col-4' data-toggle="tooltip" data-placement="top" title="You've visited this note online."><%= emojify(':eyes:') %></span>
-                  <span class='col-4' data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email."><%= emojify(':love_letter:') %></span>
+                  <span class='col-4'>
+                    <% if @subscription.lessons_delivered.include?(l.slug) %>
+                      <span data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">
+                        <%= emojify(':love_letter:') %>
+                      </span>
+                    <% end %>
+                  </span>
                   <span class='col-4'>
                     <% if @reactions[l.slug] %>
                       <span data-toggle="tooltip" data-placement="top" title="You said this note made you feel <%= @reactions[l.slug] %>.">
