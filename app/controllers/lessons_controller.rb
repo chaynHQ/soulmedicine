@@ -17,5 +17,8 @@ class LessonsController < ApplicationController
     @reaction = current_user.note_reactions.find_by(course_slug: @course.slug, lesson_slug: @lesson.slug) if current_user?
 
     @possible_reactions = NoteReaction.reaction_names.keys
+    
+    current_user.progresses.find_or_initialize_by(course_slug: @course.slug, lesson_slug: @lesson.slug).save!
   end
+
 end

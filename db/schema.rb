@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_204826) do
+ActiveRecord::Schema.define(version: 2019_11_13_164611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2019_11_06_204826) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "course_slug", "lesson_slug"], name: "index_note_reactions_on_user_id_and_course_slug_and_lesson_slug", unique: true
     t.index ["user_id"], name: "index_note_reactions_on_user_id"
+  end
+
+  create_table "progresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "course_slug", null: false
+    t.string "lesson_slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "course_slug", "lesson_slug"], name: "index_progresses_on_user_id_and_course_slug_and_lesson_slug", unique: true
+    t.index ["user_id"], name: "index_progresses_on_user_id"
   end
 
   create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -79,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_204826) do
   end
 
   add_foreign_key "note_reactions", "users"
+  add_foreign_key "progresses", "users"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "votes", "users"
 end

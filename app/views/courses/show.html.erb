@@ -136,7 +136,12 @@
               <%= link_to tc(l.name), course_lesson_path(@course, l), class: 'col-10' %>
               <div class='col-2'>
                 <div class='row float-right'>
-                  <span class='col-4' data-toggle="tooltip" data-placement="top" title="You've visited this note online."><%= emojify(':eyes:') %></span>
+                  <span class='col-4'>
+                    <% if @progress.include?(l.slug) %>
+                      <span class='col-4' data-toggle="tooltip" data-placement="top" title="You've visited this note online.">
+                        <%= emojify(':eyes:') %>
+                      </span>
+                    <% end %>
                   <span class='col-4'>
                     <% if @subscription.lessons_delivered.include?(l.slug) %>
                       <span data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">
