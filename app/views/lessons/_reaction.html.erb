@@ -1,0 +1,9 @@
+<%= link_to course_lesson_reaction_path(@course, @lesson, reaction_name: reaction),
+    method: reaction_method(current_user, @course.slug, @lesson.slug),
+    remote: true do %>
+    <%= content_tag(:span, emojify(":#{reaction}:"),
+      title: reaction.capitalize,
+      class: 'px-2',
+      "data-toggle": "tooltip",
+      "data-placement": "top") %>
+<% end %>

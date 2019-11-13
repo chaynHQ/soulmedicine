@@ -2,12 +2,15 @@ class ReactionsController < ApplicationController
   before_action :require_authentication
 
   def create
-    @reaction = current_user.note_reactions.initialize_by(
+    puts '*******'
+    puts 'In create'
+    puts params[:reaction_name]
+    @reaction = NoteReaction.create!(
+      user: current_user,
       course_slug: params[:course_id],
       lesson_slug: params[:lesson_id],
       reaction_name: params[:reaction_name]
     )
-    @reaction.save!
     respond_to do |format|
       format.js { redirect_to redirect_url }
     end
@@ -18,7 +21,7 @@ class ReactionsController < ApplicationController
       course_slug: params[:course_id],
       lesson_slug: params[:lesson_id]
     )
-    @reaction.update(reaction_name: params[:reaction_name])
+    @reaction.update!(reaction_name: params[:reaction_name])
     respond_to do |format|
       format.js { redirect_to redirect_url }
     end

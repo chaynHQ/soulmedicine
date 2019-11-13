@@ -80,31 +80,22 @@
         <% end %>
       </div>
       <div class="card-footer">
-        <% if @reaction && current_user? %>
+        <% if @reacted && current_user? %>
           <div class='col text-right'>
-            <h5 class='my-1 pr-2'>You said this note made you feel empowered
-              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel empowered."><%= emojify(':crown:') %></span>
+            <h5 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
+              <%= emojify(":#{@reaction.reaction_name}:") %>
             </h5>
             <p class='mt-4'>Change your reaction:
-              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel strong."><%= emojify(':muscle:') %></span>
-              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel knowledable."><%= emojify(':brain:') %></span>
-              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel magical."><%= emojify(':unicorn:') %></span>
-              <span class='px-2' data-toggle="tooltip" data-placement="top" title="You said this note made you feel peaceful."><%= emojify(':dove:') %></span>
+              <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
+                <%= render "reaction", reaction: r %>
+              <% end %>
             </p>
           </div>
         <% elsif current_user? %>
           <div class='row float-right align-middle'>
             <h6 class='my-1 pr-4'>How does this note make you feel?</h6>
             <% @possible_reactions.each do |r| %>
-              <%= link_to course_lesson_reaction_path(@course, @lesson, reaction_name: r),
-                  method: reaction_method(current_user, @course.slug, @lesson.slug),
-                  remote: true do %>
-                  <%= content_tag(:span, emojify(":#{r}:"),
-                    title: r.to_s.capitalize,
-                    class: 'px-2',
-                    "data-toggle": "tooltip",
-                    "data-placement": "top") %>
-              <% end %>
+              <%= render "reaction", reaction: r %>
             <% end %>
           </div>
       <% else %>
