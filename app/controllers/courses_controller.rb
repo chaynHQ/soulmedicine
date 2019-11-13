@@ -26,5 +26,8 @@ class CoursesController < ApplicationController
     @subscription = (current_user.subscriptions.find_by(course_slug: @course.slug) if current_user?)
 
     @vote_total = Vote.get_course_vote_total(@course.slug)
+    
+    @reactions = current_user.note_reactions.where(course_slug: @course.slug).map { |r| [r.lesson_slug, r.reaction_name] }.to_h if current_user?
+
   end
 end

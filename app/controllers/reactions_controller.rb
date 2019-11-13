@@ -2,9 +2,6 @@ class ReactionsController < ApplicationController
   before_action :require_authentication
 
   def create
-    puts '*******'
-    puts 'In create'
-    puts params[:reaction_name]
     @reaction = NoteReaction.create!(
       user: current_user,
       course_slug: params[:course_id],
