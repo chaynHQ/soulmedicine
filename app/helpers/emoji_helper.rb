@@ -14,23 +14,25 @@ module EmojiHelper
   emoji_names_to_reactions = { 'brain' => 'knowledable', 'crown' => 'empowered', 'muscle' => 'strong', 'unicorn' => 'magical', 'dove' => 'peaceful' }
 
   emoji_names_to_reactions.each do |emoji_name, reaction|
+    # rubocop:disable Rails/DynamicFindBy
     emoji = Emoji.find_by_alias(emoji_name)
+    # rubocop:enable Rails/DynamicFindBy
     Emoji.edit_emoji(emoji) do |char|
       char.add_alias(reaction)
     end
   end
 
   def emojify(content)
-    if content.present?
-      h(content).to_str.gsub(/:([\w+-]+):/) do |match|
-        if emoji = Emoji.find_by_alias(Regexp.last_match(1))
-          %(<img alt="#{Regexp.last_match(1)}"
-            src="#{asset_pack_path("media/images/emoji/#{emoji.image_filename}")}"
-            style="vertical-align:middle" width="20" height="20" />)
-        else
-          match
-        end
-      end.html_safe
+    return if content.blank?
+
+    h(content).to_str.gsub(/:([\w+-]+):/) do
+      # rubocop:disable Rails/DynamicFindBy
+      return unless (emoji = Emoji.find_by_alias(Regexp.last_match(1)))
+
+      # rubocop:enable Rails/DynamicFindBy
+      %(<img alt="#{Regexp.last_match(1)}"
+        src="#{asset_pack_path("media/images/emoji/#{emoji.image_filename}")}"
+        class="emoji"/>)
     end
   end
 end

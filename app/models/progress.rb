@@ -7,5 +7,4 @@ class Progress < ApplicationRecord
   validates :lesson_slug,
     presence: true,
     uniqueness: { scope: %i[user_id course_slug] }
-
 end
