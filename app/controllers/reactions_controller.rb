@@ -24,13 +24,6 @@ class ReactionsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @reaction.destroy if @reaction.persisted?
-  #   respond_to do |format|
-  #     format.js { redirect_to redirect_url }
-  #   end
-  # end
-
   private
 
   def redirect_url

@@ -80,7 +80,7 @@
         <% end %>
       </div>
       <div class="card-footer">
-        <% if @reacted && current_user? %>
+        <% if @reaction && current_user? %>
           <div class='col text-right'>
             <h5 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
               <%= emojify(":#{@reaction.reaction_name}:") %>
@@ -108,7 +108,6 @@
           %>
         </h6>
         <h6 class='my-2'>Or you can
-          <%#  Todo: need to add correct forwarding URL here %>
           <%=
             link_to(
               "sign in",
