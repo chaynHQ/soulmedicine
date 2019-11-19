@@ -152,7 +152,7 @@
                 <div class='col-1'>
                   <% if @reactions[l.slug] %>
                     <div data-toggle="tooltip" data-placement="top" title="You said this note made you feel <%= @reactions[l.slug] %>.">
-                      <%== emojify(":#{@reactions[l.slug]}:") %>
+                      <%= sanitize(emojify(":#{@reactions[l.slug]}:")) %>
                     </div>
                   <% end %>
                 </div>
@@ -163,6 +163,5 @@
       </ul>
     </div>
   </div>
-</div>
 
 <% end %>

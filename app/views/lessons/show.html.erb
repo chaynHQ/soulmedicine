@@ -83,7 +83,7 @@
         <% if @reaction && current_user? %>
           <div class='col text-right'>
             <h5 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
-              <%== emojify(":#{@reaction.reaction_name}:") %>
+              <%= sanitize(emojify(":#{@reaction.reaction_name}:")) %>
             </h5>
             <p class='mt-4'>Change your reaction:
               <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>

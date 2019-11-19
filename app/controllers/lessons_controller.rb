@@ -15,6 +15,7 @@ class LessonsController < ApplicationController
 
     @possible_reactions = NoteReaction.reaction_names.keys
 
+    # Save that a user has visited the note
     current_user.progresses.find_or_initialize_by(course_slug: @course.slug, lesson_slug: @lesson.slug).save! if current_user?
   end
 end
