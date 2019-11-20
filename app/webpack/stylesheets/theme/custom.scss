@@ -596,5 +596,9 @@ a.list-group-item {
 // Emoji ===================================================================
 
 .emoji {
+  max-height: 1em;
+}
+
+.selected-emoji {
   max-height: 2em;
 }

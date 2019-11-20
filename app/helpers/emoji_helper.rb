@@ -23,7 +23,7 @@ module EmojiHelper
     end
   end
 
-  def emojify(content)
+  def emojify(content, emoji_class = '')
     return if content.blank?
 
     h(content).to_str.gsub(/:([\w+-]+):/) do
@@ -32,7 +32,7 @@ module EmojiHelper
 
       # rubocop:enable Rails/DynamicFindBy
       image_tag(asset_pack_path("media/images/emoji/#{emoji.image_filename}"),
-        class: 'emoji',
+        class: "emoji #{emoji_class}",
         alt: Regexp.last_match(1))
     end
   end

@@ -143,7 +143,7 @@
                   <% end %>
                 </div>
                 <div class='col-1'>
-                  <% if @subscription.lessons_delivered.include?(l.slug) %>
+                  <% if @subscription.present? && @subscription.lessons_delivered.include?(l.slug) %>
                     <div data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">
                       <%== emojify(':love_letter:') %>
                     </div>

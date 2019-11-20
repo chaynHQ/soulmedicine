@@ -24,6 +24,29 @@
   <% end %>
 <% end %>
 
+<div class='row'>
+  <% if @reaction %>
+    <div class='col text-right'>
+      <h3 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
+        <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
+      </h3>
+      <p class='mt-4'>Change your reaction:
+        <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
+          <%= render "lessons/reaction", reaction: r %>
+        <% end %>
+      </p>
+    </div>
+  <% else %>
+    <div class='row float-right align-middle'>
+      <h3 class='my-1 pr-4'>How does this note make you feel?
+        <% @possible_reactions.each do |r| %>
+          <%= render "lessons/reaction", reaction: r %>
+        <% end %>
+      </h3>
+    </div>
+  <% end %>
+</div>
+
 <div class='unsubscribe-footer'>
   <%=
     link_to(
