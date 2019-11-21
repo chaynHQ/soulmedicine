@@ -60,8 +60,6 @@ document.addEventListener('turbolinks:load', () => {
   /* eslint-disable no-undef */
   $(window).trigger('load.bs.select.data-api');
 
-  $(() => {
-    $('[data-toggle="tooltip"]').tooltip();
-  });
+  $('[data-toggle="tooltip"]').tooltip();
   /* eslint-enable no-undef */
 });
