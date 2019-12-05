@@ -68,7 +68,7 @@
         <% @course.enabled_languages.each do |l| %>
           <% if l != LocalesService.current.to_s %>
             <% LocalesService.with(l) do %>
-              <div class="tab-pane fade <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= l -%>" role="tabpanel" aria-labelledby="nav-home-tab" dir="<%= text_direction -%>">
+              <div class="tab-pane fade <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= l -%>" role="tabpanel" dir="<%= text_direction -%>">
                 <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
                   <%= tc(@lesson.name) %>
                 </h2>
