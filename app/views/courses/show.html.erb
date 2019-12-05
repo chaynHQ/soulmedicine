@@ -145,7 +145,57 @@
     </div>
     <div class='col-sm-9'>
       <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
-
+      <div class="card-deck">
+        <% @course.lessons.each_with_index do |l, index| %>
+          <div class="card m-3">
+            <div class="card-body">
+              <h3><%= link_to tc(l.name), course_lesson_path(@course, l), class: 'card-title'%></h3>
+              <%== truncate_html(tc(l.content)) %>
+              <% if current_user? %>
+                <div>
+                  <% if @progress.include?(l.slug) %>
+                    <div class="row" data-toggle="tooltip" data-placement="top" title="You've visited this note online.">
+                      <div class="col-2 pr-1">
+                        <%== emojify(':eyes:') %>
+                      </div>
+                      <div class="col-10 pl-1">
+                        <p class="mb-0 subparagraph">You've visited this note online.</p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div>
+                  <% if @subscription.present? && @subscription.lessons_delivered.include?(l.slug) %>
+                    <div class="row" data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">
+                      <div class="col-2 pr-1">
+                        <%== emojify(':love_letter:') %>
+                      </div>
+                      <div class="col-10 pl-1">
+                        <p class="mb-0 subparagraph">You've recieved this note as an email.</p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div>
+                  <% if @reactions[l.slug] %>
+                    <div class="row" data-toggle="tooltip" data-placement="top" title="You said this note made you feel <%= @reactions[l.slug] %>.">
+                      <div class="col-2 pr-1">
+                        <%= sanitize(emojify(":#{@reactions[l.slug]}:")) %>
+                      </div>
+                      <div class="col-10 pl-1">
+                        <p class="mb-0 subparagraph">You said this note made you feel <%= @reactions[l.slug] %>.</p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <% if index%2 != 0 %>
+            <div class="w-100"><!-- wrap every 2 on sm--></div>
+          <% end %>
+        <% end %>
+      </div>
       <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
         <% @course.lessons.each do |l| %>
           <li class="list-group-item">
