@@ -149,7 +149,7 @@
         <% @course.lessons.each_with_index do |l, index| %>
           <div class="card m-3">
             <div class="card-body">
-              <h3><%= link_to tc(l.name), course_lesson_path(@course, l), class: 'card-title'%></h3>
+              <h3><%= link_to tc(l.name), course_lesson_path(@course, l), class: 'card-title' %></h3>
               <%== truncate_html(tc(l.content)) %>
               <% if current_user? %>
                 <div>
