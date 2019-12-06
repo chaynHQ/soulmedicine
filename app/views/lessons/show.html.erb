@@ -13,7 +13,7 @@
             alt: @course.summary %>
         <%= link_to tc(@course.name),
             course_path(@course),
-            class: 'flex-grow-1' %>
+            class: 'flex-grow-1', lang: LocalesService.current %>
       </li>
     </ol>
   </nav>
@@ -31,7 +31,7 @@
         <ul class="nav nav-pills card-header-pills" role="tablist">
           <li class="nav-item">
             <!-- Current language tab -->
-            <a class="nav-link active" id="nav-lesson-content-<%= LocalesService.current -%>" data-toggle="tab" href="#lesson-content-<%= LocalesService.current -%>" role="tab" aria-controls="lesson-content-<%= LocalesService.current -%>" aria-selected="true">
+            <a class="nav-link active" id="nav-lesson-content-<%= LocalesService.current -%>" data-toggle="tab" href="#lesson-content-<%= LocalesService.current -%>" role="tab" aria-controls="lesson-content-<%= LocalesService.current -%>" aria-selected="true" lang="<%= LocalesService.current -%>">
               <%= LocalesService.language_name(LocalesService.current) %>
             </a>
           </li>
@@ -44,7 +44,7 @@
           <% @course.enabled_languages.each do |l| %>
             <% if l != LocalesService.current.to_s %>
               <li class="nav-item">
-                <a class="nav-link" id="nav-lesson-content-<%= l -%>" data-toggle="tab" href="#lesson-content-<%= l -%>" role="tab" aria-controls="lesson-content-<%= l -%>" aria-selected="false">
+                <a class="nav-link" id="nav-lesson-content-<%= l -%>" data-toggle="tab" href="#lesson-content-<%= l -%>" role="tab" aria-controls="lesson-content-<%= l -%>" aria-selected="false" lang="<%= l -%>">
                   <%= LocalesService.language_name(l) %>
                 </a>
             </li>
@@ -52,7 +52,7 @@
           <% end %>
         </ul>
       </div>
-      <div class="card-body tab-content">
+      <div class="card-body tab-content" lang="<%= LocalesService.current -%>">
         <!-- Current language content -->
         <div class="tab-pane fade show active <%= text_direction -%> <%= language_class -%>" id="lesson-content-<%= LocalesService.current -%>" dir="<%= text_direction -%>">
           <h2 class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
