@@ -7,6 +7,8 @@ class BackupsProcessorService
 
       data = service.all
 
+      Rails.logger.info "Creating backup of #{key} data from storyblok."
+
       Backup.find_or_initialize_by(key: key).update!(
         data: data
       )

@@ -2,6 +2,7 @@ class AuthController < ApplicationController
   with_auth_session_management
 
   def sign_in
+    session[:last_course_id] = params[:last_course_id] if params.key?(:last_course_id)
     redirect_to courses_path if current_user
   end
 
@@ -10,7 +11,6 @@ class AuthController < ApplicationController
 
     result = sign_in_with_token(
       token,
-      inline_flow: ActiveRecord::Type::Boolean.new.cast(params[:inline_flow]),
       terms_accepted: params[:terms_accepted]
     )
 

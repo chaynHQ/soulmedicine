@@ -1,6 +1,6 @@
-# frozen_string_literal: true
-
 module ApplicationHelper
+  DEFAULT_IMAGE_META_TAG = 'https://a.storyblok.com/f/50602/200x200/8815278a23/favicon.png'.freeze
+
   def settings
     SettingsService.new(STORYBLOK_CLIENT).get
   end
@@ -33,6 +33,10 @@ module ApplicationHelper
         )
       ]
     )
+  end
+
+  def default_image_meta_tag
+    DEFAULT_IMAGE_META_TAG
   end
 
   # rubocop:disable Rails/HelperInstanceVariable
