@@ -532,7 +532,6 @@ a.list-group-item {
 .Cookie__button {
   background: $success;
   padding: 0.625em 3.125em;
-  color: $white;
   border-radius: 20px;
   border: 0;
 }
@@ -543,7 +542,7 @@ a.list-group-item {
 
 // Sign-in ==================================================================
  .mdl-button--raised.mdl-button--colored {
-   background: $pink !important;
+   background: $primary !important;
  }
 
 // Courses ==================================================================
