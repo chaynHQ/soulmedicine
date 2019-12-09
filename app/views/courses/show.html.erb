@@ -49,7 +49,7 @@
           alt: @course.summary
       %>
     </div>
-    <div class="col-sm-8 p-5 course-description <%= language_class -%>">
+    <div class="col-sm-8 p-5 course-description <%= text_direction -%> <%= language_class -%>" lang="<%= LocalesService.current %>">
       <%= sanitize(tc(@course.description)) %>
     </div>
   </div>
@@ -145,7 +145,7 @@
     </div>
     <div class='col-sm-9'>
       <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
-      <div class="card-deck">
+      <div class="card-deck <%= text_direction -%> <%= language_class -%>" lang="<%= LocalesService.current %>">
         <% @course.lessons.each_with_index do |l, index| %>
           <div class="card m-3">
             <div class="card-body">
