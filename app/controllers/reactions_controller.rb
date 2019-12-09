@@ -17,15 +17,11 @@ class ReactionsController < ApplicationController
     else
       @reaction.update!(reaction_name: params[:reaction_name])
     end
-    puts redirect_url
     redirect_to redirect_url
   end
 
   def destroy
     @reaction.destroy if @reaction.persisted?
-    puts '******'
-    puts redirect_url
-    puts '******'
     redirect_to redirect_url
   end
 
