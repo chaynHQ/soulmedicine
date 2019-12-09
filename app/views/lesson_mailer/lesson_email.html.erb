@@ -27,14 +27,25 @@
 <div class='row'>
   <% if @reaction %>
     <div class='col text-right'>
-      <h3 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
+      <h5 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
         <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
-      </h3>
+      </h5>
       <div class='row justify-content-end mt-4'>
-        <p class='my-auto col-auto'>Change your reaction:</p>
-        <div class='col-auto'>
-          <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
-            <%= render "reaction", reaction: r %>
+        <p class='my-auto col-auto'>
+          <%= link_to 'Remove',
+            course_lesson_reaction_url(
+              course_id: @course.slug,
+              lesson_id: @lesson.slug,
+              reaction_name: @reaction.reaction_name,
+              user_id: @user.to_sgid_param(for: :lesson_react),
+              redirect_url: root_url
+            ),
+            method: :delete %>
+          my reaction or update it:
+        </p>
+        <div>
+          <% @possible_reactions.each do |r| %>
+            <%= render "lessons/reaction", reaction: r, email: true, redirect_url: root_url %>
           <% end %>
         </div>
       </div>
@@ -44,7 +55,7 @@
       <h3 class='my-1 pr-4'>How does this note make you feel?
         <div class="col">
           <% @possible_reactions.each do |r| %>
-            <%= render "lessons/reaction", reaction: r %>
+            <%= render "lessons/reaction", reaction: r, email: true, redirect_url: root_url %>
           <% end %>
         </div>
       </h3>
