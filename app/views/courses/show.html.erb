@@ -9,11 +9,11 @@
     <div class="row justify-content-around">
 
       <div class="col-md-9 order-2 <%= text_direction -%>" dir="<%= text_direction -%>">
-        <h2 class="<%= language_class -%>">
+        <h2 class="<%= language_class -%>" lang="<%= LocalesService.current %>">
           <%= tc(@course.name) %>
         </h2>
 
-        <div class="lead mb-3 <%= language_class -%>">
+        <div class="lead mb-3 <%= language_class -%>" lang="<%= LocalesService.current %>">
           <%= @course.summary %>
         </div>
 
@@ -44,7 +44,7 @@
           <% end %>
         </div>
 
-        <div class="course-description <%= language_class -%>">
+        <div class="course-description <%= language_class -%>" lang="<%= LocalesService.current %>">
           <%= sanitize(tc(@course.description)) %>
         </div>
 
@@ -53,10 +53,10 @@
         <div>
           <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
 
-          <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
+          <ul class="list-group <%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>" lang="<%= LocalesService.current %>">
             <% @course.lessons.each do |l| %>
               <li class="list-group-item">
-                <%= link_to tc(l.name), course_lesson_path(@course, l) %>
+                <%= link_to tc(l.name), course_lesson_path(@course, l), lang: LocalesService.current %>
               </li>
             <% end %>
           </ul>
@@ -83,7 +83,7 @@
                 <ul class="list-unstyled <%= text_direction -%>" dir="<%= text_direction -%>">
                   <% @course.enabled_languages.each do |l| %>
                     <li class="language-selector">
-                      <%= link_to LocalesService.language_name(l), course_path(@course, locale: l), class: 'badge badge-primary' %>
+                      <%= link_to LocalesService.language_name(l), course_path(@course, locale: l), class: 'badge badge-primary', lang: l %>
                     </li>
                   <% end %>
                 </ul>
