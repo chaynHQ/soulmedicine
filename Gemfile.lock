@@ -266,7 +266,9 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     timecop (0.9.1)
-    truncate_html (0.9.3)
+    truncato (0.7.11)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.7.0, <= 2.0)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -333,7 +335,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   storyblok (~> 2.0.5)
   timecop (~> 0.9.1)
-  truncate_html
+  truncato
   turbolinks (~> 5.2)
   twitter_cldr (~> 4.4, >= 4.4.3)
   tzinfo-data

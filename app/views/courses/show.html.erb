@@ -150,7 +150,7 @@
           <div class="card m-3">
             <div class="card-body">
               <h3><%= link_to tc(l.name), course_lesson_path(@course, l), class: 'card-title' %></h3>
-              <%== truncate_html(tc(l.content)) %>
+              <%== Truncato.truncate(tc(l.content), max_length: 100) %>
               <% if current_user? %>
                 <div>
                   <% if @progress.include?(l.slug) %>
