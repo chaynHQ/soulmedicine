@@ -1,5 +1,11 @@
 class NoteReaction < ApplicationRecord
-  enum reaction_name: { empowered: 0, strong: 1, knowledgeable: 2, magical: 3, peaceful: 4 }
+  enum reaction_name: { 
+    empowered: 'empowered',
+    strong: 'strong',
+    knowledgeable: 'knowledgeable',
+    magical: 'magical',
+    peaceful: 'peaceful'
+  }
 
   belongs_to :user
 
@@ -9,4 +15,7 @@ class NoteReaction < ApplicationRecord
   validates :lesson_slug,
     presence: true,
     uniqueness: { scope: %i[user_id course_slug] }
+
+  validates :reaction_name,
+    presence: true
 end

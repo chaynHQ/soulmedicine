@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_164611) do
     t.uuid "user_id"
     t.string "course_slug", null: false
     t.string "lesson_slug", null: false
-    t.integer "reaction_name", null: false
+    t.string "reaction_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "course_slug", "lesson_slug"], name: "index_note_reactions_on_user_id_and_course_slug_and_lesson_slug", unique: true
