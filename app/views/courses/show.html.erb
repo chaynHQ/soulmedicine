@@ -154,7 +154,7 @@
               <% if current_user? %>
                 <div>
                   <% if @progress.include?(l.slug) %>
-                    <div class="row" data-toggle="tooltip" data-placement="top" title="You've visited this note online.">
+                    <div class="row">
                       <div class="col-2 pr-1">
                         <%== emojify(':eyes:') %>
                       </div>
@@ -166,7 +166,7 @@
                 </div>
                 <div>
                   <% if @subscription.present? && @subscription.lessons_delivered.include?(l.slug) %>
-                    <div class="row" data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">
+                    <div class="row">
                       <div class="col-2 pr-1">
                         <%== emojify(':love_letter:') %>
                       </div>
@@ -178,7 +178,7 @@
                 </div>
                 <div>
                   <% if @reactions[l.slug] %>
-                    <div class="row" data-toggle="tooltip" data-placement="top" title="You said this note made you feel <%= @reactions[l.slug] %>.">
+                    <div class="row">
                       <div class="col-2 pr-1">
                         <%= sanitize(emojify(":#{@reactions[l.slug]}:")) %>
                       </div>
@@ -204,7 +204,7 @@
               <% if current_user? %>
                 <div class='col-sm-1'>
                   <% if @progress.include?(l.slug) %>
-                    <div class="row" data-toggle="tooltip" data-placement="top" title="You've visited this note online.">
+                    <div class="row">
                       <div class="col-2 pr-1">
                         <%== emojify(':eyes:') %>
                       </div>
@@ -216,7 +216,7 @@
                 </div>
                 <div class='col-sm-1'>
                   <% if @subscription.present? && @subscription.lessons_delivered.include?(l.slug) %>
-                    <div class="row" data-toggle="tooltip" data-placement="top" title="You've recieved this note as an email.">
+                    <div class="row">
                       <div class="col-2 pr-1">
                         <%== emojify(':love_letter:') %>
                       </div>
@@ -228,7 +228,7 @@
                 </div>
                 <div class='col-sm-1'>
                   <% if @reactions[l.slug] %>
-                    <div class="row" data-toggle="tooltip" data-placement="top" title="You said this note made you feel <%= @reactions[l.slug] %>.">
+                    <div class="row">
                       <div class="col-2 pr-1">
                         <%= sanitize(emojify(":#{@reactions[l.slug]}:")) %>
                       </div>

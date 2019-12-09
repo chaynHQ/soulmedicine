@@ -2,10 +2,8 @@
 
 <%= link_to course_lesson_reaction_url(course_id: @course.slug, lesson_id: @lesson.slug, reaction_name: reaction, redirect: redirect_url),
     method: :put do %>
-    <span data-toggle="tooltip"
-      data-placement="top"
-      title="<%= reaction.capitalize %>"
-      class="px-1">
+    <p class="mb-0 text-left">
       <%== emojify(":#{reaction}:") %>
-    </span>
+      <%= reaction.capitalize %>
+    </p>
 <% end %>

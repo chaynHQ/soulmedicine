@@ -30,18 +30,23 @@
       <h3 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
         <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
       </h3>
-      <p class='mt-4'>Change your reaction:
-        <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
-          <%= render "lessons/reaction", reaction: r %>
-        <% end %>
-      </p>
+      <div class='row justify-content-end mt-4'>
+        <p class='my-auto col-auto'>Change your reaction:</p>
+        <div class='col-auto'>
+          <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
+            <%= render "reaction", reaction: r %>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% else %>
     <div class='row float-right align-middle'>
       <h3 class='my-1 pr-4'>How does this note make you feel?
-        <% @possible_reactions.each do |r| %>
-          <%= render "lessons/reaction", reaction: r %>
-        <% end %>
+        <div class="col">
+          <% @possible_reactions.each do |r| %>
+            <%= render "lessons/reaction", reaction: r %>
+          <% end %>
+        </div>
       </h3>
     </div>
   <% end %>

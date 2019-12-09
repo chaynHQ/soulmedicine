@@ -61,10 +61,3 @@ document.addEventListener('turbolinks:load', () => {
   $(window).trigger('load.bs.select.data-api');
   /* eslint-enable no-undef */
 });
-
-// Make tooltips work with Turbolinks
-document.addEventListener('turbolinks:load', () => {
-  /* eslint-disable no-undef */
-  $('[data-toggle="tooltip"]').tooltip();
-  /* eslint-enable no-undef */
-});
