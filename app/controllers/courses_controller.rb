@@ -25,12 +25,12 @@ class CoursesController < ApplicationController
 
     @vote_total = Vote.get_course_vote_total(@course.slug)
 
-    if current_user?
-      @subscription = current_user.subscriptions.find_by(course_slug: @course.slug)
+    return unless current_user?
 
-      @reactions = current_user.note_reactions.where(course_slug: @course.slug).map { |r| [r.lesson_slug, r.reaction_name] }.to_h
+    @subscription = current_user.subscriptions.find_by(course_slug: @course.slug)
 
-      @progress = current_user.progresses.where(course_slug: @course.slug).map(&:lesson_slug)
-    end
+    @reactions = current_user.note_reactions.where(course_slug: @course.slug).map { |r| [r.lesson_slug, r.reaction_name] }.to_h
+
+    @progress = current_user.progresses.where(course_slug: @course.slug).map(&:lesson_slug)
   end
 end

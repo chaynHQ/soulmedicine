@@ -1,3 +1,5 @@
+<% redirect_url = local_assigns.fetch :redirect_url, nil %>
+
 <%= render "courses/check_available", course: @course do %>
   <%
     title @lesson.name + ' | ' + @course.name
@@ -86,11 +88,26 @@
               <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
             </h5>
             <div class='row justify-content-end mt-4'>
-              <p class='my-auto col-auto'>Change your reaction:</p>
-              <div class='col-auto'>
-                <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
-                  <%= render "reaction", reaction: r %>
-                <% end %>
+              <p class='my-auto col-auto'>
+                <%= link_to 'Remove',
+                  course_lesson_reaction_path(
+                    course_id: @course.slug,
+                    lesson_id: @lesson.slug,
+                    reaction_name: @reaction,
+                    redirect: redirect_url
+                  ),
+                  method: :delete %>
+                my reaction or update it:
+              </p>
+              <div>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <% @possible_reactions.select do |r| %>
+                    <%= render "reaction", reaction: r %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

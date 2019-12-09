@@ -1,5 +1,5 @@
 class NoteReaction < ApplicationRecord
-  enum reaction_name: { 
+  enum reaction_name: {
     empowered: 'empowered',
     strong: 'strong',
     knowledgeable: 'knowledgeable',

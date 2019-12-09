@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
     resources :courses, only: %i[index show], path: 'pathways' do
       resources :lessons, only: %i[show], path: 'notes' do
-        resource :reaction, only: %i[show update]
+        resource :reaction, only: %i[show update destroy]
       end
 
       resource :subscription, only: %i[show update destroy] do

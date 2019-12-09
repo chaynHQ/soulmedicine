@@ -1,6 +1,6 @@
 class ReactionsController < ApplicationController
   before_action :require_authentication
-  before_action :find_or_initialize_reaction, only: %i[show update]
+  before_action :find_or_initialize_reaction, only: %i[show update destroy]
 
   def show
     update
@@ -14,6 +14,11 @@ class ReactionsController < ApplicationController
       @reaction.update!(reaction_name: params[:reaction_name])
     end
 
+    redirect_to redirect_url
+  end
+
+  def destroy
+    @reaction.destroy if @reaction.persisted?
     redirect_to redirect_url
   end
 
