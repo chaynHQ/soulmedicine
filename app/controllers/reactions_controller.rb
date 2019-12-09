@@ -8,7 +8,7 @@ class ReactionsController < ApplicationController
 
   def update
     if @reaction.new_record?
-      @reaction[:reaction_name] = params[:reaction_name]
+      @reaction.reaction_name = params[:reaction_name]
       @reaction.save!
     else
       @reaction.update!(reaction_name: params[:reaction_name])
