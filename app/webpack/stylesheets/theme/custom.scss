@@ -36,6 +36,10 @@
   background-color: $success;
 }
 
+.bg-light-beige {
+  background-color: darken($white, 5%);
+}
+
 // Buttons =====================================================================
 
 .btn {
