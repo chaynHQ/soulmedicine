@@ -11,7 +11,7 @@ module EmojiHelper
     char.add_unicode_alias "\u{1f9e0}"
   end
 
-  emoji_names_to_reactions = { 'brain' => 'knowledable', 'crown' => 'empowered', 'muscle' => 'strong', 'unicorn' => 'magical', 'dove' => 'peaceful' }
+  emoji_names_to_reactions = { 'brain' => 'knowledgeable', 'crown' => 'empowered', 'muscle' => 'strong', 'unicorn' => 'magical', 'dove' => 'peaceful' }
 
   emoji_names_to_reactions.each do |emoji_name, reaction|
     # rubocop:disable Rails/DynamicFindBy
