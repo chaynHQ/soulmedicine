@@ -2,7 +2,6 @@
 <% email = local_assigns.fetch :email, nil %>
 
 <%= link_to course_lesson_reaction_url(course_id: @course.slug, lesson_id: @lesson.slug, reaction_name: reaction, redirect_url: redirect_url, user_id: email ? @user.to_sgid_param(for: :lesson_react) : nil),
-    class: @reaction ? "#{'active' if reaction == @reaction.reaction_name} dropdown-item " : nil,
     method: :put do %>
     <p class="mb-0 text-left">
       <%== emojify(":#{reaction}:") %>

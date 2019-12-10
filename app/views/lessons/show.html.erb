@@ -100,14 +100,9 @@
                 my reaction or update it:
               </p>
               <div>
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <% @possible_reactions.select do |r| %>
-                    <%= render "reaction", reaction: r %>
-                  <% end %>
-                </div>
+                <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
+                  <%= render "reaction", reaction: r %>
+                <% end %>
               </div>
             </div>
           </div>

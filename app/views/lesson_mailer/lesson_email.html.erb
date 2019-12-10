@@ -44,7 +44,7 @@
           my reaction or update it:
         </p>
         <div>
-          <% @possible_reactions.each do |r| %>
+          <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
             <%= render "lessons/reaction", reaction: r, email: true, redirect_url: root_url %>
           <% end %>
         </div>
