@@ -6,11 +6,11 @@
     <div class="dropdown-menu dropdown-menu-right <%= text_direction -%>" dir="<%= text_direction -%>" aria-labelledby="languagesSelectorDropdown">
       <% LocalesService.enabled.each do |l| %>
         <% if LocalesService.current == l %>
-          <span class="dropdown-item language-dropdown-item">
+          <span class="dropdown-item language-dropdown-item" lang="<%= l %>">
             <%= LocalesService.language_name(l) %>
           </span>
         <% else %>
-          <%= link_to LocalesService.language_name(l), params_with_locale(l), class: 'dropdown-item language-dropdown-item' %>
+          <%= link_to LocalesService.language_name(l), params_with_locale(l), class: 'dropdown-item language-dropdown-item', lang: l %>
         <% end %>
       <% end %>
     </div>

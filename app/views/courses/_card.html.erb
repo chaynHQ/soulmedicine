@@ -8,15 +8,15 @@
   <%= link_to image_tag(course.image, class: 'card-img-top', alt: course.summary), course_path(course) %>
 
   <div class="card-body">
-    <h5 class="card-title <%= language_class -%>">
+    <h5 class="card-title <%= language_class -%>" lang="<%= LocalesService.current %>">
       <%= link_to tc(course.name), course_path(course) %>
     </h5>
     <h6 class="card-subtitle">
       <% course.enabled_languages.each do |l| %>
-        <%= link_to LocalesService.language_name(l), course_path(course, locale: l), class: 'badge badge-primary mb-2' %>
+        <%= link_to LocalesService.language_name(l), course_path(course, locale: l), class: 'badge badge-primary mb-2', lang: l %>
       <% end %>
     </h6>
-    <div class="card-text <%= language_class -%>">
+    <div class="card-text <%= language_class -%>" lang="<%= LocalesService.current %>">
       <%= tc(course.summary) %>
     </div>
   </div>

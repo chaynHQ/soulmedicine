@@ -110,7 +110,7 @@
                     class="form-control"
                     placeholder=""
                     aria-label="User's new password"
-                    aria-describedby="button-updatePassword"
+                    aria-describedby="updatePasswordButton"
                   />
                   <div class="input-group-append">
                     <button
