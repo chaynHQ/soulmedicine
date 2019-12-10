@@ -147,7 +147,7 @@
       <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
       <div class="card-deck <%= text_direction -%> <%= language_class -%>" lang="<%= LocalesService.current %>">
         <% @course.lessons.each_with_index do |l, index| %>
-          <div class="card m-3 shadow bg-light-beige">
+          <div class="card m-3 shadow">
             <div class="card-body">
               <h3><%= link_to tc(l.name), course_lesson_path(@course, l), class: 'card-title' %></h3>
               <%== Truncato.truncate(tc(l.content), max_length: 120) %>
