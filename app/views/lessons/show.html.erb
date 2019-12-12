@@ -24,7 +24,7 @@
       <%= link_to sanitize('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course, @next_lesson), class: 'float-right' %>
     <% end %>
   </div>
   <section class="lesson-page">
@@ -142,7 +142,7 @@
       <%= link_to sanitize('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course, @next_lesson), class: 'float-right' %>
     <% end %>
   </div>
 <% end %>
