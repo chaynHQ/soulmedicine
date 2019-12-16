@@ -143,7 +143,7 @@
         </div>
       </div>
     </div>
-    <div class='col-sm-9'>
+    <div class='col-sm-9 mt-4 mt-sm-0'>
       <h3><%= t('concepts.lesson').pluralize.titleize %></h3>
       <div class="card-deck <%= text_direction -%> <%= language_class -%>" lang="<%= LocalesService.current %>">
         <% @course.lessons.each_with_index do |l, index| %>

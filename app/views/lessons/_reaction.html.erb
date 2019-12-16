@@ -7,8 +7,10 @@
       redirect_url: redirect_url
     ),
     method: :put do %>
-    <p class="mb-0 text-left">
+    <p class="my-1 text-left">
       <%== emojify(":#{reaction}:") %>
-      <%= reaction.capitalize %>
+      <span class="ml-2">
+        <%= reaction.capitalize %>
+      </span>
     </p>
 <% end %>
