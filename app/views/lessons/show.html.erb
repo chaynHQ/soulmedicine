@@ -1,5 +1,3 @@
-<% redirect_url = local_assigns.fetch :redirect_url, nil %>
-
 <%= render "courses/check_available", course: @course do %>
   <%
     title @lesson.name + ' | ' + @course.name
@@ -93,8 +91,7 @@
                   course_lesson_reaction_path(
                     course_id: @course.slug,
                     lesson_id: @lesson.slug,
-                    reaction_name: @reaction,
-                    redirect: redirect_url
+                    reaction_name: @reaction
                   ),
                   method: :delete %>
                 my reaction or update it:
