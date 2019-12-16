@@ -9,9 +9,13 @@
 </template>
 
 <script>
+import Turbolinks from 'turbolinks';
+
 export default {
   methods: {
     leaveSite() {
+      Turbolinks.clearCache();
+      Turbolinks.visit('/auth/sign_out');
       window.open('http://www.wikipedia.org/', '_newtab');
       window.location.replace(
         'https://www.google.com/search?tbm=isch&q=cute+baby+animal+memes'
