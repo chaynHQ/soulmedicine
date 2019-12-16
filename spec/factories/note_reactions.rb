@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :noteReaction do
+  factory :note_reaction do
     user
   end
 end

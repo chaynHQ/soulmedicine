@@ -44,7 +44,7 @@ RSpec.describe 'Reactions', type: :request do
         end.to change(NoteReaction, :count).from(0).to(1)
       end
       it 'updates current_users reactions' do
-        create(:noteReaction,
+        create(:note_reaction,
           course_slug: course.slug,
           lesson_slug: lesson.slug,
           reaction_name: 'empowered')
@@ -79,7 +79,7 @@ RSpec.describe 'Reactions', type: :request do
 
     it_behaves_like 'authenticated' do
       it 'updates current_users reactions' do
-        create(:noteReaction,
+        create(:note_reaction,
           course_slug: course.slug,
           lesson_slug: lesson.slug,
           reaction_name: 'peaceful',
