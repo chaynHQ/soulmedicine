@@ -1,22 +1,14 @@
 class ReactionsController < ApplicationController
   before_action :require_authentication, only: %i[update destroy]
-  before_action :find_or_initialize_reaction, only: %i[show update destroy]
+  before_action :find_or_initialize_reaction, only: %i[set_from_email update destroy]
 
-  def show
-    if @reaction.reaction_name == params[:reaction_name]
-      destroy
-    else
-      update
-    end
+  def set_from_email
+    @reaction.update!(reaction_name: params[:reaction_name])
+    redirect_to redirect_url
   end
 
   def update
-    if @reaction.new_record?
-      @reaction.reaction_name = params[:reaction_name]
-      @reaction.save!
-    else
-      @reaction.update!(reaction_name: params[:reaction_name])
-    end
+    @reaction.update!(reaction_name: params[:reaction_name])
     redirect_to redirect_url
   end
 
@@ -28,7 +20,10 @@ class ReactionsController < ApplicationController
   private
 
   def find_or_initialize_reaction
-    user = SignedGlobalID.find(params[:user_id], for: :lesson_react) || current_user
+    user = action_name.to_sym == :set_from_email ? SignedGlobalID.find(params[:user_id], for: :set_reaction) : current_user
+
+    not_found_error if user.blank?
+
     @reaction = user.note_reactions.find_or_initialize_by(course_slug: params[:course_id], lesson_slug: params[:lesson_id])
   end
 

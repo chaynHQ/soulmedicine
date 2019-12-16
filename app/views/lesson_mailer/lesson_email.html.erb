@@ -24,44 +24,28 @@
   <% end %>
 <% end %>
 
-<div class='row'>
-  <% if @reaction %>
-    <div class='col text-right'>
-      <h5 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
-        <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
-      </h5>
-      <div class='row justify-content-end mt-4'>
-        <p class='my-auto col-auto'>
-          <%= link_to 'Remove',
-            course_lesson_reaction_url(
-              course_id: @course.slug,
-              lesson_id: @lesson.slug,
-              reaction_name: @reaction.reaction_name,
-              user_id: @user.to_sgid_param(for: :lesson_react),
-              redirect_url: root_url
-            ),
-            method: :delete %>
-          my reaction or update it:
-        </p>
-        <div>
-          <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
-            <%= render "lessons/reaction", reaction: r, email: true, redirect_url: root_url %>
+<% if !@reaction %>
+  <div class='row float-right align-middle'>
+    <h3 class='my-1 pr-4'>How does this note make you feel?
+      <div class="col">
+        <% @possible_reactions.each do |r| %>
+          <%= link_to set_from_email_course_lesson_reaction_url(
+                course_id: @course.slug,
+                lesson_id: @lesson.slug,
+                reaction_name: r,
+                redirect_url: root_url,
+                user_id: @user.to_sgid_param(for: :set_reaction)
+              ) do %>
+              <p class="mb-0 text-left">
+                <%== emojify(":#{r}:") %>
+                <%= r.capitalize %>
+              </p>
           <% end %>
-        </div>
+        <% end %>
       </div>
-    </div>
-  <% else %>
-    <div class='row float-right align-middle'>
-      <h3 class='my-1 pr-4'>How does this note make you feel?
-        <div class="col">
-          <% @possible_reactions.each do |r| %>
-            <%= render "lessons/reaction", reaction: r, email: true, redirect_url: root_url %>
-          <% end %>
-        </div>
-      </h3>
-    </div>
-  <% end %>
-</div>
+    </h3>
+  </div>
+<% end %>
 
 <div class='unsubscribe-footer'>
   <%=
