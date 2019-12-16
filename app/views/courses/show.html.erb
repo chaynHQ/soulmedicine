@@ -22,7 +22,7 @@
       <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= LocalesService.language_name(params[:locale]) %>
       </button>
-      <div class="dropdown-menu-right " aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <% @course.enabled_languages.each do |l| %>
             <%= link_to LocalesService.language_name(l),
               course_path(@course, locale: l),
