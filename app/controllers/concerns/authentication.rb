@@ -113,7 +113,7 @@ module Authentication
               u.display_name = auth_data['name']
               u.email = auth_data['email']
               u.email_verified = auth_data['email_verified']
-              u.something = 'SOMETHING'
+              # u.something = 'SOMETHING'
               u.save!
             end
         end

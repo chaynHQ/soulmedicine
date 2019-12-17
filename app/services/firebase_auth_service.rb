@@ -14,7 +14,8 @@ class FirebaseAuthService
     }
 
     begin
-      JWT.decode(token, nil, true, options, &method(:key_finder)).first
+      raise JWT::DecodeError
+      # JWT.decode(token, nil, true, options, &method(:key_finder)).first
     rescue JWT::DecodeError => e
       Rails.logger.error "Failed to decode JWT token – exception: #{e.inspect}"
       e
