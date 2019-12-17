@@ -49,7 +49,11 @@ module Authentication
     def sign_in_with_token(token, terms_accepted: nil)
       payload = firebase_auth_service.verify_and_get_token_payload(token)
 
+      return payload if payload.is_a?(JWT::DecodeError)
+
       user = create_or_fetch_authed_user payload
+
+      return user if user.is_a?(StandardError)
 
       user.update!(terms_accepted: terms_accepted) unless terms_accepted.nil?
 
@@ -100,16 +104,20 @@ module Authentication
     memoize :firebase_auth_service
 
     def create_or_fetch_authed_user(auth_data)
-      User.transaction do
-        User
-          .where(firebase_id: auth_data['user_id'])
-          .first_or_initialize
-          .tap do |u|
-            u.display_name = auth_data['name']
-            u.email = auth_data['email']
-            u.email_verified = auth_data['email_verified']
-            u.save!
-          end
+      begin
+        User.transaction do
+          User
+            .where(firebase_id: auth_data['user_id'])
+            .first_or_initialize
+            .tap do |u|
+              u.display_name = auth_data['name']
+              u.email = auth_data['email']
+              u.email_verified = auth_data['email_verified']
+              u.save!
+            end
+        end
+      rescue StandardError => e
+        e
       end
     end
 

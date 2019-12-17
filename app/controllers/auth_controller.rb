@@ -21,7 +21,15 @@ class AuthController < ApplicationController
       terms_accepted: params[:terms_accepted]
     )
 
-    render json: result
+    if result.is_a?(JWT::DecodeError) || result.is_a?(StandardError)
+      puts "Exception Class: #{ result.class.name }"
+      puts "Exception Message: #{ result.message }"
+      session[:user] = nil
+      flash[:alert] = 'Sorry, something went wrong! Please try again.'
+      render nothing: true, status: 400
+    else
+      render json: result
+    end
   end
 
   def sign_out

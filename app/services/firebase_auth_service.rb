@@ -12,7 +12,13 @@ class FirebaseAuthService
       verify_aud: @firebase_project_id,
       verify_iss: "https://securetoken.google.com/#{@firebase_project_id}"
     }
-    JWT.decode(token, nil, true, options, &method(:key_finder)).first
+
+    begin
+      JWT.decode(token, nil, true, options, &method(:key_finder)).first
+    rescue JWT::DecodeError => e
+      Rails.logger.error "Failed to decode JWT token – exception: #{e.inspect}"
+      e
+    end
   end
 
   private

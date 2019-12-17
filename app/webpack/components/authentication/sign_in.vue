@@ -243,7 +243,12 @@ export default {
         },
         { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
       ).then(result => {
+        console.log("I SHOULDNT BE HERE ")
+        console.log(result)
         return this.afterServerSignIn(result.data);
+      }).catch(error => {
+        console.log("I should be here")
+        return this.afterFailedServerSignIn(error);
       });
     },
     afterServerSignIn(data) {
@@ -295,6 +300,12 @@ export default {
         });
       }
       return null;
+    },
+    afterFailedServerSignIn(error){
+      console.log('x')
+      console.log(error.name)
+      // this.ui.reset();
+      return null
     },
     clearFirebaseSession() {
       return firebase.auth().signOut();
