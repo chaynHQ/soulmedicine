@@ -10,6 +10,12 @@
       v-if="!loading && !showTermsStep && !showVerificationStep"
       ref="firebaseAuthContainer"
     >
+      <template v-if="showFailureText">
+        <h5 class="my-4 mx-auto alert alert-danger">
+          Sorry, something went wrong! Please try again.
+        </h5>
+      </template>
+
       <template v-if="!inlineFlow">
         <h5 class="my-4 mx-auto">
           If you are signing up for the first time, you can give us any name
@@ -167,6 +173,7 @@ export default {
       loading: false,
       showTermsStep: false,
       showVerificationStep: false,
+      showFailureText: false,
       idToken: null
     };
   },
@@ -192,6 +199,10 @@ export default {
         },
         signInSuccessWithAuthResult() {
           return false;
+        },
+        signInFailure(error) {
+          console.log(error);
+          // TODO: Fill this in!
         }
       },
       tosUrl: this.tosUrl,
@@ -242,14 +253,13 @@ export default {
           terms_accepted: termsAccepted
         },
         { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
-      ).then(result => {
-        console.log("I SHOULDNT BE HERE ")
-        console.log(result)
-        return this.afterServerSignIn(result.data);
-      }).catch(error => {
-        console.log("I should be here")
-        return this.afterFailedServerSignIn(error);
-      });
+      )
+        .then(result => {
+          return this.afterServerSignIn(result.data);
+        })
+        .catch(() => {
+          return this.afterFailedServerSignIn();
+        });
     },
     afterServerSignIn(data) {
       // If the user has not accepted terms yet then show the terms acceptance
@@ -301,11 +311,9 @@ export default {
       }
       return null;
     },
-    afterFailedServerSignIn(error){
-      console.log('x')
-      console.log(error.name)
-      // this.ui.reset();
-      return null
+    afterFailedServerSignIn() {
+      this.showFailureText = true;
+      this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
     },
     clearFirebaseSession() {
       return firebase.auth().signOut();
