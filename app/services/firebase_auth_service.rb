@@ -12,7 +12,7 @@ class FirebaseAuthService
       verify_aud: @firebase_project_id,
       verify_iss: "https://securetoken.google.com/#{@firebase_project_id}"
     }
-
+    raise JWT::DecodeError
     JWT.decode(token, nil, true, options, &method(:key_finder)).first
   end
 

@@ -6,17 +6,17 @@
       </div>
     </div>
 
+    <template v-if="showFailureText">
+      <h5 class="my-4 mx-auto alert alert-danger">
+        {{ failureText }}
+      </h5>
+    </template>
+
     <div
       v-if="!loading && !showTermsStep && !showVerificationStep"
       ref="firebaseAuthContainer"
     >
-      <template v-if="showFailureText">
-        <h5 class="my-4 mx-auto alert alert-danger">
-          Sorry, something went wrong! Please try again.
-        </h5>
-      </template>
-
-      <template v-if="!inlineFlow">
+      <template v-if="!inlineFlow && showInstructionalText">
         <h5 class="my-4 mx-auto">
           If you are signing up for the first time, you can give us any name
           like "Marshmallow Forest".
@@ -174,13 +174,19 @@ export default {
       showTermsStep: false,
       showVerificationStep: false,
       showFailureText: false,
+      failureText: 'Sorry, something went wrong! Please try again.',
+      showInstructionalText: true,
       idToken: null
     };
   },
   created() {
-    this.ui = firebaseui.auth.AuthUI.getInstance();
-    if (!this.ui) {
-      this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+    try {
+      this.ui = firebaseui.auth.AuthUI.getInstance();
+      if (!this.ui) {
+        this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+      }
+    } catch (error) {
+      this.handleFirebaseError(error);
     }
   },
   mounted() {
@@ -201,8 +207,8 @@ export default {
           return false;
         },
         signInFailure(error) {
-          console.log(error);
-          // TODO: Fill this in!
+          vm.handleFirebaseError(error);
+          return null;
         }
       },
       tosUrl: this.tosUrl,
@@ -241,6 +247,9 @@ export default {
           })
           .finally(() => {
             vm.loading = false;
+          })
+          .catch(error => {
+            vm.handleFirebaseError(error);
           });
       }
       return true;
@@ -258,7 +267,7 @@ export default {
           return this.afterServerSignIn(result.data);
         })
         .catch(() => {
-          return this.afterFailedServerSignIn();
+          return this.afterFailedSignIn();
         });
     },
     afterServerSignIn(data) {
@@ -299,9 +308,15 @@ export default {
             : {
                 url: vm.continueUrl
               };
-        return user.sendEmailVerification(actionCodeSettings).then(() => {
-          return vm.clearFirebaseSession();
-        });
+        return user
+          .sendEmailVerification(actionCodeSettings)
+          .then(() => {
+            return vm.clearFirebaseSession();
+          })
+          .catch(error => {
+            vm.showVerificationStep = false;
+            vm.handleFirebaseError(error);
+          });
       }
 
       if (!vm.inlineFlow) {
@@ -311,12 +326,19 @@ export default {
       }
       return null;
     },
-    afterFailedServerSignIn() {
-      this.showFailureText = true;
-      this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
+    afterFailedSignIn() {
+      if (this.ui) {
+        this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
+      }
+      this.handleFirebaseError({ code: 'server/signin' });
     },
     clearFirebaseSession() {
-      return firebase.auth().signOut();
+      return firebase
+        .auth()
+        .signOut()
+        .catch(error => {
+          this.handleFirebaseError(error);
+        });
     },
     redirect(forwardingUrl) {
       Turbolinks.clearCache();
@@ -343,6 +365,32 @@ export default {
             '_self'
           );
         });
+    },
+    handleFirebaseError(error) {
+      this.showInstructionalText = false;
+      this.showFailureText = true;
+      switch (error.code) {
+        case 'auth/unsupported-persistence-type':
+          this.failureText =
+            'There may be a problem with your cookies or storage that is stopping us from signing you in. Please check your settings.';
+          break;
+        case 'auth/network-request-failed':
+          this.failureText =
+            'It looks like there is an issue with your network or connection that is preventing us from signing you in. Please check your settings.';
+          break;
+        case 'auth/too-many-requests':
+          this.failureText =
+            'It looks like there have been a lot of sign in attempts from this computer in the past hour so we are blocking any more attempts for security reasons. Please try again later.';
+          break;
+        case 'auth/user-disabled':
+          this.failureText =
+            'The account associated with this email address has been disabled. Please contact us through our about page if you are not sure why.';
+          break;
+        case 'server/signin':
+          break;
+        default:
+          this.$rollbar.error('FirebaseUI signin Error', error);
+      }
     }
   }
 };
