@@ -20,13 +20,13 @@ Turbolinks.start();
 
 Vue.use(TurbolinksAdapter);
 
-// Vue.use(Rollbar, {
-//   accessToken: process.env.VUE_APP_ROLLBAR_ACCESS_TOKEN,
-//   environment: process.env.VUE_APP_ROLLBAR_ENV,
-//   captureUncaught: true,
-//   captureUnhandledRejections: true,
-//   autoInstrument: { log: false }
-// });
+Vue.use(Rollbar, {
+  accessToken: process.env.VUE_APP_ROLLBAR_ACCESS_TOKEN,
+  environment: process.env.VUE_APP_ROLLBAR_ENV,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  autoInstrument: { log: false }
+});
 
 document.addEventListener('turbolinks:load', () => {
   const components = [
