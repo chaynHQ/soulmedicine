@@ -3,8 +3,8 @@ class NoteReaction < ApplicationRecord
     empowered: 'empowered',
     strong: 'strong',
     knowledgeable: 'knowledgeable',
-    magical: 'magical',
-    peaceful: 'peaceful'
+    safe: 'safe',
+    motivated: 'motivated'
   }
 
   belongs_to :user

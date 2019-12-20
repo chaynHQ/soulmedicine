@@ -11,12 +11,16 @@ module EmojiHelper
     char.add_unicode_alias "\u{1f9e0}"
   end
 
+  Emoji.create('goggles') do |char|
+    char.add_unicode_alias "\u{1f97d}"
+  end
+
   emoji_names_to_reactions = {
     'brain' => 'knowledgeable',
     'crown' => 'empowered',
     'muscle' => 'strong',
-    'unicorn' => 'magical',
-    'dove' => 'peaceful'
+    'bulb' => 'motivated',
+    'goggles' => 'safe'
   }
 
   emoji_names_to_reactions.each do |emoji_name, reaction|
