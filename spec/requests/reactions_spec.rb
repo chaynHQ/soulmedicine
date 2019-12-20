@@ -11,7 +11,7 @@ RSpec.describe 'Reactions', type: :request do
         get set_from_email_course_lesson_reaction_url(
           course_id: course.slug,
           lesson_id: lesson.slug,
-          reaction_name: 'peaceful',
+          reaction_name: 'safe',
           user_id: user.to_sgid_param(for: :set_reaction)
         )
       end.to change(NoteReaction, :count).from(0).to(1)
@@ -28,7 +28,7 @@ RSpec.describe 'Reactions', type: :request do
         patch course_lesson_reaction_url(
           course_id: course.slug,
           lesson_id: lesson.slug,
-          reaction_name: 'peaceful'
+          reaction_name: 'safe'
         )
       end
     end
@@ -39,7 +39,7 @@ RSpec.describe 'Reactions', type: :request do
           put course_lesson_reaction_path(
             course_id: course.slug,
             lesson_id: lesson.slug,
-            reaction_name: 'peaceful'
+            reaction_name: 'safe'
           )
         end.to change(NoteReaction, :count).from(0).to(1)
       end
@@ -55,9 +55,9 @@ RSpec.describe 'Reactions', type: :request do
         #   put course_lesson_reaction_path(
         #     course_id: course.slug,
         #     lesson_id: lesson.slug,
-        #     reaction_name: 'peaceful',
+        #     reaction_name: 'safe',
         #   )
-        # end.to change(NoteReaction.first, :reaction_name).from('empowered').to('peaceful')
+        # end.to change(NoteReaction.first, :reaction_name).from('empowered').to('safe')
       end
     end
   end
@@ -72,7 +72,7 @@ RSpec.describe 'Reactions', type: :request do
         delete course_lesson_reaction_url(
           course_id: course.slug,
           lesson_id: lesson.slug,
-          reaction_name: 'peaceful'
+          reaction_name: 'safe'
         )
       end
     end
@@ -82,14 +82,14 @@ RSpec.describe 'Reactions', type: :request do
         create(:note_reaction,
           course_slug: course.slug,
           lesson_slug: lesson.slug,
-          reaction_name: 'peaceful',
+          reaction_name: 'safe',
           user: current_user)
 
         expect do
           delete course_lesson_reaction_url(
             course_id: course.slug,
             lesson_id: lesson.slug,
-            reaction_name: 'peaceful'
+            reaction_name: 'safe'
           )
         end.to change(NoteReaction, :count).from(1).to(0)
       end
