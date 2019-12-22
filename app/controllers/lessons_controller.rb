@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  # GET /pathways/:course_id/notes/:lesson_id
   def show
     course_id = params[:course_id]
     lesson_id = params[:id]

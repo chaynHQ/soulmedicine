@@ -1,4 +1,4 @@
 FactoryBot.define do
-  factory :note_reaction do
+  factory :progress do
   end
 end

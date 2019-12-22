@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  # GET /pathways
   def index
     current_locale = LocalesService.current.to_s
 
@@ -20,6 +21,7 @@ class CoursesController < ApplicationController
                                           end
   end
 
+  # GET /pathways/:id
   def show
     @course = courses_service.get params[:id]
 

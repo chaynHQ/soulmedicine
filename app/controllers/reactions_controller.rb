@@ -1,19 +1,22 @@
 class ReactionsController < ApplicationController
   before_action :require_authentication, only: %i[update destroy]
-  before_action :find_or_initialize_reaction, only: %i[set_from_email update destroy]
+  before_action :find_or_initialize_reaction, only: %i[update destroy set_from_email]
 
-  def set_from_email
-    @reaction.update!(reaction_name: params[:reaction_name])
-    redirect_to redirect_url
-  end
-
+  # PUT/PATCH /pathways/:course_id/notes/:lesson_id/reaction
   def update
     @reaction.update!(reaction_name: params[:reaction_name])
     redirect_to redirect_url
   end
 
+  # DELETE /pathways/:course_id/notes/:lesson_id/reaction
   def destroy
-    @reaction.destroy if @reaction.persisted?
+    @reaction.destroy! if @reaction.persisted?
+    redirect_to redirect_url
+  end
+
+  # GET /pathways/:course_id/notes/:lesson_id/reaction/set_from_email
+  def set_from_email
+    @reaction.update!(reaction_name: params[:reaction_name])
     redirect_to redirect_url
   end
 
