@@ -174,7 +174,6 @@ export default {
       showTermsStep: false,
       showVerificationStep: false,
       showFailureText: false,
-      failureText: 'Sorry, something went wrong! Please try again.',
       showInstructionalText: true,
       idToken: null
     };
@@ -186,7 +185,7 @@ export default {
         this.ui = new firebaseui.auth.AuthUI(firebase.auth());
       }
     } catch (error) {
-      this.handleFirebaseError(error);
+      this.handleError(error);
     }
   },
   mounted() {
@@ -207,7 +206,7 @@ export default {
           return false;
         },
         signInFailure(error) {
-          vm.handleFirebaseError(error);
+          vm.handleError(error);
           return null;
         }
       },
@@ -245,11 +244,11 @@ export default {
             vm.idToken = idToken;
             vm.serverSignIn(null);
           })
+          .catch(error => {
+            vm.handleError(error);
+          })
           .finally(() => {
             vm.loading = false;
-          })
-          .catch(error => {
-            vm.handleFirebaseError(error);
           });
       }
       return true;
@@ -267,7 +266,7 @@ export default {
           return this.afterServerSignIn(result.data);
         })
         .catch(() => {
-          return this.afterFailedSignIn();
+          return this.afterFailedServerSignIn();
         });
     },
     afterServerSignIn(data) {
@@ -315,7 +314,7 @@ export default {
           })
           .catch(error => {
             vm.showVerificationStep = false;
-            vm.handleFirebaseError(error);
+            vm.handleError(error);
           });
       }
 
@@ -326,18 +325,18 @@ export default {
       }
       return null;
     },
-    afterFailedSignIn() {
+    afterFailedServerSignIn() {
       if (this.ui) {
         this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
       }
-      this.handleFirebaseError({ code: 'server/signin' });
+      this.handleError({ code: 'server/signin' });
     },
     clearFirebaseSession() {
       return firebase
         .auth()
         .signOut()
         .catch(error => {
-          this.handleFirebaseError(error);
+          this.handleError(error);
         });
     },
     redirect(forwardingUrl) {
@@ -366,7 +365,7 @@ export default {
           );
         });
     },
-    handleFirebaseError(error) {
+    handleError(error) {
       this.showInstructionalText = false;
       this.showFailureText = true;
       switch (error.code) {
@@ -387,9 +386,13 @@ export default {
             'The account associated with this email address has been disabled. Please contact us through our about page if you are not sure why.';
           break;
         case 'server/signin':
+          this.failureText =
+            "Sorry, something went wrong when signing you in! We've been notified about this. Please try again later on.";
           break;
         default:
-          this.$rollbar.error('FirebaseUI signin Error', error);
+          this.failureText =
+            "Sorry, something went wrong when signing you in! We've been notified about this. Please try again later on.";
+          this.$rollbar.error('Unknown client-side sign in error', error);
       }
     }
   }
