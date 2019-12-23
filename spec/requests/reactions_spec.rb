@@ -39,7 +39,7 @@ RSpec.describe 'Reactions', type: :request do
               lesson_id: lesson.slug,
               reaction_name: reaction_name
             )
-          end.to change(lessonReaction, :count).from(1).to(2)
+          end.to change(LessonReaction, :count).from(1).to(2)
 
           expect(current_user.lesson_reactions.count).to eq 1
           expect(other_user.lesson_reactions.count).to eq 1
@@ -69,7 +69,7 @@ RSpec.describe 'Reactions', type: :request do
               lesson_id: lesson.slug,
               reaction_name: reaction_name
             )
-          end.not_to change(lessonReaction, :count)
+          end.not_to change(LessonReaction, :count)
 
           expect(current_user.lesson_reactions.count).to eq 1
           expect(other_user.lesson_reactions.count).to eq 1
@@ -91,7 +91,7 @@ RSpec.describe 'Reactions', type: :request do
 
     it_behaves_like 'unauthenticated redirects to sign in' do
       before do
-        expect_any_instance_of(lessonReaction).to receive(:destroy!).never
+        expect_any_instance_of(LessonReaction).to receive(:destroy!).never
 
         delete course_lesson_reaction_url(
           course_id: course.slug,
@@ -126,7 +126,7 @@ RSpec.describe 'Reactions', type: :request do
             lesson_id: lesson.slug,
             reaction_name: 'safe'
           )
-        end.to change(lessonReaction, :count).from(2).to(1)
+        end.to change(LessonReaction, :count).from(2).to(1)
 
         expect(current_user.lesson_reactions.count).to eq 0
         expect(other_user.lesson_reactions.count).to eq 1
@@ -149,9 +149,9 @@ RSpec.describe 'Reactions', type: :request do
           reaction_name: reaction_name,
           user_id: user.to_sgid_param(for: :set_reaction)
         )
-      end.to change(lessonReaction, :count).from(0).to(1)
+      end.to change(LessonReaction, :count).from(0).to(1)
 
-      lesson_reaction = lessonReaction.first
+      lesson_reaction = LessonReaction.first
       expect(lesson_reaction.course_slug).to eq course.slug
       expect(lesson_reaction.lesson_slug).to eq lesson.slug
       expect(lesson_reaction.reaction_name).to eq reaction_name
