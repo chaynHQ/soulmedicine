@@ -23,7 +23,7 @@ class AuthController < ApplicationController
 
     render json: result
   rescue StandardError => e
-    Rollbar.critical('Server Login Error', e)
+    Rollbar.error(e.message)
     session[:user] = nil
     render json: { name: e }, status: :unprocessable_entity
   end
