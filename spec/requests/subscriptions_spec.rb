@@ -27,7 +27,7 @@ RSpec.describe 'Subscriptions', type: :request do
     end
   end
 
-  describe 'update - PUT /pathways/:course_id/subscription' do
+  describe 'update - PUT/PATCH /pathways/:course_id/subscription' do
     it_behaves_like 'unauthenticated redirects to sign in' do
       before do
         expect do

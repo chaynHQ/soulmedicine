@@ -2,13 +2,9 @@ require 'rails_helper'
 
 RSpec.describe SubscriptionsProcessorService, type: :service do
   include_context 'time helpers'
-
-  let(:courses_service) { instance_double('CoursesService') }
+  include_context 'courses_service double'
 
   before do
-    allow_any_instance_of(Subscription).to receive(:courses_service)
-      .and_return(courses_service)
-
     allow(courses_service).to receive(:get)
       .with(anything)
       .and_return(course)

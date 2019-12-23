@@ -1,0 +1,16 @@
+<% redirect_url = local_assigns.fetch :redirect_url, nil %>
+
+<%= link_to course_lesson_reaction_path(
+      course_id: @course.slug,
+      lesson_id: @lesson.slug,
+      reaction_name: reaction,
+      redirect_url: redirect_url
+    ),
+    method: :put do %>
+    <p class="my-1 text-left">
+      <%== emojify(":#{reaction}:") %>
+      <span class="ml-2">
+        <%= reaction.capitalize %>
+      </span>
+    </p>
+<% end %>

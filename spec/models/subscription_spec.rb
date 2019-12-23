@@ -1,14 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Subscription, type: :model do
-  let(:courses_service) { instance_double('CoursesService') }
+  include_context 'courses_service double'
 
   let(:course) { load_course('course-1.json') }
-
-  before do
-    allow_any_instance_of(Subscription).to receive(:courses_service)
-      .and_return(courses_service)
-  end
 
   describe '#course' do
     subject do

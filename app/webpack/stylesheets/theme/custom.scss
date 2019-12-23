@@ -32,6 +32,10 @@
   border-color: darken(#fff, 5%);
 }
 
+.bg-success {
+  background-color: $success;
+}
+
 // Buttons =====================================================================
 
 .btn {
@@ -324,6 +328,11 @@
 }
 
 .breadcrumb {
+  background:none;
+}
+
+.breadcrumb-notes {
+  background-color: #f0f0f0;
   border-color: darken($breadcrumb-bg, 5%);
   @include shadow();
 }
@@ -581,4 +590,21 @@ a.list-group-item {
       max-width: 360px;
     }
   }
+}
+
+// Emoji ===================================================================
+
+.emoji {
+  max-height: 1em;
+}
+
+.selected-emoji {
+  max-height: 2em;
+}
+
+// Reactions & Progress ===================================================================
+
+.subparagraph {
+  font-size: 14px;
+  color: $gray-600;
 }

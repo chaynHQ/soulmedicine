@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  # GET /pathways
   def index
     current_locale = LocalesService.current.to_s
 
@@ -20,11 +21,18 @@ class CoursesController < ApplicationController
                                           end
   end
 
+  # GET /pathways/:id
   def show
     @course = courses_service.get params[:id]
 
-    @subscription = (current_user.subscriptions.find_by(course_slug: @course.slug) if current_user?)
-
     @vote_total = Vote.get_course_vote_total(@course.slug)
+
+    return unless current_user?
+
+    @subscription = current_user.subscriptions.find_by(course_slug: @course.slug)
+
+    @reactions = current_user.lesson_reactions.where(course_slug: @course.slug).map { |r| [r.lesson_slug, r.reaction_name] }.to_h
+
+    @progress = current_user.progresses.where(course_slug: @course.slug).map(&:lesson_slug)
   end
 end

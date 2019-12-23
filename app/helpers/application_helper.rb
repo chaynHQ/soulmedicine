@@ -41,11 +41,10 @@ module ApplicationHelper
 
   # rubocop:disable Rails/HelperInstanceVariable
   def main_container_class
-    is_courses_index = current_page? courses_path
-    is_auth_sign_in_path = current_page? auth_sign_in_path
+    is_course_page = @course.present? && current_page?(course_path(@course.slug))
 
     case
-    when is_courses_index || is_auth_sign_in_path
+    when [courses_path, auth_sign_in_path].include?(request.path) || is_course_page
       return 'container_fluid'
     when !defined?(@page)
       return 'container'
