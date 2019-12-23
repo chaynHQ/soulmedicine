@@ -10,8 +10,8 @@ class LessonMailer < ApplicationMailer
     @lesson = lesson
     @languages = (LocalesService.enabled & languages.map(&:to_sym))
 
-    @reaction = @user.note_reactions.find_by(course_slug: @course.slug, lesson_slug: @lesson.slug)
-    @possible_reactions = NoteReaction.reaction_names.keys
+    @reaction = @user.lesson_reactions.find_by(course_slug: @course.slug, lesson_slug: @lesson.slug)
+    @possible_reactions = LessonReaction.reaction_names.keys
 
     subject = if disguised
                 disguised_subject_line

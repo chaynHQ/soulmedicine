@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   has_many :subscriptions, dependent: :destroy
   has_many :votes, dependent: :destroy
-  has_many :note_reactions, dependent: :destroy
+  has_many :lesson_reactions, dependent: :destroy
   has_many :progresses, dependent: :destroy
 
   def verified?

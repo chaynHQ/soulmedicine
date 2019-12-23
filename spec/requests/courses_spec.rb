@@ -39,7 +39,7 @@ RSpec.describe 'Courses', type: :request do
 
       context 'with an existing reaction and progress' do
         before do
-          create :note_reaction,
+          create :lesson_reaction,
             course_slug: course.slug,
             lesson_slug: 'foo',
             reaction_name: 'strong',

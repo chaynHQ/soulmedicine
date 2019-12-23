@@ -12,9 +12,9 @@ class LessonsController < ApplicationController
     @next_lesson = @course.next_lesson(@lesson.slug)
     @previous_lesson = @course.previous_lesson(@lesson.slug)
 
-    @reaction = current_user.note_reactions.find_by(course_slug: @course.slug, lesson_slug: @lesson.slug) if current_user?
+    @reaction = current_user.lesson_reactions.find_by(course_slug: @course.slug, lesson_slug: @lesson.slug) if current_user?
 
-    @possible_reactions = NoteReaction.reaction_names.keys
+    @possible_reactions = LessonReaction.reaction_names.keys
 
     # Save that a user has visited the note
     current_user.progresses.find_or_initialize_by(course_slug: @course.slug, lesson_slug: @lesson.slug).save! if current_user?

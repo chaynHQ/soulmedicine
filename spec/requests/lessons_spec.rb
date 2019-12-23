@@ -49,7 +49,7 @@ RSpec.describe 'Lessons', type: :request do
       end
 
       it 'loads up an existing reaction for the current_user' do
-        reaction = create :note_reaction,
+        reaction = create :lesson_reaction,
           course_slug: course.slug,
           lesson_slug: lesson.slug,
           reaction_name: 'strong',

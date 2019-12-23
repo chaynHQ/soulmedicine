@@ -27,7 +27,7 @@ class ReactionsController < ApplicationController
 
     not_found_error if user.blank?
 
-    @reaction = user.note_reactions.find_or_initialize_by(course_slug: params[:course_id], lesson_slug: params[:lesson_id])
+    @reaction = user.lesson_reactions.find_or_initialize_by(course_slug: params[:course_id], lesson_slug: params[:lesson_id])
   end
 
   def redirect_url

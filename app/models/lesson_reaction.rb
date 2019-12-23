@@ -1,4 +1,4 @@
-class NoteReaction < ApplicationRecord
+class LessonReaction < ApplicationRecord
   enum reaction_name: {
     empowered: 'empowered',
     strong: 'strong',

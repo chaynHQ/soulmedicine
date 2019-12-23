@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
 
     @subscription = current_user.subscriptions.find_by(course_slug: @course.slug)
 
-    @reactions = current_user.note_reactions.where(course_slug: @course.slug).map { |r| [r.lesson_slug, r.reaction_name] }.to_h
+    @reactions = current_user.lesson_reactions.where(course_slug: @course.slug).map { |r| [r.lesson_slug, r.reaction_name] }.to_h
 
     @progress = current_user.progresses.where(course_slug: @course.slug).map(&:lesson_slug)
   end
