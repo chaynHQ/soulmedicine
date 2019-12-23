@@ -12,6 +12,7 @@
 - NodeJS 8+
   - with Yarn 1.10+
 - Docker Compose v1.23+
+- erb_lint gem ```gem install erb_lint```
 
 ### Dependent services
 

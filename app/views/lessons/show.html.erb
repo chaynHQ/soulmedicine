@@ -6,7 +6,7 @@
   %>
 
   <nav aria-label="breadcrumb" class="<%= text_direction -%> <%= language_class -%>" dir="<%= text_direction -%>">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb breadcrumb-notes">
       <li class="breadcrumb-item d-flex align-items-center">
         <%= image_tag @course.image,
             style: 'width: 100px;',
@@ -22,7 +22,7 @@
       <%= link_to sanitize('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course, @next_lesson), class: 'float-right' %>
     <% end %>
   </div>
   <section class="lesson-page">
@@ -79,6 +79,59 @@
           <% end %>
         <% end %>
       </div>
+      <div class="card-footer ltr" dir="ltr">
+        <% if @reaction && current_user? %>
+          <div class='col text-right'>
+            <h5 class='my-1 pr-2'>You said this note made you feel <%= @reaction.reaction_name %>.
+              <%= sanitize(emojify(":#{@reaction.reaction_name}:", "selected-emoji")) %>
+            </h5>
+            <div class='row justify-content-end mt-4'>
+              <p class='my-auto col-auto'>
+                <%= link_to 'Remove',
+                  course_lesson_reaction_path(
+                    course_id: @course.slug,
+                    lesson_id: @lesson.slug,
+                    reaction_name: @reaction
+                  ),
+                  method: :delete %>
+                my reaction or update it:
+              </p>
+              <div>
+                <% @possible_reactions.select { |r| r != @reaction.reaction_name }.each do |r| %>
+                  <%= render "reaction", reaction: r %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% elsif current_user? %>
+          <div class='row float-right align-middle'>
+            <h6 class='my-1 pr-4'>How does this note make you feel?</h6>
+            <div class="col">
+              <% @possible_reactions.each do |r| %>
+                <%= render "reaction", reaction: r %>
+              <% end %>
+            </div>
+          </div>
+      <% else %>
+        <h6 class='my-2'>To get these notes emailed directly to you
+          <%=
+            link_to(
+              "create an subscription.",
+              course_subscription_path(@course),
+            )
+          %>
+        </h6>
+        <h6 class='my-2'>Or you can
+          <%=
+            link_to(
+              "sign in",
+              auth_sign_in_path(course_id: @course.to_param),
+            )
+          %>
+          to keep track of your reactions to each note and monitor your progress.
+        </h6>
+        <% end %>
+      </div>
     </div>
   </section>
   <div class='my-4 p-3'>
@@ -86,7 +139,7 @@
       <%= link_to sanitize('&lt;&lt; Previous'), course_lesson_path(@course, @previous_lesson), class: 'float-left' %>
     <% end %>
     <% if @next_lesson.present? %>
-      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course,@next_lesson), class: 'float-right' %>
+      <%= link_to sanitize('Next &gt;&gt;'), course_lesson_path(@course, @next_lesson), class: 'float-right' %>
     <% end %>
   </div>
 <% end %>

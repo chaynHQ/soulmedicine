@@ -40,7 +40,7 @@ body {
   .header-text{
     min-width: 260px;
   }
-  
+
 }
 
 a {
@@ -83,4 +83,14 @@ img {
   ul#{&} {
     padding-inline-start: 0;
   }
+}
+
+// Emoji ===================================================================
+
+.emoji {
+  max-height: 1em;
+}
+
+.selected-emoji {
+  max-height: 2em;
 }

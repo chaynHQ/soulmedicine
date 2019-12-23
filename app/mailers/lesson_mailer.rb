@@ -1,5 +1,6 @@
 class LessonMailer < ApplicationMailer
   helper :application
+  helper :emoji
 
   def lesson_email(user:, course:, lesson:, languages:, disguised:)
     email_with_name = %("#{user.display_name}" <#{user.email}>)
@@ -8,6 +9,9 @@ class LessonMailer < ApplicationMailer
     @course = course
     @lesson = lesson
     @languages = (LocalesService.enabled & languages.map(&:to_sym))
+
+    @reaction = @user.lesson_reactions.find_by(course_slug: @course.slug, lesson_slug: @lesson.slug)
+    @possible_reactions = LessonReaction.reaction_names.keys
 
     subject = if disguised
                 disguised_subject_line

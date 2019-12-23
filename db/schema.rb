@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_180118) do
+ActiveRecord::Schema.define(version: 2019_11_13_164611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -22,6 +22,29 @@ ActiveRecord::Schema.define(version: 2019_10_02_180118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["key"], name: "index_backups_on_key", unique: true
+  end
+
+  create_table "lesson_reactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "course_slug", null: false
+    t.string "lesson_slug", null: false
+    t.string "reaction_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "course_slug", "lesson_slug"], name: "index_lesson_reactions_on_user_id_and_course_and_lesson_slug", unique: true
+    t.index ["user_id", "course_slug"], name: "index_lesson_reactions_on_user_id_and_course_slug"
+    t.index ["user_id"], name: "index_lesson_reactions_on_user_id"
+  end
+
+  create_table "progresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "course_slug", null: false
+    t.string "lesson_slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "course_slug", "lesson_slug"], name: "index_progresses_on_user_id_and_course_slug_and_lesson_slug", unique: true
+    t.index ["user_id", "course_slug"], name: "index_progresses_on_user_id_and_course_slug"
+    t.index ["user_id"], name: "index_progresses_on_user_id"
   end
 
   create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -67,6 +90,8 @@ ActiveRecord::Schema.define(version: 2019_10_02_180118) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "lesson_reactions", "users"
+  add_foreign_key "progresses", "users"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "votes", "users"
 end

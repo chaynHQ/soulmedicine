@@ -27,7 +27,7 @@
         <%= languages.map { |l| LocalesService.language_name(l)  }.to_sentence %>
       </p>
 
-      <p class="card-text" dir='ltr'>
+      <p class="card-text ltr" dir='ltr'>
         <span class="text-muted">
           <%= t('concepts.schedule').capitalize %>
         </span>
@@ -49,7 +49,7 @@
         </span>
       </p>
 
-      <div class="card-text mb-3" dir='ltr'>
+      <div class="card-text mb-3 ltr" dir='ltr'>
         <div class="text-muted">
           <%= t('phrases.progress').capitalize %>
         </div>

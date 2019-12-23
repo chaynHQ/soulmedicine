@@ -24,6 +24,29 @@
   <% end %>
 <% end %>
 
+<% if !@reaction %>
+  <div class='row float-right align-middle'>
+    <h3 class='my-1 pr-4'>How does this note make you feel?
+      <div class="col">
+        <% @possible_reactions.each do |r| %>
+          <%= link_to set_from_email_course_lesson_reaction_url(
+                course_id: @course.slug,
+                lesson_id: @lesson.slug,
+                reaction_name: r,
+                redirect_url: root_url,
+                user_id: @user.to_sgid_param(for: :set_reaction)
+              ) do %>
+              <p class="mb-0 text-left">
+                <%== emojify(":#{r}:") %>
+                <%= r.capitalize %>
+              </p>
+          <% end %>
+        <% end %>
+      </div>
+    </h3>
+  </div>
+<% end %>
+
 <div class='unsubscribe-footer'>
   <%=
     link_to(
