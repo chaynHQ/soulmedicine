@@ -265,9 +265,7 @@ export default {
         .then(result => {
           return this.afterServerSignIn(result.data);
         })
-        .catch(e => {
-          return this.afterFailedServerSignIn(e);
-        });
+        .catch(this.afterFailedServerSignIn);
     },
     afterServerSignIn(data) {
       // If the user has not accepted terms yet then show the terms acceptance
