@@ -9,7 +9,7 @@ import 'data-confirm-modal';
 
 import Vue from 'vue/dist/vue.esm';
 import TurbolinksAdapter from 'vue-turbolinks';
-import Rollbar from 'vue-rollbar';
+
 import SignIn from '../components/authentication/sign_in.vue';
 import Profile from '../components/user_profile/profile.vue';
 import CookieLaw from '../components/cookie_law/cookie_law.vue';
@@ -20,13 +20,7 @@ Turbolinks.start();
 
 Vue.use(TurbolinksAdapter);
 
-// Vue.use(Rollbar, {
-//   accessToken: process.env.VUE_APP_ROLLBAR_ACCESS_TOKEN,
-//   environment: process.env.VUE_APP_ROLLBAR_ENV,
-//   captureUncaught: true,
-//   captureUnhandledRejections: true,
-//   autoInstrument: { log: false }
-// });
+import '../vue-rollbar.js.erb'; // eslint-disable-line import/first
 
 document.addEventListener('turbolinks:load', () => {
   const components = [
