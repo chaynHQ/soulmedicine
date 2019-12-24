@@ -14,12 +14,12 @@
           <%= link_to 'Spotify', 'https://open.spotify.com/show/5QOSUw3m5EQK7lEwtGDYpn' %>
       </div>
     </div>
-    <div class='row'>
+    <div class='d-flex justify-content-between flex-column flex-md-row'>
       <span>
         © <%= Time.now.year %>, Chayn
       </span>
-      <span class="ml-4"><%= link_to t('site-footer.privacy-policy'), page_path('privacy-policy') %></span>
-      <span class="ml-4"><%= link_to t('site-footer.terms-of-service'), page_path('terms-of-service') %></span>
+      <span><%= link_to t('site-footer.privacy-policy'), page_path('privacy-policy') %></span>
+      <span><%= link_to t('site-footer.terms-of-service'), page_path('terms-of-service') %></span>
     </div>
   </div>
 </footer>
