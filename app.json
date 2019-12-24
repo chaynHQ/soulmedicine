@@ -10,6 +10,9 @@
     "CONTENT_PREVIEW_MODE": {
       "required": true
     },
+    "CLIENT_ROLLBAR_ACCESS_TOKEN": {
+      "required": true
+    },
     "EMAIL_FROM_ADDRESS": {
       "required": true
     },
