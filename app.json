@@ -7,10 +7,10 @@
     "ADMIN_BASIC_AUTH": {
       "required": true
     },
-    "CONTENT_PREVIEW_MODE": {
+    "CLIENT_ROLLBAR_ACCESS_TOKEN": {
       "required": true
     },
-    "CLIENT_ROLLBAR_ACCESS_TOKEN": {
+    "CONTENT_PREVIEW_MODE": {
       "required": true
     },
     "EMAIL_FROM_ADDRESS": {
