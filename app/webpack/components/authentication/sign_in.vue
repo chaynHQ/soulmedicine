@@ -392,10 +392,7 @@ export default {
         default:
           this.failureText =
             "Sorry, something went wrong when signing you in! We've been notified about this. Please try again later on.";
-
-          if (this.$rollbar) {
-            this.$rollbar.error('Unknown client-side sign in error', error);
-          }
+          this.$rollbar.error('Unknown client-side sign in error', error);
       }
     }
   }
