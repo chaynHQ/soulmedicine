@@ -265,8 +265,8 @@ export default {
         .then(result => {
           return this.afterServerSignIn(result.data);
         })
-        .catch(() => {
-          return this.afterFailedServerSignIn();
+        .catch(e => {
+          return this.afterFailedServerSignIn(e);
         });
     },
     afterServerSignIn(data) {
@@ -325,11 +325,11 @@ export default {
       }
       return null;
     },
-    afterFailedServerSignIn() {
+    afterFailedServerSignIn(e) {
       if (this.ui) {
         this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
       }
-      this.handleError({ code: 'server/signin' });
+      this.handleError(e);
     },
     clearFirebaseSession() {
       return firebase
