@@ -1,0 +1,12 @@
+import Vue from 'vue/dist/vue.esm';
+
+import Rollbar from 'vue-rollbar';
+
+Vue.use(Rollbar, {
+  accessToken: "<%= RollbarConfig.client_access_token %>",
+  environment: "<%= RollbarConfig.environment %>",
+  enabled: <%= RollbarConfig.enabled %>,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  autoInstrument: { log: false }
+});

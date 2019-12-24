@@ -7,6 +7,9 @@
     "ADMIN_BASIC_AUTH": {
       "required": true
     },
+    "CLIENT_ROLLBAR_ACCESS_TOKEN": {
+      "required": true
+    },
     "CONTENT_PREVIEW_MODE": {
       "required": true
     },
@@ -52,7 +55,7 @@
     "RAILS_SERVE_STATIC_FILES": {
       "required": true
     },
-    "ROLLBAR_ACCESS_TOKEN": {
+    "SERVER_ROLLBAR_ACCESS_TOKEN": {
       "required": true
     },
     "SECRET_KEY_BASE": {

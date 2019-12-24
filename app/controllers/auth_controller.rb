@@ -20,8 +20,11 @@ class AuthController < ApplicationController
       token,
       terms_accepted: params[:terms_accepted]
     )
-
     render json: result
+  rescue StandardError => e
+    Rollbar.error(e)
+    session[:user] = nil
+    render json: { code: 'server/signin' }, status: :unprocessable_entity
   end
 
   def sign_out
