@@ -39,7 +39,7 @@
     "vue-template-compiler": "^2.6.10",
     "vue-turbolinks": "^2.0.4",
     "webpack": "^4.33.0",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
