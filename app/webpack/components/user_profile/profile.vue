@@ -159,7 +159,7 @@
 import firebase from 'firebase/app';
 import Axios from 'axios';
 import Turbolinks from 'turbolinks';
-import SignIn from '../authentication/sign_in';
+import SignIn from '../authentication/sign_in.vue';
 
 import csfrTokenMixin from '../mixins/csrfTokenMixin';
 import firebaseAppMixin from '../mixins/firebaseAppMixin';

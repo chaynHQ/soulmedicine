@@ -9,7 +9,7 @@
 ### Prerequisites
 
 - Ruby - see `.ruby-version` for the version required
-- NodeJS 8+
+- NodeJS 10+
   - with Yarn 1.10+
 - Docker Compose v1.23+
 - erb_lint gem ```gem install erb_lint```

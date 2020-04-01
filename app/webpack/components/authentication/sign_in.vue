@@ -144,7 +144,7 @@
 <script>
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import firebaseui from 'firebaseui';
+import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import Axios from 'axios';
 import Turbolinks from 'turbolinks';

@@ -7,7 +7,7 @@
       "check_name": "CrossSiteScripting",
       "message": "Unescaped parameter value",
       "file": "app/views/pages/show.html.erb",
-      "line": 16,
+      "line": 18,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "pages_service.get(params[:id]).content_html",
       "render_path": [
@@ -15,7 +15,7 @@
           "type": "controller",
           "class": "PagesController",
           "method": "show",
-          "line": 10,
+          "line": 11,
           "file": "app/controllers/pages_controller.rb",
           "rendered": {
             "name": "pages/show",
@@ -30,8 +30,24 @@
       "user_input": "params[:id]",
       "confidence": "Weak",
       "note": "HTML from storyblok"
+    },
+    {
+      "warning_type": "Path Traversal",
+      "warning_code": 108,
+      "fingerprint": "d4c4f9fab93a12c4fabb5b5f9541700e94f4948bc1b90a1aea38f1425d8d0dc9",
+      "check_name": "SprocketsPathTraversal",
+      "message": "sprockets 4.0.0 has a path traversal vulnerability (CVE-2018-3760). Upgrade to sprockets 4.0.0.beta8 or newer",
+      "file": "Gemfile.lock",
+      "line": 258,
+      "link": "https://groups.google.com/d/msg/rubyonrails-security/ft_J--l55fM/7roDfQ50BwAJ",
+      "code": null,
+      "render_path": null,
+      "location": null,
+      "user_input": null,
+      "confidence": "High",
+      "note": "We don't use Sprockets to can safely ignore this"
     }
   ],
-  "updated": "2019-08-27 11:03:00 +0100",
+  "updated": "2020-04-01 14:54:55 +0100",
   "brakeman_version": "4.6.1"
 }
