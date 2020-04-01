@@ -42,7 +42,7 @@ RSpec.describe TimeZoneScheduleConverter do
     context 'when all days are provided' do
       let(:from_zone) { 'UTC' }
       let(:to_zone) { 'Amsterdam' }
-      let(:to_zone_offset) { ActiveSupport::TimeZone[to_zone].utc_offset / 60 / 60 }
+      let(:to_zone_offset) { ActiveSupport::TimeZone[to_zone].now.utc_offset / 60 / 60 }
       let(:days) { Date::ABBR_DAYNAMES }
       let(:hour) { 23 }
       let(:adjusted_hour) { to_zone_offset - 1 }
@@ -58,7 +58,7 @@ RSpec.describe TimeZoneScheduleConverter do
     context 'when some days are provided' do
       let(:days) { %w[Sun Wed Sat] }
 
-      let(:to_zone_offset) { ActiveSupport::TimeZone[to_zone].utc_offset / 60 / 60 }
+      let(:to_zone_offset) { ActiveSupport::TimeZone[to_zone].now.utc_offset / 60 / 60 }
 
       context 'when the adjusted hour doesn\'t affect the days' do
         let(:from_zone) { 'UTC' }
