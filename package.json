@@ -1,6 +1,7 @@
 {
   "name": "soulmedicine",
   "private": true,
+  "engines" : { "node" : ">=10.13.0" },
   "scripts": {
     "es-check": "es-check es5 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
