@@ -1,7 +1,9 @@
 {
   "name": "soulmedicine",
   "private": true,
-  "engines" : { "node" : ">=10.13.0" },
+  "engines": {
+    "node": ">=10.13.0"
+  },
   "scripts": {
     "es-check": "es-check es5 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
@@ -23,12 +25,12 @@
   "dependencies": {
     "@rails/webpacker": "^5.0.1",
     "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
-    "bootstrap-select": "^1.13.9",
+    "bootstrap": "^4.5.0",
+    "bootstrap-select": "^1.13.17",
     "data-confirm-modal": "^1.6.2",
     "firebase": "^7.13.1",
     "firebaseui": "^4.5.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.1",
     "popper.js": "^1.14.7",
     "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.3",
