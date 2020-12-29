@@ -41,7 +41,7 @@
     "vue-rollbar": "^1.0.0",
     "vue-template-compiler": "^2.6.10",
     "vue-turbolinks": "^2.0.4",
-    "webpack": "^4.42.1",
+    "webpack": "^5.0.0",
     "yarn": "^1.22.0"
   },
   "devDependencies": {
