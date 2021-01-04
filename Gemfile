@@ -20,27 +20,27 @@ gem 'turbolinks', '~> 5.2'
 gem 'memoist', '~> 0.16.0'
 gem 'http', '~> 4.1'
 gem 'default_value_for', '~> 3.1'
-gem 'bootstrap_form', '~> 4.2'
+gem 'bootstrap_form', '~> 4.2', '>= 4.2.0'
 gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'sidekiq-history', '~> 0.0.11'
 gem 'rollbar', '~> 2.19', '>= 2.19.3'
 gem 'meta-tags', '~> 2.11', '>= 2.11.1'
 gem 'active_model_serializers', '~> 0.10.9'
-gem 'premailer-rails', '~>1.10.3'
+gem 'premailer-rails', '~> 1.10.3'
 gem 'gemoji'
-gem 'truncato'
+gem 'truncato', '>= 0.7.11'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '~> 2.5'
-  gem 'rspec-rails', '~> 3.8'
-  gem 'factory_bot_rails', '~> 5.1'
+  gem 'dotenv-rails', '~> 2.5', '>= 2.5.0'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.0'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   gem 'simplecov', require: false
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 3.7.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
