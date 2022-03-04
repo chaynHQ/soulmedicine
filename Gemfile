@@ -13,7 +13,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redis', '~> 4.1', '>= 4.1.0'
 gem 'storyblok', '~> 2.0.5'
 gem 'shallow_attributes', '~> 0.9.4'
-gem 'commonmarker', '~> 0.20'
+gem 'commonmarker', '~> 0.23', '>= 0.23.4'
 gem 'twitter_cldr', '~> 4.4', '>= 4.4.3'
 gem 'jwt', '~> 2.1.0'
 gem 'turbolinks', '~> 5.2'
