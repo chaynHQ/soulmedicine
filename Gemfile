@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.8'
 
-gem 'rails', '~> 5.2.4.2'
+gem 'rails', '~> 5.2.8.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
 gem 'webpacker', '~> 5.0.1'
@@ -19,7 +19,7 @@ gem 'jwt', '~> 2.1.0'
 gem 'turbolinks', '~> 5.2'
 gem 'memoist', '~> 0.16.0'
 gem 'http', '~> 4.1'
-gem 'default_value_for', '~> 3.1'
+gem 'default_value_for', '~> 3.1', '>= 3.1.0'
 gem 'bootstrap_form', '~> 4.2'
 gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'sidekiq-history', '~> 0.0.11'
