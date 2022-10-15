@@ -13,6 +13,8 @@
   - with Yarn 1.10+
 - Docker Compose v1.23+
 - erb_lint gem ```gem install erb_lint```
+- bundler gem ```gem install bundler:1.17.3```
+- shared-mime-info a dependency of [mimemagic](https://github.com/mimemagicrb/mimemagic) ```brew install shared-mime-info```
 
 ### Dependent services
 
@@ -37,6 +39,8 @@ docker-compose down
 Once you have the prerequisites above, the codebase cloned and the dependent services running locally…
 
 Set up **local** env vars in a new `.env.local` file – see the section at the bottom of the `.env` file for the variables you may need to set.
+
+You will need to ensure your local database has the role "sm" set up with permissions to create databases. 
 
 Then run the following to set everything up:
 
