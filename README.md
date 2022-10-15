@@ -12,8 +12,8 @@
 - NodeJS 10+
   - with Yarn 1.10+
 - Docker Compose v1.23+
-- erb_lint gem ```gem install erb_lint```
-- bundler gem ```gem install bundler:1.17.3```
+- erb_lint gem ```gem install erb_lint -v 0.1.3``` - you need a specific version as version of Ruby is old
+- bundler gem ```gem install bundler:1.17.3``` - you need a specific version as version of Ruby is old
 - shared-mime-info a dependency of [mimemagic](https://github.com/mimemagicrb/mimemagic) ```brew install shared-mime-info```
 
 ### Dependent services
