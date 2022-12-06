@@ -4,6 +4,8 @@
 
 **Currently in active development**
 
+If you'd like to help Chayn by tackling any of our open Github issues, please get in touch with us to express your interest in volunteering via [this form](https://forms.gle/qXfDdPgJxYwvMmVP7). We'll get back to you to schedule an onboarding call. 
+
 ## Dev
 
 ### Prerequisites
