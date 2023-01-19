@@ -73,7 +73,7 @@ GEM
     coderay (1.1.2)
     commonmarker (0.20.1)
       ruby-enum (~> 0.5)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.10)
     connection_pool (2.2.2)
     crass (1.0.6)
     css_parser (1.7.0)
@@ -97,8 +97,8 @@ GEM
       railties (>= 4.2.0)
     ffi (1.9.25)
     gemoji (3.0.1)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
+    globalid (1.0.1)
+      activesupport (>= 5.0)
     htmlentities (4.3.4)
     http (4.1.1)
       addressable (~> 2.3)
@@ -109,7 +109,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
-    i18n (1.8.2)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.3)
     json (2.3.1)
@@ -138,7 +138,7 @@ GEM
       rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.0)
+    minitest (5.15.0)
     msgpack (1.2.4)
     multi_json (1.13.1)
     netrc (0.11.0)
@@ -279,7 +279,7 @@ GEM
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
-    tzinfo (1.2.6)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
