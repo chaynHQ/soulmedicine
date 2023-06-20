@@ -23,7 +23,7 @@
     "lint-erb"
   ],
   "dependencies": {
-    "@rails/webpacker": "^5.0.1",
+    "@rails/webpacker": "^5.2.2",
     "axios": "^0.19.0",
     "bootstrap": "^4.5.0",
     "bootstrap-select": "^1.13.17",
