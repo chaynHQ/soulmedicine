@@ -1,6 +1,6 @@
 # Soul Medicine
 
-[![Build Status](https://travis-ci.org/chaynHQ/soulmedicine.svg?branch=master)](https://travis-ci.org/chaynHQ/soulmedicine)
+[![CI](https://github.com/tarebyte/soulmedicine/actions/workflows/ci.yml/badge.svg)](https://github.com/tarebyte/soulmedicine/actions/workflows/ci.yml)
 
 **Currently in active development**
 
