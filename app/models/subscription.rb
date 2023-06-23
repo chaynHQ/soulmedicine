@@ -77,6 +77,7 @@ class Subscription < ApplicationRecord
     errors.add(:base, 'course is not available') if course.blank?
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def validate_languages
     return if course.blank?
 
@@ -90,6 +91,7 @@ class Subscription < ApplicationRecord
     other_allowed = main_allowed - [main_language]
     errors.add(:other_languages, "can only contain #{other_allowed.to_sentence}") if other_languages.any? { |l| !other_allowed.include?(l) }
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def validate_schedule
     errors.add(:days_utc, "can only contain #{Date::ABBR_DAYNAMES.to_sentence}") if days_utc.any? { |d| !Date::ABBR_DAYNAMES.include?(d) }

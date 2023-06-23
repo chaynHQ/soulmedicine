@@ -39,7 +39,7 @@ module ApplicationHelper
     DEFAULT_IMAGE_META_TAG
   end
 
-  # rubocop:disable Rails/HelperInstanceVariable
+  # rubocop:disable Rails/HelperInstanceVariable, Style/RedundantReturn
   def main_container_class
     is_course_page = @course.present? && current_page?(course_path(@course.slug))
 
@@ -52,7 +52,7 @@ module ApplicationHelper
       return ['page-container', @page.full_width ? 'container-fluid' : 'container'].join(' ')
     end
   end
-  # rubocop:enable Rails/HelperInstanceVariable
+  # rubocop:enable Rails/HelperInstanceVariable, Style/RedundantReturn
 
   def main_style
     is_courses_index = current_page? courses_path
