@@ -11,15 +11,16 @@ AllCops:
     - node_modules/**/*
     - tmp/**/*
     - vendor/**/*
+  NewCops: disable
   TargetRubyVersion: 2.5
 
 Bundler/OrderedGems:
   Enabled: false
 
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Enabled: false
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 Layout/MultilineMethodCallIndentation:
