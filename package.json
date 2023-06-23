@@ -8,7 +8,7 @@
     "es-check": "es-check es5 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
     "lint-staged": "$(yarn bin)/lint-staged",
-    "lint-erb": "erblint app/views/**/*.html{+*,}.erb"
+    "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
   "lint-staged": {
     "config/webpack/**/*.js": [

@@ -46,9 +46,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
-  gem 'rubocop', '~> 0.75.0', require: false
-  gem 'rubocop-performance', '~> 1.5', require: false
-  gem 'rubocop-rails', '~> 2.2', require: false
+  gem 'rubocop', '~> 1.28', require: false
+  gem 'rubocop-performance', '~> 1.13', require: false
+  gem 'rubocop-rails', '~> 2.14', require: false
+  gem 'erb_lint', '~> 0.1.3', require: false
   gem 'brakeman'
 end
 

@@ -4,7 +4,7 @@
 
 **Currently in active development**
 
-If you'd like to help Chayn by tackling any of our open Github issues, please get in touch with us to express your interest in volunteering via [this form](https://forms.gle/qXfDdPgJxYwvMmVP7). We'll get back to you to schedule an onboarding call. 
+If you'd like to help Chayn by tackling any of our open Github issues, please get in touch with us to express your interest in volunteering via [this form](https://forms.gle/qXfDdPgJxYwvMmVP7). We'll get back to you to schedule an onboarding call.
 
 ## Dev
 
@@ -14,7 +14,6 @@ If you'd like to help Chayn by tackling any of our open Github issues, please ge
 - NodeJS 10+
   - with Yarn 1.10+
 - Docker Compose v1.23+
-- erb_lint gem ```gem install erb_lint -v 0.1.3``` - you need a specific version as version of Ruby is old
 - bundler gem ```gem install bundler:1.17.3``` - you need a specific version as version of Ruby is old
 - shared-mime-info a dependency of [mimemagic](https://github.com/mimemagicrb/mimemagic) ```brew install shared-mime-info```
 
@@ -42,7 +41,7 @@ Once you have the prerequisites above, the codebase cloned and the dependent ser
 
 Set up **local** env vars in a new `.env.local` file – see the section at the bottom of the `.env` file for the variables you may need to set.
 
-You will need to ensure your local database has the role "sm" set up with permissions to create databases. 
+You will need to ensure your local database has the role "sm" set up with permissions to create databases.
 
 Then run the following to set everything up:
 
