@@ -1,7 +1,7 @@
 class BackupsProcessorService
   def run
     %w[pages courses].each do |key|
-      service_name = (key.capitalize + 'Service').constantize
+      service_name = (key.capitalize + 'Service').constantize # rubocop:disable Style/StringConcatenation
 
       service = service_name.new(STORYBLOK_CLIENT)
 

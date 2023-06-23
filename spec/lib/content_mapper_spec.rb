@@ -74,7 +74,7 @@ RSpec.describe ContentMapper do
       context 'with a Proc or lambda mapper' do
         let :mapper do
           lambda do |value|
-            value + ' world'
+            value + ' world' # rubocop:disable Style/StringConcatenation
           end
         end
 
