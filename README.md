@@ -1,6 +1,6 @@
 # Soul Medicine
 
-[![CI](https://github.com/tarebyte/soulmedicine/actions/workflows/ci.yml/badge.svg)](https://github.com/tarebyte/soulmedicine/actions/workflows/ci.yml)
+[![CI](https://github.com/chaynHQ/soulmedicine/actions/workflows/ci.yml/badge.svg)](https://github.com/chaynHQ/soulmedicine/actions/workflows/ci.yml)
 
 **Currently in active development**
 
