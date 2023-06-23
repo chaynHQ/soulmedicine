@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  erb_javascript_rails:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:2.5.8-buster
+    name: "ERBLint, ESCheck, ESLint, and RSpec"
+    env:
+      RAILS_ENV: test
+    services:
+      postgres:
+        image: postgres:10.5-alpine
+        env:
+          POSTGRES_USER: sm
+          POSTGRES_PASSWORD: sm_password
+        # Set health checks to wait until postgres has started
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install required apt packages
+      run: apt-get install -yqq libpq-dev
+      # TODO: Migrate this to use ruby/setup-ruby when we're
+      # able to use a new version of Node.js.
+
+      # There is a python-2.7 dependency that can't be met without using the
+      # ruby-2.5.8-buster Docker image.
+    - name: Bundle install
+      run: bundle install -j $(nproc) --path vendor/bundle
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 10.13.x
+    - name: Run yarn install
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install
+    - name: Run yarn lint
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: lint
+    - name: Run ERBLint
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: lint-erb
+    - name: Precomple Rails assets
+      run: bundle exec rails assets:precompile
+    - name: Run yarn es-check
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: es-check
+    - name: Setup DB and run RSpec
+      env:
+        DATABASE_HOST: postgres
+      run: |-
+        bundle exec rails db:create
+        bundle exec rake db:schema:load --trace
+        bundle exec rails db:migrate
+        bundle exec rails db:seed
+        bundle exec rspec
+
+  ruby_linting:
+    runs-on: ubuntu-latest
+    name: Ruby Linting
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - run: bundle exec brakeman -q -w2
+    - run: bundle exec rubocop --format progress --format github
