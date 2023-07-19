@@ -1,0 +1,69 @@
+{
+  "name": "Soulmedicine",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "docker-compose.yml"
+  ],
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": ".devcontainer/post-create-command.sh",
+  "forwardPorts": [
+    1025,
+    1080,
+    3000,
+    5432,
+    6379,
+    6380
+  ],
+  "portsAttributes": {
+    "1025": {
+      "label": "Mailcatcher - 1"
+    },
+    "1080": {
+      "label": "Mailcatcher - 2"
+    },
+    "3000": {
+      "label": "Web"
+    },
+    "5432": {
+      "label": "PostgreSQL"
+    },
+    "6379": {
+      "label": "Redis - Sidekiq"
+    },
+    "6380": {
+      "label": "Redis - Caching"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true,
+      "nonFreePackages": true
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "10.13"
+    },
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "plugins": "git npm nvm rbenv ssh-agent zsh-autosuggestions",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "kaiwood.endwise",
+        "LoranKloeze.ruby-rubocop-revived",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "rebornix.Ruby"
+      ]
+    }
+  }
+}
