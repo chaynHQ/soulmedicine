@@ -48,7 +48,7 @@
       "version": "latest"
     },
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "10.13"
+      "version": "16"
     },
     "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
       "plugins": "git npm nvm rbenv ssh-agent zsh-autosuggestions",
