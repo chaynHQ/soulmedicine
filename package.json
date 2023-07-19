@@ -2,7 +2,7 @@
   "name": "soulmedicine",
   "private": true,
   "engines": {
-    "node": "16"
+    "node": "16.20.x"
   },
   "scripts": {
     "es-check": "es-check es5 'public/packs-test/**/*.js'",
