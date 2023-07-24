@@ -14,7 +14,7 @@ jobs:
       RAILS_ENV: test
     services:
       postgres:
-        image: postgres:10.5-alpine
+        image: postgres:14.8-alpine
         env:
           POSTGRES_USER: sm
           POSTGRES_PASSWORD: sm_password
