@@ -31,7 +31,7 @@ class ReactionsController < ApplicationController
   end
 
   def redirect_url
-    if params[:redirect_url].present? && params[:redirect_url].starts_with?('https://soulmedicine.io/')
+    if params[:redirect_url].present? && URI(params[:redirect_url]).host == 'soulmedicine.io'
       params[:redirect_url]
     else
       course_lesson_path(@reaction.course_slug, @reaction.lesson_slug)
