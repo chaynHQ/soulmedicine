@@ -10,7 +10,7 @@ const firebaseAuthStateChangedMixin = {
     if (this.onAuthStateChangedSubscription) {
       this.onAuthStateChangedSubscription();
     }
-  }
+  },
 };
 
 export default firebaseAuthStateChangedMixin;
