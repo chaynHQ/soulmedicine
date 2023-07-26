@@ -57,6 +57,7 @@
     "lint-staged": "^8.1.5",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
+    "@vue/runtime-dom": "^3.3.4",
     "webpack-dev-server": "^3.10.3"
   }
 }
