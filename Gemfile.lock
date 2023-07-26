@@ -122,6 +122,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.0)
       http_parser.rb (~> 0.6.0)
+    http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.1.1)
@@ -219,7 +220,8 @@ GEM
       ffi (~> 1.0)
     redis (4.1.0)
     regexp_parser (2.8.1)
-    rest-client (2.0.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -292,8 +294,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    storyblok (2.0.5)
+    storyblok (3.2.0)
       rest-client (>= 1.8.0, < 3)
+      storyblok-richtext-renderer (>= 0.0.4, < 1)
+    storyblok-richtext-renderer (0.0.10)
     thor (1.0.1)
     thread_safe (0.3.6)
     timecop (0.9.1)
@@ -366,7 +370,7 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
-  storyblok (~> 2.0.5)
+  storyblok (~> 3.2)
   timecop (~> 0.9.1)
   truncato
   turbolinks (~> 5.2)
