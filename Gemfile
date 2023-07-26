@@ -28,7 +28,7 @@ gem 'meta-tags', '~> 2.11', '>= 2.11.1'
 gem 'active_model_serializers', '~> 0.10.9'
 gem 'premailer-rails', '~>1.10.3'
 gem 'gemoji'
-gem 'truncato'
+gem 'truncato', '~> 0.7.12'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

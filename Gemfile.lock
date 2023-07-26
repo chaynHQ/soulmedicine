@@ -152,6 +152,9 @@ GEM
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.1.2)
     mini_portile2 (2.8.4)
     minitest (5.18.1)
@@ -309,7 +312,7 @@ GEM
     thread_safe (0.3.6)
     timecop (0.9.1)
     timeout (0.4.0)
-    truncato (0.7.11)
+    truncato (0.7.12)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
     turbolinks (5.2.0)
@@ -380,7 +383,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   storyblok (~> 2.0.5)
   timecop (~> 0.9.1)
-  truncato
+  truncato (~> 0.7.12)
   turbolinks (~> 5.2)
   twitter_cldr (~> 4.4, >= 4.4.3)
   tzinfo-data
