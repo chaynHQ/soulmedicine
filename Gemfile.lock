@@ -153,7 +153,7 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.0.2)
-    mini_portile2 (2.8.2)
+    mini_portile2 (2.8.4)
     minitest (5.14.0)
     msgpack (1.7.1)
     multi_json (1.13.1)
@@ -298,7 +298,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     timecop (0.9.1)
-    truncato (0.7.11)
+    truncato (0.7.12)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
     turbolinks (5.2.0)
@@ -369,7 +369,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   storyblok (~> 2.0.5)
   timecop (~> 0.9.1)
-  truncato
+  truncato (~> 0.7.12)
   turbolinks (~> 5.2)
   twitter_cldr (~> 4.4, >= 4.4.3)
   tzinfo-data
