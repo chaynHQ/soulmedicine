@@ -157,5 +157,18 @@ RSpec.describe 'Reactions', type: :request do
       expect(lesson_reaction.reaction_name).to eq reaction_name
       expect(lesson_reaction.user).to eq user
     end
+
+    it 'does not redirect to arbitrary websites' do
+      response = get set_from_email_course_lesson_reaction_url(
+        course_id: course.slug,
+        lesson_id: lesson.slug,
+        reaction_name: reaction_name,
+        user_id: user.to_sgid_param(for: :set_reaction),
+        redirect_to: 'https://en.wikipedia.org'
+      )
+
+      expect(response).to redirect_to(course_lesson_path(course.slug, lesson.slug))
+      expect(response).not_to redirect_to('https://en.wikipedia.org')
+    end
   end
 end
