@@ -12,7 +12,6 @@ AllCops:
     - tmp/**/*
     - vendor/**/*
   NewCops: disable
-  TargetRubyVersion: 2.5
 
 Bundler/OrderedGems:
   Enabled: false

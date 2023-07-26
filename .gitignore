@@ -35,3 +35,5 @@ yarn-debug.log*
 .env.local
 
 backups.json
+
+spec/examples.txt
