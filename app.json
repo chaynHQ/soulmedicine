@@ -1,5 +1,6 @@
 {
   "name": "soulmedicine",
+  "stack": "heroku-22",
   "scripts": {
     "postdeploy": "rake postdeploy"
   },
