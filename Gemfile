@@ -55,6 +55,7 @@ end
 
 group :test do
   gem 'timecop', '~> 0.9.1'
+  gem 'rspec-sidekiq', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
