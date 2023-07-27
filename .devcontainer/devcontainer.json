@@ -62,7 +62,8 @@
         "LoranKloeze.ruby-rubocop-revived",
         "ms-azuretools.vscode-docker",
         "ms-vscode-remote.remote-containers",
-        "rebornix.Ruby"
+        "rebornix.Ruby",
+        "Vue.volar"
       ]
     }
   }
