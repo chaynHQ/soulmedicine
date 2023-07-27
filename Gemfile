@@ -7,7 +7,7 @@ ruby '2.7.8'
 
 gem 'rails', '~> 5.2', '>= 5.2.8.1'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 6.3'
 gem 'webpacker', '~> 5.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redis', '~> 4.1', '>= 4.1.0'
@@ -29,6 +29,7 @@ gem 'active_model_serializers', '~> 0.10.9'
 gem 'premailer-rails', '~>1.10.3'
 gem 'gemoji'
 gem 'truncato', '~> 0.7.12'
+gem 'barnes', '~> 0.0.9'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
