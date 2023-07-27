@@ -35,7 +35,7 @@ jobs:
       with:
         cache: 'yarn'
     - name: Precomple Rails assets
-      run: bundle exec rails assets:precompile
+      run: NODE_OPTIONS=--openssl-legacy-provider bundle exec rails assets:precompile
     - name: Run ES Check
       run: yarn es-check
     - name: Run ERBLint
