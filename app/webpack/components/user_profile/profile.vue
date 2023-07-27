@@ -157,7 +157,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import Axios from 'axios';
 import Turbolinks from 'turbolinks';
 import SignIn from '../authentication/sign_in.vue';
