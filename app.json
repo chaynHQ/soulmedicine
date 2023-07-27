@@ -43,7 +43,6 @@
     "MAILGUN_SMTP_SERVER": {
       "required": true
     },
-    "NODE_OPTIONS": "--openssl-legacy-provider",
     "RACK_ENV": {
       "required": true
     },
