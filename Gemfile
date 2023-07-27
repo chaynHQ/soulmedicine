@@ -29,6 +29,7 @@ gem 'active_model_serializers', '~> 0.10.9'
 gem 'premailer-rails', '~>1.10.3'
 gem 'gemoji'
 gem 'truncato', '~> 0.7.12'
+gem 'barnes', '~> 0.0.9'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

@@ -51,6 +51,9 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.2)
+    barnes (0.0.9)
+      multi_json (~> 1)
+      statsd-ruby (~> 1.1)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -293,6 +296,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    statsd-ruby (1.5.0)
     storyblok (2.0.5)
       rest-client (>= 1.8.0, < 3)
     thor (1.0.1)
@@ -333,6 +337,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.9)
+  barnes (~> 0.0.9)
   better_errors (~> 2.5)
   binding_of_caller (~> 0.8.0)
   bootsnap (>= 1.1.0)

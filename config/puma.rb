@@ -37,3 +37,8 @@ preload_app!
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+before_fork do
+  # https://devcenter.heroku.com/articles/language-runtime-metrics-ruby#getting-started
+  Barnes.start
+end
