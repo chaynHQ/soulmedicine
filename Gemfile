@@ -5,15 +5,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.8'
 
-gem 'rails', '~> 5.2.4.2'
+gem 'rails', '~> 5.2', '>= 5.2.8.1'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 6.3'
 gem 'webpacker', '~> 5.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redis', '~> 4.1', '>= 4.1.0'
 gem 'storyblok', '~> 2.0.5'
 gem 'shallow_attributes', '~> 0.9.4'
-gem 'commonmarker', '~> 0.20'
+gem 'commonmarker', '~> 0.23'
 gem 'twitter_cldr', '~> 4.4', '>= 4.4.3'
 gem 'jwt', '~> 2.1.0'
 gem 'turbolinks', '~> 5.2'
@@ -28,7 +28,8 @@ gem 'meta-tags', '~> 2.11', '>= 2.11.1'
 gem 'active_model_serializers', '~> 0.10.9'
 gem 'premailer-rails', '~>1.10.3'
 gem 'gemoji'
-gem 'truncato'
+gem 'truncato', '~> 0.7.12'
+gem 'barnes', '~> 0.0.9'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
