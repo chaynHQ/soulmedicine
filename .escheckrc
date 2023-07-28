@@ -1,0 +1,4 @@
+{
+  "ecmaVersion": "es2017",
+  "files": "public/packs-test/**/*.js"
+}
