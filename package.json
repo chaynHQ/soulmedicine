@@ -6,19 +6,9 @@
   },
   "scripts": {
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
-    "lint-staged": "$(yarn bin)/lint-staged",
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
-  "lint-staged": {
-    "config/webpack/**/*.js": [
-      "eslint"
-    ],
-    "app/webpack/**/*.{js,vue}": [
-      "eslint"
-    ]
-  },
   "pre-commit": [
-    "lint-staged",
     "lint-erb"
   ],
   "dependencies": {
@@ -58,7 +48,6 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.15.1",
-    "lint-staged": "^13.2.3",
     "pre-commit": "^1.2.2",
     "prettier": "^3.0.0",
     "webpack-dev-server": "^3"

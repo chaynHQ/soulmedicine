@@ -12,7 +12,8 @@ AllCops:
     - tmp/**/*
     - vendor/**/*
   NewCops: disable
-  TargetRubyVersion: 2.5
+  SuggestExtensions: false
+  TargetRubyVersion: 2.7
 
 Bundler/OrderedGems:
   Enabled: false
@@ -20,11 +21,14 @@ Bundler/OrderedGems:
 Layout/ArgumentAlignment:
   Enabled: false
 
-Layout/ParameterAlignment:
-  Enabled: false
+Layout/LineLength:
+  Max: 150
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  Enabled: false
 
 Metrics/AbcSize:
   Max: 40
@@ -38,9 +42,6 @@ Metrics/BlockLength:
 Metrics/ClassLength:
   Exclude:
     - "spec/**/*"
-
-Layout/LineLength:
-  Max: 150
 
 Metrics/MethodLength:
   Max: 30
