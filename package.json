@@ -7,19 +7,9 @@
   "scripts": {
     "es-check": "es-check es5 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
-    "lint-staged": "$(yarn bin)/lint-staged",
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
-  "lint-staged": {
-    "config/webpack/**/*.js": [
-      "eslint"
-    ],
-    "app/webpack/**/*.{js,vue}": [
-      "eslint"
-    ]
-  },
   "pre-commit": [
-    "lint-staged",
     "lint-erb"
   ],
   "dependencies": {
@@ -54,7 +44,6 @@
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.2.2",
-    "lint-staged": "^8.1.5",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "@vue/runtime-dom": "^3.3.4",
