@@ -342,6 +342,7 @@ GEM
     websocket-extensions (0.1.5)
 
 PLATFORMS
+  aarch64-linux
   ruby
 
 DEPENDENCIES
@@ -394,4 +395,4 @@ RUBY VERSION
    ruby 2.7.8p225
 
 BUNDLED WITH
-   2.4.17
+   2.4.18
