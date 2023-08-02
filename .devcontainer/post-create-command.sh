@@ -28,7 +28,7 @@ GOOGLE_ANALYTICS_ID="..."
 EOT
 fi
 
-gem install bundler:1.17.3
+gem update bundler
 rbenv rehash
 
 npm update -g npm
