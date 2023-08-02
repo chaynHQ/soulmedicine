@@ -11,7 +11,7 @@ gem 'puma', '~> 6.3'
 gem 'webpacker', '~> 5.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redis', '~> 4.1', '>= 4.1.0'
-gem 'storyblok', '~> 2.0.5'
+gem 'storyblok', '~> 3.2'
 gem 'shallow_attributes', '~> 0.9.4'
 gem 'commonmarker', '~> 0.23'
 gem 'twitter_cldr', '~> 4.4', '>= 4.4.3'
@@ -51,7 +51,7 @@ group :development do
   gem 'rubocop-performance', '~> 1.13', require: false
   gem 'rubocop-rails', '~> 2.14', require: false
   gem 'erb_lint', '~> 0.1.3', require: false
-  gem 'brakeman'
+  gem 'brakeman', '~> 4.10', '>= 4.10.1'
 end
 
 group :test do
