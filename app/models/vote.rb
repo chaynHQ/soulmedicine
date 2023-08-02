@@ -15,8 +15,8 @@ class Vote < ApplicationRecord
       .group(:course_slug)
       .count
 
-    course_slugs.each_with_object({}) do |cs, acc|
-      acc[cs] = votes[cs] || 0
+    course_slugs.index_with do |cs|
+      votes[cs] || 0
     end
   end
 end
