@@ -314,7 +314,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     statsd-ruby (1.5.0)
-    storyblok (2.0.8)
+    storyblok (3.2.0)
       rest-client (>= 1.8.0, < 3)
       storyblok-richtext-renderer (>= 0.0.4, < 1)
     storyblok-richtext-renderer (0.0.10)
@@ -394,7 +394,7 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
-  storyblok (~> 2.0.5)
+  storyblok (~> 3.2)
   timecop (~> 0.9.1)
   truncato (~> 0.7.12)
   turbolinks (~> 5.2)
