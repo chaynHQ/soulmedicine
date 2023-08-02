@@ -10,7 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.3'
 gem 'webpacker', '~> 5.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'redis', '~> 4.1', '>= 4.1.0'
+gem 'redis', '~> 5.0', '>= 5.0.6'
 gem 'storyblok', '~> 3.2'
 gem 'shallow_attributes', '~> 0.9.4'
 gem 'commonmarker', '~> 0.23'
