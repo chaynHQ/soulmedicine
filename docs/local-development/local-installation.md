@@ -5,7 +5,6 @@
 - Ruby - see `.ruby-version` for the version required
 - NodeJS - see `package.json` for the version required
   - with Yarn 1.10+
-- bundler gem ```gem install bundler:1.17.3``` - you need a specific version as version of Ruby is old
 - shared-mime-info a dependency of [mimemagic](https://github.com/mimemagicrb/mimemagic) ```brew install shared-mime-info```
 
 ## Dependent services

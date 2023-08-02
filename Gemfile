@@ -51,7 +51,7 @@ group :development do
   gem 'rubocop-performance', '~> 1.13', require: false
   gem 'rubocop-rails', '~> 2.14', require: false
   gem 'erb_lint', '~> 0.1.3', require: false
-  gem 'brakeman'
+  gem 'brakeman', '~> 4.10', '>= 4.10.1'
 end
 
 group :test do
