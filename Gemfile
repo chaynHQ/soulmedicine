@@ -10,7 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.3'
 gem 'webpacker', '~> 5.0.1'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'redis', '~> 4.1', '>= 4.1.0'
+gem 'redis', '~> 4.8', '>= 4.8.1'
 gem 'storyblok', '~> 3.2'
 gem 'shallow_attributes', '~> 0.9.4'
 gem 'commonmarker', '~> 0.23'
@@ -21,8 +21,8 @@ gem 'memoist', '~> 0.16.0'
 gem 'http', '~> 4.1'
 gem 'default_value_for', '~> 3.1'
 gem 'bootstrap_form', '~> 4.2'
-gem 'sidekiq', '~> 5.2', '>= 5.2.5'
-gem 'sidekiq-history', '~> 0.0.11'
+gem 'sidekiq', '~> 6.5', '>= 6.5.9'
+gem 'sidekiq-history', '~> 0.0.13'
 gem 'rollbar', '~> 2.19', '>= 2.19.3'
 gem 'meta-tags', '~> 2.11', '>= 2.11.1'
 gem 'active_model_serializers', '~> 0.10.9'
@@ -56,6 +56,7 @@ end
 
 group :test do
   gem 'timecop', '~> 0.9.1'
+  gem 'rspec-sidekiq', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
