@@ -28,10 +28,4 @@ GOOGLE_ANALYTICS_ID="..."
 EOT
 fi
 
-gem update bundler
-rbenv rehash
-
-npm update -g npm
-npm install -g yarn
-
 ./bin/setup

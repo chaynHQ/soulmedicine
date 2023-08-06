@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
+      args:
+        RUBY_VERSION: 2.7
+        NODE_VERSION: 10.13
 
     environment:
       DATABASE_HOST: postgres
