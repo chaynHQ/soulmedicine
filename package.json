@@ -11,7 +11,6 @@
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
   "dependencies": {
-    "@rails/webpacker": "^5.0.1",
     "axios": "^1.4.0",
     "bootstrap": "^4.5.0",
     "bootstrap-select": "^1.13.17",
@@ -20,30 +19,27 @@
     "firebaseui": "^4.5.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.14.7",
-    "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.3",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.10",
     "vue-cookie-law": "^1.10.0",
-    "vue-loader": "^15.7.0",
     "vue-rollbar": "^1.0.0",
-    "vue-template-compiler": "^2.6.10",
-    "vue-turbolinks": "^2.0.4",
-    "webpack": "^4.42.1",
-    "yarn": "^1.22.0"
+    "vue-turbolinks": "^2.0.4"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "es-check": "^5.0.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-import-resolver-webpack": "^0.11.0",
-    "eslint-plugin-import": "^2.17.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-vue": "^5.2.2",
-    "prettier": "^1.18.2",
-    "@vue/runtime-dom": "^3.3.4",
-    "webpack-dev-server": "^3.10.3"
+    "@rollup/plugin-inject": "^5.0.3",
+    "@vitejs/plugin-legacy": "^4.1.1",
+    "@vitejs/plugin-vue2": "^2.2.0",
+    "postcss": "^8.4.27",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^15.1.0",
+    "postcss-preset-env": "^9.1.1",
+    "rollup-plugin-gzip": "^3.1.0",
+    "sass": "^1.64.2",
+    "terser": "^5.19.2",
+    "vite": "^4.3.0",
+    "vite-plugin-erb": "^1.1.2",
+    "vite-plugin-full-reload": "^1.0.5",
+    "vite-plugin-ruby": "^3.2.0"
   }
 }
