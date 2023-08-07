@@ -8,7 +8,7 @@ ruby '2.7.8'
 gem 'rails', '~> 5.2', '>= 5.2.8.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 6.3'
-gem 'webpacker', '~> 5.0.1'
+gem 'vite_rails', '~> 3.0', '>= 3.0.15'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redis', '~> 4.8', '>= 4.8.1'
 gem 'storyblok', '~> 3.2'
