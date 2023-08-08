@@ -41,7 +41,7 @@ module EmojiHelper
       return unless (emoji = Emoji.find_by_alias(Regexp.last_match(1)))
 
       # rubocop:enable Rails/DynamicFindBy
-      image_pack_tag("media/images/emoji/#{emoji.image_filename}",
+      image_pack_tag("static/images/emoji/#{emoji.image_filename}",
         class: "emoji #{emoji_class}",
         alt: Regexp.last_match(1))
     end
