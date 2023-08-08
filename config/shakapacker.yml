@@ -2,7 +2,7 @@
 # This file contains the defaults used by shakapacker.
 
 default: &default
-source_path: app/webpack
+  source_path: app/webpack
 
   # You can have a subdirectory of the source_path, like 'packs' (recommended).
   # Alternatively, you can use '/' to use the whole source_path directory.
