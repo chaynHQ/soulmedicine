@@ -1,6 +1,6 @@
 {
   "name": "soulmedicine",
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@1.22.19",
   "private": true,
   "engines": {
     "node": "18.17.x"
