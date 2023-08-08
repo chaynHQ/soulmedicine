@@ -11,7 +11,6 @@
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
   "dependencies": {
-    "@rails/webpacker": "^5.0.1",
     "axios": "^1.4.0",
     "bootstrap": "^4.5.0",
     "bootstrap-select": "^1.13.17",
@@ -29,9 +28,27 @@
     "vue-rollbar": "^1.0.0",
     "vue-template-compiler": "^2.6.10",
     "vue-turbolinks": "^2.0.4",
-    "webpack": "^4.42.1",
-    "yarn": "^1.22.0"
+    "@babel/core": "7",
+    "@babel/plugin-transform-runtime": "7",
+    "@babel/preset-env": "7",
+    "@babel/runtime": "7",
+    "babel-loader": "8",
+    "compression-webpack-plugin": "9",
+    "shakapacker": "7.0.2",
+    "terser-webpack-plugin": "5",
+    "webpack": "5",
+    "webpack-assets-manifest": "5",
+    "webpack-cli": "4",
+    "webpack-merge": "5"
   },
+  "babel": {
+    "presets": [
+      "./node_modules/shakapacker/package/babel/preset.js"
+    ]
+  },
+  "browserslist": [
+    "defaults"
+  ],
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "es-check": "^5.0.0",
@@ -44,6 +61,6 @@
     "eslint-plugin-vue": "^5.2.2",
     "prettier": "^1.18.2",
     "@vue/runtime-dom": "^3.3.4",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "4"
   }
 }
