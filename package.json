@@ -7,7 +7,7 @@
   },
   "scripts": {
     "es-check": "es-check es5 'public/packs-test/**/*.js'",
-    "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
+    "lint": "eslint app/webpack/**/*.{js,vue}",
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
   "dependencies": {
@@ -19,7 +19,7 @@
     "firebaseui": "^4.5.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.14.7",
-    "rails-ujs": "^5.2.3",
+    "rails-ujs": "^5.2.8-1",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.10",
     "vue-cookie-law": "^1.10.0",
@@ -38,6 +38,7 @@
     "sass": "^1.64.2",
     "terser": "^5.19.2",
     "vite": "^4.3.0",
+    "vite-plugin-chunk-split": "^0.4.7",
     "vite-plugin-erb": "^1.1.2",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-ruby": "^3.2.0"
