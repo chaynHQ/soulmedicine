@@ -33,7 +33,6 @@ jobs:
         bundler-cache: true
     - uses: actions/setup-node@v3
       with:
-        node-version: 18.17.x
         cache: 'yarn'
     - name: Precomple Rails assets
       run: bundle exec rails assets:precompile
