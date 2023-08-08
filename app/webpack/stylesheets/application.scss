@@ -1,9 +1,9 @@
-@import "../stylesheets/theme/variables";
+@import "./theme/variables";
 
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-select/sass/bootstrap-select';
 
-@import "../stylesheets/theme/custom";
+@import "./theme/custom";
 
 @font-face {
   font-family: 'Noto Nastaliq Urdu Draft';
