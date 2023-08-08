@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import '../stylesheets/application.scss';
 
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
