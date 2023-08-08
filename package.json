@@ -6,7 +6,7 @@
     "node": "18.17.x"
   },
   "scripts": {
-    "es-check": "es-check es5 'public/packs-test/**/*.js'",
+    "es-check": "es-check es2015 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
