@@ -167,7 +167,7 @@ import firebaseAuthStateChangedMixin from '../mixins/firebaseAuthStateChangedMix
 
 export default {
   components: {
-    SignIn
+    SignIn,
   },
   mixins: [csfrTokenMixin, firebaseAppMixin, firebaseAuthStateChangedMixin],
   data() {
@@ -177,7 +177,7 @@ export default {
       newDisplayName: null,
       newEmail: null,
       newPassword: null,
-      errorMessage: null
+      errorMessage: null,
     };
   },
   computed: {
@@ -185,7 +185,7 @@ export default {
       return encodeURI(
         `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${this.currentUser.displayName} (email address: ${this.currentUser.email})`
       );
-    }
+    },
   },
   created() {},
   mounted() {},
@@ -213,7 +213,7 @@ export default {
         emailField,
         updateEmailButton,
         displayNameField,
-        updateDisplayNameButton
+        updateDisplayNameButton,
       } = this.$refs;
 
       this.setUpValidityHandling(passwordField, updatePasswordButton);
@@ -235,7 +235,7 @@ export default {
       const firebaseUpdateFn = (vm, user) =>
         user.updateProfile({ displayName: vm.newDisplayName });
 
-      const serverUpdateFn = vm =>
+      const serverUpdateFn = (vm) =>
         vm
           .updateProfileOnServer({ display_name: vm.newDisplayName })
           .then(() => {
@@ -253,7 +253,7 @@ export default {
 
       const firebaseUpdateFn = (vm, user) => user.updateEmail(vm.newEmail);
 
-      const serverUpdateFn = vm =>
+      const serverUpdateFn = (vm) =>
         vm
           .updateProfileOnServer({ email: vm.newEmail })
           .then(vm.afterEmailUpdate);
@@ -278,7 +278,7 @@ export default {
         .then(() => {
           return serverUpdateFn(vm);
         })
-        .catch(reason => {
+        .catch((reason) => {
           this.errorMessage = reason;
           throw new Error(reason);
         })
@@ -288,7 +288,7 @@ export default {
     },
     updateProfileOnServer(data) {
       return Axios.put('/profile', data, {
-        headers: { 'X-CSRF-TOKEN': this.csrfToken }
+        headers: { 'X-CSRF-TOKEN': this.csrfToken },
       });
     },
     afterEmailUpdate() {
@@ -318,8 +318,8 @@ export default {
     serverSignOut(message) {
       Turbolinks.clearCache();
       Turbolinks.visit(`/auth/sign_out?message=${encodeURIComponent(message)}`);
-    }
-  }
+    },
+  },
 };
 </script>
 

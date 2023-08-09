@@ -27,32 +27,32 @@ document.addEventListener('turbolinks:load', () => {
     {
       element_id: 'sign_in',
       components: { SignIn },
-      data: {}
+      data: {},
     },
     {
       element_id: 'profile',
       components: { Profile },
-      data: {}
+      data: {},
     },
     {
       element_id: 'cookie-law',
       components: { CookieLaw },
-      data: {}
+      data: {},
     },
     {
       element_id: 'leave-site',
       components: { LeaveSite },
-      data: {}
-    }
+      data: {},
+    },
   ];
 
-  components.forEach(e => {
+  components.forEach((e) => {
     const element = document.getElementById(e.element_id);
     if (element != null) {
       const app = new Vue({
         el: element,
         components: e.components,
-        data: e.data
+        data: e.data,
       });
     }
   });
