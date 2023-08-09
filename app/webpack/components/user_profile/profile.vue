@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div id="user-profile">
     <div v-if="loading" class="text-center m-4">
@@ -183,7 +184,7 @@ export default {
   computed: {
     deletionMailtoLink() {
       return encodeURI(
-        `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${this.currentUser.displayName} (email address: ${this.currentUser.email})`
+        `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${this.currentUser.displayName} (email address: ${this.currentUser.email})`,
       );
     },
   },

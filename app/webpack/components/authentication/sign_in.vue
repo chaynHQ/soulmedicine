@@ -252,7 +252,7 @@ export default {
           firebase_token: this.idToken,
           terms_accepted: termsAccepted,
         },
-        { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
+        { headers: { 'X-CSRF-TOKEN': this.csrfToken } },
       )
         .then((result) => {
           return this.afterServerSignIn(result.data);
@@ -351,7 +351,7 @@ export default {
           Turbolinks.visit('/auth/sign_out');
           window.open(
             `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${user.displayName} (email address: ${user.email})`,
-            '_self'
+            '_self',
           );
         });
     },
