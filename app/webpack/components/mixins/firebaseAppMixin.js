@@ -1,4 +1,4 @@
-import firebase, { initializeApp } from 'firebase/app';
+import firebase from 'firebase/app';
 
 const firebaseAppMixin = {
   props: {
@@ -18,7 +18,7 @@ const firebaseAppMixin = {
         authDomain: `${this.projectId}.firebaseapp.com`,
         projectId: this.projectId
       };
-      initializeApp(this.firebaseConfig);
+      firebase.initializeApp(this.firebaseConfig);
     }
   }
 };
