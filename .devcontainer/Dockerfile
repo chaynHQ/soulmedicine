@@ -1,27 +1,18 @@
-FROM mcr.microsoft.com/devcontainers/base:jammy
+ARG RUBY_VERSION
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+FROM mcr.microsoft.com/devcontainers/ruby:${RUBY_VERSION}
 
-# disable installing recommended packages to save space
-RUN echo "APT::Install-Recommends \"false\";" > /etc/apt/apt.conf
+ARG NODE_VERSION
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"
 
 RUN apt-get update && \
+  export DEBIAN_FRONTEND=noninteractive && \
   apt-get upgrade -y && \
-  apt-get install -y \
-  build-essential \
-  libffi-dev \
-  libjemalloc-dev \
+  apt-get install -y --no-install-recommends \
   libpq-dev \
-  libreadline-dev \
-  libssl-dev \
-  libxml2-dev \
-  libxslt-dev \
-  libyaml-dev \
   python2 \
   shared-mime-info \
-  tmux \
-  zlib1g-dev && \
+  tmux && \
   apt-get autoremove -y
 
 # Install Overmind to run multiple processes at once.
@@ -31,16 +22,8 @@ RUN curl --fail --location --output /usr/bin/overmind.gz "https://github.com/Dar
   gunzip /usr/bin/overmind.gz && \
   chmod +x /usr/bin/overmind
 
-# Run as the target user
-# Uses the username created by the VSCode devcontainer Ubuntu base image
-USER vscode
-ENV USER=vscode
-
-COPY ../.ruby-version /tmp/.ruby-version
-
-RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-RUN git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-RUN ~/.rbenv/bin/rbenv install $(cat /tmp/.ruby-version)
+RUN su vscode -c "gem install bundler:2.4.18"
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g yarn" 2>&1
 
 ENV OVERMIND_SOCKET=/tmp/.overmind.sock
 
