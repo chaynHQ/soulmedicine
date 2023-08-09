@@ -18,9 +18,9 @@ export default {
       Turbolinks.visit('/auth/sign_out');
       window.open('http://www.wikipedia.org/', '_newtab');
       window.location.replace(
-        'https://www.google.com/search?tbm=isch&q=cute+baby+animal+memes'
+        'https://www.google.com/search?tbm=isch&q=cute+baby+animal+memes',
       );
-    }
-  }
+    },
+  },
 };
 </script>
