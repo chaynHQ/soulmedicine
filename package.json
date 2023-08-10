@@ -6,7 +6,7 @@
     "node": "18.17.x"
   },
   "scripts": {
-    "es-check": "es-check es2015 'public/packs-test/**/*.js'",
+    "es-check": "es-check es2018 'public/packs-test/**/*.js'",
     "lint": "eslint config/webpack/**/*.js app/webpack/**/*.{js,vue}",
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
@@ -26,8 +26,8 @@
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "data-confirm-modal": "^1.6.2",
-    "firebase": "^7.13.1",
-    "firebaseui": "^4.5.0",
+    "firebase": "^10.1.0",
+    "firebaseui": "^6.1.0",
     "jquery": "^3.5.1",
     "mini-css-extract-plugin": "^2.7.6",
     "popper.js": "^1.14.7",
