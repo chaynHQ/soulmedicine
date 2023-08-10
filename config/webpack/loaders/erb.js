@@ -12,9 +12,9 @@ module.exports = {
         timeoutMs: 30000,
         env: {
           ...process.env,
-          DISABLE_SPRING: 1
-        }
-      }
-    }
-  ]
+          DISABLE_SPRING: 1,
+        },
+      },
+    },
+  ],
 };

@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 
 const firebaseAuthStateChangedMixin = {
   created() {
@@ -10,7 +10,7 @@ const firebaseAuthStateChangedMixin = {
     if (this.onAuthStateChangedSubscription) {
       this.onAuthStateChangedSubscription();
     }
-  }
+  },
 };
 
 export default firebaseAuthStateChangedMixin;

@@ -27,16 +27,15 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: Install required apt packages
-      run: sudo apt-get install -y python2
     - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
     - uses: actions/setup-node@v3
       with:
-        node-version: 10.13.x
         cache: 'yarn'
+    - name: Install JS dependencies
+      run: yarn install --frozen-lockfile
     - name: Precomple Rails assets
       run: bundle exec rails assets:precompile
     - name: Run ES Check

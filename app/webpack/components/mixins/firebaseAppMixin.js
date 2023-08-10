@@ -1,26 +1,26 @@
-import firebase, { initializeApp } from 'firebase/app';
+import firebase from 'firebase/compat/app';
 
 const firebaseAppMixin = {
   props: {
     apiKey: {
       type: String,
-      required: true
+      required: true,
     },
     projectId: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   created() {
     if (!firebase.apps.length) {
       this.firebaseConfig = {
         apiKey: this.apiKey,
         authDomain: `${this.projectId}.firebaseapp.com`,
-        projectId: this.projectId
+        projectId: this.projectId,
       };
-      initializeApp(this.firebaseConfig);
+      firebase.initializeApp(this.firebaseConfig);
     }
-  }
+  },
 };
 
 export default firebaseAppMixin;

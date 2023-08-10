@@ -31,9 +31,7 @@
       <div class="mdl-card mdl-shadow--2dp firebaseui-container">
         <form @submit.prevent="handleTermsAccept">
           <div class="firebaseui-card-header">
-            <h1 class="firebaseui-title">
-              Notifications and Privacy Policy
-            </h1>
+            <h1 class="firebaseui-title">Notifications and Privacy Policy</h1>
           </div>
           <div class="firebaseui-card-content">
             <div class="firebaseui-relative-wrapper">
@@ -55,12 +53,8 @@
                 <li class="mdl-list__item">
                   Announcements about Soul Medicine
                 </li>
-                <li class="mdl-list__item">
-                  Updates about new courses
-                </li>
-                <li class="mdl-list__item">
-                  Updates on existing courses
-                </li>
+                <li class="mdl-list__item">Updates about new courses</li>
+                <li class="mdl-list__item">Updates on existing courses</li>
               </ul>
 
               <label
@@ -98,15 +92,13 @@
         </form>
       </div>
 
-      <p class="mt-3 font-bold" style="font-size: 1.4em; text-align: center;">
+      <p class="mt-3 font-bold" style="font-size: 1.4em; text-align: center">
         OR
       </p>
 
       <div class="mdl-card mdl-shadow--2dp firebaseui-container">
         <div class="firebaseui-card-header">
-          <h1 class="firebaseui-title">
-            Reject and don't proceed
-          </h1>
+          <h1 class="firebaseui-title">Reject and don't proceed</h1>
         </div>
         <div class="firebaseui-card-content">
           <div class="firebaseui-relative-wrapper">
@@ -142,7 +134,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
@@ -159,12 +151,12 @@ export default {
     inlineFlow: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     continueUrl: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -175,7 +167,7 @@ export default {
       showVerificationStep: false,
       showFailureText: false,
       showInstructionalText: true,
-      idToken: null
+      idToken: null,
     };
   },
   created() {
@@ -194,8 +186,8 @@ export default {
       signInOptions: [
         {
           provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-          requireDisplayName: true
-        }
+          requireDisplayName: true,
+        },
       ],
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
@@ -208,10 +200,10 @@ export default {
         signInFailure(error) {
           vm.handleError(error);
           return null;
-        }
+        },
       },
       tosUrl: this.tosUrl,
-      privacyPolicyUrl: this.privacyPolicyUrl
+      privacyPolicyUrl: this.privacyPolicyUrl,
     };
     this.ui.start(this.$refs.firebaseAuthContainer, this.uiConfig);
   },
@@ -240,11 +232,11 @@ export default {
         vm.loading = true;
         return user
           .getIdToken(true)
-          .then(idToken => {
+          .then((idToken) => {
             vm.idToken = idToken;
             vm.serverSignIn(null);
           })
-          .catch(error => {
+          .catch((error) => {
             vm.handleError(error);
           })
           .finally(() => {
@@ -258,11 +250,11 @@ export default {
         '/auth/callback',
         {
           firebase_token: this.idToken,
-          terms_accepted: termsAccepted
+          terms_accepted: termsAccepted,
         },
-        { headers: { 'X-CSRF-TOKEN': this.csrfToken } }
+        { headers: { 'X-CSRF-TOKEN': this.csrfToken } },
       )
-        .then(result => {
+        .then((result) => {
           return this.afterServerSignIn(result.data);
         })
         .catch(this.afterFailedServerSignIn);
@@ -300,17 +292,17 @@ export default {
         const actionCodeSettings =
           data.last_course_id != null
             ? {
-                url: `${vm.continueUrl}/?last_course_id=${data.last_course_id}`
+                url: `${vm.continueUrl}/?last_course_id=${data.last_course_id}`,
               }
             : {
-                url: vm.continueUrl
+                url: vm.continueUrl,
               };
         return user
           .sendEmailVerification(actionCodeSettings)
           .then(() => {
             return vm.clearFirebaseSession();
           })
-          .catch(error => {
+          .catch((error) => {
             vm.showVerificationStep = false;
             vm.handleError(error);
           });
@@ -333,7 +325,7 @@ export default {
       return firebase
         .auth()
         .signOut()
-        .catch(error => {
+        .catch((error) => {
           this.handleError(error);
         });
     },
@@ -359,7 +351,7 @@ export default {
           Turbolinks.visit('/auth/sign_out');
           window.open(
             `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${user.displayName} (email address: ${user.email})`,
-            '_self'
+            '_self',
           );
         });
     },
@@ -392,8 +384,8 @@ export default {
             "Sorry, something went wrong when signing you in! We've been notified about this. Please try again later on.";
           this.$rollbar.error('Unknown client-side sign in error', error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
