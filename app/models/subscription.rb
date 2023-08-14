@@ -37,8 +37,6 @@ class Subscription < ApplicationRecord
   validate :validate_languages
   validate :validate_schedule
 
-  default_value_for :delivery_method, 'email'
-
   def days
     converted_schedule[:days]
   end
