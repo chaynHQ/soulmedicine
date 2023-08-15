@@ -6137,7 +6137,7 @@ rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
-rollbar@^2.5.2:
+rollbar@^2.26.2:
   version "2.26.2"
   resolved "https://registry.yarnpkg.com/rollbar/-/rollbar-2.26.2.tgz#58627dce65233e7433facb6366fd6e8817f396d3"
   integrity sha512-7ASvrlal87ek2vhTmpu2LPvkdlcnala1qeMT2Ra76s0KjWkQ8d1fTl6dk7AqHx1Qa/puahg3tYw7EPB7wYx9RQ==
@@ -6882,13 +6882,6 @@ vue-loader@^15.7.0:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-rollbar@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/vue-rollbar/-/vue-rollbar-1.0.0.tgz#db637d366ca94385da1c65676058250bdd4d68a3"
-  integrity sha512-p9UneonbjCRILJCwR5m6J8YXuXBWA+OxvRPPO5Va5X8soGf3+2MMCW/oA7cKQXmyek9aKRLbuX7rOdMWDLarBw==
-  dependencies:
-    rollbar "^2.5.2"
 
 vue-style-loader@^4.1.0:
   version "4.1.3"

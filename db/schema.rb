@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_02_145310) do
+ActiveRecord::Schema.define(version: 2023_08_11_151726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2023_08_02_145310) do
     t.boolean "active", default: false, null: false
     t.string "main_language", null: false
     t.string "other_languages", default: [], null: false, array: true
-    t.string "delivery_method", null: false
+    t.string "delivery_method", default: "email", null: false
     t.string "days_utc", default: [], null: false, array: true
     t.integer "hours_utc", default: [], null: false, array: true
     t.string "lessons_delivered", default: [], array: true

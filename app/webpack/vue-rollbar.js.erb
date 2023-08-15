@@ -1,8 +1,10 @@
 import Vue from 'vue/dist/vue.esm';
 
-import Rollbar from 'vue-rollbar';
+import Rollbar from 'rollbar';
 
-Vue.use(Rollbar, {
+// See https://docs.rollbar.com/docs/vue-js#vue-2 for more details.
+
+Vue.prototype.$rollbar = new Rollbar({
   accessToken: "<%= RollbarConfig.client_access_token %>",
   environment: "<%= RollbarConfig.environment %>",
   enabled: <%= RollbarConfig.enabled %>,
@@ -10,3 +12,8 @@ Vue.use(Rollbar, {
   captureUnhandledRejections: true,
   autoInstrument: { log: false }
 });
+
+Vue.config.errorHandler = (err, vm, info) => {
+  vm.$rollbar.error(err);
+  throw err; // rethrow
+};
