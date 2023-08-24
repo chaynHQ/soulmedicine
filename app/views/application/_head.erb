@@ -25,7 +25,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name=viewport content="width=device-width, initial-scale=1">
 
-  <%= favicon_pack_tag 'static/images/favicon.png', type: 'image/png' %>
+  <%= favicon_link_tag vite_asset_path('images/favicon.png'), type: 'image/png' %>
 
   <%= google_analytics %>
 
@@ -35,6 +35,9 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= vite_stylesheet_tag 'application.scss', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= vite_javascript_tag 'application', 'data-turbo-track': 'reload' %>
+
+  <%= vite_legacy_polyfill_tag %>
 </head>

@@ -15,19 +15,10 @@
     "no-param-reassign": ["error", { "props": false }]
   },
 
-  "parserOptions": {
-    "parser": "@babel/eslint-parser"
-  },
-
   "settings": {
     "import/resolver": {
-      "webpack": {
-        "config": {
-          "resolve": {
-            "modules": ["app/webpack/**", "node_modules"],
-            "extensions": [".js", ".vue"]
-          }
-        }
+      "node": {
+        "extensions": [".js", ".vue"]
       }
     }
   }
