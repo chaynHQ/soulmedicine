@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Turbolinks from 'turbolinks';
+import { Turbo } from '@hotwired/turbo-rails';
 
 export default {
   methods: {
     leaveSite() {
-      Turbolinks.clearCache();
-      Turbolinks.visit('/auth/sign_out');
+      Turbo.clearCache();
+      Turbo.visit('/auth/sign_out');
       window.open('http://www.wikipedia.org/', '_newtab');
       window.location.replace(
         'https://www.google.com/search?tbm=isch&q=cute+baby+animal+memes',

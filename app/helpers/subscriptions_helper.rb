@@ -24,11 +24,11 @@ module SubscriptionsHelper
   def subscription_unsubscribe_button(subscription, css_class: nil)
     link_to t('phrases.unsubscribe').capitalize,
       course_subscription_path(subscription.course),
-      method: :delete,
       class: css_class,
       data: {
         title: t('subscriptions.shared.unsubscribe_confirm_title', course_name: subscription.course.name),
-        confirm: t('subscriptions.shared.unsubscribe_confirm_text')
+        turbo_confirm: t('subscriptions.shared.unsubscribe_confirm_text'),
+        turbo_method: :delete
       },
       role: 'button'
   end

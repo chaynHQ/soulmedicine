@@ -159,7 +159,7 @@
 <script>
 import firebase from 'firebase/compat/app';
 import Axios from 'axios';
-import Turbolinks from 'turbolinks';
+import { Turbo } from '@hotwired/turbo-rails';
 import SignIn from '../authentication/sign_in.vue';
 
 import csfrTokenMixin from '../mixins/csrfTokenMixin';
@@ -240,8 +240,8 @@ export default {
         vm
           .updateProfileOnServer({ display_name: vm.newDisplayName })
           .then(() => {
-            Turbolinks.clearCache();
-            Turbolinks.visit('/');
+            Turbo.clearCache();
+            Turbo.visit('/');
           });
 
       return this.update(firebaseUpdateFn, serverUpdateFn);
@@ -317,8 +317,8 @@ export default {
         });
     },
     serverSignOut(message) {
-      Turbolinks.clearCache();
-      Turbolinks.visit(`/auth/sign_out?message=${encodeURIComponent(message)}`);
+      Turbo.clearCache();
+      Turbo.visit(`/auth/sign_out?message=${encodeURIComponent(message)}`);
     },
   },
 };

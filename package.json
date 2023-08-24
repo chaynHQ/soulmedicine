@@ -11,6 +11,7 @@
     "lint-erb": "bundle exec erblint app/views/**/*.html{+*,}.erb"
   },
   "dependencies": {
+    "@hotwired/turbo-rails": "^7.3.0",
     "@rollup/plugin-inject": "^5.0.3",
     "@vitejs/plugin-legacy": "^4.1.1",
     "@vitejs/plugin-vue2": "^2.2.0",
@@ -26,10 +27,7 @@
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^9.1.1",
-    "rails-erb-loader": "^5.5.2",
-    "rails-ujs": "^5.2.3",
     "rollbar": "^2.26.2",
-    "turbolinks": "^5.2.0",
     "rollup": "^3.27.1",
     "sass": "^1.66.1",
     "terser": "^5.4.0",

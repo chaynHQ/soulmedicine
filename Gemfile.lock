@@ -339,9 +339,10 @@ GEM
     truncato (0.7.12)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
+    turbo-rails (1.4.0)
+      actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
+      railties (>= 6.0.0)
     twitter_cldr (4.4.5)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
@@ -415,7 +416,7 @@ DEPENDENCIES
   storyblok (~> 3.2)
   timecop (~> 0.9.1)
   truncato (~> 0.7.12)
-  turbolinks (~> 5.2)
+  turbo-rails (~> 1.4)
   twitter_cldr (~> 4.4, >= 4.4.3)
   tzinfo-data
   vite_plugin_legacy (~> 3.0, >= 3.0.2)

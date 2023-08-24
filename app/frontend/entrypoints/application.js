@@ -1,10 +1,10 @@
-import Rails from 'rails-ujs';
-import Turbolinks from 'turbolinks';
 import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap-select';
 import 'data-confirm-modal';
 
 import Vue from 'vue/dist/vue.esm';
+
+import { Turbo } from '@hotwired/turbo-rails';
 import TurbolinksAdapter from 'vue-turbolinks';
 
 import SignIn from '../components/authentication/sign_in.vue';
@@ -12,14 +12,11 @@ import Profile from '../components/user_profile/profile.vue';
 import CookieLaw from '../components/cookie_law/cookie_law.vue';
 import LeaveSite from '../components/leave_site/leave_site.vue';
 
-Rails.start();
-Turbolinks.start();
-
 Vue.use(TurbolinksAdapter);
 
 import '../vue-rollbar.js.erb'; // eslint-disable-line import/first
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   const components = [
     {
       element_id: 'sign_in',
@@ -56,8 +53,8 @@ document.addEventListener('turbolinks:load', () => {
   });
 });
 
-// Make bootstrap-select work with Turbolinks
-document.addEventListener('turbolinks:load', () => {
+// Make bootstrap-select work with Turbo
+document.addEventListener('turbo:load', () => {
   /* eslint-disable no-undef */
   $(window).trigger('load.bs.select.data-api');
   /* eslint-enable no-undef */

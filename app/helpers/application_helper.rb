@@ -21,10 +21,10 @@ module ApplicationHelper
             gtag('js', new Date());
             gtag('config', '#{analytics_id}');
 
-            document.addEventListener('turbolinks:load', event => {
+            document.addEventListener('turbo:load', event => {
               if (typeof gtag === 'function') {
                 gtag('config', '#{analytics_id}', {
-                  'page_location': event.data.url
+                  'page_location': event.detail.url
                 });
               }
             });

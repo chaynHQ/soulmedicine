@@ -139,7 +139,7 @@ import 'firebase/auth';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import Axios from 'axios';
-import Turbolinks from 'turbolinks';
+import { Turbo } from '@hotwired/turbo-rails';
 
 import csfrTokenMixin from '../mixins/csrfTokenMixin';
 import firebaseAppMixin from '../mixins/firebaseAppMixin';
@@ -330,8 +330,8 @@ export default {
         });
     },
     redirect(forwardingUrl) {
-      Turbolinks.clearCache();
-      Turbolinks.visit(forwardingUrl || '/');
+      Turbo.cache.clear();
+      Turbo.visit(forwardingUrl || '/');
     },
     handleTermsAccept() {
       const vm = this;
@@ -347,8 +347,8 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          Turbolinks.clearCache();
-          Turbolinks.visit('/auth/sign_out');
+          Turbo.cache.clear();
+          Turbo.visit('/auth/sign_out');
           window.open(
             `mailto:team@soulmedicine.io?subject=Request Account Deletion&body=Request Deletion for ${user.displayName} (email address: ${user.email})`,
             '_self',
