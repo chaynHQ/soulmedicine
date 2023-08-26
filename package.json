@@ -59,7 +59,6 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.10",
-    "@vue/runtime-dom": "^3.3.4",
     "es-check": "^7.1.1",
     "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
