@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import '../stylesheets/application.scss';
 
 import Rails from 'rails-ujs';
@@ -49,6 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   components.forEach((e) => {
     const element = document.getElementById(e.element_id);
     if (element != null) {
+      // eslint-disable-next-line no-unused-vars
       const app = new Vue({
         el: element,
         components: e.components,
