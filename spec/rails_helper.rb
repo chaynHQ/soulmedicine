@@ -4,9 +4,7 @@ SimpleCov.start 'rails'
 require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../config/environment', __dir__)
-Rails.application.eager_load!
-
+require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -20,15 +18,19 @@ require 'rspec/rails'
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 #
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f } # rubocop:disable Lint/NonDeterministicRequireOrder, Rails/FilePath
+# The following line is provided for convenience purposes. It has the downside
+# of increasing the boot-up time by auto-requiring all files in the support
+# directory. Alternatively, in the individual `*_spec.rb` files, manually
+# require only the support files necessary.
+
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
-  puts e.to_s.strip
-  exit 1
+  abort e.to_s.strip
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods

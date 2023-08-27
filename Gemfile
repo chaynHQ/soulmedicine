@@ -33,7 +33,7 @@ gem 'barnes', '~> 0.0.9'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.5'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
   gem 'factory_bot_rails', '~> 5.1'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   gem 'simplecov', require: false
