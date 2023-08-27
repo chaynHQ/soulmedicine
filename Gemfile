@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.8'
+ruby '3.0.6'
 
 gem 'rails', '~> 6.0', '< 6.1'
 gem 'pg', '~> 1.5', '>= 1.5.3'
@@ -45,7 +45,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors', '~> 2.5'
-  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'binding_of_caller', '~> 1.0'
   gem 'erb_lint', '~> 0.1.3', require: false
 end
 
