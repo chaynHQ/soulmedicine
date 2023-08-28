@@ -1816,6 +1816,11 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@rails/ujs@6.0.6-1":
+  version "6.0.6-1"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.6-1.tgz#a30b0879203144eeb6cc91bce78a751ff99bdc3a"
+  integrity sha512-E0MZU0l3XWZirpqRhGfA1M9fJF4ydUw6NK4mxdvekeRJcBtvwBtaOJySoZjS/9YM6pHSvA9fjhQkNEiRPRT9Ng==
+
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
@@ -5825,11 +5830,6 @@ rails-erb-loader@^5.5.2:
   dependencies:
     loader-utils "^1.1.0"
     lodash.defaults "^4.2.0"
-
-rails-ujs@^5.2.3:
-  version "5.2.8"
-  resolved "https://registry.yarnpkg.com/rails-ujs/-/rails-ujs-5.2.8.tgz#dffc6b7d15f735f523e31be0a30b47264b282623"
-  integrity sha512-qwCTG/7FgRRxQIWJ9vmLF8ucqFVM2Krk+0JWcI5OF485jymGa1Rix8kF5vNHGz/VGUvS2Dhom9PdlsdjMt9Kmg==
 
 randombytes@^2.1.0:
   version "2.1.0"
