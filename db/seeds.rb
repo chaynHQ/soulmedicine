@@ -13,13 +13,25 @@ def rand_bool
   [true, false].sample
 end
 
-def rand_utc_schedule(users_timezone)
-  TimeZoneScheduleConverter.convert(
-    from_zone: users_timezone,
-    to_zone: 'UTC',
-    days: Date::ABBR_DAYNAMES.sample(rand(1..7)),
-    hour: rand(0..23)
+def rand_timestamps(number_of_lessons_delivered)
+  timestamp = Time.zone.parse(
+    Faker::Time.between(
+      from: Time.zone.parse('2019-01-01'),
+      to: number_of_lessons_delivered.weeks.ago
+    ).to_s
   )
+
+  timestamps = {
+    created_at: timestamp,
+    updated_at: timestamp,
+    last_delivered_at: nil
+  }
+
+  unless number_of_lessons_delivered.zero? # rubocop:disable Style/IfUnlessModifier
+    timestamps[:last_delivered_at] = number_of_lessons_delivered.weeks.since(timestamp)
+  end
+
+  timestamps
 end
 
 # Internal: Randomly select the main language and 'other' language options for
@@ -50,9 +62,18 @@ def rand_lessons_delivered_for(course)
   return [] unless course[:lessons].any?
 
   number_of_lessons = course[:lessons].length
-  range = number_of_lessons - 1
 
-  course[:lessons].slice(0..range)
+  range = rand(0...number_of_lessons)
+  course[:lessons].slice(0...range)
+end
+
+def rand_utc_schedule(users_timezone)
+  TimeZoneScheduleConverter.convert(
+    from_zone: users_timezone,
+    to_zone: 'UTC',
+    days: Date::ABBR_DAYNAMES.sample(rand(1..7)),
+    hour: rand(0..23)
+  )
 end
 
 def story_blok_courses
@@ -92,7 +113,7 @@ courses = story_blok_courses
 
 s_progress_bar = ProgressBar.create(title: '== Creating Subscriptions ==', total: User.count)
 
-User.all.each do |user|
+User.all.each do |user| # rubocop:disable Metrics/BlockLength
   subscriptions = []
   users_timezone = Subscription::TIMEZONE_IDS.sample
 
@@ -100,8 +121,10 @@ User.all.each do |user|
     course = courses[slug]
 
     languages = rand_languages(course[:enabled_languages])
-    timestamp = Time.zone.now
     utc_schedule = rand_utc_schedule(users_timezone)
+
+    lessons_delivered = rand_lessons_delivered_for(course)
+    timestamps = rand_timestamps(lessons_delivered.count)
 
     subscriptions << {
       user_id: user.id,
@@ -111,11 +134,12 @@ User.all.each do |user|
       other_languages: languages[:other_languages],
       days_utc: utc_schedule[:days],
       hours_utc: [utc_schedule[:hour]],
-      lessons_delivered: rand_lessons_delivered_for(course),
+      lessons_delivered: lessons_delivered,
       user_timezone: users_timezone,
       disguised: rand_bool,
-      created_at: timestamp,
-      updated_at: timestamp
+      created_at: timestamps[:created_at],
+      updated_at: timestamps[:updated_at],
+      last_delivered_at: timestamps[:last_delivered_at]
     }
   end
 
