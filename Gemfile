@@ -47,6 +47,8 @@ group :development do
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'erb_lint', '~> 0.1.3', require: false
+  gem 'faker', require: false
+  gem 'ruby-progressbar', '~> 1.8', '>= 1.8.1', require: false
 end
 
 group :development, :linting do
