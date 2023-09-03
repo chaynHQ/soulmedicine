@@ -10,6 +10,6 @@ Rollbar.configure do |config|
   config.async_json_payload = true
   config.enabled = RollbarConfig.enabled
   config.environment = RollbarConfig.environment if config.enabled
-  config.exception_level_filters.merge!('ActionController::UnknownFormat' => 'warning')
+  config.exception_level_filters['ActionController::UnknownFormat'] = 'warning'
   config.use_sidekiq
 end
