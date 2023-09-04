@@ -16,7 +16,7 @@
 !/tmp/pids
 !/tmp/pids/.keep
 coverage
-examples.txt
+spec/examples.txt
 
 # Ignore uploaded files in development
 /storage/*
