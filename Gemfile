@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.8'
 
-gem 'rails', '~> 6.0', '< 6.1'
+gem 'rails', '~> 6.1', '>= 6.1.7.6'
 gem 'pg', '~> 1.5', '>= 1.5.3'
 gem 'puma', '~> 6.3'
 gem 'shakapacker', '~> 7.0', '>= 7.0.2'
@@ -34,7 +34,7 @@ gem 'scout_apm', '~> 5.3', '>= 5.3.5'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.5'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
   gem 'factory_bot_rails', '~> 5.1'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   gem 'simplecov', require: false
