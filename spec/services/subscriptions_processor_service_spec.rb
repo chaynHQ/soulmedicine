@@ -83,16 +83,14 @@ RSpec.describe SubscriptionsProcessorService, type: :service do
       context 'when course exists' do
         before do
           subscription.user.update! email_verified: true
-
-          expect(subject).to receive(:course_ok?)
-            .at_least(:once)
-            .and_call_original
         end
 
         context 'not within schedule' do
           before do
             days_utc = 1.day.from_now.utc.strftime('%a')
             subscription.update! days_utc: [days_utc]
+
+            expect(subject).to receive(:course_ok?).never
 
             expect(subject).to receive(:within_schedule?)
               .and_call_original
@@ -104,6 +102,8 @@ RSpec.describe SubscriptionsProcessorService, type: :service do
         context 'already delivered within the last hour' do
           before do
             subscription.update! last_delivered_at: 50.minutes.ago
+
+            expect(subject).to receive(:course_ok?).never
 
             expect(subject).to receive(:deliver_subscription_now?)
               .and_call_original
@@ -127,6 +127,10 @@ RSpec.describe SubscriptionsProcessorService, type: :service do
 
           before do
             other_subscription.user.update! email_verified: true
+
+            expect(subject).to receive(:course_ok?)
+              .at_least(:once)
+              .and_call_original
           end
 
           it 'delivers the lesson email for just that subscription' do
