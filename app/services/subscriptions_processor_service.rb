@@ -20,9 +20,9 @@ class SubscriptionsProcessorService
     subscription.active? &&
       subscription.email? &&
       subscription.user.verified? &&
-      course_ok?(subscription) &&
       within_schedule?(subscription) &&
-      !delivered_within_last_hour?(subscription)
+      !delivered_within_last_hour?(subscription) &&
+      course_ok?(subscription)
   end
 
   def course_ok?(subscription)
