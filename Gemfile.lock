@@ -84,7 +84,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bindex (0.8.1)
-    binding_of_caller (0.8.0)
+    binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -154,10 +154,9 @@ GEM
     jsonapi-renderer (0.2.2)
     jwt (2.1.0)
     language_server-protocol (3.17.0.3)
-    listen (3.1.5)
+    listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -380,7 +379,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.9)
   barnes (~> 0.0.9)
   better_errors (~> 2.5)
-  binding_of_caller (~> 0.8.0)
+  binding_of_caller (~> 1.0)
   bootsnap (>= 1.1.0)
   bootstrap_form (~> 4.2)
   brakeman (~> 4.10, >= 4.10.1)
@@ -424,7 +423,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.7.8p225
+   ruby 3.0.6p216
 
 BUNDLED WITH
    2.4.18

@@ -10,7 +10,6 @@ RUN apt-get update && \
   apt-get upgrade -y && \
   apt-get install -y --no-install-recommends \
   libpq-dev \
-  python2 \
   shared-mime-info \
   tmux && \
   apt-get autoremove -y
