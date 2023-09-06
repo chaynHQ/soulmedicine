@@ -1,5 +1,5 @@
-# Preview all emails at http://localhost:3000/rails/mailers/lesson_mailer
-class LessonMailerPreview < ActionMailer::Preview
+# Preview all emails at http://localhost:3000/rails/mailers/lesson
+class LessonPreview < ActionMailer::Preview
   def lesson_email
     course = CoursesService.new(STORYBLOK_CLIENT).get params[:course]
     lesson = course.lessons[params[:lesson_no].to_i - 1]
