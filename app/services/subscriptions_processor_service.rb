@@ -68,13 +68,13 @@ class SubscriptionsProcessorService
 
     languages = ([subscription.main_language] + subscription.other_languages).compact.uniq
 
-    LessonMailer.lesson_email(
+    LessonMailer.with(
       user: subscription.user,
       course: subscription.course,
       lesson: lesson,
       languages: languages,
       disguised: subscription.disguised
-    ).deliver_now
+    ).lesson_email.deliver_now
 
     subscription.update!(
       lessons_delivered: subscription.lessons_delivered.concat([lesson.slug]),

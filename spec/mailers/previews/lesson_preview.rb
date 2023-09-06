@@ -6,12 +6,12 @@ class LessonPreview < ActionMailer::Preview
     languages = params[:languages].split(',')
     disguised = params[:disguised] == 'true'
 
-    LessonMailer.lesson_email(
+    LessonMailer.with(
       user: User.first,
       course: course,
       lesson: lesson,
       languages: languages,
       disguised: disguised
-    )
+    ).lesson_email
   end
 end

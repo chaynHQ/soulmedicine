@@ -2,13 +2,13 @@ class LessonMailer < ApplicationMailer
   helper :application
   helper :emoji
 
-  def lesson_email(user:, course:, lesson:, languages:, disguised:)
-    email_with_name = %("#{user.display_name}" <#{user.email}>)
+  def lesson_email
+    @user = params[:user]
+    email_with_name = %("#{@user.display_name}" <#{@user.email}>)
 
-    @user = user
-    @course = course
-    @lesson = lesson
-    @languages = (LocalesService.enabled & languages.map(&:to_sym))
+    @course = params[:course]
+    @lesson = params[:lesson]
+    @languages = (LocalesService.enabled & Array(params[:languages]).map(&:to_sym))
 
     @reaction = @user.lesson_reactions.find_by(course_slug: @course.slug, lesson_slug: @lesson.slug)
     @possible_reactions = LessonReaction.reaction_names.keys
