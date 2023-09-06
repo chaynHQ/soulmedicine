@@ -3,9 +3,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.8'
+ruby '3.0.6'
 
-gem 'rails', '~> 6.0', '< 6.1'
+gem 'rails', '~> 6.1', '>= 6.1.7.6'
 gem 'pg', '~> 1.5', '>= 1.5.3'
 gem 'puma', '~> 6.3'
 gem 'shakapacker', '~> 7.0', '>= 7.0.2'
@@ -29,11 +29,12 @@ gem 'premailer-rails', '~>1.10.3'
 gem 'gemoji'
 gem 'truncato', '~> 0.7.12'
 gem 'barnes', '~> 0.0.9'
+gem 'scout_apm', '~> 5.3', '>= 5.3.5'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.5'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
   gem 'factory_bot_rails', '~> 5.1'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   gem 'simplecov', require: false
@@ -45,7 +46,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors', '~> 2.5'
-  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'binding_of_caller', '~> 1.0'
   gem 'erb_lint', '~> 0.1.3', require: false
 end
 
