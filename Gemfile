@@ -57,7 +57,7 @@ group :development, :linting do
 end
 
 group :development, :security do
-  gem 'brakeman', '~> 4.10', '>= 4.10.1'
+  gem 'brakeman', '~> 6.0', '>= 6.0.1'
 end
 
 group :test do
