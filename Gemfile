@@ -20,7 +20,7 @@ gem 'turbolinks', '~> 5.2'
 gem 'memoist', '~> 0.16.0'
 gem 'http', '~> 4.1'
 gem 'bootstrap_form', '~> 4.2'
-gem 'sidekiq', '~> 6.5', '>= 6.5.9'
+gem 'sidekiq', '~> 7.1', '>= 7.1.2'
 gem 'sidekiq-history', '~> 0.0.13'
 gem 'rollbar', '~> 2.19', '>= 2.19.3'
 gem 'meta-tags', '~> 2.11', '>= 2.11.1'
@@ -57,7 +57,7 @@ group :development, :linting do
 end
 
 group :development, :security do
-  gem 'brakeman', '~> 4.10', '>= 4.10.1'
+  gem 'brakeman', '~> 6.0', '>= 6.0.1'
 end
 
 group :test do
