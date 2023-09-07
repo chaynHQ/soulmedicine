@@ -1,4 +1,4 @@
 ---
 :queues:
-  - default
-  - rollbar
+  - [default, 1]
+  - [rollbar, 2]
