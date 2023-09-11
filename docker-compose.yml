@@ -11,11 +11,11 @@ services:
     ports:
       - 5432:5432
   redis-sidekiq:
-    image: redis:5.0.3-alpine
+    image: redis:6.2.13-alpine
     ports:
       - 6379:6379
   redis-cache:
-    image: redis:5.0.3-alpine
+    image: redis:6.2.13-alpine
     ports:
       - 6380:6379
   mailcatcher:
