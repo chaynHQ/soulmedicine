@@ -1816,10 +1816,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@rails/ujs@6.1.7-6":
-  version "6.1.7-6"
-  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.7-6.tgz#b8029ac3347002b58b0a8ff7d1bb2dc081289d3f"
-  integrity sha512-nFGvNDY8l3BNV8wnACj632E3pu+Fh3+nnJT2kuiHyjvaPnv+0HYzkk1dSQCb5XUS8FzBIj4iJnGheGF9Du80gg==
+"@rails/ujs@7.0.8":
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-7.0.8.tgz#59853367d0827b3955d2c4bedfd5eba4a79d3422"
+  integrity sha512-tOQQBVH8LsUpGXqDnk+kaOGVsgZ8maHAhEiw3Git3p88q+c0Slgu47HuDnL6sVxeCfz24zbq7dOjsVYDiTpDIA==
 
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
