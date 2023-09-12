@@ -15,7 +15,7 @@
     "@babel/plugin-transform-runtime": "7",
     "@babel/preset-env": "7",
     "@babel/runtime": "7",
-    "@rails/ujs": "6.0.6-1",
+    "@rails/ujs": "6.1.7-6",
     "axios": "^1.4.0",
     "babel-loader": "8",
     "bootstrap": "^4.5.0",
