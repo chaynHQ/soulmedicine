@@ -152,7 +152,7 @@ GEM
       concurrent-ruby (~> 1.0)
     json (2.6.3)
     jsonapi-renderer (0.2.2)
-    jwt (2.1.0)
+    jwt (2.7.1)
     language_server-protocol (3.17.0.3)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -392,7 +392,7 @@ DEPENDENCIES
   factory_bot_rails (~> 5.1)
   gemoji
   http (~> 4.1)
-  jwt (~> 2.1.0)
+  jwt (~> 2.7, >= 2.7.1)
   listen (>= 3.0.5, < 3.2)
   memoist (~> 0.16.0)
   meta-tags (~> 2.11, >= 2.11.1)
