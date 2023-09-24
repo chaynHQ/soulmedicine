@@ -20,7 +20,11 @@ class FirebaseAuthService
 
   def key_finder(header)
     kid = header['kid']
-    json = JSON.parse(HTTP.get(CERTS_URL).to_s)
+    json = JSON.parse(Net::HTTP.get(certs_uri))
     OpenSSL::X509::Certificate.new(json[kid]).public_key
+  end
+
+  def certs_uri
+    URI(CERTS_URL)
   end
 end
