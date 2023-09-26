@@ -5,7 +5,7 @@ RollbarConfig.server_access_token = ENV['SERVER_ROLLBAR_ACCESS_TOKEN']
 RollbarConfig.client_access_token = ENV['CLIENT_ROLLBAR_ACCESS_TOKEN']
 
 if RollbarConfig.enabled
-  require_relative 'app/lib/pull_request_number'
+  require_relative '../../app/lib/pull_request_number'
   RollbarConfig.environment = (PullRequestNumber.call || ENV.fetch('ROLLBAR_ENV'))
 end
 
