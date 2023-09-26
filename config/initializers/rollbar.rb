@@ -3,7 +3,11 @@ RollbarConfig = OpenStruct.new
 RollbarConfig.enabled = !(Rails.env.test? || Rails.env.development?)
 RollbarConfig.server_access_token = ENV['SERVER_ROLLBAR_ACCESS_TOKEN']
 RollbarConfig.client_access_token = ENV['CLIENT_ROLLBAR_ACCESS_TOKEN']
-RollbarConfig.environment = (PullRequestNumber.call || ENV.fetch('ROLLBAR_ENV')) if RollbarConfig.enabled
+
+if RollbarConfig.enabled
+  require_relative 'app/lib/pull_request_number'
+  RollbarConfig.environment = (PullRequestNumber.call || ENV.fetch('ROLLBAR_ENV'))
+end
 
 Rollbar.configure do |config|
   config.access_token = RollbarConfig.server_access_token
