@@ -1,3 +1,5 @@
+require_relative '../../lib/pull_request_number'
+
 RollbarConfig = OpenStruct.new
 
 RollbarConfig.enabled = !(Rails.env.test? || Rails.env.development?)
