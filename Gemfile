@@ -41,7 +41,7 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.8'
   gem 'spring', '~> 4.1', '>= 4.1.1'
   gem 'spring-watcher-listen', '~> 2.1'
   gem 'better_errors', '~> 2.5'
