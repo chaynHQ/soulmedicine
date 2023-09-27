@@ -1,11 +1,5 @@
 import '../stylesheets/application.scss';
 
-import Rails from '@rails/ujs';
-import Turbolinks from 'turbolinks';
-import 'bootstrap/dist/js/bootstrap';
-import 'bootstrap-select';
-import 'data-confirm-modal';
-
 import Vue from 'vue/dist/vue.esm';
 import TurbolinksAdapter from 'vue-turbolinks';
 
@@ -13,9 +7,6 @@ import SignIn from '../components/authentication/sign_in.vue';
 import Profile from '../components/user_profile/profile.vue';
 import CookieLaw from '../components/cookie_law/cookie_law.vue';
 import LeaveSite from '../components/leave_site/leave_site.vue';
-
-Rails.start();
-Turbolinks.start();
 
 Vue.use(TurbolinksAdapter);
 
