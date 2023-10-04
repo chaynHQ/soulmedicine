@@ -8,7 +8,7 @@ Through notes of love and information, Soul Medicine offers bite-sized support t
 
 ## Development and Testing
 
-See our [documentation](docs/README.md) if you're interested in developing or testing this application.
+See our [documentation](docs/README.md) if you're interested in developing or testing this application. To make a contribution, please read our Contributing Guidelines in [CONTRIBUTING](https://github.com/chaynHQ/soulmedicine/blob/main/CONTRIBUTING.md).
 
 
 # Get Involved
