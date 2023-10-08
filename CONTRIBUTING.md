@@ -33,6 +33,8 @@ Just no spamming (such as unwanted, minor documentation and HTML/CSS changes) pl
 
 1. **Read the README and Code of Conduct:** To get an overview of the project, please read the project's [README](/README.md) and documentation. Contributing means you have agreed to our [Code of Conduct](/CODE_OF_CONDUCT.md).
 
+   **Note: If you are making no-code changes in the README or any other markdown / text files, it may not be required to follow all of these steps. Instead, you may edit these files and make your changes directly in GitHub and submit a PR without setting up the environment variables and without requiring tests to pass in your fork.**
+
 2. **Create an issue or be assigned to an existing issue:**
 
    - If creating an issue, ensure that your issue doesn't already exist and to follow our issue templates. Please ask to be assigned your issue if you would like to work on it.
