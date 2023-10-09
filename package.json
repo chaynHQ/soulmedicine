@@ -3,7 +3,7 @@
   "packageManager": "yarn@1.22.19",
   "private": true,
   "engines": {
-    "node": "18.17.x"
+    "node": "18.18.x"
   },
   "scripts": {
     "es-check": "es-check es2018 'public/packs-test/**/*.js'",

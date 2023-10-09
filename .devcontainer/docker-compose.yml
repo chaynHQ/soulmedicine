@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   workspace:
@@ -7,7 +7,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
       args:
         RUBY_VERSION: "3.0"
-        NODE_VERSION: 18.17
+        NODE_VERSION: 18.18
 
     environment:
       DATABASE_HOST: postgres
