@@ -1,3 +1,3 @@
-import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap';
 import 'bootstrap-select';
 import 'data-confirm-modal';
