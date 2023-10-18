@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 2023_08_26_132242) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_09_12_113739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -19,8 +18,8 @@ ActiveRecord::Schema[6.1].define(version: 2023_08_26_132242) do
   create_table "backups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "key", null: false
     t.jsonb "data", default: {}, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["key"], name: "index_backups_on_key", unique: true
   end
 
@@ -29,8 +28,8 @@ ActiveRecord::Schema[6.1].define(version: 2023_08_26_132242) do
     t.string "course_slug", null: false
     t.string "lesson_slug", null: false
     t.string "reaction_name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id", "course_slug", "lesson_slug"], name: "index_lesson_reactions_on_user_id_and_course_and_lesson_slug", unique: true
     t.index ["user_id", "course_slug"], name: "index_lesson_reactions_on_user_id_and_course_slug"
     t.index ["user_id"], name: "index_lesson_reactions_on_user_id"
@@ -40,8 +39,8 @@ ActiveRecord::Schema[6.1].define(version: 2023_08_26_132242) do
     t.uuid "user_id"
     t.string "course_slug", null: false
     t.string "lesson_slug", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id", "course_slug", "lesson_slug"], name: "index_progresses_on_user_id_and_course_slug_and_lesson_slug", unique: true
     t.index ["user_id", "course_slug"], name: "index_progresses_on_user_id_and_course_slug"
     t.index ["user_id"], name: "index_progresses_on_user_id"
@@ -57,9 +56,9 @@ ActiveRecord::Schema[6.1].define(version: 2023_08_26_132242) do
     t.string "days_utc", default: [], null: false, array: true
     t.integer "hours_utc", default: [], null: false, array: true
     t.string "lessons_delivered", default: [], array: true
-    t.datetime "last_delivered_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "last_delivered_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "user_timezone", default: "UTC"
     t.boolean "disguised", default: false
     t.index ["active"], name: "index_subscriptions_on_active"
@@ -72,9 +71,9 @@ ActiveRecord::Schema[6.1].define(version: 2023_08_26_132242) do
     t.string "firebase_id", null: false
     t.string "email", null: false
     t.boolean "email_verified", default: false
-    t.datetime "last_seen_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "last_seen_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "terms_accepted", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["firebase_id"], name: "index_users_on_firebase_id", unique: true
@@ -83,8 +82,8 @@ ActiveRecord::Schema[6.1].define(version: 2023_08_26_132242) do
   create_table "votes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
     t.string "course_slug", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["course_slug"], name: "index_votes_on_course_slug"
     t.index ["user_id", "course_slug"], name: "index_votes_on_user_id_and_course_slug", unique: true
     t.index ["user_id"], name: "index_votes_on_user_id"
