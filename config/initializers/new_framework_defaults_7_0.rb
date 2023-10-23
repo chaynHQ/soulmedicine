@@ -11,7 +11,7 @@
 
 # `button_to` view helper will render `<button>` element, regardless of whether
 # or not the content is passed as the first argument or as a block.
-# Rails.application.config.action_view.button_to_generates_button_tag = true
+Rails.application.config.action_view.button_to_generates_button_tag = true
 
 # `stylesheet_link_tag` view helper will not render the media attribute by default.
 # Rails.application.config.action_view.apply_stylesheet_media_default = false
@@ -38,7 +38,7 @@
 # This makes test cases behave closer to an actual request or job.
 # Several features that are normally disabled in test, such as Active Record query cache
 # and asynchronous queries will then be enabled.
-# Rails.application.config.active_support.executor_around_test_case = true
+Rails.application.config.active_support.executor_around_test_case = true
 
 # Set both the `:open_timeout` and `:read_timeout` values for `:smtp` delivery method.
 # Rails.application.config.action_mailer.smtp_timeout = 5
@@ -46,8 +46,8 @@
 # The ActiveStorage video previewer will now use scene change detection to generate
 # better preview images (rather than the previous default of using the first frame
 # of the video).
-# Rails.application.config.active_storage.video_preview_arguments =
-#   "-vf 'select=eq(n\\,0)+eq(key\\,1)+gt(scene\\,0.015),loop=loop=-1:size=2,trim=start_frame=1' -frames:v 1 -f image2"
+Rails.application.config.active_storage.video_preview_arguments =
+  "-vf 'select=eq(n\\,0)+eq(key\\,1)+gt(scene\\,0.015),loop=loop=-1:size=2,trim=start_frame=1' -frames:v 1 -f image2"
 
 # Automatically infer `inverse_of` for associations with a scope.
 # Rails.application.config.active_record.automatic_scope_inversing = true
@@ -68,7 +68,7 @@
 # generate variants to use image processing macros and ruby-vips
 # operations. See the upgrading guide for detail on the changes required.
 # The `:mini_magick` option is not deprecated; it's fine to keep using it.
-# Rails.application.config.active_storage.variant_processor = :vips
+Rails.application.config.active_storage.variant_processor = :vips
 
 # Enable parameter wrapping for JSON.
 # Previously this was set in an initializer. It's fine to keep using that initializer if you've customized it.
@@ -134,7 +134,7 @@
 # Thus, to support submitting an empty collection, the `file_field` helper will render an hidden field `include_hidden`
 # by default when `multiple_file_field_include_hidden` is set to `true`.
 # See https://guides.rubyonrails.org/configuring.html#config-active-storage-multiple-file-field-include-hidden for more information.
-# Rails.application.config.active_storage.multiple_file_field_include_hidden = true
+Rails.application.config.active_storage.multiple_file_field_include_hidden = true
 
 # ** Please read carefully, this must be configured in config/application.rb (NOT this file) **
 # Disables the deprecated #to_s override in some Ruby core classes
