@@ -32,7 +32,7 @@ Rails.application.config.action_view.button_to_generates_button_tag = true
 
 # Don't override ActiveSupport::TimeWithZone.name and use the default Ruby
 # implementation.
-# Rails.application.config.active_support.remove_deprecated_time_with_zone_name = true
+Rails.application.config.active_support.remove_deprecated_time_with_zone_name = true
 
 # Calls `Rails.application.executor.wrap` around test cases.
 # This makes test cases behave closer to an actual request or job.
@@ -100,32 +100,6 @@ Rails.application.config.active_storage.variant_processor = :vips
 # and you have no plans to rollback.
 # When you're ready to change format, add this to `config/application.rb` (NOT this file):
 #  config.active_support.cache_format_version = 7.0
-
-# Cookie serializer: 2 options
-#
-# If you're upgrading and haven't set `cookies_serializer` previously, your cookie serializer
-# is `:marshal`. The default for new apps is `:json`.
-#
-# Rails.application.config.action_dispatch.cookies_serializer = :json
-#
-#
-# To migrate an existing application to the `:json` serializer, use the `:hybrid` option.
-#
-# Rails transparently deserializes existing (Marshal-serialized) cookies on read and
-# re-writes them in the JSON format.
-#
-# It is fine to use `:hybrid` long term; you should do that until you're confident *all* your cookies
-# have been converted to JSON. To keep using `:hybrid` long term, move this config to its own
-# initializer or to `config/application.rb`.
-#
-# Rails.application.config.action_dispatch.cookies_serializer = :hybrid
-#
-#
-# If your cookies can't yet be serialized to JSON, keep using `:marshal` for backward-compatibility.
-#
-# If you have configured the serializer elsewhere, you can remove this section of the file.
-#
-# See https://guides.rubyonrails.org/action_controller_overview.html#cookies for more information.
 
 # Change the return value of `ActionDispatch::Request#content_type` to the Content-Type header without modification.
 # Rails.application.config.action_dispatch.return_only_request_media_type_on_content_type = false
