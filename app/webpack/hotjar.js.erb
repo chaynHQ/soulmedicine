@@ -1,0 +1,6 @@
+import Hotjar from '@hotjar/browser';
+
+const siteId = "<%= ENV['HOTJAR_ID'] %>";
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
