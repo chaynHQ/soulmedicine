@@ -1,18 +1,19 @@
 import '../stylesheets/application.scss';
 
 import Rails from '@rails/ujs';
-import Turbolinks from 'turbolinks';
-import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap-select';
+import 'bootstrap/dist/js/bootstrap';
 import 'data-confirm-modal';
+import Turbolinks from 'turbolinks';
 
-import Vue from 'vue/dist/vue.esm';
 import TurbolinksAdapter from 'vue-turbolinks';
+import Vue from 'vue/dist/vue.esm';
 
+import Hotjar from '@hotjar/browser';
 import SignIn from '../components/authentication/sign_in.vue';
-import Profile from '../components/user_profile/profile.vue';
 import CookieLaw from '../components/cookie_law/cookie_law.vue';
 import LeaveSite from '../components/leave_site/leave_site.vue';
+import Profile from '../components/user_profile/profile.vue';
 
 Rails.start();
 Turbolinks.start();
@@ -20,6 +21,11 @@ Turbolinks.start();
 Vue.use(TurbolinksAdapter);
 
 import '../vue-rollbar.js.erb'; // eslint-disable-line import/first
+
+const siteId = process.env.HOTJAR_ID;
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
 
 document.addEventListener('turbolinks:load', () => {
   const components = [
