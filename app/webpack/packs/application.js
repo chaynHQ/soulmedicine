@@ -22,8 +22,6 @@ Vue.use(TurbolinksAdapter);
 import '../hotjar.js.erb'; // eslint-disable-line import/first
 import '../vue-rollbar.js.erb'; // eslint-disable-line import/first
 
-
-
 document.addEventListener('turbolinks:load', () => {
   const components = [
     {
