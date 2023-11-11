@@ -17,7 +17,7 @@
     "@babel/runtime": "7",
     "@hotjar/browser": "^1.0.9",
     "@rails/ujs": "7.0.8",
-    "axios": "^1.4.0",
+    "axios": "^1.6.0",
     "babel-loader": "8",
     "bootstrap": "^4.5.0",
     "bootstrap-select": "^1.13.17",
