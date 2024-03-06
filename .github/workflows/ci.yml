@@ -33,6 +33,7 @@ jobs:
         bundler-cache: true
     - uses: actions/setup-node@v3
       with:
+        node-version: '18.18.x'
         cache: 'yarn'
     - name: Install JS dependencies
       run: yarn install --frozen-lockfile
