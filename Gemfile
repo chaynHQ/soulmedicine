@@ -7,7 +7,7 @@ ruby '3.1.4'
 
 gem 'rails', '~> 7.0', '>= 7.0.8'
 gem 'pg', '~> 1.5', '>= 1.5.3'
-gem 'puma', '~> 6.3'
+gem 'puma', '~> 6.4'
 gem 'shakapacker', '~> 7.0', '>= 7.0.2'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redis', '~> 5.0', '>= 5.0.7'
