@@ -1,3 +1,6 @@
+# This workflow opens issues for pull requests opened by dependabot.
+# See for more info: https://github.com/actions/dependency-review-action
+
 name: Create Dependabot Issues # from pull requests
 
 on:
