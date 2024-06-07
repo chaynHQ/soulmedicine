@@ -6,7 +6,7 @@ name: Open Dependabot Issues # from pull requests
 on:
   pull_request:
     types: [opened]
-    branches: [develop]
+    branches: [main]
 
 jobs:
   create-issue:
