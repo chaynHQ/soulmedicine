@@ -37,7 +37,7 @@
     "postcss-preset-env": "^9.1.1",
     "rails-erb-loader": "^5.5.2",
     "rollbar": "^2.26.2",
-    "sass": "^1.66.1",
+    "sass": "^1.77.2",
     "sass-loader": "^13.3.2",
     "shakapacker": "7.0.2",
     "style-loader": "^3.3.3",
