@@ -41,4 +41,3 @@ jobs:
           ignore-pr-updates: true
           stale-pr-message: "As per Chayn policy, after 30 days of inactivity, we will close this PR."
           close-pr-message: "This PR has been closed due to inactivity."
-          stale-issue-message: "As per Chayn policy, after 30 days of inactivity, we will be unassigning this issue. Please comment to stay assigned."
