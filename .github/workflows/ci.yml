@@ -27,11 +27,11 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
         node-version: '18.18.x'
         cache: 'yarn'
@@ -59,7 +59,7 @@ jobs:
     env:
       BUNDLE_ONLY: linting
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
