@@ -80,7 +80,7 @@ RSpec.describe TimeZoneScheduleConverter do
         let(:hour) { 0 }
         let(:adjusted_hour) { 24 + to_zone_offset }
 
-        it 'returns the adjusted hour and previous day(s)' do  
+        it 'returns the adjusted hour and previous day(s)' do
           expect(subject).to eq(
             days: %w[Sat Tue Fri],
             hour: adjusted_hour
