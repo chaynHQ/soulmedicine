@@ -43,7 +43,7 @@
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "5",
     "turbolinks": "^5.2.0",
-    "vue": "^2.7.14",
+    "vue": "^3.4.27",
     "vue-cookie-law": "^1.10.0",
     "vue-loader": "^15.10.2",
     "vue-template-compiler": "^2.7.14",
