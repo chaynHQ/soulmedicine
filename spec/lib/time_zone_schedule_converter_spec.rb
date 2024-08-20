@@ -77,8 +77,8 @@ RSpec.describe TimeZoneScheduleConverter do
       context 'when the adjusted hour moves behind into previous day(s)' do
         let(:from_zone) { 'UTC' }
         let(:to_zone) { 'Greenland' }
-        let(:hour) { 1 }
-        let(:adjusted_hour) { 24 + to_zone_offset + 1 }
+        let(:hour) { 0 }
+        let(:adjusted_hour) { 24 + to_zone_offset }
 
         it 'returns the adjusted hour and previous day(s)' do
           expect(subject).to eq(
