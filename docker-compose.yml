@@ -1,28 +1,35 @@
 version: '3.7'
-
 services:
-  postgres:
-    image: 'postgres:14.8-alpine'
-    volumes:
-      - 'pgdata:/var/lib/postgresql/data'
+  db:
+    image: postgres:13
     environment:
-      - POSTGRES_USER=sm
-      - POSTGRES_PASSWORD=sm_password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
     ports:
-      - 5432:5432
-  redis-sidekiq:
-    image: redis:6.2.13-alpine
+      - "5432:5432"
+
+  redis:
+    image: redis:6
     ports:
-      - 6379:6379
-  redis-cache:
-    image: redis:6.2.13-alpine
-    ports:
-      - 6380:6379
+      - "6379:6379"
+
   mailcatcher:
     image: schickling/mailcatcher
     ports:
-      - 1025:1025
-      - 1080:1080
+      - "1080:1080"
 
-volumes:
-  pgdata:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+      - mailcatcher
+    env_file:
+      - .env
+    volumes:
+      - .:/app
