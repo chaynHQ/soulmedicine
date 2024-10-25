@@ -11,10 +11,10 @@ given_configuration = {
 
 if ENV['CONTENT_PREVIEW_MODE'] != 'true'
   redis_cache_url = ENV.fetch('REDIS_CACHE_URL') { raise 'REDIS_CACHE_URL missing' }
-  redis = Redis.new url: redis_cache_url
+  redis = Redis.new url: redis_cache_url, ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
 
   ttl = ENV.fetch('CONTENT_CACHE_TTL_MINS', 60).to_i * 60
-  cache = Storyblok::Cache::Redis.new redis: redis, ttl: ttl
+  cache = Storyblok::Cache::Redis.new redis: redis, ttl: ttl, ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
 
   given_configuration[:cache] = cache
   given_configuration[:version] = 'published'
