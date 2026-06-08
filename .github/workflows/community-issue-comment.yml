@@ -28,7 +28,7 @@
       steps:
         - name: Post assignee issue comment
           id: assigned-comment
-          uses: actions/github-script@v7 # https://github.com/actions/github-script
+          uses: actions/github-script@v9 # https://github.com/actions/github-script
           with:
             github-token: ${{secrets.GITHUB_TOKEN}}
             script: |
@@ -56,7 +56,7 @@
       steps:
         - name: Post stale issue comment
           id: stale-label-comment
-          uses: actions/github-script@v7 # https://github.com/actions/github-script
+          uses: actions/github-script@v9 # https://github.com/actions/github-script
           with:
             github-token: ${{secrets.GITHUB_TOKEN}}
             script: |
